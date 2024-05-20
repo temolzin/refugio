@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\Admin\{AuthController,ProfileController};
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login',[AuthController::class,'getLogin'])->name('getLogin');
+Route::post('/login',[AuthController::class,'postLogin'])->name('postLogin');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
