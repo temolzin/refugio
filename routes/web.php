@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,21 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
+
 use App\Http\Controllers\Admin\{AuthController,ProfileController};
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login',[AuthController::class,'getLogin'])->name('getLogin');
-Route::post('/login',[AuthController::class,'postLogin'])->name('postLogin');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-=======
-Route::get('/', function () {
-    return view('welcome');
-});
->>>>>>> parent of 4c8febb (LoginLTE)
+Route::get('home', [HomeController::class, 'index']);
