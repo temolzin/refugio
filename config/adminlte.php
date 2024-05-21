@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>REFUGIO</b>XIOLIN',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -316,18 +316,11 @@ return [
             'can' => 'manage-blog',
         ],
         [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url' => 'admin/settings',
+            'text' => 'USUARIOS',
+            'url' => '/admin/users',
             'icon' => 'fas fa-fw fa-user',
         ],
+        ['header' => 'account_settings'],
         [
             'text' => 'change_password',
             'url' => 'admin/settings',
