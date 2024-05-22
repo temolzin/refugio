@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 use App\Http\Controllers\Admin\{AuthController,ProfileController};
 
 Route::get('/', function () {
@@ -25,3 +26,8 @@ Route::post('/login',[AuthController::class,'postLogin'])->name('postLogin');
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+=======
+Route::get('/', function () {
+    return view('welcome');
+});
+>>>>>>> parent of 4c8febb (LoginLTE)
