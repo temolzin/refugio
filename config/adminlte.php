@@ -64,6 +64,7 @@ return [
     */
 
 
+
     'logo' => '<b>Patitas</b>Felices',
 
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
