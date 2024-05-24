@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,21 @@ use App\Http\Controllers\HomeController;
 */
 
 
-use App\Http\Controllers\Admin\{AuthController,ProfileController};
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('home', [HomeController::class, 'index']);
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::post('login', [AuthController::class, 'login']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
