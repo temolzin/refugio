@@ -31,7 +31,7 @@
                     <ul class="clear">
                         <li class="active"><a href="home">Inicio</a></li>
                         <li><a href="#">Albergues</a></li>
-                        <li><a href="login">Ingresar</a>
+                        <li><a href="/login">Ingresar</a>
                         </li>
                     </ul>
                 </nav>
