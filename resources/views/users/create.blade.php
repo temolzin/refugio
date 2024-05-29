@@ -38,7 +38,7 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label for="" class="form-label">Apellido(*)</label>
-                      <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" placeholder="Ingresa apellido(s)" value="{{ old('last_name') }}"  required/>
+                      <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" placeholder="Ingresa apellido(s)" value="{{ old('last_name') }}" required/>
                       @error('last_name')
                       <span class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -69,19 +69,19 @@
                     </div>
                   </div>
                   <div class="col-lg-6">
-                  <div class="form-group">
-                  <label for="password" class="form-label">Contraseña(*)</label>
-                  <div class="input-group">
-                  <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Ingresa contraseña" required>
-                  <div class="input-group-append">
-            </div>
-        </div>
-        @error('password')
-            <span class="invalid-feedback">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Contraseña(*)</label>
+                        <div class="input-group">
+                            <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Ingresa contraseña" required>
+                            <div class="input-group-append">
+                            </div>
+                        </div>
+                        @error('password')
+                          <span class="invalid-feedback">
+                             <strong>{{ $message }}</strong>
+                          </span>
+                         @enderror
+                     </div>
                   </div>
                 </div>
               </div>
@@ -95,24 +95,4 @@
       </div>
     </div>
   </div>
-</div>
-@section('js')
-    <script>
-        function checkForm() {
-            var formIsValid = true;
-            $('#userForm input[required]').each(function() {
-                if ($(this).val() === '') {
-                    formIsValid = false;
-                    return false;
-                }
-            });
-            $('#save').prop('disabled', !formIsValid);
-        }
-        $(document).ready(function() {
-            checkForm();
-        });
-        $('#userForm input').on('input', function() {
-            checkForm();
-        });
-    </script>
-@endsection
+</div

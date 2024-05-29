@@ -76,26 +76,48 @@
 
 @endsection
 @section('js')
-<script>
-    $(document).ready(function() {
-        $('#users').DataTable({
-            responsive: true,
-            buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-            dom: 'Bfrtip',
-        });
-
-        var successMessage = "{{ session('success') }}";
-
-       
-        if (successMessage) {
-           
-            Swal.fire({
-                icon: 'success',
-                title: 'Éxito',
-                text: successMessage,
-                confirmButtonText: 'Aceptar'
+    <script>
+        $(document).ready(function() {
+            $('#users').DataTable({
+                responsive: true,
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+                dom: 'Bfrtip',
             });
-        }
-    });
-</script>
+            var successMessage = "{{ session('success') }}";
+            if (successMessage) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: successMessage,
+                    confirmButtonText: 'Aceptar'
+                });
+            }
+            function checkForm(formId, isEdit) {
+                var formIsValid = true;
+                $('#' + formId + ' input[required]').each(function() {
+                    // Excluye la validación de la contraseña solo en el modal de edición
+                    if (isEdit && $(this).attr('name') === 'password') {
+                        return true; // Continuar con la iteración
+                    }
+                    if ($(this).val() === '') {
+                        formIsValid = false;
+                        return false;
+                    }
+                });
+                $('#save' + formId + ' #edit').prop('disabled', !formIsValid);
+                if (!formIsValid) {
+                    toastr.error('Por favor, completa todos los campos obligatorios.');
+                }
+            }
+            $('#createModal').on('shown.bs.modal', function () {
+                checkForm('userForm', false);
+            });
+            $('#editModal').on('shown.bs.modal', function () {
+                checkForm('userForm', true);
+            });
+            $('#userForm input').on('input', function() {
+                checkForm('userForm', false); // No es edición en este caso
+            });
+        });
+    </script>
 @endsection

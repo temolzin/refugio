@@ -36,17 +36,13 @@ class UsersController extends Controller
             'last_name' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8',      
+            'password' => 'required|string|min:8',
         ]);
-
-        if ($request->id ==0)
-        {
+        if ($request->id == 0) {
             $users = new Users();
-        }else
-        {
+        } else {
             $users = Users::find($request->id);
         }
-
         $users->name =$request ->input ('name');
         $users->last_name =$request ->input ('last_name');
         $users->phone =$request ->input ('phone');
@@ -83,25 +79,19 @@ class UsersController extends Controller
         'phone' => 'required|string|max:15',
         'email' => 'required|string|email|max:255',
         'email_verified_at' => 'nullable',
-        'password' => 'required|string|min:8',      
         ]);
         $users = Users::find($id);
-
        if ($users) {
            $users->name = $request->input('name');
            $users->last_name = $request->input('last_name');
            $users->phone =$request ->input('phone');
            $users->email =$request ->input('email');
            $users->email_verified_at = $request->input('email_verified_at') ? $request->input('email_verified_at') : null;
-           $users->password = bcrypt($request->input('password'));
            $users->save();
        }
-   
        return redirect()->back()->with('success', 'Usuario actualizado correctamente');
    }
 
-
-   
    public function show(Users $users)
    {
     
