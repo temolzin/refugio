@@ -17,18 +17,19 @@ use App\Http\Controllers\AuthController;
 */
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login');
 
 Route::post('login', [AuthController::class, 'login']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->middleware('auth');
 
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
-Route::resource('users', UsersController::class);
-Route::get('home', [HomeController::class, 'index']);
+Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users')->middleware('auth');
+Route::resource('users', UsersController::class)->middleware('auth');
+Route::get('home', [HomeController::class, 'index'])->middleware('auth');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');

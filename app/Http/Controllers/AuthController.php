@@ -1,26 +1,31 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Auth;
-
 class AuthController extends Controller
 {
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
-        if (!$token = JWTAuth::attempt($credentials)) {
-            return response()->json(['Not authorized' => 'Incorrect data'], 401);
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('dashboard');
         }
 
-        // Guardar el token en la sesión
-        $request->session()->put('token', $token);
+        return back()->withErrors([
+            'email' => 'Las credenciales no coinciden con nuestros registros.',
+        ]);
+    }
 
-        // Autenticar al usuario manualmente
-        $user = Auth::user();
-        return redirect()->route('dashboard')->with(['user' => $user]);
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
