@@ -21,15 +21,20 @@ Route::get('/login', function () {
 
 Route::post('login', [AuthController::class, 'login']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth');
-
-
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users')->middleware('auth');
-Route::resource('users', UsersController::class)->middleware('auth');
-Route::get('home', [HomeController::class, 'index'])->middleware('auth');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::get('home', [HomeController::class, 'index']);
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
+
+    Route::resource('users', UsersController::class);
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
