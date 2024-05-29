@@ -27,6 +27,10 @@ Route::get('/', function () {
 
 Route::get('home', [HomeController::class, 'index']);
 
+Route::get('/errorPage', function () {
+    return view('errorPage');
+});
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
