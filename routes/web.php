@@ -27,9 +27,9 @@ Route::get('/', function () {
 
 Route::get('home', [HomeController::class, 'index']);
 
-Route::get('/errorPage', function () {
-    return view('errorPage');
-});
+Route::get('/error404', function () {
+    return view('errorPage/error404');
+})->name('error404');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', function () {
