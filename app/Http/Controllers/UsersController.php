@@ -10,9 +10,9 @@ class UsersController extends Controller
 {
     public function index(Request $request)
     {
-        $users = trim($request->get('texto'));
+        $users = trim($request->get('text'));
         $users = DB::table('users')
-            ->select('id', 'name','last_name','maternal_lastName','phone','email','password') 
+            ->select('id', 'name','last_name','phone','email','password')
             ->where('id', 'LIKE', '%' . $users . '%')
             ->orWhere('name', 'LIKE', '%' . $users . '%')
             ->orderBy('name', 'asc')
@@ -29,31 +29,29 @@ class UsersController extends Controller
 
     }
 
-    public function store(Request $req)
+    public function store(Request $request)
     {
-        $req->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'maternal_lastName' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:8',      
         ]);
 
-        if ($req->id ==0)
+        if ($request->id ==0)
         {
             $users = new Users();
         }else
         {
-            $users = Users::find($req->id);
+            $users = Users::find($request->id);
         }
 
-        $users->name =$req ->input ('name');
-        $users->last_name =$req ->input ('last_name');
-        $users->maternal_lastName =$req ->input ('maternal_lastName');
-        $users->phone =$req ->input ('phone');
-        $users->email =$req ->input ('email');
-        $users->password = bcrypt($req->input('password'));
+        $users->name =$request ->input ('name');
+        $users->last_name =$request ->input ('last_name');
+        $users->phone =$request ->input ('phone');
+        $users->email =$request ->input ('email');
+        $users->password = bcrypt($request->input('password'));
         $users->save();
 
         return redirect()->back()->with('success', 'Usuario guardado exitosamente');
@@ -63,12 +61,12 @@ class UsersController extends Controller
     {
         $users= Users::find($id);
         $users->delete();
-        return redirect ()->back()->with('success','Formulario eliminado exitosamente');
+        return redirect ()->back()->with('success','Usuario eliminado exitosamente');
     }
 
-    public function get(Request $req)
+    public function get(Request $request)
     {
-        $users = Users::find($req->id);
+        $users = Users::find($request->id);
         return $users;
     }
 
@@ -77,12 +75,11 @@ class UsersController extends Controller
        
     }
 
-   public function update(Request $req, $id)
+   public function update(Request $request, $id)
    {
-       $req->validate([
+       $request->validate([
         'name' => 'required|string|max:255',
         'last_name' => 'required|string|max:255',
-        'maternal_lastName' => 'required|string|max:255',
         'phone' => 'required|string|max:15',
         'email' => 'required|string|email|max:255',
         'email_verified_at' => 'nullable',
@@ -91,13 +88,12 @@ class UsersController extends Controller
         $users = Users::find($id);
 
        if ($users) {
-           $users->name = $req->input('name');
-           $users->last_name = $req->input('last_name');
-           $users->maternal_lastName = $req->input('maternal_lastName');
-           $users->phone =$req ->input('phone');
-           $users->email =$req ->input('email');
-           $users->email_verified_at = $req->input('email_verified_at') ? $req->input('email_verified_at') : null;
-           $users->password = bcrypt($req->input('password'));
+           $users->name = $request->input('name');
+           $users->last_name = $request->input('last_name');
+           $users->phone =$request ->input('phone');
+           $users->email =$request ->input('email');
+           $users->email_verified_at = $request->input('email_verified_at') ? $request->input('email_verified_at') : null;
+           $users->password = bcrypt($request->input('password'));
            $users->save();
        }
    

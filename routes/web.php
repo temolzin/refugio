@@ -13,25 +13,13 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-<<<<<<< HEAD
-use App\Http\Controllers\Admin\{AuthController,ProfileController};
-
 Route::get('/', function () {
     return view('welcome');
 });
-
 
 Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
 Route::resource('users', UsersController::class);
 
-Route::get('/login',[AuthController::class,'getLogin'])->name('getLogin');
-Route::post('/login',[AuthController::class,'postLogin'])->name('postLogin');
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
-=======
-Route::get('/', function () {
-    return view('welcome');
-});
->>>>>>> parent of 4c8febb (LoginLTE)
