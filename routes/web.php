@@ -27,6 +27,12 @@ Route::get('/', function () {
 
 Route::get('home', [HomeController::class, 'index']);
 
+Route::prefix('error')->group(function () {
+    Route::get('/404', function () {
+        return view('error/404');
+    });
+});
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
