@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\VaccineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+Route::get('/vaccines', [App\Http\Controllers\VaccineController::class, 'index'])->name('vaccines');
+
+Route::resource('vaccines', VaccineController::class);

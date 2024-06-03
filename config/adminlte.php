@@ -110,7 +110,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => false,
+        'enabled' => true,
         'mode' => 'fullscreen',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
@@ -190,17 +190,18 @@ return [
     |
     */
 
-        'classes_body' => '',
-        'classes_brand' => '',
-        'classes_brand_text' => '',
-        'classes_content_wrapper' => '',
-        'classes_content_header' => '',
-        'classes_content' => '',
-        'classes_sidebar' => 'sidebar-light-primary elevation-4 sidebar-light-custom ',
-        'classes_sidebar_nav' => '',
-        'classes_topnav' => 'navbar-white navbar-light',
-        'classes_topnav_nav' => 'navbar-expand',
-        'classes_topnav_container' => 'container',
+    'classes_body' => '',
+    'classes_brand' => '',
+    'classes_brand_text' => '',
+    'classes_content_wrapper' => '',
+    'classes_content_header' => '',
+    'classes_content' => '',
+    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar_nav' => '',
+    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav_nav' => 'navbar-expand',
+    'classes_topnav_container' => 'container',
+
     /*
     |--------------------------------------------------------------------------
     | Sidebar
@@ -214,10 +215,10 @@ return [
     */
 
     'sidebar_mini' => 'lg',
-    'sidebar_collapse' => true,
+    'sidebar_collapse' => false,
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
-    'sidebar_collapse_remember_no_transition' => false,
+    'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
     'sidebar_scrollbar_auto_hide' => 'l',
     'sidebar_nav_accordion' => true,
@@ -323,8 +324,8 @@ return [
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'USUARIOS',
-            'url' => '/users',
+            'text' => 'profile',
+            'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
@@ -337,8 +338,9 @@ return [
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
+                    'text' => 'Vacunas',
+                    'icon' => 'fas fa-fw fa-syringe',
+                    'url' => '/vaccines',
                 ],
                 [
                     'text' => 'level_one',
@@ -440,11 +442,6 @@ return [
                     'type' => 'css',
                     'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => true,
-                    'location' => 'css/admintle/menu.css',
                 ],
                 [   'type' => 'js',
                     'asset' => true,
@@ -583,5 +580,4 @@ return [
     */
 
     'livewire' => false,
-
 ];
