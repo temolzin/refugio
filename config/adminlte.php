@@ -326,6 +326,13 @@ return [
             'text' => 'Usuarios',
             'url' => '/users',
             'icon' => 'fas fa-fw fa-user',
+            'can'  =>'ver usuario'
+        ],
+        [
+            'text' => 'Roles',
+            'url' => '/roles',
+            'icon' => 'fas fa-users-cog fa-fw',
+            'can'  =>'ver rol'
         ],
         [
             'text' => 'Especies',
@@ -511,7 +518,7 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
