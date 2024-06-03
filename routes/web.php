@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\SpecieController;
+use App\Http\Controllers\SpeciesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +33,6 @@ Route::get('/', function () {
 Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
 Route::resource('users', UsersController::class);
 Route::get('home', [HomeController::class, 'index']);
+
+Route::get('/species', [App\Http\Controllers\SpecieController::class, 'index'])->name('species');
+Route::resource('species',SpecieController::class);

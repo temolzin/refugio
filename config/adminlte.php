@@ -323,14 +323,14 @@ return [
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'USUARIOS',
+            'text' => 'Usuarios',
             'url' => '/users',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Especies',
+            'url' => '/species',
+            'icon' => 'fas fa-paw',
         ],
         [
             'text' => 'multilevel',
