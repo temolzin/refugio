@@ -27,8 +27,8 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>NOMBRE</th>
-                                            <th>DESCRIPCION </th>
-                                            <th>Acciones</th>
+                                            <th>DESCRIPCIÓN</th>
+                                            <th>OPCIONES</th>
                                         </tr>
                                     </thead>
                                     <tbody>
