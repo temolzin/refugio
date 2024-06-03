@@ -15,10 +15,12 @@ class CreateVaccinesTable extends Migration
     {
         Schema::create('vaccines', function (Blueprint $table) {
             $table->id('vaccine_id');
-            $table->integer('shelter_id');
+            $table->unsignedBigInteger('shelter_id');
             $table->string('name');
             $table->string('type');
             $table->string('description');
+
+            $table->foreign('shelter_id')->references('id')->on('shelter')->onDelete('cascade');
         });
     }
 

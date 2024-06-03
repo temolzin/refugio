@@ -110,7 +110,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'mode' => 'fullscreen',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
@@ -196,12 +196,11 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-light-primary elevation-4 sidebar-light-custom ',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
-
     /*
     |--------------------------------------------------------------------------
     | Sidebar
@@ -215,10 +214,10 @@ return [
     */
 
     'sidebar_mini' => 'lg',
-    'sidebar_collapse' => false,
+    'sidebar_collapse' => true,
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
-    'sidebar_collapse_remember_no_transition' => true,
+    'sidebar_collapse_remember_no_transition' => false,
     'sidebar_scrollbar_theme' => 'os-theme-light',
     'sidebar_scrollbar_auto_hide' => 'l',
     'sidebar_nav_accordion' => true,
@@ -324,23 +323,27 @@ return [
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url' => 'admin/settings',
+            'text' => 'Usuarios',
+            'url' => '/users',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Especies',
+            'url' => '/species',
+            'icon' => 'fas fa-paw',
+        ],
+        [
+            'text' => 'Vacunas',
+            'icon' => 'fas fa-fw fa-syringe',
+            'url' => '/vaccines',
         ],
         [
             'text' => 'multilevel',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Vacunas',
-                    'icon' => 'fas fa-fw fa-syringe',
-                    'url' => '/vaccines',
+                    'text' => 'level_one',
+                    'url' => '#',
                 ],
                 [
                     'text' => 'level_one',
@@ -443,35 +446,48 @@ return [
                     'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'css/admintle/menu.css',
+                ],
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdn.datatables.net/buttons/2.1.1/js/dataTables.buttons.min.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdn.datatables.net/buttons/2.1.1/js/buttons.bootstrap5.min.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdn.datatables.net/buttons/2.1.1/js/buttons.html5.min.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdn.datatables.net/buttons/2.1.1/js/buttons.print.min.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js'
                 ],
@@ -580,4 +596,5 @@ return [
     */
 
     'livewire' => false,
+
 ];
