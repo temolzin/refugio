@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SpecieController;
+use App\Http\Controllers\SpeciesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,10 @@ Route::get('/', function () {
 });
 
 Route::get('home', [HomeController::class, 'index']);
+
+
+Route::get('/species', [App\Http\Controllers\SpecieController::class, 'index'])->name('species');
+Route::resource('species',SpecieController::class);
 
 Route::prefix('error')->group(function () {
     Route::get('/404', function () {
