@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <form action="{{ route('roles.store') }}" method="POST">
-                    @csrf <!-- Token de seguridad para los formularios -->
+                    @csrf
                     <div class="card-body">
                         <div class="card">
                             <div class="card-header py-2 bg-secondary">
