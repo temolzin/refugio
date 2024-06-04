@@ -17,6 +17,7 @@ class CreateShelterTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
+            $table->string('logo')->nullable();
             $table->string('phone');
             $table->string('facebook')->nullable();
             $table->string('tiktok')->nullable(); 
@@ -25,6 +26,7 @@ class CreateShelterTable extends Migration
             $table->string('colony');
             $table->string('address');
             $table->string('postal_code'); 
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
