@@ -6,54 +6,72 @@ use App\Models\Specie;
 use App\Models\Shelter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 
 class SpecieController extends Controller
 {
-
-    public function index(Request $request)
+        public function index(Request $request)
     {
-         $species = trim($request->get('text'));
-         $species = DB::table('species')
-            ->select('id','name' ,'description')
-            ->where('id', 'LIKE', '%' . $species . '%')
-            ->orWhere('name', 'LIKE', '%' . $species. '%')
+        $user = Auth::user();
+
+        if (!$user || !$user->shelter) {
+            return redirect()->route('login')->with('error', 'Debe iniciar sesión para ver esta página.');
+        }
+
+        $shelterId = $user->shelter->id;
+
+        $species = Specie::where('id_shelters', $shelterId)
+            ->where(function ($query) use ($request) {
+                $text = trim($request->get('text'));
+                $query->where('name', 'LIKE', '%' . $text . '%')
+                      ->orWhere('description', 'LIKE', '%' . $text . '%');
+            })
             ->orderBy('name', 'asc')
             ->paginate(10);
 
-    return view('species.index', compact('species'));
+        return view('species.index', compact('species'));
     }
 
+    public function list()
+    {
 
-    public function list(){
-
-    $species = Specie::all();
-    return $species;
-
+        $species = Specie::all();
+        return $species;
     }
     
-
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
-        ]);
-        if ($request->id == 0) {
-            $species = new Specie();
-        } else {
-            $species = Specie::find($request->id);
-            if (!$species) {
-                return redirect()->back()->with('error', 'La especie no fue encontrada');
-            }
-        }
-        $species->name = $request->input('name');
-        $species->description = $request->input('description');
-        $species->id_shelters = 2;
-    
-        $species->save();
+       $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string|max:255',
+    ]);
 
-        return redirect()->back()->with('success', 'Especie guardada exitosamente');
+    $user = Auth::user();
+    if (!$user) {
+        return redirect()->route('login')->with('error', 'Debe iniciar sesión para realizar esta acción.');
+    }
+
+    $shelter = $user->shelter;
+    if (!$shelter) {
+        return redirect()->back()->with('error', 'No se encontró el refugio asociado al usuario.');
+    }
+
+    if ($request->id == 0) {
+        $species = new Specie();
+    } else {
+        $species = Specie::find($request->id);
+        if (!$species) {
+            return redirect()->back()->with('error', 'La especie no fue encontrada.');
+        }
+    }
+
+    $species->name = $request->input('name');
+    $species->description = $request->input('description');
+    $species->id_shelters = $shelter->id;
+
+    $species->save();
+
+    return redirect()->back()->with('success', 'Especie guardada exitosamente.');
     }
     
 

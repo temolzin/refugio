@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label>Apellido</label>
+                    <label>Descripción</label>
                     <input type="text" disabled class="form-control" value="{{ $species->description }}" />
                   </div>
                 </div>

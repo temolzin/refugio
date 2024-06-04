@@ -57,4 +57,9 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function shelter()
+    {
+        return $this->hasOne(Shelter::class, 'user_id');
+    }
 }
