@@ -190,17 +190,17 @@ return [
     |
     */
 
-        'classes_body' => '',
-        'classes_brand' => '',
-        'classes_brand_text' => '',
-        'classes_content_wrapper' => '',
-        'classes_content_header' => '',
-        'classes_content' => '',
-        'classes_sidebar' => 'sidebar-light-primary elevation-4 sidebar-light-custom ',
-        'classes_sidebar_nav' => '',
-        'classes_topnav' => 'navbar-white navbar-light',
-        'classes_topnav_nav' => 'navbar-expand',
-        'classes_topnav_container' => 'container',
+    'classes_body' => '',
+    'classes_brand' => '',
+    'classes_brand_text' => '',
+    'classes_content_wrapper' => '',
+    'classes_content_header' => '',
+    'classes_content' => '',
+    'classes_sidebar' => 'sidebar-light-primary elevation-4 sidebar-light-custom ',
+    'classes_sidebar_nav' => '',
+    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav_nav' => 'navbar-expand',
+    'classes_topnav_container' => 'container',
     /*
     |--------------------------------------------------------------------------
     | Sidebar
@@ -326,11 +326,23 @@ return [
             'text' => 'Usuarios',
             'url' => '/users',
             'icon' => 'fas fa-fw fa-user',
+            'can'  =>'ver usuario'
         ],
         [
             'text' => 'Especies',
             'url' => '/species',
             'icon' => 'fas fa-paw',
+        ],
+        [
+            'text' => 'Vacunas',
+            'icon' => 'fas fa-fw fa-syringe',
+            'url' => '/vaccines',
+        ],
+        [
+            'text' => 'Roles',
+            'url' => '/roles',
+            'icon' => 'fas fa-users-cog fa-fw',
+            'can'  =>'ver rol'
         ],
         [
             'text' => 'multilevel',
@@ -446,35 +458,43 @@ return [
                     'asset' => true,
                     'location' => 'css/admintle/menu.css',
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdn.datatables.net/buttons/2.1.1/js/dataTables.buttons.min.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdn.datatables.net/buttons/2.1.1/js/buttons.bootstrap5.min.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdn.datatables.net/buttons/2.1.1/js/buttons.html5.min.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdn.datatables.net/buttons/2.1.1/js/buttons.print.min.js'
                 ],
-                [   'type' => 'js',
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => 'https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js'
                 ],
@@ -511,7 +531,7 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
