@@ -1,6 +1,6 @@
 <!-- Modal -->
-<div class="modal fade" id="edit{{ $vaccines->vaccine_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="edit{{ $vaccines->vaccine_id }}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="card-warning">
@@ -11,7 +11,8 @@
                             aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                 </div>
-                <form action="{{ route('vaccines.update', $vaccines->vaccine_id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('vaccines.update', $vaccines->vaccine_id) }}" method="post"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
@@ -29,8 +30,8 @@
                                         <div class="form-group">
                                             <label for="" class="form-label">Nombre(*)</label>
                                             <input type="text"
-                                                class="form-control @error('name') is-invalid @enderror"
-                                                name="name" id="" aria-describedby="helpId" placeholder=""
+                                                class="form-control @error('name') is-invalid @enderror" name="name"
+                                                id="" aria-describedby="helpId" placeholder=""
                                                 value="{{ $vaccines->name }}" required />
                                             @error('name')
                                                 <span class="invalid-feedback">
@@ -57,9 +58,9 @@
                                         <div class="form-group">
                                             <label for="" class="form-label">Descripción (*)</label>
                                             <input type="text"
-                                                class="form-control @error('description') is-invalid @enderror" name="description"
-                                                id="" aria-describedby="helpId" placeholder=""
-                                                value="{{ $vaccines->description }}"required />
+                                                class="form-control @error('description') is-invalid @enderror"
+                                                name="description" id="" aria-describedby="helpId"
+                                                placeholder="" value="{{ $vaccines->description }}"required />
                                             @error('description')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
