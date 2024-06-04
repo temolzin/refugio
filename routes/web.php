@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\VaccineController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpecieController;
-use App\Http\Controllers\SpeciesController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -54,3 +56,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/users/{user}/updateRole', [UserController::class, 'updateRole'])->name('users.updateRole'); 
 });
+
+Route::get('/vaccines', [App\Http\Controllers\VaccineController::class, 'index'])->name('vaccines');
+
+Route::resource('vaccines', VaccineController::class);
