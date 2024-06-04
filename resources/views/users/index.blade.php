@@ -7,7 +7,7 @@
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Tabla de usuarios</h2>
+                    <h2>Usuarios</h2>
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <button class="btn btn-success" data-toggle='modal' data-target="#create"> <i
@@ -52,9 +52,12 @@
                                                 <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$users->id}}">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$users->id}}">
+                                                <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#delete{{$users->id}}">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
+                                                <a type="button" class="permiso btn btn-secondary mr-2" href="{{ route('users.edit', $users->id) }}">
+                                                    <i class="fa fa-key"></i>
+                                                </a>
                                             </td>
                                             @include('users.delete')
                                         </tr>

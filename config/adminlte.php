@@ -326,6 +326,7 @@ return [
             'text' => 'Usuarios',
             'url' => '/users',
             'icon' => 'fas fa-fw fa-user',
+            'can'  =>'ver usuario'
         ],
         [
             'text' => 'Especies',
@@ -336,6 +337,12 @@ return [
             'text' => 'Vacunas',
             'icon' => 'fas fa-fw fa-syringe',
             'url' => '/vaccines',
+        ],
+        [
+            'text' => 'Roles',
+            'url' => '/roles',
+            'icon' => 'fas fa-users-cog fa-fw',
+            'can'  =>'ver rol'
         ],
         [
             'text' => 'multilevel',
@@ -524,7 +531,7 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
