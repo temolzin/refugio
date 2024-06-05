@@ -44,13 +44,12 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('dashboard');
 
 
-    Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
-    Route::resource('users', UsersController::class);
+    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
+    Route::resource('users', UserController::class);
 
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->middleware('can:ver usuario')->name('users');
 
 
-    Route::resource('users', UserController::class);
     
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
