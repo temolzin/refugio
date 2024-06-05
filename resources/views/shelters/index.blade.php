@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-
 @section('title', 'Admin')
 @section('content')
 <section class="content">
@@ -22,18 +21,18 @@
                         <div class="col-sm-12">
                             <div class="card-box table-responsive">
                                 <table id="shelters" class="table table-striped display responsive nowrap" style="width:100%">
-                            <thead>
-                                <tr>
-                                <th>ID</th>
-                                <th>LOGO</th>
-                                <th>USUARIO</th>
-                                <th>NOMBRE</th>                                
-                                <th>TELÉFONO</th>
-                                <th>REDES SOCIALES</th>
-                                <th>DIRECCIÓN</th>
-                                <th>OPCIONES</th>
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>LOGO</th>
+                                            <th>USUARIO</th>
+                                            <th>NOMBRE</th>                                
+                                            <th>TELÉFONO</th>
+                                            <th>REDES SOCIALES</th>
+                                            <th>DIRECCIÓN</th>
+                                            <th>OPCIONES</th>
                                         </tr>
-                                </thead>
+                                    </thead>
                                     <tbody>
                                         @if(count($shelters) <= 0)
                                         <tr>
@@ -50,7 +49,7 @@
                                                 @endphp
                                                 <img src="{{ $logo->getUrl() }}" alt="Logo not found" style="width: 50px; height: 50px; border-radius: 50%;" > 
                                             @else
-                                            <img src="{{ asset('img/avatardefault.png') }}" style="width: 50px; height: 50px; border-radius: 50%;">
+                                                <img src="{{ asset('img/avatardefault.png') }}" style="width: 50px; height: 50px; border-radius: 50%;">
                                             @endif                                                                                                    
                                             </td>  
                                             <td>{{ $shelters->users->name }} {{ $shelters->users->last_name }}</td>
@@ -64,15 +63,16 @@
                                             </td>
                                             <td>{{ $shelters->address }} Col. {{ $shelters->colony }} {{ $shelters->city }} {{ $shelters->state }} C.P {{ $shelters->postal_code }}</td>
                                             <td>
-                                            <div class="btn-group" role="group" aria-label="Opciones">
-                                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#view{{$shelters->id}}">
-                                                    <i class="fas fa-eye"></i>
-                                                <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$shelters->id}}">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$shelters->id}}">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
+                                                <div class="btn-group" role="group" aria-label="Opciones">
+                                                    <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#view{{$shelters->id}}">
+                                                        <i class="fas fa-eye"></i>
+                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$shelters->id}}">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$shelters->id}}">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </div>
                                             </td>
                                             @include('shelters.delete')
                                         </tr>
@@ -94,32 +94,31 @@
 
 @endsection
 @section('js')
-    <script>
-        $(document).ready(function() {
-            $('#shelters').DataTable({
-                responsive: true,
-                buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-                dom: 'Bfrtip',
-            });
-            var successMessage = "{{ session('success') }}";
-            if (successMessage) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Éxito',
-                    text: successMessage,
-                    confirmButtonText: 'Aceptar'
-                });
-            }
-            $('#createModal').on('shown.bs.modal', function () {
-                checkForm('userForm', false);
-            });
-            $('#editModal').on('shown.bs.modal', function () {
-                checkForm('userForm', true);
-            });
-            $('#userForm input').on('input', function() {
-                checkForm('userForm', false); 
-            });
+<script>
+    $(document).ready(function() {
+        $('#shelters').DataTable({
+            responsive: true,
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+            dom: 'Bfrtip',
         });
-    </script>
+        var successMessage = "{{ session('success') }}";
+        if (successMessage) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: successMessage,
+                confirmButtonText: 'Aceptar'
+            });
+        }
+        $('#createModal').on('shown.bs.modal', function () {
+            checkForm('userForm', false);
+        });
+        $('#editModal').on('shown.bs.modal', function () {
+            checkForm('userForm', true);
+        });
+        $('#userForm input').on('input', function() {
+            checkForm('userForm', false); 
+        });
+    });
+</script>
 @endsection
-

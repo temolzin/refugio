@@ -29,10 +29,10 @@ class Shelter extends Model implements HasMedia
         'address',
         'postal_code'
     ];
+
     public function users()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
     
 }
-
