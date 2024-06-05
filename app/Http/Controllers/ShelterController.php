@@ -19,7 +19,6 @@ class ShelterController extends Controller
         ->orderBy('name', 'asc')
         ->paginate(10);
 
-    
     $shelters->map(function ($shelter) {
         $shelter->logo_url = $shelter->getFirstMediaUrl('logos');
         return $shelter;
@@ -150,4 +149,6 @@ class ShelterController extends Controller
    {
     
    }
+
 }
+

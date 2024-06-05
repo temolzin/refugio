@@ -35,3 +35,4 @@ class Shelter extends Model implements HasMedia
     }
     
 }
+
