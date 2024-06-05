@@ -19,7 +19,7 @@ class ShelterController extends Controller
         ->orderBy('name', 'asc')
         ->paginate(10);
 
-    // Añadiendo URL del logo a cada albergue
+    
     $shelters->map(function ($shelter) {
         $shelter->logo_url = $shelter->getFirstMediaUrl('logos');
         return $shelter;

@@ -153,7 +153,7 @@
                                               name="colony" id="colony" aria-describedby="helpId" placeholder=""
                                               value="{{ $shelters->colony }}" required />
                                                         @error('colony')
-                                            <span class="invalid-feedback">
+                                             <span class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
                                             </span>
                                           @enderror

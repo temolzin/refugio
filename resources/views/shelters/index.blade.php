@@ -117,7 +117,7 @@
                 checkForm('userForm', true);
             });
             $('#userForm input').on('input', function() {
-                checkForm('userForm', false); // No es edición en este caso
+                checkForm('userForm', false); 
             });
         });
     </script>

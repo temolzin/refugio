@@ -33,6 +33,5 @@ class Shelter extends Model implements HasMedia
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
-
+    
 }

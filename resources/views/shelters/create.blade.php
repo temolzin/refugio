@@ -39,7 +39,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                    </div>                                   
+                                  </div>                                   
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="user_id" class="form-label">Usuario(*)</label>
