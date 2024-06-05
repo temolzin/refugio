@@ -179,4 +179,17 @@
                                             @enderror
                                         </div>
                                     </div>
+                                 </div>
+                             </div>
+                          </div>
+                       </div>
+                       <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" id="save" class="btn btn-success">Guardar</button>
+                       </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div
                                     
