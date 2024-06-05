@@ -26,7 +26,7 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label for="" class="form-label">Nombre(*)</label>
-                      <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="" aria-describedby="helpId" placeholder="" value="{{$users->name}}" required/>
+                      <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" aria-describedby="helpId" placeholder="" value="{{$users->name}}" required/>
                       @error('name')
                       <span class="invalid-feedback">
                         <strong>{{$message}}</strong>
@@ -37,7 +37,7 @@
                   <div class="col-lg-3">
                     <div class="form-group">
                       <label for="" class="form-label">Apellido(*)</label>
-                      <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="" aria-describedby="helpId" placeholder="" value="{{$users->last_name}}" required/>
+                      <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name"  aria-describedby="helpId" placeholder="" value="{{$users->last_name}}" required/>
                       @error('last_name')
                       <span class="invalid-feedback">
                         <strong>{{$message}}</strong>
@@ -48,7 +48,7 @@
                   <div class="col-lg-5">
                     <div class="form-group">
                       <label for="" class="form-label">Telefono (*)</label>
-                      <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" id="" aria-describedby="helpId" placeholder="" value="{{$users->phone}}"required/>
+                      <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone"  aria-describedby="helpId" placeholder="" value="{{$users->phone}}"required/>
                       @error('phone')
                       <span class="invalid-feedback">
                         <strong>{{$message}}</strong>
@@ -59,7 +59,7 @@
                   <div class="col-lg-12">
                     <div class="form-group">
                       <label for="" class="form-label">Email (*)</label>
-                      <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="" aria-describedby="helpId" placeholder="" value="{{$users->email}}"required/>
+                      <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"  aria-describedby="helpId" placeholder="" value="{{$users->email}}"required/>
                       @error('email')
                       <span class="invalid-feedback">
                         <strong>{{$message}}</strong>
@@ -74,7 +74,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="submit" id="edit" class="btn btn-warning">Actualizar</button>
+            <button type="submit" class="btn btn-warning">Actualizar</button>
           </div>
         </form>
       </div>

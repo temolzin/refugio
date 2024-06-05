@@ -32,10 +32,6 @@ Route::get('/', function () {
 
 Route::get('home', [HomeController::class, 'index']);
 
-
-Route::get('/species', [App\Http\Controllers\SpecieController::class, 'index'])->name('species');
-Route::resource('species',SpecieController::class);
-
 Route::prefix('error')->group(function () {
     Route::get('/404', function () {
         return view('error/404');
@@ -47,14 +43,24 @@ Route::group(['middleware' => ['auth']], function () {
         return view('dashboard');
     })->name('dashboard');
 
+
+    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
+    Route::resource('users', UserController::class);
+
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->middleware('can:ver usuario')->name('users');
 
-    Route::resource('users', UserController::class);
+
     
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+    Route::get('/species', [App\Http\Controllers\SpecieController::class, 'index'])->name('species');
+    Route::resource('species',SpecieController::class);
+
     Route::resource('roles', RoleController::class);
 
     Route::post('/users/{user}/updateRole', [UserController::class, 'updateRole'])->name('users.updateRole'); 
+  
 });
 
 Route::get('/vaccines', [App\Http\Controllers\VaccineController::class, 'index'])->name('vaccines');
