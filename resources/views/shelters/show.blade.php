@@ -1,0 +1,137 @@
+<div class="modal fade" id="view{{ $shelters->id }}" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel{{ $shelters->id }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="card-info">
+                <div class="card-header">
+                    <div class="d-sm-flex align-items-center justify-content-between">
+                        <h4 class="card-title">Información del albergue</h4>
+                        <button type="button" class="close d-sm-inline-block text-white" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header py-2 bg-secondary">
+                            <h3 class="card-title">Datos del albergue</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                              <!-- Logo Field -->
+<div class="col-lg-4 offset-lg-4 d-flex flex-column align-items-center" style="margin-left: 247px;">
+    <div class="form-group text-center">
+        @if($shelters->getMedia('logos')->isNotEmpty())
+            <img src="{{ $shelters->getFirstMedia('logos')->getUrl() }}" alt="{{ $shelters->name }}" class="img-fluid" style="width: 120px; height: 120px; border-radius: 60%;" />
+        @else
+            <img src="{{ asset('img/avatardefault.png') }}" style="width: 120px; height: 120px; border-radius: 50%;">
+        @endif
+    </div>
+    <label class="text-center"></label>
+</div>
+
+<!-- Name Field -->
+<div class="col-lg-6 offset-lg-3" style="margin-bottom: 15px;">
+    <div class="form-group text-center">
+        <label>Nombre</label>
+        <input type="text" disabled class="form-control" value="{{ $shelters->name }}" style="width: 100%;" />
+    </div>
+</div>
+
+
+
+
+                                <!-- ID Field -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>ID</label>
+                                        <input type="text" disabled class="form-control" value="{{ $shelters->id }}" />
+                                    </div>
+                                </div>
+
+                                <!-- User Field -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Usuario</label>
+                                        <input type="text" disabled class="form-control" value="{{ $shelters->users->name }} {{ $shelters->users->last_name }}" />
+                                    </div>
+                                </div>
+
+                                <!-- Phone Field -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Teléfono</label>
+                                        <input type="text" disabled class="form-control" value="{{ $shelters->phone }}" />
+                                    </div>
+                                </div>
+
+                                <!-- Facebook Field -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Facebook</label>
+                                        <input type="text" disabled class="form-control" value="{{ $shelters->facebook }}" />
+                                    </div>
+                                </div>
+
+                                <!-- Tiktok Field -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Tiktok</label>
+                                        <input type="text" disabled class="form-control" value="{{ $shelters->tiktok }}" />
+                                    </div>
+                                </div>
+
+                                <!-- State Field -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Estado</label>
+                                        <input type="text" disabled class="form-control" value="{{ $shelters->state }}" />
+                                    </div>
+                                </div>
+
+                                <!-- City Field -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Ciudad</label>
+                                        <input type="text" disabled class="form-control" value="{{ $shelters->city }}" />
+                                    </div>
+                                </div>
+
+                                <!-- Colony Field -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Colonia</label>
+                                        <input type="text" disabled class="form-control" value="{{ $shelters->colony }}" />
+                                    </div>
+                                </div>
+
+                                <!-- Address Field -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Dirección</label>
+                                        <input type="text" disabled class="form-control" value="{{ $shelters->address }}" />
+                                    </div>
+                                </div>
+
+                                <!-- Postal Code Field -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Código Postal</label>
+                                        <input type="text" disabled class="form-control" value="{{ $shelters->postal_code }}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

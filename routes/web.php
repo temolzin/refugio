@@ -7,7 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\VaccineController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpecieController;
-
+use App\Http\Controllers\ShelterController;
 
 
 /*
@@ -60,3 +60,12 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/vaccines', [App\Http\Controllers\VaccineController::class, 'index'])->name('vaccines');
 
 Route::resource('vaccines', VaccineController::class);
+Route::post('login', [AuthController::class, 'login']);
+
+
+
+Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('shelters');
+
+Route::resource('shelters', ShelterController::class);
+
+
