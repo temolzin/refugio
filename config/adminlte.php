@@ -344,6 +344,7 @@ return [
             'icon' => 'fas fa-users-cog fa-fw',
             'can'  =>'ver rol'
         ],
+        
         [
             'text' => 'multilevel',
             'icon' => 'fas fa-fw fa-share',
