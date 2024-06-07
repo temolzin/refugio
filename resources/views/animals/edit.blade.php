@@ -34,7 +34,7 @@
                                                     alt="foto Actual"
                                                     style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 20px;">
                                             @else
-                                                <img src="{{ asset('img/avatardefault.png') }}"
+                                                <img src="{{ asset('img/animaldefault.png') }}"
                                                     style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
                                             @endif
                                             <label for="logo" class="form-label"></label>
