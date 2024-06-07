@@ -8,6 +8,8 @@ use App\Http\Controllers\VaccineController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
+use App\Http\Controllers\AnimalController;
+
 
 
 /*
@@ -60,6 +62,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
 
     Route::post('/users/{user}/updateRole', [UserController::class, 'updateRole'])->name('users.updateRole'); 
+
+    Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
+    Route::resource('animals', AnimalController::class);
   
 });
 
