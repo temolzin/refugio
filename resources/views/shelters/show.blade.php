@@ -25,7 +25,8 @@
                                 <div class="col-lg-4 offset-lg-4 d-flex flex-column align-items-center" style="margin-left: 247px;">
                                     <div class="form-group text-center">
                                         @if($shelters->getMedia('logos')->isNotEmpty())
-                                            <img src="{{ $shelters->getFirstMedia('logos')->getUrl() }}" alt="{{ $shelters->name }}" class="img-fluid" style="width: 120px; height: 120px; border-radius: 60%;" />
+                                            <img src="{{ $shelters->getFirstMedia('logos')->getUrl() }}" alt="{{ $shelters->name }}" class="img-fluid" 
+                                            style="width: 120px; height: 120px; border-radius: 60%;" />
                                         @else
                                             <img src="{{ asset('img/avatardefault.png') }}" style="width: 120px; height: 120px; border-radius: 50%;">
                                         @endif
