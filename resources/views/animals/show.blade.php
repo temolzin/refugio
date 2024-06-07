@@ -32,7 +32,7 @@
                                                 alt="Foto del Animal" class="img-fluid"
                                                 style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
                                         @else
-                                            <img src="{{ asset('img/avatardefault.png') }}" alt="Foto del Animal"
+                                            <img src="{{ asset('img/animaldefault.png') }}" alt="Foto del Animal"
                                                 class="img-fluid"
                                                 style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
                                         @endif
