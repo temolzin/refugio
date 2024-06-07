@@ -354,6 +354,11 @@ return [
         ],
         
         [
+            'text' => 'Mascotas',
+            'url' => '/animals',
+            'icon' => 'fas fa-dog fa-fw',
+        ],
+        [
             'text' => 'multilevel',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
