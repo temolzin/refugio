@@ -14,4 +14,8 @@ class Vaccine extends Model
     protected $guarded= [];
     public $timestamps=false;
 
+    public function shelter()
+    {
+        return $this->belongsTo(Shelter::class, 'shelters_id');
+    }
 }

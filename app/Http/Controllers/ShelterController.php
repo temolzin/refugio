@@ -6,13 +6,14 @@ use App\Models\User;
 use App\Models\Shelter;
 use Illuminate\Http\Request;
 
+
 class ShelterController extends Controller
 {
     public function index(Request $request)
     {
         $shelters = trim($request->get('text'));
         $shelters = Shelter::with('users')
-            ->select('id', 'user_id', 'name', 'logo', 'phone', 'facebook', 'tiktok', 'state', 'city', 'colony', 'address', 'postal_code')
+            ->select('id', 'user_id', 'name', 'phone', 'facebook', 'tiktok', 'state', 'city', 'colony', 'address', 'postal_code')
             ->where('id', 'LIKE', '%' . $shelters . '%')
             ->orWhere('name', 'LIKE', '%' . $shelters . '%')
             ->orderBy('name', 'asc')
@@ -37,7 +38,6 @@ class ShelterController extends Controller
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'name' => 'required|string|max:255',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'phone' => 'required|string|max:15',
             'facebook' => 'nullable|string|max:255',
             'tiktok' => 'nullable|string|max:255',
@@ -108,7 +108,6 @@ class ShelterController extends Controller
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'name' => 'required|string|max:255',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'phone' => 'required|string|max:15',
             'facebook' => 'nullable|string|max:255',
             'tiktok' => 'nullable|string|max:255',
@@ -128,7 +127,6 @@ class ShelterController extends Controller
             }
             $shelters->user_id = $request->input('user_id');
             $shelters->name = $request->input('name');
-            $shelters->logo = $request->input('logo');
             $shelters->phone = $request->input('phone');
             $shelters->facebook = $request->input('facebook');
             $shelters->tiktok = $request->input('tiktok');
