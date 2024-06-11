@@ -8,7 +8,7 @@ use App\Http\Controllers\VaccineController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
-
+use App\Http\Controllers\SheltermemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +60,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
 
     Route::post('/users/{user}/updateRole', [UserController::class, 'updateRole'])->name('users.updateRole'); 
+    
+    Route::get('/godfather', [SheltermemberController::class, 'godfatherIndex'])->name('sheltermembers.godfather');
+    Route::get('/adopter', [SheltermemberController::class, 'adopterIndex'])->name('sheltermembers.adopter');
+    Route::get('/donor', [SheltermemberController::class, 'donorIndex'])->name('sheltermembers.donor');
+    Route::get('/staff', [SheltermemberController::class, 'staffIndex'])->name('sheltermembers.staff');
+    Route::resource('sheltermember',SheltermemberController::class);
   
 });
 
