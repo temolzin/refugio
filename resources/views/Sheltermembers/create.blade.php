@@ -12,6 +12,7 @@
                 </div>
                 <form action="{{ route('sheltermember.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="typemember" value="{{ $typemember }}">
                     <div class="card-body">
                         <div class="card">
                             <div class="card-header py-2 bg-secondary">
@@ -142,24 +143,6 @@
                                             <label for="postal_code" class="form-label">Código Postal(*)</label>
                                             <input type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" placeholder="Ingresa el código postal" value="{{ old('postal_code') }}" required />
                                             @error('postal_code')
-                                            <span class="invalid-feedback">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="typemember" class="form-label">Tipo de Miembro(*)</label>
-                                            <select class="form-control @error('typemember') is-invalid @enderror" name="typemember" required>
-                                                <option value="">Seleccione un tipo de miembro</option>
-                                                @foreach(['Adoptante', 'Donante', 'Padrino', 'Personal'] as $type)
-                                                <option value="{{ $type }}" {{ old('typemember') == $type ? 'selected' : '' }}>
-                                                    {{ $type }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                            @error('typemember')
                                             <span class="invalid-feedback">
                                                 <strong>{{ $message }}</strong>
                                             </span>

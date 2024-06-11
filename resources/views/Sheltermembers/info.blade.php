@@ -151,24 +151,6 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="typemember" class="form-label">Tipo de Miembro(*)</label>
-                                            <select class="form-control @error('typemember') is-invalid @enderror" name="typemember" required>
-                                                <option value="">Seleccione un tipo de miembro</option>
-                                                @foreach(['Adoptante', 'Donante', 'Padrino', 'Personal'] as $type)
-                                                <option value="{{ $type }}" {{ (old('typemember', $sheltermember->typemember ?? '') == $type) ? 'selected' : '' }}>
-                                                    {{ $type }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                            @error('typemember')
-                                            <span class="invalid-feedback">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sheltermember;;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,21 +20,15 @@ class SheltermemberController extends Controller
         $shelterId = $user->shelter->id;
 
         $sheltermember = Sheltermember::where('id_shelters', $shelterId)
-            ->where('typemember', 'padrino')
-            ->where(function ($query) use ($request) {
-                $text = trim($request->get('text'));
-                $query->where('name', 'LIKE', '%' . $text . '%')
-                    ->orWhere('last_name', 'LIKE', '%' . $text . '%');
-            })
-            ->orderBy('name', 'asc')
-            ->paginate(10);
-
+            ->where('typemember', 'Padrino')
+            ->get();
         $sheltermember->map(function ($sheltermember) {
             $sheltermember->photo_url = $sheltermember->getFirstMediaUrl('photos');
             return $sheltermember;
         });
 
-        return view('sheltermembers.godfather', compact('sheltermember'));
+        $typemember = 'Padrino';
+        return view('sheltermembers.godfather', compact('sheltermember', 'typemember'));
     }
 
     public function donorIndex(Request $request)
@@ -47,21 +42,15 @@ class SheltermemberController extends Controller
         $shelterId = $user->shelter->id;
 
         $sheltermember = Sheltermember::where('id_shelters', $shelterId)
-            ->where('typemember', 'donante')
-            ->where(function ($query) use ($request) {
-                $text = trim($request->get('text'));
-                $query->where('name', 'LIKE', '%' . $text . '%')
-                    ->orWhere('last_name', 'LIKE', '%' . $text . '%');
-            })
-            ->orderBy('name', 'asc')
-            ->paginate(10);
-
+            ->where('typemember', 'Donante')
+            ->get();
         $sheltermember->map(function ($sheltermember) {
             $sheltermember->photo_url = $sheltermember->getFirstMediaUrl('photos');
             return $sheltermember;
         });
 
-        return view('sheltermembers.donor', compact('sheltermember'));
+        $typemember = 'Donante';
+        return view('sheltermembers.donor', compact('sheltermember', 'typemember'));
     }
 
     public function adopterIndex(Request $request)
@@ -75,21 +64,15 @@ class SheltermemberController extends Controller
         $shelterId = $user->shelter->id;
 
         $sheltermember = Sheltermember::where('id_shelters', $shelterId)
-            ->where('typemember', 'adoptante')
-            ->where(function ($query) use ($request) {
-                $text = trim($request->get('text'));
-                $query->where('name', 'LIKE', '%' . $text . '%')
-                    ->orWhere('last_name', 'LIKE', '%' . $text . '%');
-            })
-            ->orderBy('name', 'asc')
-            ->paginate(10);
-
+            ->where('typemember', 'Adoptante')
+            ->get();
         $sheltermember->map(function ($sheltermember) {
             $sheltermember->photo_url = $sheltermember->getFirstMediaUrl('photos');
             return $sheltermember;
         });
 
-        return view('sheltermembers.adopter', compact('sheltermember'));
+        $typemember = 'Adoptante';
+        return view('sheltermembers.adopter', compact('sheltermember', 'typemember'));
     }
 
     public function staffIndex(Request $request)
@@ -103,22 +86,18 @@ class SheltermemberController extends Controller
         $shelterId = $user->shelter->id;
 
         $sheltermember = Sheltermember::where('id_shelters', $shelterId)
-            ->where('typemember', 'personal')
-            ->where(function ($query) use ($request) {
-                $text = trim($request->get('text'));
-                $query->where('name', 'LIKE', '%' . $text . '%')
-                    ->orWhere('last_name', 'LIKE', '%' . $text . '%');
-            })
-            ->orderBy('name', 'asc')
-            ->paginate(10);
-
+            ->where('typemember', 'Personal')
+            ->get();
         $sheltermember->map(function ($sheltermember) {
             $sheltermember->photo_url = $sheltermember->getFirstMediaUrl('photos');
             return $sheltermember;
         });
 
-        return view('sheltermembers.staff', compact('sheltermember'));
+        $typemember = 'Personal';
+
+        return view('sheltermembers.staff', compact('sheltermember', 'typemember'));
     }
+
 
     public function list()
     {
@@ -162,6 +141,7 @@ class SheltermemberController extends Controller
                 return redirect()->back()->with('error', 'El miembro no fue encontrada.');
             }
         }
+
         $sheltermember->name = $request->input('name');
         $sheltermember->last_name = $request->input('last_name');
         $sheltermember->mother_lastname = $request->input('mother_lastname');
@@ -181,9 +161,8 @@ class SheltermemberController extends Controller
 
         $sheltermember->save();
 
-        return redirect()->back()->with('success', 'Miembro actualizado exitosamente.');
+        return redirect()->back()->with('success', 'Miembro registrado exitosamente.');
     }
-
 
     public function destroy($id)
     {
@@ -221,7 +200,6 @@ class SheltermemberController extends Controller
             'colony' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
-            'typemember' => 'required|in:Adoptante,Donante,Padrino,Personal',
         ]);
         $sheltermember = Sheltermember::find($id);
         if ($sheltermember) {
@@ -240,7 +218,6 @@ class SheltermemberController extends Controller
             $sheltermember->colony = $request->input('colony');
             $sheltermember->address = $request->input('address');
             $sheltermember->postal_code = $request->input('postal_code');
-            $sheltermember->typemember = $request->input('typemember');
 
             $sheltermember->save();
         }

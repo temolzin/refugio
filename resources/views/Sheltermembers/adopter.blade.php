@@ -8,10 +8,10 @@
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Personal del albergue</h2>
+                    <h2>Adoptante</h2>
                     <div class="row">
                         <div class="col-lg-12 text-right">
-                            <button class="btn btn-success" data-toggle='modal' data-target="#create"> <i class="fa fa-edit"></i> Registrar Miembro
+                            <button class="btn btn-success" data-toggle='modal' data-target="#create"> <i class="fa fa-edit"></i> Registrar Adoptante
                             </button>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card-box table-responsive">
-                                <table id="sheltermembers" class="table table-striped display responsive nowrap" style="width:100%">
+                                <table id="adopter" class="table table-striped display responsive nowrap" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -92,7 +92,7 @@
 @section('js')
 <script>
     $(document).ready(function() {
-        $('#sheltermembers').DataTable({
+        $('#adopter').DataTable({
             responsive: true,
             buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
             dom: 'Bfrtip',
