@@ -9,6 +9,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
 use App\Http\Controllers\SheltermemberController;
+use App\Http\Controllers\AnimalController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +68,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/donor', [SheltermemberController::class, 'donorIndex'])->name('sheltermembers.donor');
     Route::get('/staff', [SheltermemberController::class, 'staffIndex'])->name('sheltermembers.staff');
     Route::resource('sheltermember',SheltermemberController::class);
+
+    Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
+    Route::resource('animals', AnimalController::class);
+
   
 });
 

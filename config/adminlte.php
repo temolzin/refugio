@@ -352,6 +352,12 @@ return [
             'icon' => 'fas fa-users-cog fa-fw',
             'can'  =>'ver rol'
         ],
+        
+        [
+            'text' => 'Mascotas',
+            'url' => '/animals',
+            'icon' => 'fas fa-dog fa-fw',
+        ],
         [
             'text' => 'Usuarios',
             'icon' => 'fas fa-fw fa-users',

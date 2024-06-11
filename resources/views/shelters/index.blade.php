@@ -9,9 +9,7 @@
                     <h2>Albergue</h2>
                     <div class="row">
                         <div class="col-lg-12 text-right">
-                            <button class="btn btn-success" data-toggle='modal' data-target="#create"> <i
-                                    class="fa fa-edit"></i> Registrar Albergue 
-                            </button>
+                            <button class="btn btn-success" data-toggle='modal' data-target="#create"> <i class="fa fa-edit"></i> Registrar Albergue </button>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -26,7 +24,7 @@
                                             <th>ID</th>
                                             <th>LOGO</th>
                                             <th>USUARIO</th>
-                                            <th>NOMBRE</th>                                
+                                            <th>NOMBRE</th>
                                             <th>TELÉFONO</th>
                                             <th>REDES SOCIALES</th>
                                             <th>DIRECCIÓN</th>
@@ -43,21 +41,21 @@
                                         <tr>
                                             <td scope="row">{{$shelters->id}}</td>
                                             <td>                                          
-                                            @if($shelters->getMedia('logos')->isNotEmpty())
+                                                @if($shelters->getMedia('logos')->isNotEmpty())
                                                 @php
-                                                    $logo = $shelters->getFirstMedia('logos');
+                                                $logo = $shelters->getFirstMedia('logos');
                                                 @endphp
                                                 <img src="{{ $logo->getUrl() }}" alt="Logo not found" style="width: 50px; height: 50px; border-radius: 50%;" > 
-                                            @else
+                                                @else
                                                 <img src="{{ asset('img/avatardefault.png') }}" style="width: 50px; height: 50px; border-radius: 50%;">
-                                            @endif                                                                                                    
-                                            </td>  
+                                                @endif                                                                                                    
+                                            </td>
                                             <td>{{ $shelters->users->name }} {{ $shelters->users->last_name }}</td>
-                                            <td>{{ $shelters->name }}</td>                                        
+                                            <td>{{ $shelters->name }}</td>
                                             <td>{{ $shelters->phone }}</td>
                                             <td>
                                                 <ul style="list-style-type: none; padding: 0; margin: 0;">                               
-                                                    <li>Facebook: {{ $shelters->facebook }}</li>                                                                                               
+                                                    <li>Facebook: {{ $shelters->facebook }}</li>
                                                     <li>TikTok: {{ $shelters->tiktok }}</li>                                                  
                                                 </ul>
                                             </td>

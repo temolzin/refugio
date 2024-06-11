@@ -17,7 +17,6 @@ class CreateShelterTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
-            $table->string('logo')->nullable();
             $table->string('phone');
             $table->string('facebook')->nullable();
             $table->string('tiktok')->nullable(); 
