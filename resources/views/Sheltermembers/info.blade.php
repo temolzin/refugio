@@ -1,7 +1,4 @@
 <!-- Modal de Edición -->
-@php
-use App\Enums\TypememberEnum;
-@endphp
 <div class="modal fade" id="edit{{$sheltermember->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -33,11 +30,10 @@ use App\Enums\TypememberEnum;
                                                 @if($sheltermember->getFirstMediaUrl('photos'))
                                                 <img id="photo-preview-edit-{{ $sheltermember->id }}" src="{{ $sheltermember->getFirstMediaUrl('photos') }}" alt="Foto Actual" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 20px;">
                                                 @else
-                                                <img id="photo-preview-edit-{{ $sheltermember->id }}" src="{{ asset('img/avatardefault.png') }}" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
+                                                <img id="photo-preview-edit-{{ $sheltermember->id }}" src="{{ asset('img/avatardefault.png') }}" style="display: none; width: 120px; height: 120px; border-radius: 60%; object-fit: cover;">
                                                 @endif
                                             </div>
-
-                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo-edit-{{ $sheltermember->id }}" aria-describedby="helpId" placeholder="" style="height: 43px; width: 460px;" onchange="previewPhotoEdit(event, '{{ $sheltermember->id }}')">
+                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo-edit-{{ $sheltermember->id }}" aria-describedby="helpId" placeholder="" style="height: 43px; width: 460px;" onchange="previewPhotoEdit(event, '{{ $sheltermember->id }}')" required>
                                             @error('photo')
                                             <span class="invalid-feedback" style="margin-top: -5px;">
                                                 <strong>{{ $message }}</strong>
@@ -45,7 +41,6 @@ use App\Enums\TypememberEnum;
                                             @enderror
                                         </div>
                                     </div>
-
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="name" class="form-label">Nombre(*)</label>
@@ -161,9 +156,9 @@ use App\Enums\TypememberEnum;
                                             <label for="typemember" class="form-label">Tipo de Miembro(*)</label>
                                             <select class="form-control @error('typemember') is-invalid @enderror" name="typemember" required>
                                                 <option value="">Seleccione un tipo de miembro</option>
-                                                @foreach(TypememberEnum::cases() as $typemember)
-                                                <option value="{{ $typemember->value }}" {{ old('typemember', $sheltermember->typemember->value ?? '') == $typemember->value ? 'selected' : '' }}>
-                                                    {{ $typemember->value }}
+                                                @foreach(['Adoptante', 'Donante', 'Padrino', 'Personal'] as $type)
+                                                <option value="{{ $type }}" {{ (old('typemember', $sheltermember->typemember ?? '') == $type) ? 'selected' : '' }}>
+                                                    {{ $type }}
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -177,11 +172,10 @@ use App\Enums\TypememberEnum;
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" id="edit" class="btn btn-warning">Actualizar</button>
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" id="edit" class="btn btn-warning">Actualizar</button>
+                        </div>
                 </form>
             </div>
         </div>

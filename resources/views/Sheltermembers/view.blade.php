@@ -100,7 +100,7 @@
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Tipo de miembro</label>
-                                        <input type="text" disabled class="form-control" value="{{ $sheltermember->typemember->value}}" />
+                                        <input type="text" disabled class="form-control" value="{{ $sheltermember->typemember}}" />
                                     </div>
                                 </div>
                             </div>

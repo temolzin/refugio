@@ -1,6 +1,3 @@
-@php
-use App\Enums\TypememberEnum;
-@endphp
 <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -31,9 +28,9 @@ use App\Enums\TypememberEnum;
                                         <div class="form-group text-center">
                                             <label for="photo" class="form-label"></label>
                                             <div class="photo-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">
-                                                <img id="photo-preview" src="#" alt="Vista previa de la foto" style="display: none; max-width: 100px;">
+                                                <img id="photo-preview" src="#" alt="Vista previa de la foto" style="display: none; width: 120px; height: 120px; border-radius: 60%; object-fit: cover;">
                                             </div>
-                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo" aria-describedby="photoHelp" style="height: 43px; width: 450px;" onchange="previewPhoto(event)" />
+                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo" aria-describedby="photoHelp" style="height: 43px; width: 450px;" onchange="previewPhoto(event)" required/>
                                             @error('photo')
                                             <span class="invalid-feedback">
                                                 <strong>{{ $message }}</strong>
@@ -156,9 +153,9 @@ use App\Enums\TypememberEnum;
                                             <label for="typemember" class="form-label">Tipo de Miembro(*)</label>
                                             <select class="form-control @error('typemember') is-invalid @enderror" name="typemember" required>
                                                 <option value="">Seleccione un tipo de miembro</option>
-                                                @foreach(TypememberEnum::cases() as $typemember)
-                                                <option value="{{ $typemember->value }}" {{ old('typemember') == $typemember->value ? 'selected' : '' }}>
-                                                    {{ $typemember->value }}
+                                                @foreach(['Adoptante', 'Donante', 'Padrino', 'Personal'] as $type)
+                                                <option value="{{ $type }}" {{ old('typemember') == $type ? 'selected' : '' }}>
+                                                    {{ $type }}
                                                 </option>
                                                 @endforeach
                                             </select>

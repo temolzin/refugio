@@ -58,7 +58,7 @@
                                             <td>{{$sheltermember->phone}}</td>
                                             <td>{{$sheltermember->email}}</td>
                                             <td>{{$sheltermember->address}}</td>
-                                            <td>{{$sheltermember->typemember->value}}</td>
+                                            <td>{{$sheltermember->typemember}}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Opciones">
                                                     <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#view{{$sheltermember->id}}">

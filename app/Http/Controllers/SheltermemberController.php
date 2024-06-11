@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\TypememberEnum;
 use App\Models\Sheltermember;;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\Enum;
 
 class SheltermemberController extends Controller
 {
@@ -133,6 +130,7 @@ class SheltermemberController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'mother_lastname' => 'required|string|max:255',
@@ -143,7 +141,7 @@ class SheltermemberController extends Controller
             'colony' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
-            'typemember' => 'required', new Enum(TypememberEnum::class),
+            'typemember' => 'required|in:Adoptante,Donante,Padrino,Personal',
         ]);
 
         $user = Auth::user();
@@ -212,6 +210,7 @@ class SheltermemberController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'mother_lastname' => 'required|string|max:255',
@@ -222,7 +221,7 @@ class SheltermemberController extends Controller
             'colony' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
-            'typemember' => 'required',
+            'typemember' => 'required|in:Adoptante,Donante,Padrino,Personal',
         ]);
         $sheltermember = Sheltermember::find($id);
         if ($sheltermember) {
