@@ -107,7 +107,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="sex" class="form-label">Sexo(*)</label>
-                                            <select class="form-control @error('specie_id') is-invalid @enderror"
+                                            <select class="form-control @error('sex') is-invalid @enderror"
                                                 name="sex" required>
                                                 <option value="">Selecciona el sexo</option>
                                                 @foreach ($sexs as $sex)
@@ -115,7 +115,7 @@
                                                         {{ $sex }}</option>
                                                 @endforeach
                                             </select>
-                                            @error('specie_id')
+                                            @error('sex')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
