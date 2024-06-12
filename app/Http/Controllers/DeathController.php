@@ -9,33 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class DeathController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $user = Auth::user();
-        if (!$user || !$user->shelter) {
-            return redirect()->route('login')->with('error', 'Debe iniciar sesión para ver esta página.');
-        }
+        $shelter = $user->shelter;
+        $shelterId = $shelter->id;
 
-        $shelterId = $user->shelter->id;
-        $text = trim($request->get('text'));
+        $animals = Animal::where('Shelter_id', $shelterId)->get();
+        $deaths = Death::where('shelter_id', $shelterId)->get();
 
-        $deaths = Death::whereHas('animal', function ($query) use ($shelterId) {
-            $query->where('shelter_id', $shelterId);
-        })
-            ->where(function ($query) use ($text) {
-                if (!empty($text)) {
-                    $query->where('death_id', 'LIKE', '%' . $text . '%')
-                        ->orWhereHas('animal', function ($query) use ($text) {
-                            $query->where('animal_name', 'LIKE', '%' . $text . '%');
-                        });
-                }
-            })
-            ->with('animal') // Para incluir la relación con animal
-            ->orderBy('date', 'desc')
-            ->paginate(10);
-
-        return view('deaths.index', compact('deaths'));
+        return view('deaths.index', compact('deaths', 'animals'));
     }
+
 
     public function list()
     {
@@ -71,12 +56,10 @@ class DeathController extends Controller
 
     public function show($death_id)
     {
-
     }
 
     public function edit($death_id)
     {
-
     }
 
     public function update(Request $request, $death_id)
