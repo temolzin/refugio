@@ -19,6 +19,7 @@ class CreateSpeciesTable extends Migration
             $table->string('description');
             $table->unsignedBigInteger('id_shelters');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('id_shelters')->references('id')->on('shelters')->onDelete('cascade');
         });

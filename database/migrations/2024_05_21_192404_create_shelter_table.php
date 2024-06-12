@@ -26,6 +26,7 @@ class CreateShelterTable extends Migration
             $table->string('address');
             $table->string('postal_code'); 
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

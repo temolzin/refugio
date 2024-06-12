@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
@@ -49,7 +48,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
     Route::resource('users', UserController::class);
 
-    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->middleware('can:ver usuario')->name('users');
+    Route::get('/users', [UserController::class, 'index'])->middleware('can:ver usuario')->name('users.index');
 
 
     
@@ -78,5 +77,3 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('shelters');
 
 Route::resource('shelters', ShelterController::class);
-
-

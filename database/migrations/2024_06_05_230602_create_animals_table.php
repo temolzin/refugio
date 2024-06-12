@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Animal;
 
 class CreateAnimalsTable extends Migration
 {
@@ -20,13 +21,13 @@ class CreateAnimalsTable extends Migration
             $table->string('animal_name');
             $table->string('breed')->nullable();
             $table->date('birth_date')->nullable();
-            $table->enum('sex', ['Macho', 'Hembra'])->nullable();
+            $table->enum('sex', Animal::SEXS)->nullable();
             $table->string('color')->nullable();
             $table->decimal('weight')->nullable();
             $table->enum('is_sterilized', ['Si', 'No'])->nullable();
             $table->date('entry_date')->nullable();
-            $table->enum('origin', ['Rescatado', 'Transferido', 'Abandonado'])->nullable();
-            $table->enum('behavior', ['Amigable', 'Timido', 'Agresivo'])->nullable();
+            $table->enum('origin', Animal::ORIGINS)->nullable();
+            $table->enum('behavior', Animal::BEHAVIORS)->nullable();
             $table->string('history')->nullable();
             $table->softDeletes();
 

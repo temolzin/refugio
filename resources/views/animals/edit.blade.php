@@ -27,22 +27,22 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-12 d-flex justify-content-center align-items-center">
+                                    <div class="col-lg-8 offset-lg-2">
                                         <div class="form-group text-center">
-                                            @if ($animal->getFirstMediaUrl('animal_gallery'))
-                                                <img src="{{ $animal->getFirstMediaUrl('animal_gallery') }}"
-                                                    alt="foto Actual"
-                                                    style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 20px;">
-                                            @else
-                                                <img src="{{ asset('img/animaldefault.png') }}"
+                                            <label for="photo" class="form-label"></label>
+                                            <div class="image-preview-container"
+                                                style="display: flex; justify-content: center; margin-bottom: 10px;">
+                                                <img id="photo-preview-edit-{{ $animal->id }}"
+                                                    src="{{ $animal->getFirstMediaUrl('animal_gallery') ? $animal->getFirstMediaUrl('animal_gallery') : asset('img/animaldefault.png') }}"
+                                                    alt="photo Actual"
                                                     style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
-                                            @endif
-                                            <label for="logo" class="form-label"></label>
+                                            </div>
                                             <input type="file"
                                                 class="form-control @error('photo') is-invalid @enderror" name="photo"
-                                                id="photo" aria-describedby="helpId" placeholder=""
-                                                value="{{ $animal->photo }}" style="height: 43px; width: 300px;">
-                                            @error('logo')
+                                                id="photo-edit-{{ $animal->id }}" aria-describedby="helpId"
+                                                placeholder="" style="height: 43px; width: 460px;"
+                                                onchange="previewImageEdit(event, {{ $animal->id }})">
+                                            @error('photo')
                                                 <span class="invalid-feedback" style="margin-top: -5px;">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -83,7 +83,7 @@
                                             <input type="text"
                                                 class="form-control @error('breed') is-invalid @enderror" name="breed"
                                                 placeholder="Ingresa la raza del animal"
-                                                value="{{ old('breed', $animal->breed) }}" />
+                                                value="{{ old('breed', $animal->breed) }}" required />
                                             @error('breed')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -96,8 +96,8 @@
                                             <label for="birth_date" class="form-label">Fecha de Nacimiento</label>
                                             <input type="date"
                                                 class="form-control @error('birth_date') is-invalid @enderror"
-                                                name="birth_date"
-                                                value="{{ old('birth_date', $animal->birth_date) }}" />
+                                                name="birth_date" value="{{ old('birth_date', $animal->birth_date) }}"
+                                                required />
                                             @error('birth_date')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -106,12 +106,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="sex" class="form-label">Sexo</label>
-                                            <select name="sex"
-                                                class="form-control @error('sex') is-invalid @enderror">
-                                                <option value="Macho" {{ $animal->sex == 'Macho' ? 'selected' : '' }}>
-                                                    Macho</option>
-                                                <option value="Hembra"
-                                                    {{ $animal->sex == 'Hembra' ? 'selected' : '' }}>Hembra</option>
+                                            <select class="form-control @error('sex') is-invalid @enderror"
+                                                name="sex" required>
+                                                <option value="">Selecciona el sexo</option>
+                                                @foreach ($sexs as $sex)
+                                                    <option value="{{ $sex }}"
+                                                        {{ old('sex', $animal->sex) == $sex ? 'selected' : '' }}>
+                                                        {{ $sex }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             @error('sex')
                                                 <span class="invalid-feedback">
@@ -122,9 +125,9 @@
                                         <div class="form-group">
                                             <label for="color" class="form-label">Color</label>
                                             <input type="text"
-                                                class="form-control @error('color') is-invalid @enderror" name="color"
-                                                placeholder="Ingresa el color del animal"
-                                                value="{{ old('color', $animal->color) }}" />
+                                                class="form-control @error('color') is-invalid @enderror"
+                                                name="color" placeholder="Ingresa el color del animal"
+                                                value="{{ old('color', $animal->color) }}" required />
                                             @error('color')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -140,7 +143,7 @@
                                             <input type="number" step="0.01"
                                                 class="form-control @error('weight') is-invalid @enderror"
                                                 name="weight" placeholder="Ingresa el peso del animal"
-                                                value="{{ old('weight', $animal->weight) }}" />
+                                                value="{{ old('weight', $animal->weight) }}" required />
                                             @error('weight')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -167,7 +170,7 @@
                                             <input type="date"
                                                 class="form-control @error('entry_date') is-invalid @enderror"
                                                 name="entry_date"
-                                                value="{{ old('entry_date', $animal->entry_date) }}" />
+                                                value="{{ old('entry_date', $animal->entry_date) }}" required />
                                             @error('entry_date')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -177,18 +180,16 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="origin" class="form-label">Origen</label>
-                                            <select name="origin"
-                                                class="form-control @error('origin') is-invalid @enderror">
-                                                <option value="Rescatado"
-                                                    {{ $animal->origin == 'Rescatado' ? 'selected' : '' }}>Rescatado
-                                                </option>
-                                                <option value="Transferido"
-                                                    {{ $animal->origin == 'Transferido' ? 'selected' : '' }}>
-                                                    Transferido</option>
-                                                <option value="Abandonado"
-                                                    {{ $animal->origin == 'Abandonado' ? 'selected' : '' }}>Abandonado
-                                                </option>
+                                            <label for="origin" class="form-label">Origen(*)</label>
+                                            <select class="form-control @error('origin') is-invalid @enderror"
+                                                name="origin" required>
+                                                <option value="">Selecciona el origen</option>
+                                                @foreach ($origins as $origin)
+                                                    <option value="{{ $origin }}"
+                                                        {{ old('origin', $animal->origin) == $origin ? 'selected' : '' }}>
+                                                        {{ $origin }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             @error('origin')
                                                 <span class="invalid-feedback">
@@ -197,18 +198,16 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="behavior" class="form-label">Comportamiento</label>
-                                            <select name="behavior"
-                                                class="form-control @error('behavior') is-invalid @enderror">
-                                                <option value="Amigable"
-                                                    {{ $animal->behavior == 'Amigable' ? 'selected' : '' }}>Amigable
-                                                </option>
-                                                <option value="Timido"
-                                                    {{ $animal->behavior == 'Timido' ? 'selected' : '' }}>Tímido
-                                                </option>
-                                                <option value="Agresivo"
-                                                    {{ $animal->behavior == 'Agresivo' ? 'selected' : '' }}>Agresivo
-                                                </option>
+                                            <label for="behavior" class="form-label">Comportamiento(*)</label>
+                                            <select class="form-control @error('behavior') is-invalid @enderror"
+                                                name="behavior" required>
+                                                <option value="">Selecciona el comportamiento</option>
+                                                @foreach ($behaviors as $behavior)
+                                                    <option value="{{ $behavior }}"
+                                                        {{ old('behavior', $animal->behavior) == $behavior ? 'selected' : '' }}>
+                                                        {{ $behavior }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             @error('behavior')
                                                 <span class="invalid-feedback">
@@ -216,10 +215,12 @@
                                                 </span>
                                             @enderror
                                         </div>
+
+
                                         <div class="form-group">
                                             <label for="history" class="form-label">Historia</label>
                                             <textarea class="form-control @error('history') is-invalid @enderror" name="history"
-                                                placeholder="Ingresa la historia del animal">{{ old('history', $animal->history) }}</textarea>
+                                                placeholder="Ingresa la historia del animal" required>{{ old('history', $animal->history) }}</textarea>
                                             @error('history')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -240,3 +241,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    function previewImageEdit(event, id) {
+        var input = event.target;
+        var reader = new FileReader();
+        reader.onload = function() {
+            var dataURL = reader.result;
+            var output = document.getElementById('photo-preview-edit-' + id);
+            output.src = dataURL;
+            output.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+</script>

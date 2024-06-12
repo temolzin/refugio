@@ -16,10 +16,13 @@ class AnimalController extends Controller
         $shelter = $user->shelter;
         $shelterId = $shelter->id;
 
+        $origins = Animal::ORIGINS;
+        $behaviors = Animal::BEHAVIORS;
+        $sexs = Animal::SEXS;
         $animals = Animal::where('shelter_id', $shelterId)->get();
         $species = Specie::where('id_shelters', $shelterId)->get();
 
-        return view('animals.index', compact('animals', 'species'));
+        return view('animals.index', compact('animals', 'species','origins', 'behaviors','sexs'));
     }
 
     public function create()
@@ -86,7 +89,7 @@ class AnimalController extends Controller
     public function update(Request $request, Animal $animal)
     {
         $request->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'animal_name' => 'required|string|max:255',
             'specie_id' => 'required|exists:species,id',
             'breed' => 'required|string|max:255',
