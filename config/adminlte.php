@@ -352,12 +352,17 @@ return [
             'icon' => 'fas fa-users-cog fa-fw',
             'can'  =>'ver rol'
         ],
-        
         [
             'text' => 'Mascotas',
             'url' => '/animals',
             'icon' => 'fas fa-dog fa-fw',
         ],
+        [
+            'text' => 'Fallecimientos',
+            'url' => '/deaths',
+            'icon' => 'fas fa-fw fa-skull',  // Calavera
+        ],
+
         [
             'text' => 'multilevel',
             'icon' => 'fas fa-fw fa-share',

@@ -58,4 +58,9 @@ class Animal extends Model implements HasMedia
             return $months . ' meses';
         }
     }
+
+    public function deaths()
+    {
+        return $this->hasMany(Death::class, 'animal_id');
+    }
 }

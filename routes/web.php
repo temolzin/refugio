@@ -9,8 +9,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
 use App\Http\Controllers\AnimalController;
-
-
+use App\Http\Controllers\DeathController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,4 +78,6 @@ Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('she
 
 Route::resource('shelters', ShelterController::class);
 
+Route::get('/deaths', [App\Http\Controllers\DeathController::class, 'index'])->name('deaths');
 
+Route::resource('deaths', DeathController::class);
