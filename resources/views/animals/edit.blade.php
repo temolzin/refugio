@@ -153,11 +153,10 @@
                                         <div class="form-group">
                                             <label for="is_sterilized" class="form-label">Esterilizado</label>
                                             <select name="is_sterilized"
-                                                class="form-control @error('is_sterilized') is-invalid @enderror">
-                                                <option value="Si"
-                                                    {{ $animal->is_sterilized == 'Si' ? 'selected' : '' }}>Si</option>
-                                                <option value="No"
-                                                    {{ $animal->is_sterilized == 'No' ? 'selected' : '' }}>No</option>
+                                                class="form-control @error('is_sterilized') is-invalid @enderror" required>
+                                                <option value="">Selecciona una opción</option>
+                                                <option value="1" {{ $animal->is_sterilized ? 'selected' : '' }}>Sí</option>
+                                                <option value="0" {{ !$animal->is_sterilized ? 'selected' : '' }}>No</option>
                                             </select>
                                             @error('is_sterilized')
                                                 <span class="invalid-feedback">

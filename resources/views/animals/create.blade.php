@@ -159,10 +159,8 @@
                                             <select class="form-control @error('is_sterilized') is-invalid @enderror"
                                                 name="is_sterilized" required>
                                                 <option value="">Selecciona una opción</option>
-                                                <option value="Si"
-                                                    {{ old('is_sterilized') == 'Si' ? 'selected' : '' }}>Si</option>
-                                                <option value="No"
-                                                    {{ old('is_sterilized') == 'No' ? 'selected' : '' }}>No</option>
+                                                <option value="1" {{ old('is_sterilized') === '1' ? 'selected' : '' }}>Sí</option>
+                                                <option value="0" {{ old('is_sterilized') === '0' ? 'selected' : '' }}>No</option>
                                             </select>
                                             @error('is_sterilized')
                                                 <span class="invalid-feedback">

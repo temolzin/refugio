@@ -88,8 +88,8 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="is_sterilized">Esterilizado:</label>
-                                        <input type="text" class="form-control" value="{{ $animal->is_sterilized }}"
-                                            readonly>
+                                        <input type="text" class="form-control" value="{{ $animal->is_sterilized == 1 ? 'Sí' : ($animal->is_sterilized == 0 ? 'No' : '') }}"
+                                        readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
