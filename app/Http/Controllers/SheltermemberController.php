@@ -15,7 +15,7 @@ class SheltermemberController extends Controller
 
         $shelterId = $user->shelter->id;
 
-        $sheltermember = Sheltermember::where('id_shelters', $shelterId)
+        $sheltermember = Sheltermember::where('shelter_id', $shelterId)
             ->where('typemember', 'Padrino')
             ->get();
         $sheltermember->map(function ($sheltermember) {
@@ -33,7 +33,7 @@ class SheltermemberController extends Controller
 
         $shelterId = $user->shelter->id;
 
-        $sheltermember = Sheltermember::where('id_shelters', $shelterId)
+        $sheltermember = Sheltermember::where('shelter_id', $shelterId)
             ->where('typemember', 'Donante')
             ->get();
         $sheltermember->map(function ($sheltermember) {
@@ -51,7 +51,7 @@ class SheltermemberController extends Controller
 
         $shelterId = $user->shelter->id;
 
-        $sheltermember = Sheltermember::where('id_shelters', $shelterId)
+        $sheltermember = Sheltermember::where('shelter_id', $shelterId)
             ->where('typemember', 'Adoptante')
             ->get();
         $sheltermember->map(function ($sheltermember) {
@@ -69,7 +69,7 @@ class SheltermemberController extends Controller
 
         $shelterId = $user->shelter->id;
 
-        $sheltermember = Sheltermember::where('id_shelters', $shelterId)
+        $sheltermember = Sheltermember::where('shelter_id', $shelterId)
             ->where('typemember', 'Personal')
             ->get();
         $sheltermember->map(function ($sheltermember) {
@@ -123,7 +123,7 @@ class SheltermemberController extends Controller
         $sheltermember->address = $request->input('address');
         $sheltermember->postal_code = $request->input('postal_code');
         $sheltermember->typemember = $request->input('typemember');
-        $sheltermember->id_shelters = $shelter->id;
+        $sheltermember->shelter_id = $shelter->id;
 
         if ($request->hasFile('photo')) {
             $sheltermember->addMediaFromRequest('photo')->toMediaCollection('photos');

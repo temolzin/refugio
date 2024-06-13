@@ -27,11 +27,11 @@ class CreateSheltermembersTable extends Migration
                 $table->string('address');
                 $table->string('postal_code');
                 $table->enum('typemember', Sheltermember::TYPEMEMBER)->nullable();
-                $table->unsignedBigInteger('id_shelters');
+                $table->unsignedBigInteger('shelter_id');
                 $table->timestamps();
                 $table->softDeletes();
 
-                $table->foreign('id_shelters')->references('id')->on('shelters')->onDelete('cascade');
+                $table->foreign('shelter_id')->references('id')->on('shelters')->onDelete('cascade');
         });
     }
 

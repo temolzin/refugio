@@ -10,12 +10,11 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Sheltermember extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
-    use SoftDeletes;
+    use HasFactory, InteractsWithMedia,SoftDeletes;
 
     protected $table = "sheltermember";
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'last_name', 'mother_lastname', 'phone', 'email', 'state', 'city', 'colony' . 'address', 'postal_code', 'typemember', 'id_shelters'];
+    protected $fillable = ['name', 'last_name', 'mother_lastname', 'phone', 'email', 'state', 'city', 'colony' . 'address', 'postal_code', 'typemember', 'shelter_id'];
     const TYPEMEMBER_STAFF = 'Personal';
     const TYPEMEMBER_DONOR = 'Donante';
     const TYPEMEMBER_GODFATHER = 'Padrino';
