@@ -13,10 +13,6 @@ class SheltermemberController extends Controller
     {
         $user = Auth::user();
 
-        if (!$user || !$user->shelter) {
-            return redirect()->route('login')->with('error', 'Debe iniciar sesión para ver esta página.');
-        }
-
         $shelterId = $user->shelter->id;
 
         $sheltermember = Sheltermember::where('id_shelters', $shelterId)
@@ -34,10 +30,6 @@ class SheltermemberController extends Controller
     public function donorIndex(Request $request)
     {
         $user = Auth::user();
-
-        if (!$user || !$user->shelter) {
-            return redirect()->route('login')->with('error', 'Debe iniciar sesión para ver esta página.');
-        }
 
         $shelterId = $user->shelter->id;
 
@@ -57,10 +49,6 @@ class SheltermemberController extends Controller
     {
         $user = Auth::user();
 
-        if (!$user || !$user->shelter) {
-            return redirect()->route('login')->with('error', 'Debe iniciar sesión para ver esta página.');
-        }
-
         $shelterId = $user->shelter->id;
 
         $sheltermember = Sheltermember::where('id_shelters', $shelterId)
@@ -78,10 +66,6 @@ class SheltermemberController extends Controller
     public function staffIndex(Request $request)
     {
         $user = Auth::user();
-
-        if (!$user || !$user->shelter) {
-            return redirect()->route('login')->with('error', 'Debe iniciar sesión para ver esta página.');
-        }
 
         $shelterId = $user->shelter->id;
 

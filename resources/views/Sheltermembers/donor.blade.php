@@ -56,7 +56,7 @@
                                                 <td>{{$sheltermember->name}} {{$sheltermember->last_name}} {{$sheltermember->mother_lastname}}</td>
                                                 <td>{{$sheltermember->phone}}</td>
                                                 <td>{{$sheltermember->email}}</td>
-                                                <td>{{$sheltermember->address}}</td>
+                                                <td>{{ $sheltermember->address }} Col. {{ $sheltermember->colony }} {{ $sheltermember->city }} {{ $sheltermember->state }} C.P {{ $sheltermember->postal_code }}</td>
                                                 <td>{{$sheltermember->typemember}}</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Opciones">

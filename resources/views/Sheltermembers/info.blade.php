@@ -33,7 +33,7 @@
                                                 <img id="photo-preview-edit-{{ $sheltermember->id }}" src="{{ asset('img/avatardefault.png') }}" style="display: none; width: 120px; height: 120px; border-radius: 60%; object-fit: cover;">
                                                 @endif
                                             </div>
-                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo-edit-{{ $sheltermember->id }}" aria-describedby="helpId" placeholder="" style="height: 43px; width: 460px;" onchange="previewPhotoEdit(event, '{{ $sheltermember->id }}')" required>
+                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo-edit-{{ $sheltermember->id }}" aria-describedby="helpId" placeholder="" style="height: 43px; width: 460px;" onchange="previewPhotoEdit(event, '{{ $sheltermember->id }}')">
                                             @error('photo')
                                             <span class="invalid-feedback" style="margin-top: -5px;">
                                                 <strong>{{ $message }}</strong>
