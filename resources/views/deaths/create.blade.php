@@ -5,8 +5,7 @@
                 <div class="card-header">
                     <div class="d-sm-flex align-items-center justify-content-between">
                         <h4 class="card-title">Agregar fallecimiento <small> &nbsp;(*) Campos requeridos</small></h4>
-                        <button type="button" class="close d-sm-inline-block text-white" data-dismiss="modal"
-                            aria-label="Close">
+                        <button type="button" class="close d-sm-inline-block text-white" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -27,13 +26,11 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="" class="form-label">Nombre(*)</label>
-                                            <select class="form-control @error('animal_id') is-invalid @enderror"
-                                                id="animal_id" name="animal_id" required>
+                                            <label for="animal_id" class="form-label">Nombre(*)</label>
+                                            <select class="form-control @error('animal_id') is-invalid @enderror" id="animal_id" name="animal_id" required>
                                                 <option value="">Seleccione una mascota</option>
-                                                @foreach (App\Models\Animal::all() as $animal)
-                                                    <option value="{{ $animal->id }}"
-                                                        {{ old('animal_id') == $animal->id ? 'selected' : '' }}>
+                                                @foreach ($animals as $animal)
+                                                    <option value="{{ $animal->id }}" {{ old('animal_id') == $animal->id ? 'selected' : '' }}>
                                                         {{ $animal->animal_name }}
                                                     </option>
                                                 @endforeach
@@ -47,10 +44,8 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="" class="form-label">Fecha de Fallecimiento(*)</label>
-                                            <input type="date"
-                                                class="form-control @error('date') is-invalid @enderror" name="date"
-                                                placeholder="Ingresa la fecha de muerte" value="{{ old('date') }}" required />
+                                            <label for="date" class="form-label">Fecha de Fallecimiento(*)</label>
+                                            <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" placeholder="Ingresa la fecha de muerte" value="{{ old('date') }}" required />
                                             @error('type')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -60,11 +55,8 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="" class="form-label">Causa(*)</label>
-                                            <input type="text"
-                                                class="form-control @error('cause') is-invalid @enderror"
-                                                name="cause" placeholder="Ingresa la causa de muerte"
-                                                value="{{ old('cause') }}" required />
+                                            <label for="cause" class="form-label">Causa(*)</label>
+                                            <input type="text" class="form-control @error('cause') is-invalid @enderror" name="cause" placeholder="Ingresa la causa de muerte" value="{{ old('cause') }}" required />
                                             @error('description')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
@@ -84,4 +76,4 @@
             </div>
         </div>
     </div>
-</div
+</div>
