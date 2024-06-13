@@ -21,7 +21,7 @@ class CreateAnimalsTable extends Migration
             $table->string('animal_name');
             $table->string('breed')->nullable();
             $table->date('birth_date')->nullable();
-            $table->enum('sex', Animal::SEXS)->nullable();
+            $table->enum('sex', Animal::SEXES)->nullable();
             $table->string('color')->nullable();
             $table->decimal('weight')->nullable();
             $table->boolean('is_sterilized')->nullable();

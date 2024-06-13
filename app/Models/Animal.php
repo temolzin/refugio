@@ -44,7 +44,7 @@ class Animal extends Model implements HasMedia
 
     const ORIGINS = [self::ORIGIN_RESCUED, self::ORIGIN_TRANSFERRRED, self::ORIGIN_ABANDONED];
     const BEHAVIORS = [self::BEHAVIOR_FRIENDLY, self::BEHAVIOR_SHY, self::BEHAVIOR_AGGRESSIVE];
-    const SEXS = [self::SEX_MALE, self::SEX_FEMALE];
+    const SEXES = [self::SEX_MALE, self::SEX_FEMALE];
 
     protected $guarded = [];
     public $timestamps = false;

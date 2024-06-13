@@ -109,7 +109,7 @@
                                             <select class="form-control @error('sex') is-invalid @enderror"
                                                 name="sex" required>
                                                 <option value="">Selecciona el sexo</option>
-                                                @foreach ($sexs as $sex)
+                                                @foreach ($sexes as $sex)
                                                     <option value="{{ $sex }}"
                                                         {{ old('sex', $animal->sex) == $sex ? 'selected' : '' }}>
                                                         {{ $sex }}

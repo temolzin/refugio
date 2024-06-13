@@ -18,11 +18,11 @@ class AnimalController extends Controller
 
         $origins = Animal::ORIGINS;
         $behaviors = Animal::BEHAVIORS;
-        $sexs = Animal::SEXS;
+        $sexes = Animal::SEXES;
         $animals = Animal::where('shelter_id', $shelterId)->get();
         $species = Specie::where('id_shelters', $shelterId)->get();
 
-        return view('animals.index', compact('animals', 'species','origins', 'behaviors','sexs'));
+        return view('animals.index', compact('animals', 'species','origins', 'behaviors','sexes'));
     }
 
     public function create()
