@@ -108,34 +108,6 @@
             });
         }
 
-        function checkForm(formId, isEdit) {
-            var formIsValid = true;
-            $('#' + formId + ' input[required]').each(function() {
-                if (isEdit && $(this).attr('name') === 'password') {
-                    return true;
-                }
-                if ($(this).val() === '') {
-                    formIsValid = false;
-                    return false;
-                }
-            });
-            $('#save' + formId + ' #edit').prop('disabled', !formIsValid);
-            if (!formIsValid) {
-                toastr.error('Por favor, completa todos los campos obligatorios.');
-            }
-        }
-
-        $('#createModal').on('shown.bs.modal', function() {
-            checkForm('userForm', false);
-        });
-
-        $('#editModal').on('shown.bs.modal', function() {
-            checkForm('userForm', true);
-        });
-
-        $('#userForm input').on('input', function() {
-            checkForm('userForm', false);
-        });
     });
 </script>
 @endsection

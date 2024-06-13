@@ -108,24 +108,10 @@ class SheltermemberController extends Controller
         ]);
 
         $user = Auth::user();
-        if (!$user) {
-            return redirect()->route('login')->with('error', 'Debe iniciar sesión para realizar esta acción.');
-        }
 
         $shelter = $user->shelter;
-        if (!$shelter) {
-            return redirect()->back()->with('error', 'No se encontró el refugio asociado al usuario.');
-        }
-
-        if ($request->id == 0) {
-            $sheltermember = new Sheltermember();
-        } else {
-            $sheltermember = Sheltermember::find($request->id);
-            if (!$sheltermember) {
-                return redirect()->back()->with('error', 'El miembro no fue encontrada.');
-            }
-        }
-
+       
+        $sheltermember = new Sheltermember();
         $sheltermember->name = $request->input('name');
         $sheltermember->last_name = $request->input('last_name');
         $sheltermember->mother_lastname = $request->input('mother_lastname');
