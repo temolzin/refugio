@@ -14,7 +14,7 @@
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-header py-2 bg-secondary">
-                            <h3 class="card-title">Datos del deceso</h3>
+                            <h3 class="card-title">Datos del Deceso</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fa fa-minus"></i>

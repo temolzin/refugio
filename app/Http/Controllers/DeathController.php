@@ -68,24 +68,12 @@ class DeathController extends Controller
             'animal_name' => 'required|string|max:255',
             'date' => 'required|date',
             'cause' => 'required|string|max:255',
-            'animal_image' => 'nullable|image|max:2048', // Validación opcional para la imagen
         ]);
 
         $death = Death::findOrFail($death_id);
         $death->animal->animal_name = $request->input('animal_name');
         $death->date = $request->input('date');
         $death->cause = $request->input('cause');
-
-        // Manejo de la imagen
-        if ($request->hasFile('animal_image')) {
-            // Eliminar imagen anterior si existe
-            if ($death->animal->getFirstMedia('animal_gallery')) {
-                $death->animal->clearMediaCollection('animal_gallery');
-            }
-            // Guardar la nueva imagen
-            $death->animal->addMedia($request->file('animal_image'))->toMediaCollection('animal_gallery');
-        }
-
         $death->animal->save();
         $death->save();
 
