@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sheltermember;;
+use App\Models\ShelterMember;;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class SheltermemberController extends Controller
+class ShelterMemberController extends Controller
 {
     public function godfatherIndex(Request $request)
     {
@@ -15,16 +15,17 @@ class SheltermemberController extends Controller
 
         $shelterId = $user->shelter->id;
 
-        $sheltermember = Sheltermember::where('shelter_id', $shelterId)
-            ->where('typemember', 'Padrino')
+        $shelterMember = ShelterMember::where('shelter_id', $shelterId)
+            ->where('type_member',ShelterMember::TYPEMEMBER_GODFATHER)
             ->get();
-        $sheltermember->map(function ($sheltermember) {
-            $sheltermember->photo_url = $sheltermember->getFirstMediaUrl('photos');
-            return $sheltermember;
+        $shelterMember->map(function ($shelterMember) {
+            $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
+            return $shelterMember;
         });
 
-        $typemember = 'Padrino';
-        return view('sheltermembers.godfather', compact('sheltermember', 'typemember'));
+        $typeMember = ShelterMember::TYPEMEMBER_GODFATHER;
+
+        return view('sheltermembers.godfather', compact('shelterMember', 'typeMember'));
     }
 
     public function donorIndex(Request $request)
@@ -33,16 +34,16 @@ class SheltermemberController extends Controller
 
         $shelterId = $user->shelter->id;
 
-        $sheltermember = Sheltermember::where('shelter_id', $shelterId)
-            ->where('typemember', 'Donante')
+        $shelterMember = ShelterMember::where('shelter_id', $shelterId)
+            ->where('type_member', ShelterMember::TYPEMEMBER_DONOR)
             ->get();
-        $sheltermember->map(function ($sheltermember) {
-            $sheltermember->photo_url = $sheltermember->getFirstMediaUrl('photos');
-            return $sheltermember;
+        $shelterMember->map(function ($shelterMember) {
+            $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
+            return $shelterMember;
         });
 
-        $typemember = 'Donante';
-        return view('sheltermembers.donor', compact('sheltermember', 'typemember'));
+        $typeMember = ShelterMember::TYPEMEMBER_DONOR;
+        return view('sheltermembers.donor', compact('shelterMember', 'typeMember'));
     }
 
     public function adopterIndex(Request $request)
@@ -51,16 +52,16 @@ class SheltermemberController extends Controller
 
         $shelterId = $user->shelter->id;
 
-        $sheltermember = Sheltermember::where('shelter_id', $shelterId)
-            ->where('typemember', 'Adoptante')
+        $shelterMember = ShelterMember::where('shelter_id', $shelterId)
+            ->where('type_member',ShelterMember::TYPEMEMBER_ADOPTER)
             ->get();
-        $sheltermember->map(function ($sheltermember) {
-            $sheltermember->photo_url = $sheltermember->getFirstMediaUrl('photos');
-            return $sheltermember;
+        $shelterMember->map(function ($shelterMember) {
+            $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
+            return $shelterMember;
         });
 
-        $typemember = 'Adoptante';
-        return view('sheltermembers.adopter', compact('sheltermember', 'typemember'));
+        $typeMember = ShelterMember::TYPEMEMBER_ADOPTER;
+        return view('sheltermembers.adopter', compact('shelterMember', 'typeMember'));
     }
 
     public function staffIndex(Request $request)
@@ -69,25 +70,25 @@ class SheltermemberController extends Controller
 
         $shelterId = $user->shelter->id;
 
-        $sheltermember = Sheltermember::where('shelter_id', $shelterId)
-            ->where('typemember', 'Personal')
+        $shelterMember = Sheltermember::where('shelter_id', $shelterId)
+            ->where('type_member', Sheltermember::TYPEMEMBER_STAFF)
             ->get();
-        $sheltermember->map(function ($sheltermember) {
-            $sheltermember->photo_url = $sheltermember->getFirstMediaUrl('photos');
-            return $sheltermember;
+        $shelterMember->map(function ($shelterMember) {
+            $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
+            return $shelterMember;
         });
 
-        $typemember = 'Personal';
+        $typeMember = ShelterMember::TYPEMEMBER_STAFF;
 
-        return view('sheltermembers.staff', compact('sheltermember', 'typemember'));
+        return view('sheltermembers.staff', compact('shelterMember', 'typeMember'));
     }
 
 
     public function list()
     {
 
-        $sheltermember = Sheltermember::all();
-        return $sheltermember;
+        $shelterMember = ShelterMember::all();
+        return $shelterMember;
     }
 
     public function store(Request $request)
@@ -104,56 +105,56 @@ class SheltermemberController extends Controller
             'colony' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
-            'typemember' => 'required|in:Adoptante,Donante,Padrino,Personal',
+            'type_member' => 'required|in:Adoptante,Donante,Padrino,Personal',
         ]);
 
         $user = Auth::user();
 
         $shelter = $user->shelter;
        
-        $sheltermember = new Sheltermember();
-        $sheltermember->name = $request->input('name');
-        $sheltermember->last_name = $request->input('last_name');
-        $sheltermember->mother_lastname = $request->input('mother_lastname');
-        $sheltermember->phone = $request->input('phone');
-        $sheltermember->email = $request->input('email');
-        $sheltermember->state = $request->input('state');
-        $sheltermember->city = $request->input('city');
-        $sheltermember->colony = $request->input('colony');
-        $sheltermember->address = $request->input('address');
-        $sheltermember->postal_code = $request->input('postal_code');
-        $sheltermember->typemember = $request->input('typemember');
-        $sheltermember->shelter_id = $shelter->id;
+        $shelterMember = new ShelterMember();
+        $shelterMember->name = $request->input('name');
+        $shelterMember->last_name = $request->input('last_name');
+        $shelterMember->mother_lastname = $request->input('mother_lastname');
+        $shelterMember->phone = $request->input('phone');
+        $shelterMember->email = $request->input('email');
+        $shelterMember->state = $request->input('state');
+        $shelterMember->city = $request->input('city');
+        $shelterMember->colony = $request->input('colony');
+        $shelterMember->address = $request->input('address');
+        $shelterMember->postal_code = $request->input('postal_code');
+        $shelterMember->type_member = $request->input('type_member');
+        $shelterMember->shelter_id = $shelter->id;
 
         if ($request->hasFile('photo')) {
-            $sheltermember->addMediaFromRequest('photo')->toMediaCollection('photos');
+            $shelterMember->addMediaFromRequest('photo')->toMediaCollection('photos');
         }
 
-        $sheltermember->save();
+        $shelterMember->save();
 
         return redirect()->back()->with('success', 'Miembro registrado exitosamente.');
     }
 
     public function destroy($id)
     {
-        $sheltermember = Sheltermember::find($id);
-        if ($sheltermember) {
-            $sheltermember->clearMediaCollection('photos');
-            $sheltermember->delete();
+        $shelterMember = Sheltermember::find($id);
+        if ($shelterMember) {
+            $shelterMember->clearMediaCollection('photos');
+            $shelterMember->delete();
         }
         return redirect()->back()->with('success', 'Miembro eliminada exitosamente');
     }
 
     public function get(Request $request)
     {
-        $sheltermember = Sheltermember::find($request->id);
-        return $sheltermember;
+        $shelterMember = ShelterMember::find($request->id);
+        return $shelterMember;
     }
 
     public function edit($id)
     {
-        $sheltermember = Sheltermember::find($id);
-        return view('Sheltermembers.info', compact('sheltermember'));
+        $shelterMember = ShelterMember::find($id);
+        return view('shelterMembers.info', compact('shelterMember'));
     }
 
     public function update(Request $request, $id)
@@ -171,30 +172,30 @@ class SheltermemberController extends Controller
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
         ]);
-        $sheltermember = Sheltermember::find($id);
-        if ($sheltermember) {
-            $sheltermember->update($request->except('photo'));
+        $shelterMember = ShelterMember::find($id);
+        if ($shelterMember) {
+            $shelterMember->update($request->except('photo'));
             if ($request->hasFile('photo')) {
-                $sheltermember->clearMediaCollection('photos');
-                $sheltermember->addMediaFromRequest('photo')->toMediaCollection('photos');
+                $shelterMember->clearMediaCollection('photos');
+                $shelterMember->addMediaFromRequest('photo')->toMediaCollection('photos');
             }
-            $sheltermember->name = $request->input('name');
-            $sheltermember->last_name = $request->input('last_name');
-            $sheltermember->mother_lastname = $request->input('mother_lastname');
-            $sheltermember->phone = $request->input('phone');
-            $sheltermember->email = $request->input('email');
-            $sheltermember->state = $request->input('state');
-            $sheltermember->city = $request->input('city');
-            $sheltermember->colony = $request->input('colony');
-            $sheltermember->address = $request->input('address');
-            $sheltermember->postal_code = $request->input('postal_code');
+            $shelterMember->name = $request->input('name');
+            $shelterMember->last_name = $request->input('last_name');
+            $shelterMember->mother_lastname = $request->input('mother_lastname');
+            $shelterMember->phone = $request->input('phone');
+            $shelterMember->email = $request->input('email');
+            $shelterMember->state = $request->input('state');
+            $shelterMember->city = $request->input('city');
+            $shelterMember->colony = $request->input('colony');
+            $shelterMember->address = $request->input('address');
+            $shelterMember->postal_code = $request->input('postal_code');
 
-            $sheltermember->save();
+            $shelterMember->save();
         }
         return redirect()->back()->with('success', 'Miembro actualizada correctamente');
     }
 
-    public function show(Sheltermember $sheltermember)
+    public function show(ShelterMember $shelterMember)
     {
     }
 }

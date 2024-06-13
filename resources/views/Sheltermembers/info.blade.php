@@ -1,5 +1,5 @@
 <!-- Modal de Edición -->
-<div class="modal fade" id="edit{{$sheltermember->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit{{$shelterMember->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="card-warning">
@@ -9,7 +9,7 @@
                         <button type="button" class="close d-sm-inline-block text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                 </div>
-                <form action="{{route('sheltermember.update', $sheltermember->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('sheltermember.update', $shelterMember->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
@@ -27,13 +27,13 @@
                                         <div class="form-group text-center">
                                             <label for="photo" class="form-label"></label>
                                             <div class="photo-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">
-                                                @if($sheltermember->getFirstMediaUrl('photos'))
-                                                <img id="photo-preview-edit-{{ $sheltermember->id }}" src="{{ $sheltermember->getFirstMediaUrl('photos') }}" alt="Foto Actual" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 20px;">
+                                                @if($shelterMember->getFirstMediaUrl('photos'))
+                                                <img id="photo-preview-edit-{{ $shelterMember->id }}" src="{{ $shelterMember->getFirstMediaUrl('photos') }}" alt="Foto Actual" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 20px;">
                                                 @else
-                                                <img id="photo-preview-edit-{{ $sheltermember->id }}" src="{{ asset('img/avatardefault.png') }}" style="display: none; width: 120px; height: 120px; border-radius: 60%; object-fit: cover;">
+                                                <img id="photo-preview-edit-{{ $shelterMember->id }}" src="{{ asset('img/avatardefault.png') }}" style="display: none; width: 120px; height: 120px; border-radius: 60%; object-fit: cover;">
                                                 @endif
                                             </div>
-                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo-edit-{{ $sheltermember->id }}" aria-describedby="helpId" placeholder="" style="height: 43px; width: 460px;" onchange="previewPhotoEdit(event, '{{ $sheltermember->id }}')">
+                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo-edit-{{ $shelterMember->id }}" aria-describedby="helpId" placeholder="" style="height: 43px; width: 460px;" onchange="previewPhotoEdit(event, '{{ $shelterMember->id }}')">
                                             @error('photo')
                                             <span class="invalid-feedback" style="margin-top: -5px;">
                                                 <strong>{{ $message }}</strong>
@@ -44,7 +44,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="name" class="form-label">Nombre(*)</label>
-                                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" aria-describedby="helpId" placeholder="" value="{{$sheltermember->name}}" required />
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" aria-describedby="helpId" placeholder="" value="{{$shelterMember->name}}" required />
                                             @error('name')
                                             <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -55,7 +55,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="last_name" class="form-label">Apellido paterno(*)</label>
-                                            <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="last_name" aria-describedby="helpId" placeholder="" value="{{$sheltermember->last_name}}" required />
+                                            <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="last_name" aria-describedby="helpId" placeholder="" value="{{$shelterMember->last_name}}" required />
                                             @error('last_name')
                                             <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -66,7 +66,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="mother_lastname" class="form-label">Apellido materno(*)</label>
-                                            <input type="text" class="form-control @error('mother_lastname') is-invalid @enderror" name="mother_lastname" id="mother_lastname" aria-describedby="helpId" placeholder="" value="{{$sheltermember->mother_lastname}}" required />
+                                            <input type="text" class="form-control @error('mother_lastname') is-invalid @enderror" name="mother_lastname" id="mother_lastname" aria-describedby="helpId" placeholder="" value="{{$shelterMember->mother_lastname}}" required />
                                             @error('mother_lastname')
                                             <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -77,7 +77,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="phone" class="form-label">Teléfono(*)</label>
-                                            <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" id="phone" aria-describedby="helpId" placeholder="" value="{{$sheltermember->phone}}" required />
+                                            <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" id="phone" aria-describedby="helpId" placeholder="" value="{{$shelterMember->phone}}" required />
                                             @error('phone')
                                             <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -88,7 +88,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="email" class="form-label">Correo(*)</label>
-                                            <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" aria-describedby="helpId" placeholder="" value="{{$sheltermember->email}}" required />
+                                            <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" aria-describedby="helpId" placeholder="" value="{{$shelterMember->email}}" required />
                                             @error('email')
                                             <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -99,7 +99,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="state" class="form-label">Estado o Provincia(*)</label>
-                                            <input type="text" class="form-control @error('state') is-invalid @enderror" name="state" id="state" aria-describedby="helpId" placeholder="" value="{{$sheltermember->state}}" required />
+                                            <input type="text" class="form-control @error('state') is-invalid @enderror" name="state" id="state" aria-describedby="helpId" placeholder="" value="{{$shelterMember->state}}" required />
                                             @error('state')
                                             <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -110,7 +110,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="city" class="form-label">Ciudad(*)</label>
-                                            <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" id="city" aria-describedby="helpId" placeholder="" value="{{$sheltermember->city}}" required />
+                                            <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" id="city" aria-describedby="helpId" placeholder="" value="{{$shelterMember->city}}" required />
                                             @error('city')
                                             <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -121,7 +121,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="colony" class="form-label">Colonia(*)</label>
-                                            <input type="text" class="form-control @error('colony') is-invalid @enderror" name="colony" id="colony" aria-describedby="helpId" placeholder="" value="{{$sheltermember->colony}}" required />
+                                            <input type="text" class="form-control @error('colony') is-invalid @enderror" name="colony" id="colony" aria-describedby="helpId" placeholder="" value="{{$shelterMember->colony}}" required />
                                             @error('colony')
                                             <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -132,7 +132,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="address" class="form-label">Dirección(*)</label>
-                                            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" id="address" aria-describedby="helpId" placeholder="" value="{{$sheltermember->address}}" required />
+                                            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" id="address" aria-describedby="helpId" placeholder="" value="{{$shelterMember->address}}" required />
                                             @error('address')
                                             <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -143,7 +143,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="address" class="form-label">Codigo postal(*)</label>
-                                            <input type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" id="postal_code" aria-describedby="helpId" placeholder="" value="{{$sheltermember->postal_code}}" required />
+                                            <input type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" id="postal_code" aria-describedby="helpId" placeholder="" value="{{$shelterMember->postal_code}}" required />
                                             @error('postal_code')
                                             <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>

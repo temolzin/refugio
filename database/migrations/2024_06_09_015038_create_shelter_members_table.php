@@ -14,7 +14,7 @@ class CreateSheltermembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('sheltermember', function (Blueprint $table) {
+        Schema::create('shelter_member', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
                 $table->string('last_name');
@@ -26,7 +26,7 @@ class CreateSheltermembersTable extends Migration
                 $table->string('colony');
                 $table->string('address');
                 $table->string('postal_code');
-                $table->enum('typemember', Sheltermember::TYPEMEMBER)->nullable();
+                $table->enum('type_member', Sheltermember::TYPEMEMBER)->nullable();
                 $table->unsignedBigInteger('shelter_id');
                 $table->timestamps();
                 $table->softDeletes();

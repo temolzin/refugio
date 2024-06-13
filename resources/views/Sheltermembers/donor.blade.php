@@ -35,38 +35,38 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if(count($sheltermember) <= 0) 
+                                        @if(count($shelterMember) <= 0) 
                                         <tr>
                                             <td colspan="4">No hay resultados</td>
                                             </tr>
                                             @else
-                                            @foreach($sheltermember as $sheltermember)
+                                            @foreach($shelterMember as $shelterMember)
                                             <tr>
-                                                <td scope="row">{{$sheltermember->id}}</td>
+                                                <td scope="row">{{$shelterMember->id}}</td>
                                                 <td>
-                                                    @if($sheltermember->getMedia('photos')->isNotEmpty())
+                                                    @if($shelterMember->getMedia('photos')->isNotEmpty())
                                                     @php
-                                                    $photo = $sheltermember->getFirstMedia('photos');
+                                                    $photo = $shelterMember->getFirstMedia('photos');
                                                     @endphp
                                                     <img src="{{ $photo->getUrl() }}" alt="Photo not found" style="width: 50px; height: 50px; border-radius: 50%;">
                                                     @else
                                                     <img src="{{ asset('img/avatardefault.png') }}" style="width: 50px; height: 50px; border-radius: 50%;">
                                                     @endif
                                                 </td>
-                                                <td>{{$sheltermember->name}} {{$sheltermember->last_name}} {{$sheltermember->mother_lastname}}</td>
-                                                <td>{{$sheltermember->phone}}</td>
-                                                <td>{{$sheltermember->email}}</td>
-                                                <td>{{ $sheltermember->address }} Col. {{ $sheltermember->colony }} {{ $sheltermember->city }} {{ $sheltermember->state }} C.P {{ $sheltermember->postal_code }}</td>
-                                                <td>{{$sheltermember->typemember}}</td>
+                                                <td>{{$shelterMember->name}} {{$shelterMember->last_name}} {{$shelterMember->mother_lastname}}</td>
+                                                <td>{{$shelterMember->phone}}</td>
+                                                <td>{{$shelterMember->email}}</td>
+                                                <td>{{ $shelterMember->address }} Col. {{ $shelterMember->colony }} {{ $shelterMember->city }} {{ $shelterMember->state }} C.P {{ $shelterMember->postal_code }}</td>
+                                                <td>{{$shelterMember->type_member}}</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Opciones">
-                                                        <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#view{{$sheltermember->id}}">
+                                                        <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#view{{$shelterMember->id}}">
                                                             <i class="fas fa-eye"></i>
                                                         </button>
-                                                        <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$sheltermember->id}}">
+                                                        <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$shelterMember->id}}">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$sheltermember->id}}">
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$shelterMember->id}}">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
                                                     </div>

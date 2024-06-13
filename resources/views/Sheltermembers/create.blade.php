@@ -12,7 +12,7 @@
                 </div>
                 <form action="{{ route('sheltermember.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="typemember" value="{{ $typemember }}">
+                    <input type="hidden" name="type_member" value="{{ $typeMember }}">
                     <div class="card-body">
                         <div class="card">
                             <div class="card-header py-2 bg-secondary">
