@@ -8,7 +8,7 @@ use App\Http\Controllers\VaccineController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
-use App\Http\Controllers\SheltermemberController;
+use App\Http\Controllers\ShelterMemberController;
 use App\Http\Controllers\AnimalController;
 
 
@@ -63,11 +63,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/users/{user}/updateRole', [UserController::class, 'updateRole'])->name('users.updateRole'); 
     
-    Route::get('/godfather', [SheltermemberController::class, 'godfatherIndex'])->name('sheltermembers.godfather');
-    Route::get('/adopter', [SheltermemberController::class, 'adopterIndex'])->name('sheltermembers.adopter');
-    Route::get('/donor', [SheltermemberController::class, 'donorIndex'])->name('sheltermembers.donor');
-    Route::get('/staff', [SheltermemberController::class, 'staffIndex'])->name('sheltermembers.staff');
-    Route::resource('sheltermember',SheltermemberController::class);
+    Route::get('/godfather', [ShelterMemberController::class, 'godfatherIndex'])->name('shelterMembers.godfather');
+    Route::get('/adopter', [ShelterMemberController::class, 'adopterIndex'])->name('shelterMembers.adopter');
+    Route::get('/donor', [ShelterMemberController::class, 'donorIndex'])->name('shelterMembers.donor');
+    Route::get('/staff', [ShelterMemberController::class, 'staffIndex'])->name('shelterMembers.staff');
+    Route::resource('shelterMember',ShelterMemberController::class);
 
     Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
     Route::resource('animals', AnimalController::class);

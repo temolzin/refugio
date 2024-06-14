@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Sheltermember;
+use App\Models\ShelterMember;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -26,7 +26,7 @@ class CreateSheltermembersTable extends Migration
                 $table->string('colony');
                 $table->string('address');
                 $table->string('postal_code');
-                $table->enum('type_member', Sheltermember::TYPEMEMBER)->nullable();
+                $table->enum('type_member', ShelterMember::TYPE_MEMBER)->nullable();
                 $table->unsignedBigInteger('shelter_id');
                 $table->timestamps();
                 $table->softDeletes();

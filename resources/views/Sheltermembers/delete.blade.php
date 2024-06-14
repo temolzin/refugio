@@ -8,7 +8,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{route('sheltermember.destroy',$shelterMember->id)}}" method="post" enctype="multipart/form-data">
+      <form action="{{route('shelterMember.destroy',$shelterMember->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('DELETE')
       <div class="modal-body text-center text-danger">

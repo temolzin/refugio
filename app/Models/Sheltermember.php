@@ -15,18 +15,18 @@ class Sheltermember extends Model implements HasMedia
     protected $table = "shelter_member";
     protected $primaryKey = 'id';
     protected $fillable = ['name', 'last_name', 'mother_lastname', 'phone', 'email', 'state', 'city', 'colony' . 'address', 'postal_code', 'type_member', 'shelter_id'];
-    const TYPEMEMBER_STAFF = 'Personal';
-    const TYPEMEMBER_DONOR = 'Donante';
-    const TYPEMEMBER_GODFATHER = 'Padrino';
-    const TYPEMEMBER_ADOPTER = 'Adoptante';
+    const TYPE_MEMBER_STAFF = 'Personal';
+    const TYPE_MEMBER_DONOR = 'Donante';
+    const TYPE_MEMBER_GODFATHER = 'Padrino';
+    const TYPE_MEMBER_ADOPTER = 'Adoptante';
 
-    const TYPEMEMBER = [self::TYPEMEMBER_STAFF, self::TYPEMEMBER_DONOR, self::TYPEMEMBER_GODFATHER, self::TYPEMEMBER_ADOPTER];
+    const TYPE_MEMBER = [self::TYPE_MEMBER_STAFF, self::TYPE_MEMBER_DONOR, self::TYPE_MEMBER_GODFATHER, self::TYPE_MEMBER_ADOPTER];
 
     protected $guarded = [];
     public $timestamps = false;
 
     public function shelter()
     {
-        return $this->belongsTo(Shelter::class, 'id_shelters');
+        return $this->belongsTo(Shelter::class, 'shelter_id');
     }
 }

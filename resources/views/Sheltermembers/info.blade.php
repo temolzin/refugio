@@ -9,7 +9,7 @@
                         <button type="button" class="close d-sm-inline-block text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                 </div>
-                <form action="{{route('sheltermember.update', $shelterMember->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('shelterMember.update', $shelterMember->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="card-body">

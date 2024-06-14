@@ -16,16 +16,16 @@ class ShelterMemberController extends Controller
         $shelterId = $user->shelter->id;
 
         $shelterMember = ShelterMember::where('shelter_id', $shelterId)
-            ->where('type_member',ShelterMember::TYPEMEMBER_GODFATHER)
+            ->where('type_member',ShelterMember::TYPE_MEMBER_GODFATHER)
             ->get();
         $shelterMember->map(function ($shelterMember) {
             $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
             return $shelterMember;
         });
 
-        $typeMember = ShelterMember::TYPEMEMBER_GODFATHER;
+        $typeMember = ShelterMember::TYPE_MEMBER_GODFATHER;
 
-        return view('sheltermembers.godfather', compact('shelterMember', 'typeMember'));
+        return view('shelterMembers.godfather', compact('shelterMember', 'typeMember'));
     }
 
     public function donorIndex(Request $request)
@@ -35,15 +35,15 @@ class ShelterMemberController extends Controller
         $shelterId = $user->shelter->id;
 
         $shelterMember = ShelterMember::where('shelter_id', $shelterId)
-            ->where('type_member', ShelterMember::TYPEMEMBER_DONOR)
+            ->where('type_member', ShelterMember::TYPE_MEMBER_DONOR)
             ->get();
         $shelterMember->map(function ($shelterMember) {
             $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
             return $shelterMember;
         });
 
-        $typeMember = ShelterMember::TYPEMEMBER_DONOR;
-        return view('sheltermembers.donor', compact('shelterMember', 'typeMember'));
+        $typeMember = ShelterMember::TYPE_MEMBER_DONOR;
+        return view('shelterMembers.donor', compact('shelterMember', 'typeMember'));
     }
 
     public function adopterIndex(Request $request)
@@ -53,15 +53,15 @@ class ShelterMemberController extends Controller
         $shelterId = $user->shelter->id;
 
         $shelterMember = ShelterMember::where('shelter_id', $shelterId)
-            ->where('type_member',ShelterMember::TYPEMEMBER_ADOPTER)
+            ->where('type_member',ShelterMember::TYPE_MEMBER_ADOPTER)
             ->get();
         $shelterMember->map(function ($shelterMember) {
             $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
             return $shelterMember;
         });
 
-        $typeMember = ShelterMember::TYPEMEMBER_ADOPTER;
-        return view('sheltermembers.adopter', compact('shelterMember', 'typeMember'));
+        $typeMember = ShelterMember::TYPE_MEMBER_ADOPTER;
+        return view('shelterMembers.adopter', compact('shelterMember', 'typeMember'));
     }
 
     public function staffIndex(Request $request)
@@ -71,16 +71,16 @@ class ShelterMemberController extends Controller
         $shelterId = $user->shelter->id;
 
         $shelterMember = Sheltermember::where('shelter_id', $shelterId)
-            ->where('type_member', Sheltermember::TYPEMEMBER_STAFF)
+            ->where('type_member', Sheltermember::TYPE_MEMBER_STAFF)
             ->get();
         $shelterMember->map(function ($shelterMember) {
             $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
             return $shelterMember;
         });
 
-        $typeMember = ShelterMember::TYPEMEMBER_STAFF;
+        $typeMember = ShelterMember::TYPE_MEMBER_STAFF;
 
-        return view('sheltermembers.staff', compact('shelterMember', 'typeMember'));
+        return view('shelterMembers.staff', compact('shelterMember', 'typeMember'));
     }
 
 
