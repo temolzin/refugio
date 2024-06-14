@@ -44,36 +44,25 @@ Route::group(['middleware' => ['auth']], function () {
         return view('dashboard');
     })->name('dashboard');
 
-
-    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
+    Route::get('/users', [UserController::class, 'index'])->middleware('can:viewUser')->name('users.index');
     Route::resource('users', UserController::class);
 
-    Route::get('/users', [UserController::class, 'index'])->middleware('can:ver usuario')->name('users.index');
-
-
-    
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-
-    Route::get('/species', [App\Http\Controllers\SpecieController::class, 'index'])->name('species');
+    Route::get('/species', [SpecieController::class, 'index'])->middleware('can:viewSpecie')->name('species');
     Route::resource('species',SpecieController::class);
 
-    Route::resource('roles', RoleController::class);
+    Route::resource('roles', RoleController::class)->middleware('can:viewRol');
 
-    Route::post('/users/{user}/updateRole', [UserController::class, 'updateRole'])->name('users.updateRole'); 
+    Route::post('/users/{user}/updateRole', [UserController::class, 'updateRole'])->middleware('can:viewUser')->name('users.updateRole');
 
-    Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
+    Route::get('/animals', [AnimalController::class, 'index'])->middleware('can:viewAnimal')->name('animals.index');
     Route::resource('animals', AnimalController::class);
-  
+
+    Route::get('/vaccines', [VaccineController::class, 'index'])->middleware('can:viewVaccine')->name('vaccines');
+    Route::resource('vaccines', VaccineController::class);
+
+    Route::get('/shelters', [ShelterController::class, 'shelters.index'])->middleware('can:viewShelter')->name('shelters');
+    Route::resource('shelters', ShelterController::class);
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 });
-
-Route::get('/vaccines', [App\Http\Controllers\VaccineController::class, 'index'])->name('vaccines');
-
-Route::resource('vaccines', VaccineController::class);
-Route::post('login', [AuthController::class, 'login']);
-
-
-
-Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('shelters');
-
-Route::resource('shelters', ShelterController::class);
