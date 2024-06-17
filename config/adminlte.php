@@ -190,19 +190,19 @@ return [
     |
     */
 
-    
-        'classes_body' => '',
-        'classes_brand' => '',
-        'classes_brand_text' => '',
-        'classes_content_wrapper' => '',
-        'classes_content_header' => '',
-        'classes_content' => '',
-        'classes_sidebar' => 'sidebar-light-primary elevation-4 sidebar-light-custom ',
-        'classes_sidebar_nav' => '',
-        'classes_topnav' => 'navbar-white navbar-light',
-        'classes_topnav_nav' => 'navbar-expand',
-        'classes_topnav_container' => 'container',
-    
+
+    'classes_body' => '',
+    'classes_brand' => '',
+    'classes_brand_text' => '',
+    'classes_content_wrapper' => '',
+    'classes_content_header' => '',
+    'classes_content' => '',
+    'classes_sidebar' => 'sidebar-light-primary elevation-4 sidebar-light-custom ',
+    'classes_sidebar_nav' => '',
+    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav_nav' => 'navbar-expand',
+    'classes_topnav_container' => 'container',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -337,7 +337,7 @@ return [
         [
             'text' => 'Albergues',
             'url' => '/shelters',
-            'icon' => 'fa fa-home',           
+            'icon' => 'fa fa-home',
         ],
         [
             'text' => 'Roles',
@@ -352,40 +352,28 @@ return [
             'icon' => 'fas fa-dog fa-fw',
         ],
         [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
+            'text' => 'Usuarios',
+            'icon' => 'fas fa-fw fa-users',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
+                    'text' => 'Padrino',
+                    'url' => '/godfather',
+                    'icon' => 'fas fa-user-tie fa-fw',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Adoptante',
+                    'url' => '/adopter',
+                    'icon' => 'fas fa-hand-holding-heart fa-fw',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
+                    'text' => 'Donante',
+                    'url' => '/donor',
+                    'icon' => 'fas fa-donate fa-fw',
+                ],
+                [
+                    'text' => 'Personal',
+                    'url' => '/staff',
+                    'icon' => 'fas fa-user-md fa-fw',
                 ],
             ],
         ],
