@@ -26,14 +26,15 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="animal_id" class="form-label">Animal(*)</label>
-                                            <select class="form-control select2 @error('animal_id') is-invalid @enderror"
-                                                name="animal_id" id="animal_id" required style="height: 43px;">
+                                            <label for="animal_id" class="form-label">ID Animal(*)</label>
+                                            <select id="animal_id_select"
+                                                class="form-control select2 @error('animal_id') is-invalid @enderror"
+                                                name="animal_id" required>
                                                 <option value="">Seleccione un animal</option>
-                                                @foreach($animals as $animal)
-                                                    <option value="{{ $animal->id }}" {{ old('animal_id', $vet->animal_id ?? '') == $animal->id ? 'selected' : '' }}>
+                                                @foreach ($animals as $animal)
+                                                    <option value="{{ $animal->id }}" {{ old('animal_id') == $animal->id ? 'selected' : '' }}>
                                                         {{ $animal->animal_name }}
                                                     </option>
                                                 @endforeach
@@ -84,12 +85,11 @@
                                                 name="appointment_status" id="appointment_status" required
                                                 style="height: 43px;">
                                                 <option value="">Seleccione un estado</option>
-                                                <option value="Pendiente" {{ old('appointment_status', $vet->appointment_status) == 'Pendiente' ? 'selected' : '' }}>
-                                                    Pendiente</option>
-                                                <option value="Finalizada" {{ old('appointment_status', $vet->appointment_status) == 'Finalizada' ? 'selected' : '' }}>
-                                                    Finalizada</option>
-                                                <option value="Cancelada" {{ old('appointment_status', $vet->appointment_status) == 'Cancelada' ? 'selected' : '' }}>
-                                                    Cancelada</option>
+                                                @foreach($status as $statu)
+                                                    <option value="{{ $statu }}" {{ old('appointment_status', $vet->appointment_status ?? '') == $statu ? 'selected' : '' }}>
+                                                        {{ $statu }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             @error('appointment_status')
                                                 <span class="invalid-feedback">
