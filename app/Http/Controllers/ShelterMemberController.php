@@ -104,7 +104,7 @@ class ShelterMemberController extends Controller
             'colony' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
-            'type_member' => 'required|in:' . implode(',', Sheltermember::TYPE_MEMBER),
+            'type_member' => 'required|in:' . implode(',', ShelterMember::TYPE_MEMBER),
         ]);
 
         $user = Auth::user();
