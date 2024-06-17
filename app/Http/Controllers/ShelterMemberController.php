@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ShelterMember;;
+use App\Models\ShelterMember;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,8 +70,8 @@ class ShelterMemberController extends Controller
 
         $shelterId = $user->shelter->id;
 
-        $shelterMember = Sheltermember::where('shelter_id', $shelterId)
-            ->where('type_member', Sheltermember::TYPE_MEMBER_STAFF)
+        $shelterMember = ShelterMember::where('shelter_id', $shelterId)
+            ->where('type_member', ShelterMember::TYPE_MEMBER_STAFF)
             ->get();
         $shelterMember->map(function ($shelterMember) {
             $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
@@ -97,7 +97,6 @@ class ShelterMemberController extends Controller
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'mother_lastname' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
             'email' => 'nullable|string|max:255',
             'state' => 'required|string|max:255',
@@ -105,7 +104,7 @@ class ShelterMemberController extends Controller
             'colony' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
-            'type_member' => 'required|in:Adoptante,Donante,Padrino,Personal',
+            'type_member' => 'required|in:' . implode(',', Sheltermember::TYPE_MEMBER),
         ]);
 
         $user = Auth::user();
@@ -115,7 +114,6 @@ class ShelterMemberController extends Controller
         $shelterMember = new ShelterMember();
         $shelterMember->name = $request->input('name');
         $shelterMember->last_name = $request->input('last_name');
-        $shelterMember->mother_lastname = $request->input('mother_lastname');
         $shelterMember->phone = $request->input('phone');
         $shelterMember->email = $request->input('email');
         $shelterMember->state = $request->input('state');
@@ -163,7 +161,6 @@ class ShelterMemberController extends Controller
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'mother_lastname' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
             'email' => 'nullable|string|max:255',
             'state' => 'required|string|max:255',
@@ -181,7 +178,6 @@ class ShelterMemberController extends Controller
             }
             $shelterMember->name = $request->input('name');
             $shelterMember->last_name = $request->input('last_name');
-            $shelterMember->mother_lastname = $request->input('mother_lastname');
             $shelterMember->phone = $request->input('phone');
             $shelterMember->email = $request->input('email');
             $shelterMember->state = $request->input('state');

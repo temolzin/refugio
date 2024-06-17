@@ -45,14 +45,8 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>Apellido paterno</label>
+                                        <label>Apellido</label>
                                         <input type="text" disabled class="form-control" value="{{ $shelterMember->last_name }}" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label>Apellido materno</label>
-                                        <input type="text" disabled class="form-control" value="{{ $shelterMember->mother_lastname}}" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">

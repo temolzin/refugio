@@ -52,20 +52,9 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="last_name" class="form-label">Apellido Paterno(*)</label>
+                                            <label for="last_name" class="form-label">Apellido(*)</label>
                                             <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" placeholder="Ingresa el apellido paterno del miembro" value="{{ old('last_name') }}" required />
                                             @error('last_name')
-                                            <span class="invalid-feedback">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="mother_lastname" class="form-label">Apellido Materno(*)</label>
-                                            <input type="text" class="form-control @error('mother_lastname') is-invalid @enderror" name="mother_lastname" placeholder="Ingresa el apellido materno del miembro" value="{{ old('mother_lastname') }}" required />
-                                            @error('mother_lastname')
                                             <span class="invalid-feedback">
                                                 <strong>{{ $message }}</strong>
                                             </span>

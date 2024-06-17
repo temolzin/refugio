@@ -52,7 +52,7 @@
                                                     <img src="{{ asset('img/avatardefault.png') }}" style="width: 50px; height: 50px; border-radius: 50%;">
                                                     @endif
                                                 </td>
-                                                <td>{{$shelterMember->name}} {{$shelterMember->last_name}} {{$shelterMember->mother_lastname}}</td>
+                                                <td>{{$shelterMember->name}} {{$shelterMember->last_name}} </td>
                                                 <td>{{$shelterMember->phone}}</td>
                                                 <td>{{$shelterMember->email}}</td>
                                                 <td>{{$shelterMember->address }} Col. {{ $shelterMember->colony }} {{ $shelterMember->city }} {{ $shelterMember->state }} C.P {{ $shelterMember->postal_code }}</td>

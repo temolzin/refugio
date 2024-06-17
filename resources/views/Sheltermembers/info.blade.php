@@ -54,20 +54,9 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="last_name" class="form-label">Apellido paterno(*)</label>
+                                            <label for="last_name" class="form-label">Apellido(*)</label>
                                             <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="last_name" aria-describedby="helpId" placeholder="" value="{{$shelterMember->last_name}}" required />
                                             @error('last_name')
-                                            <span class="invalid-feedback">
-                                                <strong>{{$message}}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="mother_lastname" class="form-label">Apellido materno(*)</label>
-                                            <input type="text" class="form-control @error('mother_lastname') is-invalid @enderror" name="mother_lastname" id="mother_lastname" aria-describedby="helpId" placeholder="" value="{{$shelterMember->mother_lastname}}" required />
-                                            @error('mother_lastname')
                                             <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
                                             </span>

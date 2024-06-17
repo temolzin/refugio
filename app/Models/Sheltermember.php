@@ -14,7 +14,7 @@ class Sheltermember extends Model implements HasMedia
 
     protected $table = "shelter_member";
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'last_name', 'mother_lastname', 'phone', 'email', 'state', 'city', 'colony' . 'address', 'postal_code', 'type_member', 'shelter_id'];
+    protected $fillable = ['name', 'last_name', 'phone', 'email', 'state', 'city', 'colony' . 'address', 'postal_code', 'type_member', 'shelter_id'];
     const TYPE_MEMBER_STAFF = 'Personal';
     const TYPE_MEMBER_DONOR = 'Donante';
     const TYPE_MEMBER_GODFATHER = 'Padrino';

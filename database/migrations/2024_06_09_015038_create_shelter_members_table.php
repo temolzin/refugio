@@ -18,7 +18,6 @@ class CreateSheltermembersTable extends Migration
                 $table->id();
                 $table->string('name');
                 $table->string('last_name');
-                $table->string('mother_lastname');
                 $table->string('phone');
                 $table->string('email');
                 $table->string('state');
