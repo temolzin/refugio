@@ -9,6 +9,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\VetController;
 
 
 
@@ -78,5 +79,10 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('shelters');
 
 Route::resource('shelters', ShelterController::class);
+
+Route::get('/vets', [VetController::class, 'vets.index'])->name('vets');
+
+Route::resource('vets', VetController::class);
+
 
 
