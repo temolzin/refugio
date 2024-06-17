@@ -27,7 +27,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="animal_id" class="form-label">Nombre(*)</label>
-                                            <select class="form-control @error('animal_id') is-invalid @enderror" id="animal_id" name="animal_id" required>
+                                            <select class="form-control select2 @error('animal_id') is-invalid @enderror" id="animal_id" name="animal_id" required>
                                                 <option value="">Seleccione una mascota</option>
                                                 @foreach ($animals as $animal)
                                                     <option value="{{ $animal->id }}" {{ old('animal_id') == $animal->id ? 'selected' : '' }}>
@@ -46,7 +46,7 @@
                                         <div class="form-group">
                                             <label for="date" class="form-label">Fecha de Fallecimiento(*)</label>
                                             <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" placeholder="Ingresa la fecha de muerte" value="{{ old('date') }}" required />
-                                            @error('type')
+                                            @error('date')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -57,7 +57,7 @@
                                         <div class="form-group">
                                             <label for="cause" class="form-label">Causa(*)</label>
                                             <input type="text" class="form-control @error('cause') is-invalid @enderror" name="cause" placeholder="Ingresa la causa de muerte" value="{{ old('cause') }}" required />
-                                            @error('description')
+                                            @error('cause')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

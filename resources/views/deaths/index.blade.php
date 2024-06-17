@@ -110,5 +110,11 @@
                 });
             }
         });
+
+        $('#create').on('shown.bs.modal', function() {
+            $('.select2').select2({
+                dropdownParent: $('#create')
+            });
+        });
     </script>
 @endsection
