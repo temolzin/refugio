@@ -45,7 +45,7 @@
                                                 {{ in_array($permission->id, $rolePermissions) ? 'checked' : '' }} class="form-check-input">
                                         </div>
                                     </td>
-                                    <td>{{ $permission->name }}</td>
+                                    <td>{{ $permission->description }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

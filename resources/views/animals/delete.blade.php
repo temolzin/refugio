@@ -12,7 +12,7 @@
                 @csrf
                 @method('DELETE')
                 <div class="modal-body text-center text-danger">
-                    ¿Estás seguro de eliminar la mascota <strong>{{ $animal->animal_name }}?</strong>
+                    ¿Estás seguro de eliminar la mascota <strong>{{ $animal->name }}?</strong>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

@@ -51,17 +51,19 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="animal_name" class="form-label">Nombre(*)</label>
+                                            <label for="name" class="form-label">Nombre(*)</label>
                                             <input type="text"
-                                                class="form-control @error('animal_name') is-invalid @enderror"
-                                                name="animal_name" placeholder="Ingresa el nombre del animal"
-                                                value="{{ old('animal_name', $animal->animal_name) }}" required />
-                                            @error('animal_name')
+                                                class="form-control @error('name') is-invalid @enderror"
+                                                name="name" placeholder="Ingresa el nombre del animal"
+                                                value="{{ old('name', $animal->name) }}" required />
+                                            @error('name')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="specie_id" class="form-label">Especie(*)</label>
                                             <select name="specie_id"
@@ -78,6 +80,8 @@
                                                 </span>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="breed" class="form-label">Raza</label>
                                             <input type="text"
@@ -104,6 +108,8 @@
                                                 </span>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="sex" class="form-label">Sexo</label>
                                             <select class="form-control @error('sex') is-invalid @enderror"
@@ -122,6 +128,8 @@
                                                 </span>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="color" class="form-label">Color</label>
                                             <input type="text"
@@ -135,9 +143,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="weight" class="form-label">Peso</label>
                                             <input type="number" step="0.01"
@@ -150,6 +156,8 @@
                                                 </span>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="is_sterilized" class="form-label">Esterilizado</label>
                                             <select name="is_sterilized"
@@ -164,6 +172,8 @@
                                                 </span>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="entry_date" class="form-label">Fecha de Ingreso</label>
                                             <input type="date"
@@ -196,6 +206,8 @@
                                                 </span>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="behavior" class="form-label">Comportamiento(*)</label>
                                             <select class="form-control @error('behavior') is-invalid @enderror"
@@ -214,8 +226,8 @@
                                                 </span>
                                             @enderror
                                         </div>
-
-
+                                    </div>
+                                    <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="history" class="form-label">Historia</label>
                                             <textarea class="form-control @error('history') is-invalid @enderror" name="history"

@@ -43,12 +43,12 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="animal_name" class="form-label">Nombre(*)</label>
+                                            <label for="name" class="form-label">Nombre(*)</label>
                                             <input type="text"
-                                                class="form-control @error('animal_name') is-invalid @enderror"
-                                                name="animal_name" placeholder="Ingresa el nombre del animal"
-                                                value="{{ old('animal_name') }}" required />
-                                            @error('animal_name')
+                                                class="form-control @error('name') is-invalid @enderror"
+                                                name="name" placeholder="Ingresa el nombre del animal"
+                                                value="{{ old('name') }}" required />
+                                            @error('name')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -74,8 +74,6 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="breed" class="form-label">Raza</label>
@@ -102,17 +100,16 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="sex" class="form-label">Sexo(*)</label>
                                             <select class="form-control @error('sex') is-invalid @enderror"
                                                 name="sex" required>
                                                 <option value="">Selecciona el sexo</option>
                                                 @foreach ($sexes as $sex)
-                                                    <option value="{{ $sex }}" {{ old('sex') == $animal->sex  ? 'selected' : '' }}>
-                                                        {{ $sex }}</option>
+                                                    <option value="{{ $sex }}" {{ old('sex') == $sex ? 'selected' : '' }}>
+                                                        {{ $sex }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                             @error('sex')
@@ -122,7 +119,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="color" class="form-label">Color</label>
                                             <input type="text"
@@ -136,9 +133,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="weight" class="form-label">Peso</label>
                                             <input type="number" step="0.01"
@@ -159,8 +154,8 @@
                                             <select class="form-control @error('is_sterilized') is-invalid @enderror"
                                                 name="is_sterilized" required>
                                                 <option value="">Selecciona una opción</option>
-                                                <option value="1" {{ old('is_sterilized') === '1' ? 'selected' : '' }}>Sí</option>
-                                                <option value="0" {{ old('is_sterilized') === '0' ? 'selected' : '' }}>No</option>
+                                                <option value="1" {{ old('is_sterilized') == '1' ? 'selected' : '' }}>Sí</option>
+                                                <option value="0" {{ old('is_sterilized') == '0' ? 'selected' : '' }}>No</option>
                                             </select>
                                             @error('is_sterilized')
                                                 <span class="invalid-feedback">
@@ -169,8 +164,6 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="entry_date" class="form-label">Fecha de Ingreso</label>
@@ -190,8 +183,9 @@
                                             <select class="form-control @error('origin') is-invalid @enderror" name="origin" required>
                                                 <option value="">Selecciona el origen</option>
                                                 @foreach ($origins as $origin)
-                                                <option value="{{ $origin }}" {{ old('origin') == $animal->origin  ? 'selected' : '' }}>
-                                                    {{ $origin }}</option>
+                                                    <option value="{{ $origin }}" {{ old('origin') == $origin ? 'selected' : '' }}>
+                                                        {{ $origin }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                             @error('origin')
@@ -201,16 +195,15 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="behavior" class="form-label">Comportamiento</label>
                                             <select class="form-control @error('behavior') is-invalid @enderror" name="behavior" required>
                                                 <option value="">Selecciona el comportamiento</option>
                                                 @foreach ($behaviors as $behavior)
-                                                <option value="{{ $behavior }}" {{ old('behavior') == $animal->behavior  ? 'selected' : '' }}>
-                                                    {{ $behavior }}</option>
+                                                    <option value="{{ $behavior }}" {{ old('behavior') == $behavior ? 'selected' : '' }}>
+                                                        {{ $behavior }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                             @error('behavior')
@@ -220,7 +213,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="history" class="form-label">Historia</label>
                                             <textarea class="form-control @error('history') is-invalid @enderror" name="history"
@@ -232,7 +225,6 @@
                                             @enderror
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>

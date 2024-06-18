@@ -20,7 +20,7 @@ class AnimalController extends Controller
         $behaviors = Animal::BEHAVIORS;
         $sexes = Animal::SEXES;
         $animals = Animal::where('shelter_id', $shelterId)->get();
-        $species = Specie::where('id_shelters', $shelterId)->get();
+        $species = Specie::where('shelter_id', $shelterId)->get();
 
         return view('animals.index', compact('animals', 'species','origins', 'behaviors','sexes'));
     }
@@ -35,18 +35,18 @@ class AnimalController extends Controller
     {
         $request->validate([
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'animal_name' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'specie_id' => 'required|exists:species,id',
             'breed' => 'required|string|max:255',
             'birth_date' => 'required|date',
-            'sex' => 'required|in:Macho,Hembra',
+            'sex' => 'required|in:' . implode(',', Animal::SEXES),
             'color' => 'required|string|max:255',
             'weight' => 'required|numeric',
-            'is_sterilized' => 'required|in:Si,No',
+            'is_sterilized' => 'required|boolean',
             'entry_date' => 'required|date',
-            'origin' => 'required|in:Rescatado,Transferido,Abandonado',
-            'behavior' => 'required|in:Amigable,Timido,Agresivo',
-            'history' => 'required|string',
+            'origin' => 'required|in:' . implode(',', Animal::ORIGINS),
+            'behavior' => 'required|in:' . implode(',', Animal::BEHAVIORS),
+            'history' => 'required',
         ]);
 
         $user = Auth::user();
@@ -55,7 +55,7 @@ class AnimalController extends Controller
         $animal = new Animal();
         $animal->specie_id = $request->specie_id;
         $animal->shelter_id = $shelter->id;
-        $animal->animal_name = $request->animal_name;
+        $animal->name = $request->name;
         $animal->breed = $request->breed;
         $animal->birth_date = $request->birth_date;
         $animal->sex = $request->sex;
@@ -90,18 +90,18 @@ class AnimalController extends Controller
     {
         $request->validate([
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
-            'animal_name' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'specie_id' => 'required|exists:species,id',
             'breed' => 'required|string|max:255',
             'birth_date' => 'required|date',
-            'sex' => 'required|in:Macho,Hembra',
+            'sex' => 'required|in:' . implode(',', Animal::SEXES),
             'color' => 'required|string|max:255',
             'weight' => 'required|numeric',
-            'is_sterilized' => 'required|in:Si,No',
+            'is_sterilized' => 'required|boolean',
             'entry_date' => 'required|date',
-            'origin' => 'required|in:Rescatado,Transferido,Abandonado',
-            'behavior' => 'required|in:Amigable,Timido,Agresivo',
-            'history' => 'required|string',
+            'origin' => 'required|in:' . implode(',', Animal::ORIGINS),
+            'behavior' => 'required|in:' . implode(',', Animal::BEHAVIORS),
+            'history' => 'required',
         ]);
 
         $animal->update($request->except('photo'));

@@ -23,32 +23,31 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-2">
                                     <div class="form-group">
                                         <label>ID</label>
                                         <input type="text" disabled class="form-control"
                                             value="{{ $vaccines->vaccine_id }}" />
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-5">
                                     <div class="form-group">
                                         <label>Nombre</label>
                                         <input type="text" disabled class="form-control"
                                             value="{{ $vaccines->name }}" />
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="form-group">
                                         <label>Tipo</label>
                                         <input type="text" disabled class="form-control"
                                             value="{{ $vaccines->type }}" />
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label>Descripción</label>
-                                        <input type="text" disabled class="form-control"
-                                            value="{{ $vaccines->description }}" />
+                                        <label for="description">Descripción</label>
+                                        <textarea class="form-control" readonly>{{ $vaccines->description }}</textarea>
                                     </div>
                                 </div>
                             </div>

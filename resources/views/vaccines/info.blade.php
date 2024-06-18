@@ -26,7 +26,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="" class="form-label">Nombre(*)</label>
                                             <input type="text"
@@ -40,7 +40,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-5">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="" class="form-label">Tipo (*)</label>
                                             <input type="text"
@@ -56,11 +56,9 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label for="" class="form-label">Descripción (*)</label>
-                                            <input type="text"
-                                                class="form-control @error('description') is-invalid @enderror"
-                                                name="description" id="" aria-describedby="helpId"
-                                                placeholder="" value="{{ $vaccines->description }}"required />
+                                            <label for="description" class="form-label">Descripción (*)</label>
+                                            <textarea class="form-control @error('description') is-invalid @enderror" name="description"
+                                                placeholder="Ingresa la historia del animal" required>{{ old('description', $vaccines->description) }}</textarea>
                                             @error('description')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
