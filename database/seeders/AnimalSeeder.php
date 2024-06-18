@@ -17,8 +17,8 @@ class AnimalSeeder extends Seeder
         DB::table('animals')->insert([
             [
                 'specie_id' => 1,
-                'Shelter_id' => 1,
-                'animal_name' => 'Max',
+                'shelter_id' => 1,
+                'name' => 'Max',
                 'breed' => 'Labrador Retriever',
                 'birth_date' => '2018-06-01',
                 'sex' => 'Macho',
@@ -32,8 +32,8 @@ class AnimalSeeder extends Seeder
             ],
             [
                 'specie_id' => 2,
-                'Shelter_id' => 1,
-                'animal_name' => 'Luna',
+                'shelter_id' => 1,
+                'name' => 'Luna',
                 'breed' => 'Persa',
                 'birth_date' => '2020-03-15',
                 'sex' => 'Hembra',
@@ -47,8 +47,8 @@ class AnimalSeeder extends Seeder
             ],
             [
                 'specie_id' => 4,
-                'Shelter_id' => 2,
-                'animal_name' => 'Rocky',
+                'shelter_id' => 2,
+                'name' => 'Rocky',
                 'breed' => 'Bulldog',
                 'birth_date' => '2017-11-11',
                 'sex' => 'Macho',
@@ -62,8 +62,8 @@ class AnimalSeeder extends Seeder
             ],
             [
                 'specie_id' => 6,
-                'Shelter_id' => 2,
-                'animal_name' => 'Bella',
+                'shelter_id' => 2,
+                'name' => 'Bella',
                 'breed' => 'Cacatúa',
                 'birth_date' => '2019-08-22',
                 'sex' => 'Hembra',

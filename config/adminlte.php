@@ -358,6 +358,7 @@ return [
         [
             'text' => 'Usuarios',
             'icon' => 'fas fa-fw fa-users',
+            'can' => 'viewShelterUsers',
             'submenu' => [
                 [
                     'text' => 'Padrino',

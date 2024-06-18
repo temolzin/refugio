@@ -44,11 +44,11 @@ Route::group(['middleware' => ['auth']], function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/users', [UserController::class, 'index'])->middleware('can:viewUser')->name('users.index');
-    Route::resource('users', UserController::class);
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::resource('users', UserController::class)->middleware('can:viewUser');
 
-    Route::get('/species', [SpecieController::class, 'index'])->middleware('can:viewSpecie')->name('species');
-    Route::resource('species',SpecieController::class);
+    Route::get('/species', [SpecieController::class, 'index'])->name('species');
+    Route::resource('species',SpecieController::class)->middleware('can:viewSpecie');
 
     Route::resource('roles', RoleController::class)->middleware('can:viewRol');
 
@@ -61,16 +61,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('shelterMember',ShelterMemberController::class);
 
 
-    Route::get('/animals', [AnimalController::class, 'index'])->middleware('can:viewAnimal')->name('animals.index');
-    Route::resource('animals', AnimalController::class);
+    Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
+    Route::resource('animals', AnimalController::class)->middleware('can:viewAnimal');
 
-    Route::post('login', [AuthController::class, 'login']);
 
-    Route::get('/vaccines', [VaccineController::class, 'index'])->middleware('can:viewVaccine')->name('vaccines');
-    Route::resource('vaccines', VaccineController::class);
+    Route::get('/vaccines', [VaccineController::class, 'index'])->name('vaccines');
+    Route::resource('vaccines', VaccineController::class)->middleware('can:viewVaccine');
 
-    Route::get('/shelters', [ShelterController::class, 'shelters.index'])->middleware('can:viewShelter')->name('shelters');
-    Route::resource('shelters', ShelterController::class);
+    Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('shelters');
+    Route::resource('shelters', ShelterController::class)->middleware('can:viewShelter');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 

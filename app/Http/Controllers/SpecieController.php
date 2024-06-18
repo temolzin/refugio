@@ -20,7 +20,7 @@ class SpecieController extends Controller
 
         $shelterId = $user->shelter->id;
 
-        $species = Specie::where('id_shelters', $shelterId)
+        $species = Specie::where('shelter_id', $shelterId)
             ->where(function ($query) use ($request) {
                 $text = trim($request->get('text'));
                 $query->where('name', 'LIKE', '%' . $text . '%')
@@ -43,7 +43,7 @@ class SpecieController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'description' => 'required',
         ]);
 
         $user = Auth::user();
@@ -66,8 +66,8 @@ class SpecieController extends Controller
         }
 
         $species->name = $request->input('name');
-        $species->description = $request->input('description');
-        $species->id_shelters = $shelter->id;
+        $species->description = $request->description;
+        $species->shelter_id = $shelter->id;
 
         $species->save();
 
@@ -96,12 +96,12 @@ class SpecieController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'description' => 'required',
         ]);
         $species = Specie::find($id);
         if ($species) {
             $species->name = $request->input('name');
-            $species->description = $request->input('description');
+            $species->description = $request->description;
             $species->save();
         }
         return redirect()->back()->with('success', 'Especie actualizada correctamente');

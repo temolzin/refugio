@@ -23,7 +23,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="" class="form-label">Nombre(*)</label>
                                             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="" aria-describedby="helpId" placeholder="" value="{{$species->name}}" required/>
@@ -34,13 +34,14 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label for="" class="form-label">Descripción(*)</label>
-                                            <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="" aria-describedby="helpId" placeholder="" value="{{$species->description}}" required/>
+                                            <label for="description" class="form-label">Descripción</label>
+                                            <textarea class="form-control @error('history') is-invalid @enderror" name="description"
+                                                placeholder="Ingresa la historia del animal" required>{{ old('history',$species->description) }}</textarea>
                                             @error('description')
                                                 <span class="invalid-feedback">
-                                                    <strong>{{$message}}</strong>
+                                                    <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
