@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
@@ -8,9 +7,9 @@ use App\Http\Controllers\VaccineController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
+use App\Http\Controllers\ShelterMemberController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\VetController;
-
 
 
 /*
@@ -50,7 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
     Route::resource('users', UserController::class);
 
-    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->middleware('can:ver usuario')->name('users');
+    Route::get('/users', [UserController::class, 'index'])->middleware('can:ver usuario')->name('users.index');
 
 
     
@@ -63,9 +62,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
 
     Route::post('/users/{user}/updateRole', [UserController::class, 'updateRole'])->name('users.updateRole'); 
+    
+    Route::get('/godfather', [ShelterMemberController::class, 'godfatherIndex'])->name('shelterMembers.godfather');
+    Route::get('/adopter', [ShelterMemberController::class, 'adopterIndex'])->name('shelterMembers.adopter');
+    Route::get('/donor', [ShelterMemberController::class, 'donorIndex'])->name('shelterMembers.donor');
+    Route::get('/staff', [ShelterMemberController::class, 'staffIndex'])->name('shelterMembers.staff');
+    Route::resource('shelterMember',ShelterMemberController::class);
 
     Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
     Route::resource('animals', AnimalController::class);
+
   
 });
 
@@ -80,10 +86,7 @@ Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('she
 
 Route::resource('shelters', ShelterController::class);
 
+
 Route::get('/vets', [VetController::class, 'vets.index'])->name('vets');
 
 Route::resource('vets', VetController::class);
-
-
-
-
