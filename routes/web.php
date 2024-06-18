@@ -7,8 +7,8 @@ use App\Http\Controllers\VaccineController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
+use App\Http\Controllers\ShelterMemberController;
 use App\Http\Controllers\AnimalController;
-
 
 
 /*
@@ -53,9 +53,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class)->middleware('can:viewRol');
 
     Route::post('/users/{user}/updateRole', [UserController::class, 'updateRole'])->middleware('can:viewUser')->name('users.updateRole');
+  
+    Route::get('/godfather', [ShelterMemberController::class, 'godfatherIndex'])->name('shelterMembers.godfather');
+    Route::get('/adopter', [ShelterMemberController::class, 'adopterIndex'])->name('shelterMembers.adopter');
+    Route::get('/donor', [ShelterMemberController::class, 'donorIndex'])->name('shelterMembers.donor');
+    Route::get('/staff', [ShelterMemberController::class, 'staffIndex'])->name('shelterMembers.staff');
+    Route::resource('shelterMember',ShelterMemberController::class);
+
 
     Route::get('/animals', [AnimalController::class, 'index'])->middleware('can:viewAnimal')->name('animals.index');
     Route::resource('animals', AnimalController::class);
+
+    Route::post('login', [AuthController::class, 'login']);
 
     Route::get('/vaccines', [VaccineController::class, 'index'])->middleware('can:viewVaccine')->name('vaccines');
     Route::resource('vaccines', VaccineController::class);
