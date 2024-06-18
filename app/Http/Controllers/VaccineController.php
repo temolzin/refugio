@@ -43,7 +43,7 @@ class VaccineController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'type' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'description' => 'required',
         ]);
 
         $user = Auth::user();
@@ -67,7 +67,7 @@ class VaccineController extends Controller
 
         $vaccines->name = $request->input('name');
         $vaccines->type = $request->input('type');
-        $vaccines->description = $request->input('description');
+        $vaccines->description = $request->description;
         $vaccines->shelter_id = $shelter->id;
 
         $vaccines->save();
@@ -99,13 +99,13 @@ class VaccineController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'type' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+            'description' => 'required',
         ]);
         $vaccines = Vaccine::find($vaccine_id);
         if ($vaccines) {
             $vaccines->name = $request->input('name');
             $vaccines->type = $request->input('type');
-            $vaccines->description = $request->input('description');
+            $vaccines->description = $request->description;
             $vaccines->save();
         }
         return redirect()->back()->with('success', 'Vacuna actualizada correctamente');

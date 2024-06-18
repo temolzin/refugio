@@ -16,12 +16,12 @@ class CreateSpeciesTable extends Migration
         Schema::create('species', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
-            $table->unsignedBigInteger('id_shelters');
+            $table->text('description');
+            $table->unsignedBigInteger('shelter_id');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('id_shelters')->references('id')->on('shelters')->onDelete('cascade');
+            $table->foreign('shelter_id')->references('id')->on('shelters')->onDelete('cascade');
         });
     }
 

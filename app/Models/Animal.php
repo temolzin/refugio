@@ -18,7 +18,7 @@ class Animal extends Model implements HasMedia
     protected $table = "animals";
     protected $primaryKey = 'id';
     protected $fillable = [
-        'animal_name',
+        'name',
         'breed',
         'birth_date',
         'sex',
