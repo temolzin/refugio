@@ -322,34 +322,38 @@ return [
             'text' => 'Usuarios',
             'url' => '/users',
             'icon' => 'fas fa-fw fa-user',
-            'can'  =>'ver usuario'
+            'can'  =>'viewUser'
         ],
         [
             'text' => 'Especies',
             'url' => '/species',
             'icon' => 'fas fa-paw',
+            'can'  =>'viewSpecie'
         ],
         [
             'text' => 'Vacunas',
             'icon' => 'fas fa-fw fa-syringe',
             'url' => '/vaccines',
+            'can' => 'viewVaccine'
         ],
         [
             'text' => 'Albergues',
             'url' => '/shelters',
             'icon' => 'fa fa-home',
+            'can' => 'viewShelter',
         ],
         [
             'text' => 'Roles',
             'url' => '/roles',
             'icon' => 'fas fa-users-cog fa-fw',
-            'can'  =>'ver rol'
+            'can'  =>'viewRol'
         ],
         
         [
             'text' => 'Mascotas',
             'url' => '/animals',
             'icon' => 'fas fa-dog fa-fw',
+            'can'  =>'viewAnimal'
         ],
         [
             'text' => 'Usuarios',

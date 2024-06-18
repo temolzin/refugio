@@ -111,8 +111,9 @@
                                                 name="sex" required>
                                                 <option value="">Selecciona el sexo</option>
                                                 @foreach ($sexes as $sex)
-                                                    <option value="{{ $sex }}" {{ old('sex') == $animal->sex  ? 'selected' : '' }}>
-                                                        {{ $sex }}</option>
+                                                    <option value="{{ $sex }}" {{ old('sex') == $sex ? 'selected' : '' }}>
+                                                        {{ $sex }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                             @error('sex')
@@ -159,8 +160,8 @@
                                             <select class="form-control @error('is_sterilized') is-invalid @enderror"
                                                 name="is_sterilized" required>
                                                 <option value="">Selecciona una opción</option>
-                                                <option value="1" {{ old('is_sterilized') === '1' ? 'selected' : '' }}>Sí</option>
-                                                <option value="0" {{ old('is_sterilized') === '0' ? 'selected' : '' }}>No</option>
+                                                <option value="1" {{ old('is_sterilized') == '1' ? 'selected' : '' }}>Sí</option>
+                                                <option value="0" {{ old('is_sterilized') == '0' ? 'selected' : '' }}>No</option>
                                             </select>
                                             @error('is_sterilized')
                                                 <span class="invalid-feedback">
@@ -190,8 +191,9 @@
                                             <select class="form-control @error('origin') is-invalid @enderror" name="origin" required>
                                                 <option value="">Selecciona el origen</option>
                                                 @foreach ($origins as $origin)
-                                                <option value="{{ $origin }}" {{ old('origin') == $animal->origin  ? 'selected' : '' }}>
-                                                    {{ $origin }}</option>
+                                                    <option value="{{ $origin }}" {{ old('origin') == $origin ? 'selected' : '' }}>
+                                                        {{ $origin }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                             @error('origin')
@@ -209,8 +211,9 @@
                                             <select class="form-control @error('behavior') is-invalid @enderror" name="behavior" required>
                                                 <option value="">Selecciona el comportamiento</option>
                                                 @foreach ($behaviors as $behavior)
-                                                <option value="{{ $behavior }}" {{ old('behavior') == $animal->behavior  ? 'selected' : '' }}>
-                                                    {{ $behavior }}</option>
+                                                    <option value="{{ $behavior }}" {{ old('behavior') == $behavior ? 'selected' : '' }}>
+                                                        {{ $behavior }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                             @error('behavior')
