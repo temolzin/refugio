@@ -69,7 +69,7 @@
                                                         <td>{{ $animal->sex }}</td>
                                                         <td>{{ $animal->color }}</td>
                                                         <td>{{ $animal->weight }}</td>
-                                                        <td>{{ $animal->is_sterilized }}</td>
+                                                        <td>{{ $animal->is_sterilized == 1 ? 'Sí' : 'No' }}</td>
                                                         <td>{{ $animal->entry_date }}</td>
                                                         <td>{{ $animal->origin }}</td>
                                                         <td>{{ $animal->behavior }}</td>
