@@ -80,7 +80,7 @@ class VetController extends Controller
             'animal_id' => 'required|exists:animals,id',
             'appointment_date_and_time' => 'required|date',
             'reason_for_appointment' => 'required|string|max:255',
-            'appointment_status' => 'required|in:Pendiente,Finalizada,Cancelada',
+            'appointment_status' => 'required|in:' .implode(',',Vet::APPOINTMENT_STATUS),
             'observations' => 'nullable|string|max:255',
         ]);
 

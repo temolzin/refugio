@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <label>ID del Animal</label>
                                         <input type="text" disabled class="form-control"
-                                            value="{{ $vet->animal->animal_name }}" />
+                                            value="{{ $vet->animal->name }}" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

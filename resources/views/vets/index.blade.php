@@ -41,7 +41,7 @@
                                             @foreach($vets as $vet)
                                                 <tr>
                                                     <td scope="row">{{$vet->id}}</td>
-                                                    <td>{{ $vet->animal->animal_name }}</td>
+                                                    <td>{{ $vet->animal->name }}</td>
                                                     <td>{{ $vet->appointment_date_and_time }}</td>
                                                     <td>{{ $vet->reason_for_appointment }}</td>
                                                     <td>{{ $vet->appointment_status }}</td>

@@ -4,7 +4,7 @@
             <div class="card-success">
                 <div class="card-header">
                     <div class="d-sm-flex align-items-center justify-content-between">
-                        <h4 class="card-title">Agregar veterinaria <small> &nbsp;(*) Campos requeridos</small></h4>
+                        <h4 class="card-title">Agregar Cita Veterinaria <small> &nbsp;(*) Campos requeridos</small></h4>
                         <button type="button" class="close d-sm-inline-block text-white" data-dismiss="modal"
                             aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -34,7 +34,7 @@
                                                 <option value="">Seleccione un animal</option>
                                                 @foreach ($animals as $animal)
                                                     <option value="{{ $animal->id }}" {{ old('animal_id') == $animal->id ? 'selected' : '' }}>
-                                                        {{ $animal->animal_name }}
+                                                        {{ $animal->name }}
                                                     </option>
                                                 @endforeach
                                             </select>

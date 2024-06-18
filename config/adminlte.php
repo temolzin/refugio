@@ -349,8 +349,7 @@ return [
             'url' => '/roles',
             'icon' => 'fas fa-users-cog fa-fw',
             'can'  =>'ver rol'
-        ],
-        
+        ],       
         [
             'text' => 'Mascotas',
             'url' => '/animals',
