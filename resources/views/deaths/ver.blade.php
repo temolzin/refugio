@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Nombre del Animal</label>
-                                        <input type="text" disabled class="form-control" value="{{ $death->animal->animal_name }}" />
+                                        <input type="text" disabled class="form-control" value="{{ $death->animal->name }}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Fecha de Fallecimiento</label>

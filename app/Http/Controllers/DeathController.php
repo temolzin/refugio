@@ -65,13 +65,13 @@ class DeathController extends Controller
     public function update(Request $request, $death_id)
     {
         $request->validate([
-            'animal_name' => 'required|string|max:255',
+            'animal_id' => 'required|exists:animals,id',
             'date' => 'required|date',
             'cause' => 'required|string|max:255',
         ]);
 
         $death = Death::findOrFail($death_id);
-        $death->animal->animal_name = $request->input('animal_name');
+        $death->animal_id = $request->input('animal_id');
         $death->date = $request->input('date');
         $death->cause = $request->input('cause');
         $death->animal->save();

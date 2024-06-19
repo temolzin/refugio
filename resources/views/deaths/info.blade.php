@@ -38,13 +38,19 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
-                                        <div class="form-group">
-                                            <label for="animal_name" class="form-label">Nombre(*)</label>
-                                            <input type="text"
-                                                class="form-control @error('animal_name') is-invalid @enderror"
-                                                name="animal_name" id="animal_name"
-                                                value="{{ $death->animal->animal_name }}" required />
-                                            @error('animal_name')
+                                        <<div class="form-group">
+                                            <label for="animal_id" class="form-label">Nombre (*)</label>
+                                            <select id="animal_id_select"
+                                                class="form-control select2 @error('animal_id') is-invalid @enderror"
+                                                name="animal_id" required>
+                                                <option value="">Seleccione una mascota</option>
+                                                @foreach ($animals as $animal)
+                                                    <option value="{{ $animal->id }}" {{ old('animal_id') == $animal->id ? 'selected' : '' }}>
+                                                        {{ $animal->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('animal_id')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
