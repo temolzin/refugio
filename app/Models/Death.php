@@ -16,7 +16,6 @@ class Death extends Model
     protected $guarded= [];
     public $timestamps = false;
 
-    // Relación con el modelo Animal
     public function animal()
     {
         return $this->belongsTo(Animal::class, 'animal_id');

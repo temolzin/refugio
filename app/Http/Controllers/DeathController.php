@@ -15,7 +15,7 @@ class DeathController extends Controller
         $shelter = $user->shelter;
         $shelterId = $shelter->id;
 
-        $animals = Animal::where('Shelter_id', $shelterId)->get();
+        $animals = Animal::where('shelter_id', $shelterId)->get();
         $deaths = Death::where('shelter_id', $shelterId)->get();
 
         return view('deaths.index', compact('deaths', 'animals'));

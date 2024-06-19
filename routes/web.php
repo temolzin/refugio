@@ -78,6 +78,6 @@ Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('she
 
 Route::resource('shelters', ShelterController::class);
 
-Route::get('/deaths', [App\Http\Controllers\DeathController::class, 'index'])->name('deaths');
+Route::get('/deaths', [DeathController::class, 'index'])->name('deaths');
 
 Route::resource('deaths', DeathController::class);
