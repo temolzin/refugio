@@ -62,15 +62,15 @@
                                                             </button>
                                                         </div>
                                                     </td>
-                                                    @include('vetappointments.delete')
+                                                    @include('vetAppointments.delete')
                                                 </tr>
                                                 @include('vetappointments.show')
-                                                @include('vetappointments.edit')
+                                                @include('vetAppointments.edit')
                                             @endforeach
                                         @endif
                                     </tbody>
                                 </table>
-                                @include('vetappointments.create')
+                                @include('vetAppointments.create')
                             </div>
                         </div>
                     </div>

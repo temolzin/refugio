@@ -19,7 +19,7 @@ class VetAppointmentController extends Controller
         $animals = Animal::where('shelter_id', $shelterId)->get();
         $vets = VetAppointment::all();
 
-        return view('vetappointments.index', compact('animals', 'vets', 'status'));
+        return view('vetAppointments.index', compact('animals', 'vets', 'status'));
     }
 
     public function list()
@@ -63,7 +63,7 @@ class VetAppointmentController extends Controller
     public function edit($id)
     {
         $vet = VetAppointment::find($id);
-        return view('vetappointments.edit', compact('vet'));
+        return view('vetAppointments.edit', compact('vet'));
     }
 
     public function create()
@@ -71,7 +71,7 @@ class VetAppointmentController extends Controller
         $status = VetAppointment::APPOINTMENT_STATUS;
         $vet = new VetAppointment();
 
-        return view('vetappointments.create', compact('vet', 'status'));
+        return view('vetAppointments.create', compact('vet', 'status'));
     }
 
     public function update(Request $request, $id)
@@ -94,6 +94,6 @@ class VetAppointmentController extends Controller
     public function show($id)
     {
         $vet = VetAppointment::find($id);
-        return view('vetappointments.show', compact('vet'));
+        return view('vetAppointments.show', compact('vet'));
     }
 }
