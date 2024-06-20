@@ -9,6 +9,7 @@ use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
 use App\Http\Controllers\ShelterMemberController;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\VetAppointmentController;
 
 
 /*
@@ -73,4 +74,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
+Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('shelters');
+
+Route::resource('shelters', ShelterController::class);
+
+
+Route::get('/vets', [VetAppointmentController::class, 'vets.index'])->name('vets');
+
+Route::resource('vets', VetAppointmentController::class);
+
 });
+
