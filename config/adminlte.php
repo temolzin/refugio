@@ -345,7 +345,7 @@ return [
         [
             'text' => 'Citas Veterinarias',
             'url' => '/vets',
-            'icon' => 'fa fa-calendar',           
+            'icon' => 'fa fa-calendar',
         ],
         [
             'text' => 'Roles',
@@ -358,6 +358,11 @@ return [
             'url' => '/animals',
             'icon' => 'fas fa-dog fa-fw',
             'can'  =>'viewAnimal'
+        ],
+        [
+            'text' => 'Fallecimientos',
+            'url' => '/deaths',
+            'icon' => 'fas fa-fw fa-skull',
         ],
         [
             'text' => 'Usuarios',
