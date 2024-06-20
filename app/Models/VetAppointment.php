@@ -18,12 +18,11 @@ class VetAppointment extends Model
         'observation'
     ];
 
+    const PENDING ='Pendiente';
+    const COMPLETED ='Finalizada'; 
+    const CANCELED ='Cancelada';
 
-    const STATUS_EARRING ='Pendiente';
-    const STATUS_COMPLETED ='Finalizada'; 
-    const STATUS_CANCELLED ='Cancelada';
-
-    const APPOINTMENT_STATUS = [self::STATUS_EARRING, self::STATUS_COMPLETED, self::STATUS_CANCELLED];
+    const APPOINTMENT_STATUS = [self::PENDING, self::COMPLETED, self::CANCELED];
     protected $dates = ['deleted_at'];
 
     public function animal()
