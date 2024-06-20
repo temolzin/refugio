@@ -42,10 +42,10 @@
                                                 <tr>
                                                     <td scope="row">{{$vet->id}}</td>
                                                     <td>{{ $vet->animal->name }}</td>
-                                                    <td>{{ $vet->appointment_date_and_time }}</td>
-                                                    <td>{{ $vet->reason_for_appointment }}</td>
-                                                    <td>{{ $vet->appointment_status }}</td>
-                                                    <td>{{ $vet->observations }}</td>
+                                                    <td>{{ $vet->schedule_date }}</td>
+                                                    <td>{{ $vet->reason }}</td>
+                                                    <td>{{ $vet->status }}</td>
+                                                    <td>{{ $vet->observation }}</td>
                                                     <td>
                                                         <div class="btn-group" role="group" aria-label="Opciones">
                                                             <button type="button" class="btn btn-info mr-2" data-toggle="modal"

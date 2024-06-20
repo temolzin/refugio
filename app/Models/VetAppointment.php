@@ -12,10 +12,10 @@ class VetAppointment extends Model
 
     protected $fillable = [
         'animal_id',
-        'appointment_date_and_time',
-        'reason_for_appointment',
-        'appointment_status',
-        'observations'
+        'schedule_date',
+        'reason',
+        'status',
+        'observation'
     ];
 
 

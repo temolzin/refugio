@@ -42,28 +42,28 @@
                                     <div class="form-group">
                                         <label>Fecha y Hora de la Cita</label>
                                         <input type="text" disabled class="form-control"
-                                            value="{{ $vet->appointment_date_and_time }}" />
+                                            value="{{ $vet->schedule_date }}" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Razón de la Cita</label>
                                         <input type="text" disabled class="form-control"
-                                            value="{{ $vet->reason_for_appointment }}" />
+                                            value="{{ $vet->reason }}" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Estado de la Cita</label>
                                         <input type="text" disabled class="form-control"
-                                            value="{{ $vet->appointment_status }}" />
+                                            value="{{ $vet->status }}" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Observaciones</label>
                                         <input type="text" disabled class="form-control"
-                                            value="{{ $vet->observations }}" />
+                                            value="{{ $vet->observation }}" />
                                     </div>
                                 </div>
                             </div>

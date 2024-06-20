@@ -17,10 +17,10 @@ class CreateVetAppointmentsTable extends Migration
         Schema::create('vet_appointments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('animal_id');
-            $table->datetime('appointment_date_and_time');
-            $table->string('reason_for_appointment');
-            $table->enum('appointment_status', VetAppointment::APPOINTMENT_STATUS)->nullable();
-            $table->string('observations')->nullable();
+            $table->datetime('schedule_date');
+            $table->string('reason');
+            $table->enum('status', VetAppointment::APPOINTMENT_STATUS)->nullable();
+            $table->string('observation')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

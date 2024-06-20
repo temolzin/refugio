@@ -32,19 +32,19 @@ class VetAppointmentController extends Controller
     {
         $request->validate([
             'animal_id' => 'required|exists:animals,id',
-            'appointment_date_and_time' => 'required|date',
-            'reason_for_appointment' => 'required|string|max:255',
-            'appointment_status' => 'required|in:' .implode(',',VetAppointment::APPOINTMENT_STATUS),
-            'observations' => 'nullable|string|max:255',
+            'schedule_date' => 'required|date',
+            'reason' => 'required|string|max:255',
+            'status' => 'required|in:' .implode(',',VetAppointment::APPOINTMENT_STATUS),
+            'observation' => 'nullable|string|max:255',
 
         ]);
 
         $vet = new VetAppointment();
         $vet->animal_id = $request->input('animal_id');
-        $vet->appointment_date_and_time = $request->input('appointment_date_and_time');
-        $vet->reason_for_appointment = $request->input('reason_for_appointment');
-        $vet->appointment_status = $request->input('appointment_status');
-        $vet->observations = $request->input('observations');
+        $vet->schedule_date = $request->input('schedule_date');
+        $vet->reason = $request->input('reason');
+        $vet->status = $request->input('status');
+        $vet->observation = $request->input('observation');
 
         $vet->save();
 
@@ -78,10 +78,10 @@ class VetAppointmentController extends Controller
     {
         $request->validate([
             'animal_id' => 'required|exists:animals,id',
-            'appointment_date_and_time' => 'required|date',
-            'reason_for_appointment' => 'required|string|max:255',
-            'appointment_status' => 'required|in:' .implode(',',VetAppointment::APPOINTMENT_STATUS),
-            'observations' => 'nullable|string|max:255',
+            'schedule_date' => 'required|date',
+            'reason' => 'required|string|max:255',
+            'status' => 'required|in:' .implode(',',VetAppointment::APPOINTMENT_STATUS),
+            'observation' => 'nullable|string|max:255',
         ]);
 
         $vet = VetAppointment::find($id);

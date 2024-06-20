@@ -48,13 +48,13 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="appointment_date_and_time" class="form-label">Fecha y Hora de la
+                                            <label for="schedule_date" class="form-label">Fecha y Hora de la
                                                 Cita(*)</label>
                                             <input type="datetime-local"
-                                                class="form-control @error('appointment_date_and_time') is-invalid @enderror"
-                                                name="appointment_date_and_time" id="appointment_date_and_time"
-                                                value="{{ $vet->appointment_date_and_time }}" required />
-                                            @error('appointment_date_and_time')
+                                                class="form-control @error('schedule_date') is-invalid @enderror"
+                                                name="schedule_date" id="schedule_date"
+                                                value="{{ $vet->schedule_date }}" required />
+                                            @error('schedule_date')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -63,13 +63,13 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label for="reason_for_appointment" class="form-label">Razón de la
+                                            <label for="reason" class="form-label">Razón de la
                                                 Cita(*)</label>
                                             <input type="text"
-                                                class="form-control @error('reason_for_appointment') is-invalid @enderror"
-                                                name="reason_for_appointment" id="reason_for_appointment"
-                                                value="{{ $vet->reason_for_appointment }}" required />
-                                            @error('reason_for_appointment')
+                                                class="form-control @error('reason') is-invalid @enderror"
+                                                name="reason" id="reason"
+                                                value="{{ $vet->reason }}" required />
+                                            @error('reason')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -78,20 +78,20 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label for="appointment_status" class="form-label">Estado de la
+                                            <label for="status" class="form-label">Estado de la
                                                 Cita(*)</label>
                                             <select
-                                                class="form-control @error('appointment_status') is-invalid @enderror"
-                                                name="appointment_status" id="appointment_status" required
+                                                class="form-control @error('status') is-invalid @enderror"
+                                                name="status" id="status" required
                                                 style="height: 43px;">
                                                 <option value="">Seleccione un estado</option>
                                                 @foreach($status as $statu)
-                                                    <option value="{{ $statu }}" {{ old('appointment_status', $vet->appointment_status ?? '') == $statu ? 'selected' : '' }}>
+                                                    <option value="{{ $statu }}" {{ old('status', $vet->status ?? '') == $statu ? 'selected' : '' }}>
                                                         {{ $statu }}
                                                     </option>
                                                 @endforeach
                                             </select>
-                                            @error('appointment_status')
+                                            @error('status')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -100,11 +100,11 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label for="observations" class="form-label">Observaciones</label>
-                                            <textarea class="form-control @error('observations') is-invalid @enderror"
-                                                name="observations" id="observations"
-                                                rows="3">{{ $vet->observations }}</textarea>
-                                            @error('observations')
+                                            <label for="observation" class="form-label">Observaciones</label>
+                                            <textarea class="form-control @error('observation') is-invalid @enderror"
+                                                name="observation" id="observation"
+                                                rows="3">{{ $vet->observation }}</textarea>
+                                            @error('observation')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
