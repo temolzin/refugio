@@ -40,8 +40,8 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="animal_name">Nombre:</label>
-                                        <input type="text" class="form-control" value="{{ $animal->animal_name }}"
+                                        <label for="name">Nombre:</label>
+                                        <input type="text" class="form-control" value="{{ $animal->name }}"
                                             readonly>
                                     </div>
                                 </div>
@@ -65,20 +65,20 @@
                                         <input type="text" class="form-control" value="{{ $animal->age }}" readonly>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="sex">Sexo:</label>
                                         <input type="text" class="form-control" value="{{ $animal->sex }}" readonly>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="color">Color:</label>
                                         <input type="text" class="form-control" value="{{ $animal->color }}"
                                             readonly>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div class="form-group">
                                         <label for="weight">Peso:</label>
                                         <input type="text" class="form-control" value="{{ $animal->weight }}"
@@ -88,8 +88,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="is_sterilized">Esterilizado:</label>
-                                        <input type="text" class="form-control" value="{{ $animal->is_sterilized }}"
-                                            readonly>
+                                        <input type="text" class="form-control" value="{{ $animal->is_sterilized == 1 ? 'Sí' : 'No' }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -113,7 +112,7 @@
                                             readonly>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="history">Historia:</label>
                                         <textarea class="form-control" readonly>{{ $animal->history }}</textarea>

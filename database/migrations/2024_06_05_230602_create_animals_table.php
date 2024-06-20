@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Animal;
 
 class CreateAnimalsTable extends Migration
 {
@@ -16,22 +17,22 @@ class CreateAnimalsTable extends Migration
         Schema::create('animals', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('specie_id');
-            $table->unsignedBigInteger('Shelter_id')->nullable();
-            $table->string('animal_name');
+            $table->unsignedBigInteger('shelter_id')->nullable();
+            $table->string('name');
             $table->string('breed')->nullable();
             $table->date('birth_date')->nullable();
-            $table->enum('sex', ['Macho', 'Hembra'])->nullable();
+            $table->enum('sex', Animal::SEXES)->nullable();
             $table->string('color')->nullable();
             $table->decimal('weight')->nullable();
-            $table->enum('is_sterilized', ['Si', 'No'])->nullable();
+            $table->boolean('is_sterilized')->nullable();
             $table->date('entry_date')->nullable();
-            $table->enum('origin', ['Rescatado', 'Transferido', 'Abandonado'])->nullable();
-            $table->enum('behavior', ['Amigable', 'Timido', 'Agresivo'])->nullable();
-            $table->string('history')->nullable();
+            $table->enum('origin', Animal::ORIGINS)->nullable();
+            $table->enum('behavior', Animal::BEHAVIORS)->nullable();
+            $table->text('history')->nullable();
             $table->softDeletes();
 
             $table->foreign('specie_id')->references('id')->on('species')->onDelete('cascade');
-            $table->foreign('Shelter_id')->references('id')->on('shelters')->onDelete('cascade');
+            $table->foreign('shelter_id')->references('id')->on('shelters')->onDelete('cascade');
         });
     }
 

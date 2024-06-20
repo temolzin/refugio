@@ -53,7 +53,7 @@
                                                                 for="permission{{ $permission->id }}"></label>
                                                         </div>
                                                     </td>
-                                                    <td>{{ $permission->name }}</td>
+                                                    <td>{{ $permission->description }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

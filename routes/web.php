@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
@@ -8,8 +7,10 @@ use App\Http\Controllers\VaccineController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
+use App\Http\Controllers\ShelterMemberController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\DeathController;
+use App\Http\Controllers\VetAppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,40 +45,37 @@ Route::group(['middleware' => ['auth']], function () {
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::resource('users', UserController::class)->middleware('can:viewUser');
 
-    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
-    Route::resource('users', UserController::class);
+    Route::get('/species', [SpecieController::class, 'index'])->name('species');
+    Route::resource('species',SpecieController::class)->middleware('can:viewSpecie');
 
-    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->middleware('can:ver usuario')->name('users');
+    Route::resource('roles', RoleController::class)->middleware('can:viewRol');
 
-
-    
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-
-    Route::get('/species', [App\Http\Controllers\SpecieController::class, 'index'])->name('species');
-    Route::resource('species',SpecieController::class);
-
-    Route::resource('roles', RoleController::class);
-
-    Route::post('/users/{user}/updateRole', [UserController::class, 'updateRole'])->name('users.updateRole'); 
+    Route::post('/users/{user}/updateRole', [UserController::class, 'updateRole'])->middleware('can:viewUser')->name('users.updateRole');
+  
+    Route::get('/godfather', [ShelterMemberController::class, 'godfatherIndex'])->name('shelterMembers.godfather');
+    Route::get('/adopter', [ShelterMemberController::class, 'adopterIndex'])->name('shelterMembers.adopter');
+    Route::get('/donor', [ShelterMemberController::class, 'donorIndex'])->name('shelterMembers.donor');
+    Route::get('/staff', [ShelterMemberController::class, 'staffIndex'])->name('shelterMembers.staff');
+    Route::resource('shelterMember',ShelterMemberController::class);
 
     Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
-    Route::resource('animals', AnimalController::class);
-  
+    Route::resource('animals', AnimalController::class)->middleware('can:viewAnimal');
+
+    Route::get('/vaccines', [VaccineController::class, 'index'])->name('vaccines');
+    Route::resource('vaccines', VaccineController::class)->middleware('can:viewVaccine');
+
+    Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('shelters');
+    Route::resource('shelters', ShelterController::class)->middleware('can:viewShelter');
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/vetAppointments', [VetAppointmentController::class, 'vetAppointments.index'])->name('vetAppointments');
+    Route::resource('vetAppointments', VetAppointmentController::class);
+
+    Route::get('/deaths', [DeathController::class, 'index'])->name('deaths');
+    Route::resource('deaths', DeathController::class);
+
 });
-
-Route::get('/vaccines', [App\Http\Controllers\VaccineController::class, 'index'])->name('vaccines');
-
-Route::resource('vaccines', VaccineController::class);
-Route::post('login', [AuthController::class, 'login']);
-
-
-
-Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('shelters');
-
-Route::resource('shelters', ShelterController::class);
-
-Route::get('/deaths', [DeathController::class, 'index'])->name('deaths');
-
-Route::resource('deaths', DeathController::class);

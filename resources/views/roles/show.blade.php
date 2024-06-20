@@ -41,7 +41,7 @@
                                         <label>Permisos</label>
                                         <ul class="list-group">
                                             @foreach ($role->permissions as $permission)
-                                                <li class="list-group-item">{{ $permission->name }}</li>
+                                                <li class="list-group-item">{{ $permission->description }}</li>
                                             @endforeach
                                         </ul>
                                     </div>

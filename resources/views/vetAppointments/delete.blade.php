@@ -1,18 +1,18 @@
-<div class="modal fade" id="delete{{ $animal->id }}"tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="delete{{ $vet->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-danger">
-                <h5 class="modal-title" id="exampleModalLabel">Eliminar Mascota</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar Cita Veterinaria</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('animals.destroy', $animal->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('vets.destroy', $vet->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="modal-body text-center text-danger">
-                    ¿Estás seguro de eliminar la mascota <strong>{{ $animal->name }}?</strong>
+                    ¿Estás seguro de eliminar el registro <strong>{{ $vet->id }}</strong>?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

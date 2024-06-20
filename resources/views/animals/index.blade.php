@@ -55,21 +55,21 @@
                                                         <td>
                                                             @if ($animal->getFirstMediaUrl('animal_gallery'))
                                                                 <img src="{{ $animal->getFirstMediaUrl('animal_gallery') }}"
-                                                                    alt="Foto de {{ $animal->animal_name }}"
+                                                                    alt="Foto de {{ $animal->name }}"
                                                                     style="width: 50px; height: 50px; border-radius: 50%;">
                                                             @else
                                                                 <img src="{{ asset('img/animaldefault.png') }}"
                                                                     style="width: 50px; height: 50px; border-radius: 50%;">
                                                             @endif
                                                         </td>
-                                                        <td>{{ $animal->animal_name }}</td>
+                                                        <td>{{ $animal->name }}</td>
                                                         <td>{{ $animal->specie->name }}</td>
                                                         <td>{{ $animal->breed }}</td>
                                                         <td>{{ $animal->age }}</td>
                                                         <td>{{ $animal->sex }}</td>
                                                         <td>{{ $animal->color }}</td>
                                                         <td>{{ $animal->weight }}</td>
-                                                        <td>{{ $animal->is_sterilized }}</td>
+                                                        <td>{{ $animal->is_sterilized == 1 ? 'Sí' : 'No' }}</td>
                                                         <td>{{ $animal->entry_date }}</td>
                                                         <td>{{ $animal->origin }}</td>
                                                         <td>{{ $animal->behavior }}</td>

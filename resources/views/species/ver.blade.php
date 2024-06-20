@@ -28,18 +28,18 @@
                     <input type="text" disabled class="form-control" value="{{ $species->id }}" />
                   </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-8">
                   <div class="form-group">
                     <label>Nombre</label>
                     <input type="text" disabled class="form-control" value="{{ $species->name }}" />
                   </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-12">
                   <div class="form-group">
-                    <label>Descripción</label>
-                    <input type="text" disabled class="form-control" value="{{ $species->description }}" />
+                      <label for="history">Descripción:</label>
+                      <textarea class="form-control" readonly>{{ $species->description }}</textarea>
                   </div>
-                </div>
+              </div>
               </div>
             </div>
           </div>

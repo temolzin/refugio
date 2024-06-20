@@ -190,19 +190,19 @@ return [
     |
     */
 
-    
-        'classes_body' => '',
-        'classes_brand' => '',
-        'classes_brand_text' => '',
-        'classes_content_wrapper' => '',
-        'classes_content_header' => '',
-        'classes_content' => '',
-        'classes_sidebar' => 'sidebar-light-primary elevation-4 sidebar-light-custom ',
-        'classes_sidebar_nav' => '',
-        'classes_topnav' => 'navbar-white navbar-light',
-        'classes_topnav_nav' => 'navbar-expand',
-        'classes_topnav_container' => 'container',
-    
+
+    'classes_body' => '',
+    'classes_brand' => '',
+    'classes_brand_text' => '',
+    'classes_content_wrapper' => '',
+    'classes_content_header' => '',
+    'classes_content' => '',
+    'classes_sidebar' => 'sidebar-light-primary elevation-4 sidebar-light-custom ',
+    'classes_sidebar_nav' => '',
+    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav_nav' => 'navbar-expand',
+    'classes_topnav_container' => 'container',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -300,7 +300,7 @@ return [
         [
             'type' => 'navbar-search',
             'text' => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type' => 'fullscreen-widget',
@@ -317,105 +317,79 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
-        [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
+        ['header' => 'Modulos'],
         [
             'text' => 'Usuarios',
             'url' => '/users',
             'icon' => 'fas fa-fw fa-user',
-            'can'  =>'ver usuario'
+            'can'  =>'viewUser'
         ],
         [
             'text' => 'Especies',
             'url' => '/species',
             'icon' => 'fas fa-paw',
+            'can'  =>'viewSpecie'
         ],
         [
             'text' => 'Vacunas',
             'icon' => 'fas fa-fw fa-syringe',
             'url' => '/vaccines',
+            'can' => 'viewVaccine'
         ],
         [
             'text' => 'Albergues',
             'url' => '/shelters',
             'icon' => 'fa fa-home',
+            'can' => 'viewShelter',
+        ],
+        [
+            'text' => 'Citas Veterinarias',
+            'url' => '/vets',
+            'icon' => 'fa fa-calendar',
         ],
         [
             'text' => 'Roles',
             'url' => '/roles',
             'icon' => 'fas fa-users-cog fa-fw',
-            'can'  =>'ver rol'
+            'can'  =>'viewRol'
         ],
         [
             'text' => 'Mascotas',
             'url' => '/animals',
             'icon' => 'fas fa-dog fa-fw',
+            'can'  =>'viewAnimal'
         ],
         [
             'text' => 'Fallecimientos',
             'url' => '/deaths',
-            'icon' => 'fas fa-fw fa-skull',  // Calavera
+            'icon' => 'fas fa-fw fa-skull',
         ],
-
         [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
+            'text' => 'Usuarios',
+            'icon' => 'fas fa-fw fa-users',
+            'can' => 'viewShelterUsers',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
+                    'text' => 'Padrino',
+                    'url' => '/godfather',
+                    'icon' => 'fas fa-user-tie fa-fw',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Adoptante',
+                    'url' => '/adopter',
+                    'icon' => 'fas fa-hand-holding-heart fa-fw',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
+                    'text' => 'Donante',
+                    'url' => '/donor',
+                    'icon' => 'fas fa-donate fa-fw',
+                ],
+                [
+                    'text' => 'Personal',
+                    'url' => '/staff',
+                    'icon' => 'fas fa-user-md fa-fw',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
-        ],
-        [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
-        ],
-        [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
         ],
     ],
 
@@ -525,16 +499,16 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
                 ],
             ],

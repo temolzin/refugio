@@ -13,13 +13,12 @@ use Carbon\Carbon;
 
 class Animal extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
-    use SoftDeletes;
+    use HasFactory, InteractsWithMedia, SoftDeletes;
 
     protected $table = "animals";
     protected $primaryKey = 'id';
     protected $fillable = [
-        'animal_name',
+        'name',
         'breed',
         'birth_date',
         'sex',
@@ -32,6 +31,21 @@ class Animal extends Model implements HasMedia
         'history',
 
     ];
+    const SEX_MALE ='Macho';
+    const SEX_FEMALE ='Hembra';
+
+    const ORIGIN_RESCUED ='Rescatado';
+    const ORIGIN_TRANSFERRRED ='Transferido';
+    const ORIGIN_ABANDONED ='Abandonado';
+
+    const BEHAVIOR_FRIENDLY = 'Amigable';
+    const BEHAVIOR_SHY = 'Tímido';
+    const BEHAVIOR_AGGRESSIVE = 'Agresivo';
+
+    const ORIGINS = [self::ORIGIN_RESCUED, self::ORIGIN_TRANSFERRRED, self::ORIGIN_ABANDONED];
+    const BEHAVIORS = [self::BEHAVIOR_FRIENDLY, self::BEHAVIOR_SHY, self::BEHAVIOR_AGGRESSIVE];
+    const SEXES = [self::SEX_MALE, self::SEX_FEMALE];
+
     protected $guarded = [];
     public $timestamps = false;
 
