@@ -35,7 +35,6 @@ class AnimalController extends Controller
 
     public function petProfile($animalId)
     {
-
         $animalId = Crypt::decrypt($animalId);
 
         $user = Auth::user();
