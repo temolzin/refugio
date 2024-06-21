@@ -6,6 +6,8 @@ use App\Models\Animal;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Specie;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Crypt;
 
 class AnimalController extends Controller
 {
@@ -29,6 +31,21 @@ class AnimalController extends Controller
     {
         $species = Specie::all();
         return view('animals.create', compact('species'));
+    }
+
+    public function petProfile($animalId)
+    {
+
+        $animalId = Crypt::decrypt($animalId);
+
+        $user = Auth::user();
+        $shelter = $user->shelter;
+        $shelterId = $shelter->id;
+
+        $animal = Animal::where('shelter_id', $shelterId)->where('id', $animalId)->firstOrFail();
+
+        $pdf = PDF::loadView('animals.petProfile', compact('animal'));
+        return $pdf->stream();
     }
 
     public function store(Request $request)

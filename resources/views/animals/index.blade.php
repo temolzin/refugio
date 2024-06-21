@@ -36,10 +36,6 @@
                                                 <th>COLOR</th>
                                                 <th>PESO</th>
                                                 <th>ESTERILIZADO</th>
-                                                <th>FECHA DE INGRESO</th>
-                                                <th>ORIGEN</th>
-                                                <th>COMPORTAMIENTO</th>
-                                                <th>HISTORIA</th>
                                                 <th>OPCIONES</th>
                                             </tr>
                                         </thead>
@@ -70,10 +66,6 @@
                                                         <td>{{ $animal->color }}</td>
                                                         <td>{{ $animal->weight }}</td>
                                                         <td>{{ $animal->is_sterilized == 1 ? 'Sí' : 'No' }}</td>
-                                                        <td>{{ $animal->entry_date }}</td>
-                                                        <td>{{ $animal->origin }}</td>
-                                                        <td>{{ $animal->behavior }}</td>
-                                                        <td>{{ $animal->history }}</td>
                                                         <td>
                                                             <div class="btn-group" role="group" aria-label="Opciones">
                                                                 <button type="button" class="btn btn-info mr-2"
@@ -91,6 +83,11 @@
                                                                     data-target="#delete{{ $animal->id }}">
                                                                     <i class="fas fa-trash-alt"></i>
                                                                 </button>
+                                                                <a type="button" class="btn btn-block bg-gradient-secondary mr-2"
+                                                                    target="_blank"
+                                                                    href="{{ route('animals.petProfile', Crypt::encrypt($animal->id)) }}">
+                                                                    <i class="fas fa-dog"></i>
+                                                                </a>
                                                             </div>
                                                         </td>
                                                         @include('animals.edit', [
