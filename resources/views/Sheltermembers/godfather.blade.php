@@ -65,12 +65,20 @@
                                                         <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$shelterMember->id}}">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$shelterMember->id}}">
+                                                        <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#delete{{$shelterMember->id}}">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
+                                                        <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#createSponsorship{{ $shelterMember->id }}">
+                                                            <i class="fas fa-dollar-sign" ></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#viewSponsorship{{$shelterMember->id}}">
+                                                            <i class="fas fa-search-dollar"></i>
+                                                        </button>
                                                     </div>
+                                                    @include('sheltermembers.viewSponsorship')
                                                 </td>
                                                 @include('sheltermembers.delete')
+                                                @include('sheltermembers.createSponsorship', ['shelterMember' => $shelterMember])
                                             </tr>
                                             @include('sheltermembers.view')
                                             @include('sheltermembers.info')
