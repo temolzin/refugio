@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Animal;
 use App\Models\ShelterMember;
-
+use App\Models\Sponsorship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,18 +15,20 @@ class ShelterMemberController extends Controller
         $user = Auth::user();
 
         $shelterId = $user->shelter->id;
+        $animals = Animal::where('shelter_id', $shelterId)->get();
 
         $shelterMember = ShelterMember::where('shelter_id', $shelterId)
             ->where('type_member',ShelterMember::TYPE_MEMBER_GODFATHER)
             ->get();
-        $shelterMember->map(function ($shelterMember) {
-            $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
-            return $shelterMember;
-        });
+
+        $sponsorships = Sponsorship::whereIn('shelter_member_id', $shelterMember->pluck('id'))
+            ->with('animal')
+            ->get()
+            ->groupBy('shelter_member_id');
 
         $typeMember = ShelterMember::TYPE_MEMBER_GODFATHER;
 
-        return view('shelterMembers.godfather', compact('shelterMember', 'typeMember'));
+        return view('shelterMembers.godfather', compact('shelterMember', 'typeMember','animals', 'sponsorships'));
     }
 
     public function donorIndex(Request $request)
@@ -110,7 +113,7 @@ class ShelterMemberController extends Controller
         $user = Auth::user();
 
         $shelter = $user->shelter;
-       
+
         $shelterMember = new ShelterMember();
         $shelterMember->name = $request->input('name');
         $shelterMember->last_name = $request->input('last_name');

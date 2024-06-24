@@ -9,7 +9,7 @@ use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
 use App\Http\Controllers\ShelterMemberController;
 use App\Http\Controllers\AnimalController;
-
+use App\Http\Controllers\SponsorshipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +59,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/donor', [ShelterMemberController::class, 'donorIndex'])->name('shelterMembers.donor');
     Route::get('/staff', [ShelterMemberController::class, 'staffIndex'])->name('shelterMembers.staff');
     Route::resource('shelterMember',ShelterMemberController::class);
-
+ 
+    Route::delete('sponsorship/{id}', [SponsorshipController::class, 'destroy'])->name('sponsorship.destroy');
+    Route::post('sponsorship', [SponsorshipController::class, 'store'])->name('sponsorship.store');
+    Route::resource('sponsorship',SponsorshipController::class);
 
     Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
     Route::resource('animals', AnimalController::class)->middleware('can:viewAnimal');
