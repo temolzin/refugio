@@ -1,10 +1,10 @@
 @charset "utf-8";
-@import url("fontawesome-free/css/fontawesome-all.min.css");
 @import url("framework.css");
+
 
 /* Rows
 --------------------------------------------------------------------------------------------------------------- */
-.row0{padding:80px 0 0 0;}
+.row0{padding:30px 0 0 0;}
 .row1, .row1 a{}
 .row2, .row2 a{}
 .row3, .row3 a{}
@@ -33,7 +33,7 @@
 
 /* Page Intro
 --------------------------------------------------------------------------------------------------------------- */
-#pageintro{padding:180px 0;}
+#pageintro{padding:150px 0;}
 
 #pageintro article{display:block; max-width:60%; margin:0 auto;}
 #pageintro .heading{margin-bottom:20px; font-size:4rem;}
@@ -43,7 +43,7 @@
 
 /* Content Area
 --------------------------------------------------------------------------------------------------------------- */
-.container{padding:80px 0;}
+.container{padding:25px 0;}
 
 /* Content */
 .container .content{}
@@ -428,7 +428,7 @@ table a, #comments a{background-color:inherit;}
 	#topbar{padding-top:15px; text-align:center;}
 	#topbar > div:first-of-type ul{margin:0 0 15px 0;}
 
-	#header{padding:30px 0; text-align:center;}
+	#header{padding:20px 0; text-align:center;}
 	#header #logo{margin:0 0 20px 0;}
 
 	#pageintro article, #pageintro p{max-width:none; margin:auto;}
@@ -463,4 +463,62 @@ table a, #comments a{background-color:inherit;}
 
 	.font-x2{font-size:1.6rem;}
 	.font-x3{font-size:1.8rem;}
+}
+
+.navbar {
+	padding: 0.5rem 1rem;
+}
+
+.navbar-nav {
+	display: flex !important;
+	flex-direction: row !important;
+	justify-content: center !important;
+	list-style: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	width: 100% !important;
+}
+
+.navbar-nav .nav-item {
+	margin-left: 20px;
+}
+
+.navbar-nav .nav-item:first-child {
+	margin-left: 0;
+}
+
+.navbar-nav .nav-link {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+}
+
+.navbar-nav .nav-link {
+	color: #fff;
+	font-weight: bold;
+}
+
+.navbar-collapse {
+	justify-content: center;
+}
+
+/* Estilo para la opción "Inicio" */
+.navbar-nav .nav-item.active .nav-link {
+	color: orange !important;
+}
+
+/* Cambio de color al pasar el cursor sobre las otras opciones */
+.navbar-nav .nav-item .nav-link:hover {
+	color: orange !important;
+	/* Cambia a tu color preferido */
+}
+
+/* Aumentar el tamaño de la letra del menú */
+.navbar-nav .nav-link {
+    font-size: 18px; /* Ajusta el tamaño según tu preferencia */
+    padding: 10px 15px; /* Reduce el espacio de relleno si es necesario */
+}
+
+/* Reducir el espacio arriba y abajo del menú */
+.main-header.navbar {
+    margin-bottom: 0; /* Elimina el margen inferior */
+    padding: 0.5px 0; /* Reduce el espacio de relleno superior e inferior */
 }
