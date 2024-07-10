@@ -28,8 +28,25 @@
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
                                             <label for="animal_id" class="form-label">Mascota(*)</label>
-                                            <select class="form-control @error('animal_id') is-invalid @enderror" name="animal_id" required>
+                                            <select class="form-control select2 @error('animal_id') is-invalid @enderror" name="animal_id" required>
                                                 <option value="">Selecciona la mascota para apadrinar</option>
+                                                @php
+                                                $sponsoredAnimals = [];
+                                                @endphp
+                                                @if(isset($sponsorships[$shelterMember->id]) && count($sponsorships[$shelterMember->id]) > 0)
+                                                @foreach ($sponsorships[$shelterMember->id] as $sponsorship)
+                                                @if (!in_array($sponsorship->animal->id, $sponsoredAnimals))
+                                                <option value="{{ $sponsorship->animal->id }}" {{ old('animal_id') == $sponsorship->animal->id ? 'selected' : '' }}>
+                                                    {{ $sponsorship->animal->name }} (Ya apadrinada)
+                                                </option>
+                                                @php
+                                                $sponsoredAnimals[] = $sponsorship->animal->id;
+                                                @endphp
+                                                @endif
+                                                @endforeach
+                                                @else
+                                                <option disabled>No hay mascotas apadrinadas</option>
+                                                @endif
                                                 @foreach ($animals as $animal)
                                                 <option value="{{ $animal->id }}" {{ old('animal_id') == $animal->id ? 'selected' : '' }}>
                                                     {{ $animal->name }}
@@ -76,7 +93,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 mb-3">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="amount" class="form-label">Monto</label>
                                             <div class="input-group">
@@ -95,16 +112,27 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="observation" class="form-label">Observación</label>
+                                            <textarea class="form-control @error('observation') is-invalid @enderror" name="observation" placeholder="Ingresa observación" required>{{ old('observation') }}</textarea>
+                                            @error('observation')
+                                            <span class="invalid-feedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="submit" id="save" class="btn btn-success">Guardar</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" id="save" class="btn btn-success">Guardar</button>
                     </div>
                 </div>
             </div>
-        </form>
     </div>
+    </form>
 </div>

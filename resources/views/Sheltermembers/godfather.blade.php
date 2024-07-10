@@ -71,14 +71,14 @@
                                                         <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#createSponsorship{{ $shelterMember->id }}">
                                                             <i class="fas fa-dollar-sign" ></i>
                                                         </button>
-                                                        <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#viewSponsorship{{$shelterMember->id}}">
+                                                        <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#indexSponsorship{{$shelterMember->id}}">
                                                             <i class="fas fa-search-dollar"></i>
                                                         </button>
                                                     </div>
-                                                    @include('sheltermembers.viewSponsorship')
+                                                    @include('sponsorship.indexSponsorship')
                                                 </td>
                                                 @include('sheltermembers.delete')
-                                                @include('sheltermembers.createSponsorship', ['shelterMember' => $shelterMember])
+                                                @include('sponsorship.createSponsorship', ['shelterMember' => $shelterMember])
                                             </tr>
                                             @include('sheltermembers.view')
                                             @include('sheltermembers.info')
@@ -99,9 +99,15 @@
 
 @section('js')
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var modalId = "{{ session('modal_id') }}";
+        if (modalId) {
+            $('#' + modalId).modal('show');
+        }
+    });
+
     $(document).ready(function() {
         $('#godfather').DataTable({
-            responsive: true,
             buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
             dom: 'Bfrtip',
         });
@@ -116,6 +122,15 @@
             });
         }
 
+        $('[id^=createSponsorship]').on('shown.bs.modal', function() {
+            $(this).find('.select2').select2({
+                dropdownParent: $(this)
+            });
+        });
     });
+    function closeCurrentModal(modalId) {
+        $(modalId).modal('hide');
+    }
+
 </script>
 @endsection

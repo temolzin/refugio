@@ -20,7 +20,8 @@ class CreateSponsorshipTable extends Migration
             $table->date('start_date')->nullable();
             $table->date('finish_date')->nullable();
             $table->date('payment_date')->nullable();
-            $table->string('amount'); 
+            $table->string('amount');
+            $table->string('observation');
             $table->timestamps();
             $table->softDeletes();
     

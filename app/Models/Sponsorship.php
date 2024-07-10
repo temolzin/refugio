@@ -12,7 +12,7 @@ class Sponsorship extends Model
 
     protected $table = "sponsorship";
     protected $primaryKey= 'id';
-    protected $fillable=['animal_id', 'shelter_member_id','start_date','finish_date','payment_date','amount'];
+    protected $fillable=['animal_id', 'shelter_member_id','start_date','finish_date','payment_date','amount','observation'];
     protected $guarded= [];
     public $timestamps=false;
     

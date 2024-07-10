@@ -13,9 +13,13 @@ class ShelterMemberController extends Controller
     public function godfatherIndex(Request $request)
     {
         $user = Auth::user();
-
         $shelterId = $user->shelter->id;
-        $animals = Animal::where('shelter_id', $shelterId)->get();
+        
+        $animals = Animal::where('shelter_id', $shelterId)
+        ->whereDoesntHave('sponsorships', function($query) {
+            $query->where('finish_date', '>', now());
+        })
+        ->get();
 
         $shelterMember = ShelterMember::where('shelter_id', $shelterId)
             ->where('type_member',ShelterMember::TYPE_MEMBER_GODFATHER)

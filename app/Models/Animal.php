@@ -72,4 +72,9 @@ class Animal extends Model implements HasMedia
             return $months . ' meses';
         }
     }
+
+    public function sponsorships()
+    {
+        return $this->hasMany(Sponsorship::class);
+    }
 }

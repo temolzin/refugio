@@ -60,7 +60,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/staff', [ShelterMemberController::class, 'staffIndex'])->name('shelterMembers.staff');
     Route::resource('shelterMember',ShelterMemberController::class);
  
-    Route::delete('sponsorship/{id}', [SponsorshipController::class, 'destroy'])->name('sponsorship.destroy');
     Route::post('sponsorship', [SponsorshipController::class, 'store'])->name('sponsorship.store');
     Route::resource('sponsorship',SponsorshipController::class);
 
