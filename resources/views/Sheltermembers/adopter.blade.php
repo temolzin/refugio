@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card-box table-responsive">
-                                <table id="adopter" class="table table-striped display responsive nowrap" style="width:100%">
+                                <table id="adopter" name="adopter" class="table table-striped display responsive nowrap data2" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -29,17 +29,16 @@
                                             <th>NOMBRE COMPLETO</th>
                                             <th>TELEFONO</th>
                                             <th>CORREO</th>
-                                            <th>DIRECCIÓN</th>
                                             <th>TIPO</th>
                                             <th>OPCIONES</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if(count($shelterMember) <= 0) <tr>
+                                        @if(count($shelterMembers) <= 0) <tr>
                                             <td colspan="4">No hay resultados</td>
                                             </tr>
                                             @else
-                                            @foreach($shelterMember as $shelterMember)
+                                            @foreach($shelterMembers as $shelterMember)
                                             <tr>
                                                 <td scope="row">{{$shelterMember->id}}</td>
                                                 <td>
@@ -55,7 +54,6 @@
                                                 <td>{{$shelterMember->name}} {{$shelterMember->last_name}}</td>
                                                 <td>{{$shelterMember->phone}}</td>
                                                 <td>{{$shelterMember->email}}</td>
-                                                <td>{{ $shelterMember->address }} Col. {{ $shelterMember->colony }} {{ $shelterMember->city }} {{ $shelterMember->state }} C.P {{ $shelterMember->postal_code }}</td>
                                                 <td>{{$shelterMember->type_member}}</td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Opciones">
@@ -65,12 +63,20 @@
                                                         <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$shelterMember->id}}">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$shelterMember->id}}">
+                                                        <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#delete{{$shelterMember->id}}">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
+                                                        <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#createAdoption{{ $shelterMember->id }}">
+                                                            <i class="fas fa-heart"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-secondary mr-2"  data-toggle="modal" data-target="#viewAdoptions{{ $shelterMember->id }}">
+                                                            <i class="fas fa-hand-holding-heart fa-fw"></i>
+                                                         </button>
                                                     </div>
                                                 </td>
                                                 @include('sheltermembers.delete')
+                                                @include('adoptions.create')
+                                                @include('adoptions.index')
                                             </tr>
                                             @include('sheltermembers.view')
                                             @include('sheltermembers.info')
@@ -91,11 +97,18 @@
 
 @section('js')
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var modalId = "{{ session('modal_id') }}";
+        if (modalId) {
+            $('#' + modalId).modal('show');
+        }
+    });
+
     $(document).ready(function() {
         $('#adopter').DataTable({
             responsive: true,
             buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-            dom: 'Bfrtip',
+            dom: 'Bfrtip'
         });
 
         var successMessage = "{{ session('success') }}";
@@ -108,6 +121,15 @@
             });
         }
 
+        $('[id^=createAdoption]').on('shown.bs.modal', function() {
+            $(this).find('.select2').select2({
+                dropdownParent: $(this)
+            });
+        });
     });
+
+    function closeCurrentModal(modalId) {
+        $(modalId).modal('hide');
+    }
 </script>
 @endsection
