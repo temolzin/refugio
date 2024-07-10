@@ -300,8 +300,8 @@ input:focus, textarea:focus, *:required:focus{border-color:#DC8E47;}
 .row5, .row5 a{color:#C1C2C4; background-color:#292929;}
 
 
-/* Top Bar */
-#topbar ul li:first-child a{color:#DC8E47;}
+/* Top Bar
+#topbar ul li:first-child a{color:#DC8E47;} */
 
 
 /* Header */
@@ -500,25 +500,20 @@ table a, #comments a{background-color:inherit;}
 	justify-content: center;
 }
 
-/* Estilo para la opción "Inicio" */
 .navbar-nav .nav-item.active .nav-link {
 	color: orange !important;
 }
 
-/* Cambio de color al pasar el cursor sobre las otras opciones */
 .navbar-nav .nav-item .nav-link:hover {
 	color: orange !important;
-	/* Cambia a tu color preferido */
 }
 
-/* Aumentar el tamaño de la letra del menú */
 .navbar-nav .nav-link {
-    font-size: 18px; /* Ajusta el tamaño según tu preferencia */
-    padding: 10px 15px; /* Reduce el espacio de relleno si es necesario */
+    font-size: 18px;
+    padding: 10px 15px;
 }
 
-/* Reducir el espacio arriba y abajo del menú */
 .main-header.navbar {
-    margin-bottom: 0; /* Elimina el margen inferior */
-    padding: 0.5px 0; /* Reduce el espacio de relleno superior e inferior */
+    margin-bottom: 0;
+    padding: 0.5px 0;
 }

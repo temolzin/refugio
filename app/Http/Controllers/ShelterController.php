@@ -144,4 +144,10 @@ class ShelterController extends Controller
     {
         
     }
+
+    public function shelters_view()
+    {
+        $shelters = Shelter::all();
+        return view('shelters_view', compact('shelters'));
+    }
 }

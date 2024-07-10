@@ -14,8 +14,8 @@
             <div id="topbar" class="hoc clear">
                 <div class="fl_left">
                     <ul class="nospace">
-                        <li><i class="fas fa-phone"></i> 56 2364 0302</li>
-                        <li><i class="far fa-envelope"></i> info@rootheim.com</li>
+                        <li><a href="https://wa.me/5215623640302" target="_blank">56 2364 0302</a></li>
+                        <li><a href="mailto:info@rootheim.com">info@rootheim.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                                     <a href="home" class="nav-link">Inicio</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="refuges" class="nav-link">Albergues</a>
+                                    <a href="shelters_view" class="nav-link">Albergues</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/login" class="nav-link">Ingresar</a>
@@ -123,17 +123,17 @@
                 </div>
                 <li class="one_third first">
                     <figure><img src="assets_home/images/cats.jpg" alt="">
-                        <figcaption><a href="refuges">Saber más</a></figcaption>
+                        <figcaption><a href="shelters_view">Saber más</a></figcaption>
                     </figure>
                 </li>
                 <li class="one_third">
                     <figure><img src="assets_home/images/dog-and-cat.jpg" alt="">
-                        <figcaption><a href="refuges">Saber más</a></figcaption>
+                        <figcaption><a href="shelters_view">Saber más</a></figcaption>
                     </figure>
                 </li>
                 <li class="one_third">
                     <figure><img src="assets_home/images/dogs.jpg" alt="">
-                        <figcaption><a href="refuges">Saber más</a></figcaption>
+                        <figcaption><a href="shelters_view">Saber más</a></figcaption>
                     </figure>
                 </li>
             </ul>
@@ -147,7 +147,7 @@
                 <nav>
                     <ul class="nospace inline pushright uppercase">
                         <li><a href="home">Inicio</a></li>
-                        <li><a href="refuges">Albergues</a></li>
+                        <li><a href="shelters_view">Albergues</a></li>
                         <li><a href="/login">Ingresar</a></li>
                     </ul>
                 </nav>
@@ -161,8 +161,8 @@
                             La Palma No. Ext. 9, Col. Purificación, Teotihuacan, Edo. de México, C.P. 55804
                         </address>
                     </li>
-                    <li><i class="fas fa-phone"></i> 56 2364 0302</li>
-                    <li><i class="far fa-envelope"></i> https://rootheim.com/</li>
+                    <li><a href="https://wa.me/5215623640302" target="_blank">56 2364 0302</a></li>
+                    <li><a href="mailto:info@rootheim.com">info@rootheim.com</a></li>
                 </ul>
         </footer>
     </div>

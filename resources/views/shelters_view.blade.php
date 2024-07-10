@@ -17,8 +17,8 @@
             <div id="topbar" class="hoc clear">
                 <div class="fl_left">
                     <ul class="nospace">
-                        <li><i class="fas fa-phone"></i> 56 2364 0302</li>
-                        <li><i class="far fa-envelope"></i> info@rootheim.com</li>
+                        <li><a href="https://wa.me/5215623640302" target="_blank">56 2364 0302</a></li>
+                        <li><a href="mailto:info@rootheim.com">info@rootheim.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                                     <a href="home" class="nav-link">Inicio</a>
                                 </li>
                                 <li class="nav-item active">
-                                    <a href="refuges" class="nav-link">Albergues</a>
+                                    <a href="shelters_view" class="nav-link">Albergues</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/login" class="nav-link">Ingresar</a>
@@ -61,12 +61,15 @@
                 <div class="content">
                     @foreach ($shelters as $shelter)
                         <div class="shelter-card">
-                            <img src="{{ $shelter->logo_url ?: asset('img/avatardefault.png') }}"
-                                alt="{{ $shelter->name }}">
+                            <img src="{{ $shelter->logo_url ?: asset('img/avatardefault.png') }}" alt="{{ $shelter->name }}">
                             <h4>{{ $shelter->name }}</h4>
                             <p>Teléfono: {{ $shelter->phone }}</p>
-                            <p><a href="{{ $shelter->facebook }}" target="_blank">Facebook</a></p>
-                            <p><a href="{{ $shelter->tiktok }}" target="_blank">TikTok</a></p>
+                            @if($shelter->facebook)
+                                <p><a href="{{ $shelter->facebook }}" target="_blank">Facebook</a></p>
+                            @endif
+                            @if($shelter->tiktok)
+                                <p><a href="{{ $shelter->tiktok }}" target="_blank">TikTok</a></p>
+                            @endif
                         </div>
                     @endforeach
                 </div>
@@ -82,7 +85,7 @@
                 <nav>
                     <ul class="nospace inline pushright uppercase">
                         <li><a href="home">Inicio</a></li>
-                        <li><a href="refuges">Albergues</a></li>
+                        <li><a href="shelters">Albergues</a></li>
                         <li><a href="/login">Ingresar</a></li>
                     </ul>
                 </nav>
@@ -96,8 +99,8 @@
                             La Palma No. Ext. 9, Col. Purificación, Teotihuacan, Edo. de México, C.P. 55804
                         </address>
                     </li>
-                    <li><i class="fas fa-phone"></i> 56 2364 0302</li>
-                    <li><i class="far fa-envelope"></i> https://rootheim.com/</li>
+                    <li><a href="https://wa.me/5215623640302" target="_blank">56 2364 0302</a></li>
+                    <li><a href="mailto:info@rootheim.com">info@rootheim.com</a></li>
                 </ul>
             </div>
         </footer>
