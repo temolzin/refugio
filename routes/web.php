@@ -11,6 +11,7 @@ use App\Http\Controllers\ShelterMemberController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\DeathController;
 use App\Http\Controllers\VetAppointmentController;
+use App\Http\Controllers\AdoptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,5 +80,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/deaths', [DeathController::class, 'index'])->name('deaths');
     Route::resource('deaths', DeathController::class);
+
+    Route::get('/adoptions/pdfAdoption/{id}', [AdoptionController::class, 'pdfAdoption'])->name('adoptions.pdfAdoption');
+    Route::resource('adoptions', AdoptionController::class)->except(['index']);
 
 });
