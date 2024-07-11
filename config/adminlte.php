@@ -343,17 +343,26 @@ return [
             'can' => 'viewShelter',
         ],
         [
+            'text' => 'Citas Veterinarias',
+            'url' => '/vets',
+            'icon' => 'fa fa-calendar',
+        ],
+        [
             'text' => 'Roles',
             'url' => '/roles',
             'icon' => 'fas fa-users-cog fa-fw',
             'can'  =>'viewRol'
         ],
-        
         [
             'text' => 'Mascotas',
             'url' => '/animals',
             'icon' => 'fas fa-dog fa-fw',
             'can'  =>'viewAnimal'
+        ],
+        [
+            'text' => 'Fallecimientos',
+            'url' => '/deaths',
+            'icon' => 'fas fa-fw fa-skull',
         ],
         [
             'text' => 'Usuarios',
@@ -490,16 +499,16 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
                 ],
             ],
