@@ -12,6 +12,9 @@ use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\SponsorshipController;
 use App\Http\Controllers\DeathController;
 use App\Http\Controllers\VetAppointmentController;
+use App\Http\Controllers\AdoptionController;
+use App\Http\Controllers\RefugeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +37,8 @@ Route::get('/', function () {
 });
 
 Route::get('home', [HomeController::class, 'index']);
+
+Route::get('refuges', [RefugeController::class, 'index']);
 
 Route::prefix('error')->group(function () {
     Route::get('/404', function () {
@@ -83,5 +88,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/deaths', [DeathController::class, 'index'])->name('deaths');
     Route::resource('deaths', DeathController::class);
+
+    Route::get('/adoptions/pdfAdoption/{id}', [AdoptionController::class, 'pdfAdoption'])->name('adoptions.pdfAdoption');
+    Route::resource('adoptions', AdoptionController::class)->except(['index']);
 
 });
