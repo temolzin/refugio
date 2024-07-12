@@ -75,6 +75,11 @@ class Animal extends Model implements HasMedia
         }
     }
 
+    public function sponsorships()
+    {
+        return $this->hasMany(Sponsorship::class);
+    }
+    
     public function deaths()
     {
         return $this->hasMany(Death::class, 'animal_id');
