@@ -30,11 +30,8 @@
                                                 <th>FOTO</th>
                                                 <th>NOMBRE</th>
                                                 <th>ESPECIE</th>
-                                                <th>RAZA</th>
-                                                <th>EDAD</th>
                                                 <th>SEXO</th>
                                                 <th>COLOR</th>
-                                                <th>PESO</th>
                                                 <th>ESTERILIZADO</th>
                                                 <th>OPCIONES</th>
                                             </tr>
@@ -49,8 +46,8 @@
                                                     <tr>
                                                         <td scope="row">{{ $animal->id }}</td>
                                                         <td>
-                                                            @if ($animal->getFirstMediaUrl('animal_gallery'))
-                                                                <img src="{{ $animal->getFirstMediaUrl('animal_gallery') }}"
+                                                            @if ($animal->getFirstMediaUrl('animalGallery'))
+                                                                <img src="{{ $animal->getFirstMediaUrl('animalGallery') }}"
                                                                     alt="Foto de {{ $animal->name }}"
                                                                     style="width: 50px; height: 50px; border-radius: 50%;">
                                                             @else
@@ -60,11 +57,8 @@
                                                         </td>
                                                         <td>{{ $animal->name }}</td>
                                                         <td>{{ $animal->specie->name }}</td>
-                                                        <td>{{ $animal->breed }}</td>
-                                                        <td>{{ $animal->age }}</td>
                                                         <td>{{ $animal->sex }}</td>
                                                         <td>{{ $animal->color }}</td>
-                                                        <td>{{ $animal->weight }}</td>
                                                         <td>{{ $animal->is_sterilized == 1 ? 'Sí' : 'No' }}</td>
                                                         <td>
                                                             <div class="btn-group" role="group" aria-label="Opciones">

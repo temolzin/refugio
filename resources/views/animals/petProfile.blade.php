@@ -57,8 +57,8 @@
         <div class="header">{{ $animal->name }}</div>
         <div class="main-content">
             <div class="image-container">
-                @if ($animal->hasMedia('animal_gallery'))
-                    <img src="{{ $animal->getFirstMediaUrl('animal_gallery') }}" alt="Photo of {{ $animal->name }}">
+                @if ($animal->hasMedia('animalGallery'))
+                    <img src="{{ $animal->getFirstMediaUrl('animalGallery') }}" alt="Photo of {{ $animal->name }}">
                 @else
                     <img src='img/animaldefault.png' alt="Default Photo">
                 @endif

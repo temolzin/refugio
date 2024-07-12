@@ -26,7 +26,7 @@
                                 <div class="col-lg-4">
                                     <div class="form-group text-center">
                                         <label for="" class="form-label">Foto del Animal</label><br>
-                                        <img src="{{ $death->animal->getFirstMediaUrl('animal_gallery') ?? asset('img/animaldefault.png') }}" alt="Foto del Animal" style="width: 150px; height: 150px; border-radius: 50%;">
+                                        <img src="{{ $death->animal->getFirstMediaUrl('animalGallery') ?? asset('img/animaldefault.png') }}" alt="Foto del Animal" style="width: 150px; height: 150px; border-radius: 50%;">
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
