@@ -59,10 +59,8 @@ class VetAppointmentController extends Controller
     public function edit($id)
     {
         $vet = VetAppointment::find($id);
-        if ($vet && $vet->animal->shelter_id == Auth::user()->shelter->id) {
+        if ($vet && $vet->animal->shelter_id == Auth::user()->shelter->id) 
         return view('vetAppointments.edit', compact('vet'));
-    }
-    return redirect()->back()->withErrors('No tienes permiso para editar esta cita.');
     }
 
     public function create()
@@ -84,21 +82,15 @@ class VetAppointmentController extends Controller
         ]);
 
         $vet = VetAppointment::find($id);
-        if ($vet && $vet->animal->shelter_id == Auth::user()->shelter->id) {
+        if ($vet && $vet->animal->shelter_id == Auth::user()->shelter->id) 
             $vet->update($request->all());
             return redirect()->back()->with('success', 'Cita veterinaria actualizada correctamente');
         }
 
-        return redirect()->back()->withErrors('No tienes permiso para actualizar esta cita.');
-    }
-
     public function show($id)
     {
         $vet = VetAppointment::find($id);
-        if ($vet && $vet->animal->shelter_id == Auth::user()->shelter->id) {
+        if ($vet && $vet->animal->shelter_id == Auth::user()->shelter->id) 
             return view('vetAppointments.show', compact('vet'));
         }
-
-        return redirect()->back()->withErrors('No tienes permiso para ver esta cita.');
     }
-}

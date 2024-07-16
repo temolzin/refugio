@@ -25,8 +25,8 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Fecha de la Donación</label>
-                                        <input type="date" class="form-control" value="{{ $donation->donation_date }}"
-                                            disabled />
+                                        <input type="text" class="form-control" value="{{ $donation->donation_date }}"
+                                            disabled/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
