@@ -10,6 +10,7 @@ use App\Http\Controllers\ShelterController;
 use App\Http\Controllers\ShelterMemberController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\VetAppointmentController;
+use App\Http\Controllers\DonationController;
 
 
 /*
@@ -79,10 +80,10 @@ Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('she
 
 Route::resource('shelters', ShelterController::class);
 
-
 Route::get('/vets', [VetAppointmentController::class, 'vets.index'])->name('vets');
 
 Route::resource('vets', VetAppointmentController::class);
 
+Route::resource('donation',DonationController::class);
 });
 
