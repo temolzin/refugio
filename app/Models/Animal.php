@@ -42,6 +42,8 @@ class Animal extends Model implements HasMedia
     const BEHAVIOR_SHY = 'Tímido';
     const BEHAVIOR_AGGRESSIVE = 'Agresivo';
 
+    const ANIMAL_GALLERY = 'animalGallery';
+
     const ORIGINS = [self::ORIGIN_RESCUED, self::ORIGIN_TRANSFERRRED, self::ORIGIN_ABANDONED];
     const BEHAVIORS = [self::BEHAVIOR_FRIENDLY, self::BEHAVIOR_SHY, self::BEHAVIOR_AGGRESSIVE];
     const SEXES = [self::SEX_MALE, self::SEX_FEMALE];
@@ -56,7 +58,7 @@ class Animal extends Model implements HasMedia
 
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('animal_gallery')->singleFile();
+        $this->addMediaCollection('animalGallery')->singleFile();
     }
     public function getAgeAttribute()
     {
@@ -71,5 +73,20 @@ class Animal extends Model implements HasMedia
         } else {
             return $months . ' meses';
         }
+    }
+
+    public function sponsorships()
+    {
+        return $this->hasMany(Sponsorship::class);
+    }
+    
+    public function deaths()
+    {
+        return $this->hasMany(Death::class, 'animal_id');
+    }
+
+    public function adoption()
+    {
+        return $this->hasMany(Adoption::class);
     }
 }

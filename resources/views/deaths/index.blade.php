@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Animales')
+@section('title', 'Admin')
 
 @section('content')
     <section class="content">
@@ -8,12 +8,11 @@
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Mascotas</h2>
+                        <h2>Fallecimientos</h2>
                         <div class="row">
                             <div class="col-lg-12 text-right">
                                 <button class="btn btn-success" data-toggle='modal' data-target="#create"> <i
-                                        class="fa fa-edit"></i> Registrar Mascota
-                                </button>
+                                        class="fa fa-edit"></i> Registrar Fallecimiento</button>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -22,80 +21,67 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box table-responsive">
-                                    <table id="animals" class="table table-striped display responsive nowrap"
+                                    <table id="deaths" class="table table-striped display responsive nowrap"
                                         style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>FOTO</th>
                                                 <th>NOMBRE</th>
-                                                <th>ESPECIE</th>
-                                                <th>SEXO</th>
-                                                <th>COLOR</th>
-                                                <th>ESTERILIZADO</th>
+                                                <th>FECHA</th>
+                                                <th>CAUSA</th>
                                                 <th>OPCIONES</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if (count($animals) <= 0)
+                                            @if (count($deaths) <= 0)
                                                 <tr>
-                                                    <td colspan="14">No hay resultados</td>
+                                                    <td colspan="6">No hay resultados</td>
                                                 </tr>
                                             @else
-                                                @foreach ($animals as $animal)
+                                                @foreach ($deaths as $death)
                                                     <tr>
-                                                        <td scope="row">{{ $animal->id }}</td>
+                                                        <td scope="row">{{ $death->death_id }}</td>
                                                         <td>
-                                                            @if ($animal->getFirstMediaUrl('animalGallery'))
-                                                                <img src="{{ $animal->getFirstMediaUrl('animalGallery') }}"
-                                                                    alt="Foto de {{ $animal->name }}"
+                                                            @if ($death->animal->getFirstMediaUrl('animalGallery'))
+                                                                <img src="{{ $death->animal->getFirstMediaUrl('animalGallery') }}"
+                                                                    alt="Foto de {{ $death->animal->animal_name }}"
                                                                     style="width: 50px; height: 50px; border-radius: 50%;">
                                                             @else
                                                                 <img src="{{ asset('img/animaldefault.png') }}"
                                                                     style="width: 50px; height: 50px; border-radius: 50%;">
                                                             @endif
                                                         </td>
-                                                        <td>{{ $animal->name }}</td>
-                                                        <td>{{ $animal->specie->name }}</td>
-                                                        <td>{{ $animal->sex }}</td>
-                                                        <td>{{ $animal->color }}</td>
-                                                        <td>{{ $animal->is_sterilized == 1 ? 'Sí' : 'No' }}</td>
+                                                        <td>{{ $death->animal->animal_name }}</td>
+                                                        <td>{{ $death->date }}</td>
+                                                        <td>{{ $death->cause }}</td>
                                                         <td>
                                                             <div class="btn-group" role="group" aria-label="Opciones">
                                                                 <button type="button" class="btn btn-info mr-2"
                                                                     data-toggle="modal"
-                                                                    data-target="#view{{ $animal->id }}">
+                                                                    data-target="#view{{ $death->death_id }}">
                                                                     <i class="fas fa-eye"></i>
                                                                 </button>
                                                                 <button type="button" class="btn btn-warning mr-2"
                                                                     data-toggle="modal"
-                                                                    data-target="#edit{{ $animal->id }}">
+                                                                    data-target="#edit{{ $death->death_id }}">
                                                                     <i class="fas fa-edit"></i>
                                                                 </button>
-                                                                <button type="button" class="btn btn-danger mr-2"
+                                                                <button type="button" class="btn btn-danger"
                                                                     data-toggle="modal"
-                                                                    data-target="#delete{{ $animal->id }}">
+                                                                    data-target="#delete{{ $death->death_id }}">
                                                                     <i class="fas fa-trash-alt"></i>
                                                                 </button>
-                                                                <a type="button" class="btn btn-block bg-gradient-secondary mr-2"
-                                                                    target="_blank"
-                                                                    href="{{ route('animals.petProfile', Crypt::encrypt($animal->id)) }}">
-                                                                    <i class="fas fa-dog"></i>
-                                                                </a>
-                                                            </div>
+                                                                @include('deaths.delete')
                                                         </td>
-                                                        @include('animals.edit', [
-                                                            'animal' => $animal,
-                                                            'species' => $species,
-                                                        ])
-                                                        @include('animals.delete')
-                                                        @include('animals.show')
                                                     </tr>
+                                                    @include('deaths.ver')
+                                                    @include('deaths.info')
                                                 @endforeach
                                             @endif
                                         </tbody>
                                     </table>
-                                    @include('animals.create')
+                                    @include('deaths.create')
                                 </div>
                             </div>
                         </div>
@@ -109,7 +95,7 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            $('#animals').DataTable({
+            $('#deaths').DataTable({
                 responsive: true,
                 buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
                 dom: 'Bfrtip',
@@ -123,6 +109,18 @@
                     confirmButtonText: 'Aceptar'
                 });
             }
+        });
+
+        $('#create').on('shown.bs.modal', function() {
+            $('.select2').select2({
+                dropdownParent: $('#create')
+            });
+        });
+
+        $('[id^=edit]').on('shown.bs.modal', function () {
+            $('.select2').select2({
+                dropdownParent: $(this)
+            });
         });
     </script>
 @endsection

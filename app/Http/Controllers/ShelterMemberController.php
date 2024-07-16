@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Animal;
 use App\Models\ShelterMember;
+use App\Models\Sponsorship;
+use App\Models\Animal;
+use App\Models\Adoption;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,20 +17,26 @@ class ShelterMemberController extends Controller
     public function godfatherIndex(Request $request)
     {
         $user = Auth::user();
-
         $shelterId = $user->shelter->id;
+        
+        $animals = Animal::where('shelter_id', $shelterId)
+        ->whereDoesntHave('sponsorships', function($query) {
+            $query->where('finish_date', '>', now());
+        })
+        ->get();
 
         $shelterMember = ShelterMember::where('shelter_id', $shelterId)
             ->where('type_member',ShelterMember::TYPE_MEMBER_GODFATHER)
             ->get();
-        $shelterMember->map(function ($shelterMember) {
-            $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
-            return $shelterMember;
-        });
+
+        $sponsorships = Sponsorship::whereIn('shelter_member_id', $shelterMember->pluck('id'))
+            ->with('animal')
+            ->get()
+            ->groupBy('shelter_member_id');
 
         $typeMember = ShelterMember::TYPE_MEMBER_GODFATHER;
 
-        return view('shelterMembers.godfather', compact('shelterMember', 'typeMember'));
+        return view('shelterMembers.godfather', compact('shelterMember', 'typeMember','animals', 'sponsorships'));
     }
 
     public function donorIndex(Request $request)
@@ -53,19 +63,21 @@ class ShelterMemberController extends Controller
     public function adopterIndex(Request $request)
     {
         $user = Auth::user();
-
         $shelterId = $user->shelter->id;
 
-        $shelterMember = ShelterMember::where('shelter_id', $shelterId)
-            ->where('type_member',ShelterMember::TYPE_MEMBER_ADOPTER)
+        $animals = Animal::where('shelter_id', $shelterId)
+            ->whereDoesntHave('adoption')
             ->get();
-        $shelterMember->map(function ($shelterMember) {
-            $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
-            return $shelterMember;
-        });
+
+        $shelterMembers = ShelterMember::where('shelter_id', $shelterId)
+            ->where('type_member', ShelterMember::TYPE_MEMBER_ADOPTER)
+            ->get();
+
+        $adoptions = Adoption::all();
 
         $typeMember = ShelterMember::TYPE_MEMBER_ADOPTER;
-        return view('shelterMembers.adopter', compact('shelterMember', 'typeMember'));
+
+        return view('shelterMembers.adopter', compact('shelterMembers', 'typeMember', 'animals', 'adoptions'));
     }
 
     public function staffIndex(Request $request)
@@ -114,7 +126,7 @@ class ShelterMemberController extends Controller
         $user = Auth::user();
 
         $shelter = $user->shelter;
-       
+
         $shelterMember = new ShelterMember();
         $shelterMember->name = $request->input('name');
         $shelterMember->last_name = $request->input('last_name');

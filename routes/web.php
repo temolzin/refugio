@@ -9,8 +9,13 @@ use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
 use App\Http\Controllers\ShelterMemberController;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\SponsorshipController;
+use App\Http\Controllers\DeathController;
 use App\Http\Controllers\VetAppointmentController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\AdoptionController;
+use App\Http\Controllers\RefugeController;
+
 
 
 /*
@@ -34,6 +39,8 @@ Route::get('/', function () {
 });
 
 Route::get('home', [HomeController::class, 'index']);
+
+Route::get('refuges', [RefugeController::class, 'index']);
 
 Route::prefix('error')->group(function () {
     Route::get('/404', function () {
@@ -61,12 +68,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/donor', [ShelterMemberController::class, 'donorIndex'])->name('shelterMembers.donor');
     Route::get('/staff', [ShelterMemberController::class, 'staffIndex'])->name('shelterMembers.staff');
     Route::resource('shelterMember',ShelterMemberController::class);
-
+ 
+    Route::resource('sponsorship',SponsorshipController::class);
 
     Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
     Route::resource('animals', AnimalController::class)->middleware('can:viewAnimal');
 
-
+    Route::get('/animals/petProfile/{animalId}', [AnimalController::class, 'petProfile'])->name('animals.petProfile');
+  
     Route::get('/vaccines', [VaccineController::class, 'index'])->name('vaccines');
     Route::resource('vaccines', VaccineController::class)->middleware('can:viewVaccine');
 
@@ -75,15 +84,16 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+    Route::get('/vetAppointments', [VetAppointmentController::class, 'vetAppointments.index'])->name('vetAppointments');
+    Route::resource('vetAppointments', VetAppointmentController::class);
 
-Route::get('/shelters', [ShelterController::class, 'shelters.index'])->name('shelters');
+    Route::get('/deaths', [DeathController::class, 'index'])->name('deaths');
+    Route::resource('deaths', DeathController::class);
 
-Route::resource('shelters', ShelterController::class);
+    Route::resource('shelters', ShelterController::class);
 
-Route::get('/vets', [VetAppointmentController::class, 'vets.index'])->name('vets');
+    Route::get('/adoptions/pdfAdoption/{id}', [AdoptionController::class, 'pdfAdoption'])->name('adoptions.pdfAdoption');
+    Route::resource('adoptions', AdoptionController::class)->except(['index']);
 
-Route::resource('vets', VetAppointmentController::class);
-
-Route::resource('donation',DonationController::class);
+    Route::resource('donation',DonationController::class);
 });
-
