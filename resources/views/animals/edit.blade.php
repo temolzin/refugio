@@ -33,7 +33,7 @@
                                             <div class="image-preview-container"
                                                 style="display: flex; justify-content: center; margin-bottom: 10px;">
                                                 <img id="photo-preview-edit-{{ $animal->id }}"
-                                                    src="{{ $animal->getFirstMediaUrl('animal_gallery') ? $animal->getFirstMediaUrl('animal_gallery') : asset('img/animaldefault.png') }}"
+                                                    src="{{ $animal->getFirstMediaUrl('animalGallery') ? $animal->getFirstMediaUrl('animalGallery') : asset('img/animaldefault.png') }}"
                                                     alt="photo Actual"
                                                     style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
                                             </div>

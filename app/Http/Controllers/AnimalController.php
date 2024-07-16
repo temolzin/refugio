@@ -86,7 +86,7 @@ class AnimalController extends Controller
         $animal->save();
 
         if ($request->hasFile('photo')) {
-            $animal->addMediaFromRequest('photo')->toMediaCollection('animal_gallery');
+            $animal->addMediaFromRequest('photo')->toMediaCollection('animalGallery');
         }
 
         return redirect()->route('animals.index')->with('success', 'Mascota agregada correctamente.');
@@ -94,12 +94,10 @@ class AnimalController extends Controller
 
     public function show($id)
     {
-        //
     }
 
     public function edit($id)
     {
-        //
     }
 
     public function update(Request $request, Animal $animal)
@@ -123,8 +121,8 @@ class AnimalController extends Controller
         $animal->update($request->except('photo'));
 
         if ($request->hasFile('photo')) {
-            $animal->clearMediaCollection('animal_gallery');
-            $animal->addMediaFromRequest('photo')->toMediaCollection('animal_gallery');
+            $animal->clearMediaCollection('animalGallery');
+            $animal->addMediaFromRequest('photo')->toMediaCollection('animalGallery');
         }
 
         return redirect()->route('animals.index')->with('success', 'Mascota actualizada correctamente.');

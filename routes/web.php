@@ -9,8 +9,10 @@ use App\Http\Controllers\SpecieController;
 use App\Http\Controllers\ShelterController;
 use App\Http\Controllers\ShelterMemberController;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\SponsorshipController;
 use App\Http\Controllers\DeathController;
 use App\Http\Controllers\VetAppointmentController;
+use App\Http\Controllers\AdoptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +64,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/donor', [ShelterMemberController::class, 'donorIndex'])->name('shelterMembers.donor');
     Route::get('/staff', [ShelterMemberController::class, 'staffIndex'])->name('shelterMembers.staff');
     Route::resource('shelterMember',ShelterMemberController::class);
+ 
+    Route::resource('sponsorship',SponsorshipController::class);
 
     Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
     Route::resource('animals', AnimalController::class)->middleware('can:viewAnimal');
@@ -81,5 +85,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/deaths', [DeathController::class, 'index'])->name('deaths');
     Route::resource('deaths', DeathController::class);
+
+    Route::get('/adoptions/pdfAdoption/{id}', [AdoptionController::class, 'pdfAdoption'])->name('adoptions.pdfAdoption');
+    Route::resource('adoptions', AdoptionController::class)->except(['index']);
 
 });
