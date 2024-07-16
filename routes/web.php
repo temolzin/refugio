@@ -90,8 +90,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/deaths', [DeathController::class, 'index'])->name('deaths');
     Route::resource('deaths', DeathController::class);
 
-    Route::resource('shelters', ShelterController::class);
-
     Route::get('/adoptions/pdfAdoption/{id}', [AdoptionController::class, 'pdfAdoption'])->name('adoptions.pdfAdoption');
     Route::resource('adoptions', AdoptionController::class)->except(['index']);
 
