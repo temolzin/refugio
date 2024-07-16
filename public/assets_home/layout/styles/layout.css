@@ -467,7 +467,7 @@ table a, #comments a{background-color:inherit;}
 .navbar {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     background-color: transparent;
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -557,6 +557,6 @@ table a, #comments a{background-color:inherit;}
     }
 
     .navbar-nav .nav-item {
-        text-align: left;
+        text-align: right;
     }
 }

@@ -159,11 +159,6 @@
             <div>
                 <h6 class="heading">Contacto</h6>
                 <ul class="nospace btmspace-30 linklist contact">
-                    <li><i class="fas fa-map-marker-alt"></i>
-                        <address>
-                            La Palma No. Ext. 9, Col. Purificación, Teotihuacan, Edo. de México, C.P. 55804
-                        </address>
-                    </li>
                     <li><a href="https://wa.me/5215623640302" target="_blank">56 2364 0302</a></li>
                     <li><a href="mailto:info@rootheim.com">info@rootheim.com</a></li>
                 </ul>
