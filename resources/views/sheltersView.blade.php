@@ -70,7 +70,7 @@
                                 @endphp
                                 <img src="{{ $logo->getUrl() }}" alt="{{ $shelter->name }}">
                             @else
-                                <img src="{{ asset('img/avatardefault.png') }}" alt="Default logo">
+                                <img src="{{ asset('img/shelterdefault.png') }}" alt="Default logo">
                             @endif
                             <h4>{{ $shelter->name }}</h4>
                             <p>Teléfono: {{ $shelter->phone }}</p>
