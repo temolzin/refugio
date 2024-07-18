@@ -344,7 +344,7 @@ return [
         ],
         [
             'text' => 'Citas Veterinarias',
-            'url' => '/vets',
+            'url' => '/vetAppointments',
             'icon' => 'fa fa-calendar',
         ],
         [

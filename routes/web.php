@@ -12,8 +12,10 @@ use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\SponsorshipController;
 use App\Http\Controllers\DeathController;
 use App\Http\Controllers\VetAppointmentController;
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\AdoptionController;
 use App\Http\Controllers\RefugeController;
+
 
 
 /*
@@ -91,4 +93,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/adoptions/pdfAdoption/{id}', [AdoptionController::class, 'pdfAdoption'])->name('adoptions.pdfAdoption');
     Route::resource('adoptions', AdoptionController::class)->except(['index']);
 
+    Route::resource('donation',DonationController::class);
 });

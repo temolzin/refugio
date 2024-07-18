@@ -12,7 +12,7 @@
                         </button>
                     </div>
                 </div>
-                <form action="{{ route('vets.update', $vet->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('vetAppointments.update', $vet->id) }}" method="post" enctype="multipart/form-data">
                     @csrf @method('PUT')
                     <div class="card-body">
                         <div class="card">

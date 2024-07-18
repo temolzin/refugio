@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Animal;
 use App\Models\ShelterMember;
 use App\Models\Sponsorship;
-use App\Models\Animal;
 use App\Models\Adoption;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Donation;
 
 class ShelterMemberController extends Controller
 {
@@ -45,15 +45,18 @@ class ShelterMemberController extends Controller
         $shelterId = $user->shelter->id;
 
         $shelterMember = ShelterMember::where('shelter_id', $shelterId)
-            ->where('type_member', ShelterMember::TYPE_MEMBER_DONOR)
+            ->where('type_member',ShelterMember::TYPE_MEMBER_DONOR)
             ->get();
+           
         $shelterMember->map(function ($shelterMember) {
             $shelterMember->photo_url = $shelterMember->getFirstMediaUrl('photos');
             return $shelterMember;
         });
-
+        
+        $donations = Donation::all();
+        $type = Donation::DONATION;
         $typeMember = ShelterMember::TYPE_MEMBER_DONOR;
-        return view('shelterMembers.donor', compact('shelterMember', 'typeMember'));
+        return view('shelterMembers.donor', compact('shelterMember', 'typeMember', 'type', 'donations'));
     }
 
     public function adopterIndex(Request $request)
