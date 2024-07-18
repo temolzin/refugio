@@ -13,6 +13,7 @@ use App\Http\Controllers\DeathController;
 use App\Http\Controllers\VetAppointmentController;
 use App\Http\Controllers\AdoptionController;
 use App\Http\Controllers\RefugeController;
+use App\Http\Controllers\DashboardController;
 
 
 /*
@@ -49,6 +50,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('dashboard', DashboardController::class);
 
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::resource('users', UserController::class)->middleware('can:viewUser');

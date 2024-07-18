@@ -346,6 +346,7 @@ return [
             'text' => 'Citas Veterinarias',
             'url' => '/vets',
             'icon' => 'fa fa-calendar',
+            'can'  =>'viewVetAppointments'
         ],
         [
             'text' => 'Roles',
@@ -363,6 +364,7 @@ return [
             'text' => 'Fallecimientos',
             'url' => '/deaths',
             'icon' => 'fas fa-fw fa-skull',
+            'can'  =>'viewDeaths'
         ],
         [
             'text' => 'Usuarios',
@@ -433,6 +435,11 @@ return [
             'files' => [
                 [
                     'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
+                ],
+                [
+                    'type' => 'js',
                     'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
                 ],
@@ -496,8 +503,45 @@ return [
                     'asset' => true,
                     'location' => '//cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css',
                 ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+                ],
             ],
         ],
+
+        'fullcalendar' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/locale/es.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.css',
+                ],
+            ],
+        ],
+
         'Select2' => [
             'active' => true,
             'files' => [
