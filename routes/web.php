@@ -47,9 +47,6 @@ Route::prefix('error')->group(function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('dashboard', DashboardController::class);
 
