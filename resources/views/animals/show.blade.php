@@ -27,8 +27,8 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group text-center">
-                                        @if ($animal->getFirstMediaUrl('animal_gallery'))
-                                            <img src="{{ $animal->getFirstMediaUrl('animal_gallery') }}"
+                                        @if ($animal->getFirstMediaUrl('animalGallery'))
+                                            <img src="{{ $animal->getFirstMediaUrl('animalGallery') }}"
                                                 alt="Foto del Animal" class="img-fluid"
                                                 style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
                                         @else

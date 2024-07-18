@@ -43,8 +43,8 @@
                                                     <tr>
                                                         <td scope="row">{{ $death->death_id }}</td>
                                                         <td>
-                                                            @if ($death->animal->getFirstMediaUrl('animal_gallery'))
-                                                                <img src="{{ $death->animal->getFirstMediaUrl('animal_gallery') }}"
+                                                            @if ($death->animal->getFirstMediaUrl('animalGallery'))
+                                                                <img src="{{ $death->animal->getFirstMediaUrl('animalGallery') }}"
                                                                     alt="Foto de {{ $death->animal->animal_name }}"
                                                                     style="width: 50px; height: 50px; border-radius: 50%;">
                                                             @else

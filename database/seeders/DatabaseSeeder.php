@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ShelterSeeder::class);
         $this->call(SpecieSeeder::class);
         $this->call(AnimalSeeder::class);
+        $this->call(ShelterMemberSeeder::class);
     }
 }
