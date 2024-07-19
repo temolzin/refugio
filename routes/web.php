@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/staff', [ShelterMemberController::class, 'staffIndex'])->name('shelterMembers.staff');
     Route::resource('shelterMember',ShelterMemberController::class);
  
+    Route::get('/sponsorship/pdfSponsorship/{id}', [SponsorshipController::class, 'pdfSponsorship'])->name('sponsorship.pdfSponsorship');
     Route::resource('sponsorship',SponsorshipController::class);
 
     Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
