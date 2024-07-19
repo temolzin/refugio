@@ -94,5 +94,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/adoptions/pdfAdoption/{id}', [AdoptionController::class, 'pdfAdoption'])->name('adoptions.pdfAdoption');
     Route::resource('adoptions', AdoptionController::class)->except(['index']);
 
+    Route::get('/donations/pdfDonation/{id}', [DonationController::class, 'pdfDonation'])->name('donations.pdfDonation');
     Route::resource('donation',DonationController::class);
 });
