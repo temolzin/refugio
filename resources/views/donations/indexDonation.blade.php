@@ -37,6 +37,9 @@
                                             title="Eliminar donación" data-target="#deleteDonation{{ $donation->id }}">
                                             <i class="fas fa-trash-alt"></i> Eliminar
                                         </button>
+                                        <a type="button" class="btn btn-secondary" title="Generar tiket" target="_blank" href="{{ route('donations.pdfDonation', Crypt::encrypt($donation->id)) }}">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </a>
                                     </div>
                                     @include('donations.viewDonation')
                                 </div>

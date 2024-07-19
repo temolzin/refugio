@@ -22,8 +22,8 @@ class Donation extends Model
     const DONATION = [self::MONEY, self::SUPPLIES];
     protected $dates = ['delete'];
 
-    public function shelter_member()
+    public function shelterMember()
     {
-        return $this->belongsTo(Sheltermember::class, 'name');
+        return $this->belongsTo(ShelterMember::class, 'shelter_member_id');
     }
 }
