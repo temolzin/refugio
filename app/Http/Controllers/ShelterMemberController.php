@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Animal;
 use App\Models\ShelterMember;
 use App\Models\Sponsorship;
-use App\Models\Animal;
 use App\Models\Adoption;
 
 use Illuminate\Http\Request;

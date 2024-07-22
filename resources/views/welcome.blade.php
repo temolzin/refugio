@@ -122,20 +122,20 @@
         <section class="hoc container clear">
             <ul class="nospace group figures btmspace-80">
                 <div class="center btmspace-80">
-                    <h6 class="heading underline font-x2">Nuestras Mascotas Felices</h6>
+                    <h6 class="heading underline font-x2">Conoce Nuestros Albergues</h6>
                 </div>
                 <li class="one_third first">
-                    <figure><img src="assets_home/images/cats.jpg" alt="">
+                    <figure><img src="assets_home/images/shelter1.png" alt="">
                         <figcaption><a href="sheltersView">Saber más</a></figcaption>
                     </figure>
                 </li>
                 <li class="one_third">
-                    <figure><img src="assets_home/images/dog-and-cat.jpg" alt="">
+                    <figure><img src="assets_home/images/shelter2.jpg" alt="">
                         <figcaption><a href="sheltersView">Saber más</a></figcaption>
                     </figure>
                 </li>
                 <li class="one_third">
-                    <figure><img src="assets_home/images/dogs.jpg" alt="">
+                    <figure><img src="assets_home/images/shelter3.jpg" alt="">
                         <figcaption><a href="sheltersView">Saber más</a></figcaption>
                     </figure>
                 </li>
