@@ -5,13 +5,14 @@
 @section('content')
 <section class="content">
     <div class="right_col" role="main">
-        <div class="col-md-12 col-sm-12 ">
+        <div class="col-md-12 col-sm-12">
             <div class="x_panel">
                 <div class="x_title">
                     <h2>Donante</h2>
                     <div class="row">
                         <div class="col-lg-12 text-right">
-                            <button class="btn btn-success" data-toggle='modal' data-target="#create"> <i class="fa fa-edit"></i> Registrar Donante
+                            <button class="btn btn-success" data-toggle='modal' data-target="#create">
+                                <i class="fa fa-edit"></i> Registrar Donante
                             </button>
                         </div>
                     </div>
@@ -35,48 +36,57 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @if(count($shelterMember) <= 0) 
+                                    @if(count($shelterMember) <= 0) 
                                         <tr>
-                                            <td colspan="4">No hay resultados</td>
-                                            </tr>
-                                            @else
-                                            @foreach($shelterMember as $shelterMember)
-                                            <tr>
-                                                <td scope="row">{{$shelterMember->id}}</td>
-                                                <td>
-                                                    @if($shelterMember->getMedia('photos')->isNotEmpty())
-                                                    @php
-                                                    $photo = $shelterMember->getFirstMedia('photos');
-                                                    @endphp
-                                                    <img src="{{ $photo->getUrl() }}" alt="Photo not found" style="width: 50px; height: 50px; border-radius: 50%;">
-                                                    @else
-                                                    <img src="{{ asset('img/avatardefault.png') }}" style="width: 50px; height: 50px; border-radius: 50%;">
-                                                    @endif
-                                                </td>
-                                                <td>{{$shelterMember->name}} {{$shelterMember->last_name}} </td>
-                                                <td>{{$shelterMember->phone}}</td>
-                                                <td>{{$shelterMember->email}}</td>
-                                                <td>{{ $shelterMember->address }} Col. {{ $shelterMember->colony }} {{ $shelterMember->city }} {{ $shelterMember->state }} C.P {{ $shelterMember->postal_code }}</td>
-                                                <td>{{$shelterMember->type_member}}</td>
-                                                <td>
-                                                    <div class="btn-group" role="group" aria-label="Opciones">
-                                                        <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#view{{$shelterMember->id}}">
-                                                            <i class="fas fa-eye"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$shelterMember->id}}">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$shelterMember->id}}">
-                                                            <i class="fas fa-trash-alt"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                                @include('sheltermembers.delete')
-                                            </tr>
+                                            <td colspan="8">No hay resultados</td>
+                                        </tr>
+                                        @else
+                                        @foreach($shelterMember as $shelterMember)
+                                        <tr>
+                                            <td scope="row">{{$shelterMember->id}}</td>
+                                            <td>
+                                                @if($shelterMember->getMedia('photos')->isNotEmpty())
+                                                @php
+                                                $photo = $shelterMember->getFirstMedia('photos');
+                                                @endphp
+                                                <img src="{{ $photo->getUrl() }}" alt="Photo not found" style="width: 50px; height: 50px; border-radius: 50%;">
+                                                @else
+                                                <img src="{{ asset('img/avatardefault.png') }}" style="width: 50px; height: 50px; border-radius: 50%;">
+                                                @endif
+                                            </td>
+                                            <td>{{$shelterMember->name}} {{$shelterMember->last_name}}</td>
+                                            <td>{{$shelterMember->phone}}</td>
+                                            <td>{{$shelterMember->email}}</td>
+                                            <td>{{$shelterMember->address }} Col. {{ $shelterMember->colony }} {{ $shelterMember->city }} {{ $shelterMember->state }} C.P {{ $shelterMember->postal_code }}</td>
+                                            <td>{{$shelterMember->type_member}}</td>
+                                            <td>
+                                                <div class="btn-group" role="group" aria-label="Opciones">
+                                                    <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#view{{$shelterMember->id}}">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$shelterMember->id}}">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#delete{{$shelterMember->id}}">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-success mr-2" data-toggle='modal' data-target="#createDonation{{$shelterMember->id}}">
+                                                        <i class="fa fa-dollar-sign"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary mr-2" data-toggle='modal' data-target="#indexDonation{{$shelterMember->id}}">
+                                                        <i class="fa fa-search-dollar"></i>
+                                                    </button>
+                                                    @include('donations.indexDonation')
+                                                </div>
+                                                
+                                            </td>
+                                            @include('sheltermembers.delete')
+                                            @include('donations.createDonation')                                      
+                                        </tr>
                                             @include('sheltermembers.view')
                                             @include('sheltermembers.info')
-                                            @endforeach
-                                            @endif
+                                        @endforeach
+                                        @endif
                                     </tbody>
                                     @include('sheltermembers.create')
                                 </table>
@@ -92,6 +102,13 @@
 
 @section('js')
 <script>
+     document.addEventListener("DOMContentLoaded", function() {
+        var modalId = "{{ session('modal_id') }}";
+        if (modalId) {
+            $('#' + modalId).modal('show');
+        }
+    });
+    
     $(document).ready(function() {
         $('#donor').DataTable({
             responsive: true,
@@ -109,5 +126,10 @@
             });
         }
     });
+
+    function closeCurrentModal(modalId) {
+        $(modalId).modal('hide');
+    }
+    
 </script>
 @endsection

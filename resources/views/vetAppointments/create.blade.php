@@ -11,7 +11,7 @@
                         </button>
                     </div>
                 </div>
-                <form action="{{ route('vets.store') }}" method="post">
+                <form action="{{ route('vetAppointments.store') }}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="card">

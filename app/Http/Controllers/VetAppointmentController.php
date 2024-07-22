@@ -17,15 +17,11 @@ class VetAppointmentController extends Controller
         $status = VetAppointment::APPOINTMENT_STATUS;
 
         $animals = Animal::where('shelter_id', $shelterId)->get();
-        $vets = VetAppointment::all();
+        $vets = VetAppointment::whereHas('animal', function($query) use ($shelterId) {
+            $query->where('shelter_id', $shelterId);
+        })->get();
 
         return view('vetAppointments.index', compact('animals', 'vets', 'status'));
-    }
-
-    public function list()
-    {
-        $vets = VetAppointment::all();
-        return $vets;
     }
 
     public function store(Request $request)
@@ -54,7 +50,7 @@ class VetAppointmentController extends Controller
     public function destroy($id)
     {
         $vet = VetAppointment::find($id);
-        if ($vet) {
+        if ($vet && $vet->animal->shelter_id == Auth::user()->shelter->id) {
             $vet->delete();
         }
         return redirect()->back()->with('success', 'Cita veterinaria eliminada exitosamente');
@@ -63,6 +59,7 @@ class VetAppointmentController extends Controller
     public function edit($id)
     {
         $vet = VetAppointment::find($id);
+        if ($vet && $vet->animal->shelter_id == Auth::user()->shelter->id) 
         return view('vetAppointments.edit', compact('vet'));
     }
 
@@ -85,15 +82,15 @@ class VetAppointmentController extends Controller
         ]);
 
         $vet = VetAppointment::find($id);
-        if ($vet) {
+        if ($vet && $vet->animal->shelter_id == Auth::user()->shelter->id) 
             $vet->update($request->all());
+            return redirect()->back()->with('success', 'Cita veterinaria actualizada correctamente');
         }
-        return redirect()->back()->with('success', 'Cita veterinaria actualizada correctamente');
-    }
 
     public function show($id)
     {
         $vet = VetAppointment::find($id);
-        return view('vetAppointments.show', compact('vet'));
+        if ($vet && $vet->animal->shelter_id == Auth::user()->shelter->id) 
+            return view('vetAppointments.show', compact('vet'));
+        }
     }
-}

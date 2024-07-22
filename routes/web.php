@@ -12,7 +12,11 @@ use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\SponsorshipController;
 use App\Http\Controllers\DeathController;
 use App\Http\Controllers\VetAppointmentController;
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\AdoptionController;
+use App\Http\Controllers\RefugeController;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,9 +49,8 @@ Route::prefix('error')->group(function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('dashboard', DashboardController::class);
 
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::resource('users', UserController::class)->middleware('can:viewUser');
@@ -65,6 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/staff', [ShelterMemberController::class, 'staffIndex'])->name('shelterMembers.staff');
     Route::resource('shelterMember',ShelterMemberController::class);
  
+    Route::get('/sponsorship/pdfSponsorship/{id}', [SponsorshipController::class, 'pdfSponsorship'])->name('sponsorship.pdfSponsorship');
     Route::resource('sponsorship',SponsorshipController::class);
 
     Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
@@ -89,4 +93,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/adoptions/pdfAdoption/{id}', [AdoptionController::class, 'pdfAdoption'])->name('adoptions.pdfAdoption');
     Route::resource('adoptions', AdoptionController::class)->except(['index']);
 
+    Route::get('/donations/pdfDonation/{id}', [DonationController::class, 'pdfDonation'])->name('donations.pdfDonation');
+    Route::resource('donation',DonationController::class);
 });
