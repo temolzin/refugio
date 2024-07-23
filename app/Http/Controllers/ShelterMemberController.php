@@ -173,7 +173,7 @@ class ShelterMemberController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'photo' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
