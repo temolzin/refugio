@@ -31,7 +31,7 @@
                                             <div class="photo-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">
                                                 <img id="photo-preview" src="#" alt="Vista previa de la foto" style="display: none; width: 120px; height: 120px; border-radius: 60%; object-fit: cover;">
                                             </div>
-                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo" aria-describedby="photoHelp" style="height: 43px; width: 450px;" onchange="previewPhoto(event)" required/>
+                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo" aria-describedby="photoHelp" style="height: 43px; width: 450px;" onchange="previewPhoto(event)"/>
                                             @error('photo')
                                             <span class="invalid-feedback">
                                                 <strong>{{ $message }}</strong>

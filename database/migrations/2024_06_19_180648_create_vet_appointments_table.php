@@ -19,7 +19,7 @@ class CreateVetAppointmentsTable extends Migration
             $table->unsignedBigInteger('animal_id');
             $table->datetime('schedule_date');
             $table->string('reason');
-            $table->enum('status', VetAppointment::APPOINTMENT_STATUS)->nullable();
+            $table->enum('status', VetAppointment::APPOINTMENT_STATUS);
             $table->string('observation')->nullable();
             $table->softDeletes();
             $table->timestamps();

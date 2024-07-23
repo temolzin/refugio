@@ -33,7 +33,7 @@ class DeathController extends Controller
         $request->validate([
             'animal_id' => 'required|exists:animals,id',
             'date' => 'required|date',
-            'cause' => 'required|string|max:255',
+            'cause' => 'nullable|string|max:255',
         ]);
 
         $user = Auth::user();
@@ -67,7 +67,7 @@ class DeathController extends Controller
         $request->validate([
             'animal_id' => 'required|exists:animals,id',
             'date' => 'required|date',
-            'cause' => 'required|string|max:255',
+            'cause' => 'nullable|string|max:255',
         ]);
 
         $death = Death::findOrFail($death_id);

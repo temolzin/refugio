@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="description" class="form-label">Descripción</label>
                                             <textarea class="form-control @error('history') is-invalid @enderror" name="description"
-                                                placeholder="Ingresa la historia del animal" required>{{ old('history',$species->description) }}</textarea>
+                                                placeholder="Ingresa la historia del animal">{{ old('history',$species->description) }}</textarea>
                                             @error('description')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>

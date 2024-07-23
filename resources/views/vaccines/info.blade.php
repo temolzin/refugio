@@ -58,7 +58,7 @@
                                         <div class="form-group">
                                             <label for="description" class="form-label">Descripción (*)</label>
                                             <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                                                placeholder="Ingresa la historia del animal" required>{{ old('description', $vaccines->description) }}</textarea>
+                                                placeholder="Ingresa la historia del animal">{{ old('description', $vaccines->description) }}</textarea>
                                             @error('description')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>
