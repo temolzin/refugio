@@ -18,7 +18,7 @@ class CreateDeathsTable extends Migration
             $table->unsignedBigInteger('animal_id');
             $table->unsignedBigInteger('shelter_id')->nullable();
             $table->date('date');
-            $table->string('cause');
+            $table->string('cause')->nullable();
 
             $table->foreign('animal_id')->references('id')->on('animals')->onDelete('cascade');
             $table->foreign('shelter_id')->references('id')->on('shelters')->onDelete('cascade');

@@ -43,7 +43,7 @@ class SpecieController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'required',
+            'description' => 'nullable',
         ]);
 
         $user = Auth::user();
@@ -96,7 +96,7 @@ class SpecieController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'required',
+            'description' => 'nullable',
         ]);
         $species = Specie::find($id);
         if ($species) {

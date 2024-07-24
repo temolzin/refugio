@@ -71,7 +71,7 @@
                                             <label for="cause" class="form-label">Causa (*)</label>
                                             <input type="text"
                                                 class="form-control @error('cause') is-invalid @enderror" name="cause"
-                                                id="cause" value="{{ $death->cause }}" required />
+                                                id="cause" value="{{ $death->cause }}"/>
                                             @error('cause')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>

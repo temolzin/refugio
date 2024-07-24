@@ -16,7 +16,7 @@ class CreateSpeciesTable extends Migration
         Schema::create('species', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('shelter_id');
             $table->timestamps();
             $table->softDeletes();
