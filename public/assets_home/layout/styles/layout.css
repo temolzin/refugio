@@ -300,10 +300,6 @@ input:focus, textarea:focus, *:required:focus{border-color:#DC8E47;}
 .row5, .row5 a{color:#C1C2C4; background-color:#292929;}
 
 
-/* Top Bar */
-#topbar ul li:first-child a{color:#DC8E47;}
-
-
 /* Header */
 #header{border-color:rgba(255,255,255,.2);}
 #header #logo h1 a{color:inherit;}
@@ -428,7 +424,7 @@ table a, #comments a{background-color:inherit;}
 	#topbar{padding-top:15px; text-align:center;}
 	#topbar > div:first-of-type ul{margin:0 0 15px 0;}
 
-	#header{padding:20px 0; text-align:center;}
+	#header{padding:0.5rem 0; text-align:center;}
 	#header #logo{margin:0 0 20px 0;}
 
 	#pageintro article, #pageintro p{max-width:none; margin:auto;}
@@ -465,60 +461,102 @@ table a, #comments a{background-color:inherit;}
 	.font-x3{font-size:1.8rem;}
 }
 
+
+/* Navbar styles
+--------------------------------------------------------------------------------------------------------------- */
 .navbar {
-	padding: 0.5rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: transparent;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.3rem;
 }
 
-.navbar-nav {
-	display: flex !important;
-	flex-direction: row !important;
-	justify-content: center !important;
-	list-style: none !important;
-	padding: 0 !important;
-	margin: 0 !important;
-	width: 100% !important;
+.navbar-toggler {
+    display: none;
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: #fff;
+	border-radius: 12px;
+	padding: 0.25rem 0.75rem;
 }
 
-.navbar-nav .nav-item {
-	margin-left: 20px;
-}
-
-.navbar-nav .nav-item:first-child {
-	margin-left: 0;
-}
-
-.navbar-nav .nav-link {
-    font-family: 'Georgia', 'Times New Roman', Times, serif;
-}
-
-.navbar-nav .nav-link {
-	color: #fff;
-	font-weight: bold;
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background-color: orange;
 }
 
 .navbar-collapse {
-	justify-content: center;
+    display: flex;
+    flex-basis: auto;
+    flex-grow: 1;
+    align-items: center;
 }
 
-/* Estilo para la opción "Inicio" */
+.navbar-collapse.show {
+    display: block;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+
+.nav-item {
+    padding: 0.5rem 1rem;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+	font-weight: bold;
+}
+
 .navbar-nav .nav-item.active .nav-link {
-	color: orange !important;
+	color: orange;
 }
 
-/* Cambio de color al pasar el cursor sobre las otras opciones */
 .navbar-nav .nav-item .nav-link:hover {
-	color: orange !important;
-	/* Cambia a tu color preferido */
+	color: orange;
 }
 
-/* Aumentar el tamaño de la letra del menú */
-.navbar-nav .nav-link {
-    font-size: 18px; /* Ajusta el tamaño según tu preferencia */
-    padding: 10px 15px; /* Reduce el espacio de relleno si es necesario */
+@media (min-width: 768px) {
+    .navbar-nav {
+        flex-direction: row;
+    }
+
+    .navbar-toggler {
+        display: none;
+    }
+
+    .navbar-collapse.show {
+        display: flex;
+    }
 }
 
-/* Reducir el espacio arriba y abajo del menú */
-.main-header.navbar {
-    margin-bottom: 0; /* Elimina el margen inferior */
-    padding: 0.5px 0; /* Reduce el espacio de relleno superior e inferior */
+@media (max-width: 767px) {
+    .navbar-toggler {
+        display: inline-block;
+    }
+
+    .navbar-collapse {
+        display: none;
+    }
+
+	.navbar-nav {
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .navbar-nav .nav-item {
+        text-align: right;
+    }
 }

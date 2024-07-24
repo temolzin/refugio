@@ -18,7 +18,6 @@ use App\Http\Controllers\RefugeController;
 use App\Http\Controllers\DashboardController;
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,7 +40,7 @@ Route::get('/', function () {
 
 Route::get('home', [HomeController::class, 'index']);
 
-Route::get('refuges', [RefugeController::class, 'index']);
+Route::get('sheltersView', [ShelterController::class, 'sheltersView']);
 
 Route::prefix('error')->group(function () {
     Route::get('/404', function () {
@@ -62,7 +61,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class)->middleware('can:viewRol');
 
     Route::post('/users/{user}/updateRole', [UserController::class, 'updateRole'])->middleware('can:viewUser')->name('users.updateRole');
-  
+
     Route::get('/godfather', [ShelterMemberController::class, 'godfatherIndex'])->name('shelterMembers.godfather');
     Route::get('/adopter', [ShelterMemberController::class, 'adopterIndex'])->name('shelterMembers.adopter');
     Route::get('/donor', [ShelterMemberController::class, 'donorIndex'])->name('shelterMembers.donor');
@@ -76,7 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('animals', AnimalController::class)->middleware('can:viewAnimal');
 
     Route::get('/animals/petProfile/{animalId}', [AnimalController::class, 'petProfile'])->name('animals.petProfile');
-  
+
     Route::get('/vaccines', [VaccineController::class, 'index'])->name('vaccines');
     Route::resource('vaccines', VaccineController::class)->middleware('can:viewVaccine');
 
