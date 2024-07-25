@@ -2,6 +2,8 @@
 
 @section('title', 'Admin')
 
+@section('favicon')
+
 @section('content_header')
     <h1></h1>
 @stop

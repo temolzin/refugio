@@ -5,6 +5,7 @@
     <title>Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="{{ asset('img/AdminLTELogo.png') }}" type="image/x-icon">
     <link href="assets_home/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 </head>
 
@@ -116,31 +117,6 @@
             </ul>
             <div class="clear"></div>
         </main>
-    </div>
-
-    <div class="wrapper row2">
-        <section class="hoc container clear">
-            <ul class="nospace group figures btmspace-80">
-                <div class="center btmspace-80">
-                    <h6 class="heading underline font-x2">Conoce Nuestros Albergues</h6>
-                </div>
-                <li class="one_third first">
-                    <figure><img src="assets_home/images/shelter1.png" alt="">
-                        <figcaption><a href="sheltersView">Saber más</a></figcaption>
-                    </figure>
-                </li>
-                <li class="one_third">
-                    <figure><img src="assets_home/images/shelter2.jpg" alt="">
-                        <figcaption><a href="sheltersView">Saber más</a></figcaption>
-                    </figure>
-                </li>
-                <li class="one_third">
-                    <figure><img src="assets_home/images/shelter3.jpg" alt="">
-                        <figcaption><a href="sheltersView">Saber más</a></figcaption>
-                    </figure>
-                </li>
-            </ul>
-        </section>
     </div>
 
     <div class="wrapper row4">

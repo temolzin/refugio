@@ -1,5 +1,9 @@
 @extends('adminlte::page')
+
 @section('title', 'Admin')
+
+@section('favicon')
+
 @section('content')
 <section class="content">
     <div class="right_col" role="main">
