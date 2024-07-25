@@ -2,10 +2,6 @@
 
 @section('title', 'Admin')
 
-@section('favicon')
-<link rel="icon" href="{{ asset('img/AdminLTELogo.png') }}" type="image/x-icon">
-@stop
-
 @section('content')
     <section class="content">
         <div class="right_col" role="main">

@@ -2,8 +2,6 @@
 
 @section('title', 'Animales')
 
-@section('favicon')
-
 @section('content')
     <section class="content">
         <div class="right_col" role="main">
