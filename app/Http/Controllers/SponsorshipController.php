@@ -3,11 +3,29 @@
 namespace App\Http\Controllers;
 use App\Models\Sponsorship;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 
 class SponsorshipController extends Controller
 {   
+    public function pdfSponsorship($id)
+{
+    $id = Crypt::decrypt($id);
+    $shelter = Auth::user()->shelter;
+
+    $sponsorship = Sponsorship::where('id', $id)
+        ->with(['shelterMember'])
+        ->firstOrFail();
+
+    $shelterMember = $sponsorship->shelterMember;
+
+    $pdf = PDF::loadView('sponsorship.pdfSponsorship', compact('sponsorship', 'shelterMember', 'shelter'));
+    return $pdf->stream();
+}
     public function store(Request $request)
     {
+        
         $request->validate([
             'animal_id' => 'required|exists:animals,id',
             'start_date' => 'required|date',
