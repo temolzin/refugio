@@ -36,6 +36,9 @@
                                 <a type="button" class="btn btn-secondary" title="Generar tiket" target="_blank" href="{{ route('sponsorship.reportSponsorship', Crypt::encrypt($sponsorship->id)) }}">
                                             <i class="fas fa-file-pdf"></i>
                                     </a>
+                                <a type="button" class="btn btn-secondary" title="Generar tiket" target="_blank" href="{{ route('sponsorship.pdfSponsorship', Crypt::encrypt($sponsorship->id)) }}">
+                                    <i class="fas fa-file-pdf"></i>
+                                </a>
                             </div>
                         </div>
                     </div>

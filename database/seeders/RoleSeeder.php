@@ -30,6 +30,8 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'viewAdoptions', 'description' => 'ver adopciones'])->assignRole($roleShelter);
         Permission::create(['name' => 'viewShelterUsers', 'description' => 'ver usuarios albergue'])->assignRole($roleShelter);
         Permission::create(['name' => 'viewGodparents', 'description' => 'ver apadrinamientos'])->assignRole($roleShelter);
+        Permission::create(['name' => 'viewVetAppointments', 'description' => 'vercitas veterinarias'])->assignRole($roleShelter);
+        Permission::create(['name' => 'viewDeaths', 'description' => 'ver fallecimientos'])->assignRole($roleShelter);
 
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Sponsorship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -8,6 +9,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 
 class SponsorshipController extends Controller
+
 {   
     public function reportSponsorship($id)
 {
@@ -23,6 +25,24 @@ class SponsorshipController extends Controller
     $pdf = PDF::loadView('sponsorship.reportSponsorship', compact('sponsorship', 'shelterMember', 'shelter'));
     return $pdf->stream();
 }
+
+{
+    public function pdfSponsorship($id)
+    {
+        $id = Crypt::decrypt($id);
+        $shelter = Auth::user()->shelter;
+
+        $sponsorship = Sponsorship::where('id', $id)
+            ->with(['animal.specie', 'shelterMember'])
+            ->firstOrFail();
+
+        $shelterMember = $sponsorship->shelterMember;
+
+        $pdf = PDF::loadView('sponsorship.pdfSponsorship', compact('sponsorship', 'shelterMember', 'shelter'));
+        return $pdf->stream();
+    }
+
+
     public function store(Request $request)
     {
         
@@ -35,7 +55,7 @@ class SponsorshipController extends Controller
             'observation' => 'required|string|max:255',
             'shelter_member_id' => 'required|exists:shelter_member,id',
         ]);
-    
+
         $sponsorship = new Sponsorship();
         $sponsorship->animal_id = $request->input('animal_id');
         $sponsorship->shelter_member_id = $request->input('shelter_member_id');
@@ -44,9 +64,9 @@ class SponsorshipController extends Controller
         $sponsorship->payment_date = $request->input('payment_date');
         $sponsorship->amount = $request->input('amount');
         $sponsorship->observation = $request->input('observation');
-    
+
         $sponsorship->save();
-    
+
         return redirect()->back()->with('success', 'Apadrinamiento registrado exitosamente.');
     }
 
@@ -56,5 +76,4 @@ class SponsorshipController extends Controller
         $sponsorship->delete();
         return redirect()->back()->with('success', 'Apadrinamiento eliminada exitosamente')->with('modal_id', $request->input('modal_id'));
     }
-    
 }

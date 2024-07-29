@@ -14,8 +14,8 @@
             <div id="topbar" class="hoc clear">
                 <div class="fl_left">
                     <ul class="nospace">
-                        <li><i class="fas fa-phone"></i> 56 2364 0302</li>
-                        <li><i class="far fa-envelope"></i> info@rootheim.com</li>
+                        <li><a href="https://wa.me/5215623640302" target="_blank">56 2364 0302</a></li>
+                        <li><a href="mailto:info@rootheim.com">info@rootheim.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -25,13 +25,16 @@
             <header id="header" class="hoc clear">
                 <nav class="main-header navbar navbar-expand-lg navbar-dark">
                     <div class="container">
+                        <button class="navbar-toggler" type="button" onclick="toggleNavbar()">
+                            <span class="navbar-toggler-icon">&#9776;</span>
+                        </button>
                         <div class="collapse navbar-collapse" id="navbarCollapse">
                             <ul class="navbar-nav">
                                 <li class="nav-item active">
-                                    <a href="home" class="nav-link">Inicio</a>
+                                    <a href="home" class="nav-link home-link">Inicio</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="refuges" class="nav-link">Albergues</a>
+                                    <a href="sheltersView" class="nav-link">Albergues</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/login" class="nav-link">Ingresar</a>
@@ -64,9 +67,9 @@
             <ul class="nospace group overview btmspace-80">
                 <li class="one_quarter">
                     <article>
-                        <a href="#">
+                        <a>
                             <img src="assets_home/images/contact_us.png" alt="" style="margin-bottom: 10px;">
-                            <h6 class="heading"><a href="#">Contáctanos</a></h6>
+                            <h6 class="heading"><a>Contáctanos</a></h6>
                             <p>¿Interesado en mejorar la eficiencia y el cuidado en tu albergue de animales?
                                 ¡Contáctanos
                                 ahora para obtener más información sobre cómo Patitas Felices puede ayudarte a
@@ -76,22 +79,22 @@
                 </li>
                 <li class="one_quarter">
                     <article>
-                        <a href="#">
+                        <a>
                             <img src="assets_home/images/register.png" alt="" style="margin-bottom: 10px;">
-                            <h6 class="heading"><a href="#">Te registramos</a></h6>
+                            <h6 class="heading"><a>Te registramos</a></h6>
                             <p>Deja que Patitas Felices se encargue completamente del proceso de registro de tu
                                 albergue.
                                 Con un simple paso, estarás listo para ingresar y administrarlo de manera eficiente,
                                 amorosa
-                                y exitosa. Regístrate ahora mismo y comienza a ayudar.&hellip;</p>
+                                y exitosa. Regístrate ahora mismo y comienza a ayudar&hellip;</p>
                         </a>
                     </article>
                 </li>
                 <li class="one_quarter">
                     <article>
-                        <a href="#">
+                        <a>
                             <img src="assets_home/images/shelter.png" alt="" style="margin-bottom: 10px;">
-                            <h6 class="heading"><a href="#">Administra tu refugio</a></h6>
+                            <h6 class="heading"><a>Administra tu refugio</a></h6>
                             <p>Una vez registrado, podrás acceder y disfrutar de todas las herramientas disponibles para
                                 la
                                 administración óptima de tu albergue. ¡Comienza a administrar tu albergue de manera
@@ -101,12 +104,12 @@
                 </li>
                 <li class="one_quarter">
                     <article>
-                        <a href="#">
+                        <a>
                             <img src="assets_home/images/support.png" alt="" style="margin-bottom: 10px;">
-                            <h6 class="heading"><a href="#">Te guiamos</a></h6>
+                            <h6 class="heading"><a>Te guiamos</a></h6>
                             <p>Si surge alguna pregunta o inquietud, estamos aquí para ayudarte en cualquier momento.
                                 Nuestro equipo está disponible para brindarte la asistencia que necesites. No dudes en
-                                ponerte en contacto con nosotros cuando lo necesites.&hellip;</p>
+                                ponerte en contacto con nosotros cuando lo necesites&hellip;</p>
                         </a>
                     </article>
                 </li>
@@ -119,21 +122,21 @@
         <section class="hoc container clear">
             <ul class="nospace group figures btmspace-80">
                 <div class="center btmspace-80">
-                    <h6 class="heading underline font-x2">Nuestras Mascotas Felices</h6>
+                    <h6 class="heading underline font-x2">Conoce Nuestros Albergues</h6>
                 </div>
                 <li class="one_third first">
-                    <figure><img src="assets_home/images/cats.jpg" alt="">
-                        <figcaption><a href="refuges">Saber más</a></figcaption>
+                    <figure><img src="assets_home/images/shelter1.png" alt="">
+                        <figcaption><a href="sheltersView">Saber más</a></figcaption>
                     </figure>
                 </li>
                 <li class="one_third">
-                    <figure><img src="assets_home/images/dog-and-cat.jpg" alt="">
-                        <figcaption><a href="refuges">Saber más</a></figcaption>
+                    <figure><img src="assets_home/images/shelter2.jpg" alt="">
+                        <figcaption><a href="sheltersView">Saber más</a></figcaption>
                     </figure>
                 </li>
                 <li class="one_third">
-                    <figure><img src="assets_home/images/dogs.jpg" alt="">
-                        <figcaption><a href="refuges">Saber más</a></figcaption>
+                    <figure><img src="assets_home/images/shelter3.jpg" alt="">
+                        <figcaption><a href="sheltersView">Saber más</a></figcaption>
                     </figure>
                 </li>
             </ul>
@@ -147,7 +150,7 @@
                 <nav>
                     <ul class="nospace inline pushright uppercase">
                         <li><a href="home">Inicio</a></li>
-                        <li><a href="refuges">Albergues</a></li>
+                        <li><a href="sheltersView">Albergues</a></li>
                         <li><a href="/login">Ingresar</a></li>
                     </ul>
                 </nav>
@@ -156,13 +159,8 @@
             <div>
                 <h6 class="heading">Contacto</h6>
                 <ul class="nospace btmspace-30 linklist contact">
-                    <li><i class="fas fa-map-marker-alt"></i>
-                        <address>
-                            La Palma No. Ext. 9, Col. Purificación, Teotihuacan, Edo. de México, C.P. 55804
-                        </address>
-                    </li>
-                    <li><i class="fas fa-phone"></i> 56 2364 0302</li>
-                    <li><i class="far fa-envelope"></i> https://rootheim.com/</li>
+                    <li><a href="https://wa.me/5215623640302" target="_blank">56 2364 0302</a></li>
+                    <li><a href="mailto:info@rootheim.com">info@rootheim.com</a></li>
                 </ul>
         </footer>
     </div>
@@ -175,11 +173,16 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var menuToggle = document.querySelector('.navbar-toggler');
-            var menuCollapse = document.querySelector('#navbarCollapse');
-        });
+        function toggleNavbar() {
+            var navbarCollapse = document.getElementById('navbarCollapse');
+            if (navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+            } else {
+                navbarCollapse.classList.add('show');
+            }
+        }
     </script>
+
 </body>
 
 </html>
