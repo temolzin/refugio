@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth']], function () {
  
     Route::get('/sponsorship/pdfSponsorship/{id}', [SponsorshipController::class, 'pdfSponsorship'])->name('sponsorship.pdfSponsorship');
     Route::resource('sponsorship',SponsorshipController::class);
+    Route::get('/sponsorship/reportSponsorship/{id}', [SponsorshipController::class, 'reportSponsorship'])->name('sponsorship.reportSponsorship');
 
     Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
     Route::resource('animals', AnimalController::class)->middleware('can:viewAnimal');

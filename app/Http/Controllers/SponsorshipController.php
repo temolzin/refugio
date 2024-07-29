@@ -9,6 +9,23 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 
 class SponsorshipController extends Controller
+
+{   
+    public function reportSponsorship($id)
+{
+    $id = Crypt::decrypt($id);
+    $shelter = Auth::user()->shelter;
+
+    $sponsorship = Sponsorship::where('id', $id)
+        ->with(['shelterMember'])
+        ->firstOrFail();
+
+    $shelterMember = $sponsorship->shelterMember;
+
+    $pdf = PDF::loadView('sponsorship.reportSponsorship', compact('sponsorship', 'shelterMember', 'shelter'));
+    return $pdf->stream();
+}
+
 {
     public function pdfSponsorship($id)
     {
@@ -25,8 +42,10 @@ class SponsorshipController extends Controller
         return $pdf->stream();
     }
 
+
     public function store(Request $request)
     {
+        
         $request->validate([
             'animal_id' => 'required|exists:animals,id',
             'start_date' => 'required|date',
