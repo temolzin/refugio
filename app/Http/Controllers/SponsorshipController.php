@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SponsorshipController extends Controller
 {   
-    public function pdfSponsorship($id)
+    public function reportSponsorship($id)
 {
     $id = Crypt::decrypt($id);
     $shelter = Auth::user()->shelter;
@@ -20,7 +20,7 @@ class SponsorshipController extends Controller
 
     $shelterMember = $sponsorship->shelterMember;
 
-    $pdf = PDF::loadView('sponsorship.pdfSponsorship', compact('sponsorship', 'shelterMember', 'shelter'));
+    $pdf = PDF::loadView('sponsorship.reportSponsorship', compact('sponsorship', 'shelterMember', 'shelter'));
     return $pdf->stream();
 }
     public function store(Request $request)

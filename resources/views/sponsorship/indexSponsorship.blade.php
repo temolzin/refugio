@@ -33,7 +33,7 @@
                                 <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="delete sponsorship" data-target="#deleteSponsorship{{ $sponsorship->id }}">
                                     <i class="fas fa-trash-alt"></i> Eliminar
                                 </button>
-                                <a type="button" class="btn btn-secondary" title="Generar tiket" target="_blank" href="{{ route('sponsorship.pdfSponsorship', Crypt::encrypt($sponsorship->id)) }}">
+                                <a type="button" class="btn btn-secondary" title="Generar tiket" target="_blank" href="{{ route('sponsorship.reportSponsorship', Crypt::encrypt($sponsorship->id)) }}">
                                             <i class="fas fa-file-pdf"></i>
                                     </a>
                             </div>
