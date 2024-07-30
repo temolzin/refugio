@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Animal;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Specie;
+use App\Models\VaccinatedAnimal;
+use App\Models\Vaccine;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Crypt;
@@ -23,8 +25,13 @@ class AnimalController extends Controller
         $sexes = Animal::SEXES;
         $animals = Animal::where('shelter_id', $shelterId)->get();
         $species = Specie::where('shelter_id', $shelterId)->get();
+        $vaccines = Vaccine::where('shelter_id', $shelterId)->get();
+        $vaccinatedAnimals = VaccinatedAnimal::whereIn('animal_id', $animals->pluck('id'))
+        ->with('vaccines') 
+        ->get()
+        ->groupBy('animal_id');
 
-        return view('animals.index', compact('animals', 'species','origins', 'behaviors','sexes'));
+        return view('animals.index', compact('animals', 'species','origins', 'behaviors','sexes','vaccines','vaccinatedAnimals'));
     }
 
     public function create()

@@ -89,4 +89,9 @@ class Animal extends Model implements HasMedia
     {
         return $this->hasMany(Adoption::class);
     }
+
+    public function vaccinatedAnimals()
+    {
+        return $this->hasMany(VaccinatedAnimal::class);
+    }
 }

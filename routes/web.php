@@ -16,6 +16,7 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\AdoptionController;
 use App\Http\Controllers\RefugeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\VaccinatedAnimalController;
 
 
 
@@ -95,4 +96,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('adoptions', AdoptionController::class)->except(['index']);
 
     Route::resource('donation',DonationController::class);
+
+    Route::resource('vaccinated_animals',VaccinatedAnimalController::class);
+
 });
