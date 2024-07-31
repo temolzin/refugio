@@ -77,15 +77,15 @@
                                                     </div>
                                                     @include('sponsorship.indexSponsorship')
                                                 </td>
-                                                @include('sheltermembers.delete')
+                                                @include('shelterMembers.delete')
                                                 @include('sponsorship.createSponsorship', ['shelterMember' => $shelterMember])
                                             </tr>
-                                            @include('sheltermembers.view')
-                                            @include('sheltermembers.info')
+                                            @include('shelterMembers.view')
+                                            @include('shelterMembers.info')
                                             @endforeach
                                             @endif
                                     </tbody>
-                                    @include('sheltermembers.create')
+                                    @include('shelterMembers.create')
                                 </table>
                             </div>
                         </div>

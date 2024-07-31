@@ -2,6 +2,8 @@
 
 @section('title', 'Admin')
 
+@section('plugins.Fullcalendar', true)
+
 @section('content')
     <section class="content">
         <div class="right_col" role="main">

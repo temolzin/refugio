@@ -8,7 +8,7 @@
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Adoptante</h2>
+                    <h2>Adoptantesss</h2>
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <button class="btn btn-success" data-toggle='modal' data-target="#create"> <i class="fa fa-edit"></i> Registrar Adoptante
@@ -74,16 +74,16 @@
                                                          </button>
                                                     </div>
                                                 </td>
-                                                @include('sheltermembers.delete')
+                                                @include('shelterMembers.delete')
                                                 @include('adoptions.create')
                                                 @include('adoptions.index')
                                             </tr>
-                                            @include('sheltermembers.view')
-                                            @include('sheltermembers.info')
+                                            @include('shelterMembers.view')
+                                            @include('shelterMembers.info')
                                             @endforeach
                                             @endif
                                     </tbody>
-                                    @include('sheltermembers.create')
+                                    @include('shelterMembers.create')
                                 </table>
                             </div>
                         </div>
