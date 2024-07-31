@@ -64,7 +64,7 @@
                                                     </td>
                                                     @include('vetAppointments.delete')
                                                 </tr>
-                                                @include('vetappointments.show')
+                                                @include('vetAppointments.show')
                                                 @include('vetAppointments.edit')
                                             @endforeach
                                         @endif

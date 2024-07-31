@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Sheltermember extends Model implements HasMedia
+class ShelterMember extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia,SoftDeletes;
 
