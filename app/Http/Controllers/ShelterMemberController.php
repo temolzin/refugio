@@ -35,7 +35,7 @@ class ShelterMemberController extends Controller
 
         $typeMember = ShelterMember::TYPE_MEMBER_GODFATHER;
 
-        return view('ShelterMembers.godfather', compact('shelterMember', 'typeMember','animals', 'sponsorships'));
+        return view('shelterMembers.godfather', compact('shelterMember', 'typeMember','animals', 'sponsorships'));
     }
 
     public function donorIndex(Request $request)
