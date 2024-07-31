@@ -3,44 +3,44 @@
 @section('title', 'Animales')
 
 @section('content')
-    <section class="content">
-        <div class="right_col" role="main">
-            <div class="col-md-12 col-sm-12 ">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Mascotas</h2>
-                        <div class="row">
-                            <div class="col-lg-12 text-right">
-                                <button class="btn btn-success" data-toggle='modal' data-target="#create"> <i
-                                        class="fa fa-edit"></i> Registrar Mascota
-                                </button>
-                            </div>
+<section class="content">
+    <div class="right_col" role="main">
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Mascotas</h2>
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <button class="btn btn-success" data-toggle='modal' data-target="#create"> <i 
+                            class="fa fa-edit"></i> Registrar Mascota
+                            </button>
                         </div>
-                        <div class="clearfix"></div>
                     </div>
-                    <div class="x_content">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="card-box table-responsive">
-                                    <table id="animals" class="table table-striped display responsive nowrap"
-                                        style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>FOTO</th>
-                                                <th>NOMBRE</th>
-                                                <th>ESPECIE</th>
-                                                <th>SEXO</th>
-                                                <th>COLOR</th>
-                                                <th>ESTERILIZADO</th>
-                                                <th>OPCIONES</th>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card-box table-responsive">
+                                <table id="animals" class="table table-striped display responsive nowrap"
+                                 style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>FOTO</th>
+                                            <th>NOMBRE</th>
+                                            <th>ESPECIE</th>
+                                            <th>SEXO</th>
+                                            <th>COLOR</th>
+                                            <th>ESTERILIZADO</th>
+                                            <th>OPCIONES</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (count($animals) <= 0) 
+                                        <tr>
+                                            <td colspan="14">No hay resultados</td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if (count($animals) <= 0)
-                                                <tr>
-                                                    <td colspan="14">No hay resultados</td>
-                                                </tr>
                                             @else
                                                 @foreach ($animals as $animal)
                                                     <tr>
@@ -86,36 +86,36 @@
                                                     </tr>
                                                 @endforeach
                                             @endif
-                                        </tbody>
-                                    </table>
-                                    @include('animals.create')
-                                </div>
+                                    </tbody>
+                                </table>
+                                @include('animals.create')
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 @endsection
 
 @section('js')
-    <script>
-        $(document).ready(function() {
-            $('#animals').DataTable({
-                responsive: true,
-                buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-                dom: 'Bfrtip',
-            });
-            var successMessage = "{{ session('success') }}";
-            if (successMessage) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Éxito',
-                    text: successMessage,
-                    confirmButtonText: 'Aceptar'
-                });
-            }
+<script>
+    $(document).ready(function() {
+        $('#animals').DataTable({
+            responsive: true,
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+            dom: 'Bfrtip',
         });
-    </script>
+        var successMessage = "{{ session('success') }}";
+        if (successMessage) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: successMessage,
+                confirmButtonText: 'Aceptar'
+            });
+        }
+    });
+</script>
 @endsection
