@@ -42,65 +42,49 @@
                                             <td colspan="14">No hay resultados</td>
                                             </tr>
                                             @else
-                                            @foreach ($animals as $animal)
-                                            <tr>
-                                                <td scope="row">{{ $animal->id }}</td>
-                                                <td>
-                                                    @if ($animal->getFirstMediaUrl('animalGallery'))
-                                                    <img src="{{ $animal->getFirstMediaUrl('animalGallery') }}"
-                                                     alt="Foto de {{ $animal->name }}"
-                                                      style="width: 50px; height: 50px; border-radius: 50%;">
-                                                    @else
-                                                    <img src="{{ asset('img/animaldefault.png') }}" 
-                                                    style="width: 50px; height: 50px; border-radius: 50%;">
-                                                    @endif
-                                                </td>
-                                                <td>{{ $animal->name }}</td>
-                                                <td>{{ $animal->specie->name }}</td>
-                                                <td>{{ $animal->sex }}</td>
-                                                <td>{{ $animal->color }}</td>
-                                                <td>{{ $animal->is_sterilized == 1 ? 'Sí' : 'No' }}</td>
-                                                <td>
-                                                    <div class="btn-group" role="group" aria-label="Opciones">
-                                                        <button type="button" class="btn btn-info mr-2"
-                                                         data-toggle="modal"
-                                                          data-target="#view{{ $animal->id }}">
-                                                            <i class="fas fa-eye"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-warning mr-2"
-                                                         data-toggle="modal"
-                                                         data-target="#edit{{ $animal->id }}">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-danger mr-2"
-                                                         data-toggle="modal"
-                                                          data-target="#delete{{ $animal->id }}">
-                                                            <i class="fas fa-trash-alt"></i>
-                                                        </button>
-                                                        <a type="button" class="btn btn-block bg-gradient-secondary mr-2"
-                                                         target="_blank" 
-                                                         href="{{ route('animals.petProfile', Crypt::encrypt($animal->id)) }}">
-                                                            <i class="fas fa-dog"></i>
-                                                        </a>
-                                                        <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#createVaccinatedAnimal{{ $animal->id }}">
-                                                            <i class="fas fa-syringe"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#viewVaccinatedAnimal{{$animal->id}}">
-                                                            <i class="fas fa-search"></i>
-                                                            <i class="fas fa-syringe"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                                @include('animals.edit', [
-                                                'animal' => $animal,
-                                                'species' => $species,
-                                                ])
-                                                @include('animals.delete')
-                                                @include('animals.show')
-                                                @include('vaccinatedAnimal.create')
-                                                @include('vaccinatedAnimal.show')
-                                            </tr>
-                                            @endforeach
+                                                @foreach ($animals as $animal)
+                                                    <tr>
+                                                        <td scope="row">{{ $animal->id }}</td>
+                                                        <td>
+                                                            @if ($animal->getFirstMediaUrl('animalGallery'))
+                                                                <img src="{{ $animal->getFirstMediaUrl('animalGallery') }}"
+                                                                    alt="Foto de {{ $animal->name }}"
+                                                                    style="width: 50px; height: 50px; border-radius: 50%;">
+                                                            @else
+                                                                <img src="{{ asset('img/animaldefault.png') }}"
+                                                                    style="width: 50px; height: 50px; border-radius: 50%;">
+                                                            @endif
+                                                        </td>
+                                                        <td>{{ $animal->name }}</td>
+                                                        <td>{{ $animal->specie->name }}</td>
+                                                        <td>{{ $animal->sex }}</td>
+                                                        <td>{{ $animal->color }}</td>
+                                                        <td>{{ $animal->is_sterilized == 1 ? 'Sí' : 'No' }}</td>
+                                                        <td>
+                                                            <div class="btn-group" role="group" aria-label="Opciones">
+                                                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver Detalles" data-target="#view{{ $animal->id }}">
+                                                                    <i class="fas fa-eye"></i>
+                                                                </button>
+                                                                <button type="button" class="btn btn-warning mr-2" data-toggle="modal" title="Editar Datos" data-target="#edit{{ $animal->id }}">
+                                                                    <i class="fas fa-edit"></i>
+                                                                </button>
+                                                                <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{ $animal->id }}">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </button>
+                                                                <a type="button" class="btn btn-block bg-gradient-secondary mr-2" target="_blank" title="Generar Perfil"
+                                                                    href="{{ route('animals.petProfile', Crypt::encrypt($animal->id)) }}">
+                                                                    <i class="fas fa-dog"></i>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        @include('animals.edit', [
+                                                            'animal' => $animal,
+                                                            'species' => $species,
+                                                        ])
+                                                        @include('animals.delete')
+                                                        @include('animals.show')
+                                                    </tr>
+                                                @endforeach
                                             @endif
                                     </tbody>
                                 </table>

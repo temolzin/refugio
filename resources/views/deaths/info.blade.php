@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
-                                        <<div class="form-group">
+                                        <div class="form-group">
                                             <label for="animal_id" class="form-label">Nombre (*)</label>
                                             <select id="animal_id_select"
                                                 class="form-control select2 @error('animal_id') is-invalid @enderror"

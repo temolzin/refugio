@@ -29,9 +29,6 @@
                                             <th>FOTO</th>
                                             <th>NOMBRE COMPLETO</th>
                                             <th>TELEFONO</th>
-                                            <th>CORREO</th>
-                                            <th>DIRECCIÓN</th>
-                                            <th>TIPO</th>
                                             <th>OPCIONES</th>
                                         </tr>
                                     </thead>
@@ -56,30 +53,26 @@
                                             </td>
                                             <td>{{$shelterMember->name}} {{$shelterMember->last_name}}</td>
                                             <td>{{$shelterMember->phone}}</td>
-                                            <td>{{$shelterMember->email}}</td>
-                                            <td>{{$shelterMember->address }} Col. {{ $shelterMember->colony }} {{ $shelterMember->city }} {{ $shelterMember->state }} C.P {{ $shelterMember->postal_code }}</td>
-                                            <td>{{$shelterMember->type_member}}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Opciones">
-                                                    <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#view{{$shelterMember->id}}">
+                                                    <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver Detalles" data-target="#view{{$shelterMember->id}}">
                                                         <i class="fas fa-eye"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$shelterMember->id}}">
+                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" title="Editar Datos" data-target="#edit{{$shelterMember->id}}">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#delete{{$shelterMember->id}}">
+                                                    <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{$shelterMember->id}}">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-success mr-2" data-toggle='modal' data-target="#createDonation{{$shelterMember->id}}">
+                                                    <button type="button" class="btn btn-success mr-2" data-toggle='modal' title="Registrar Donación" data-target="#createDonation{{$shelterMember->id}}">
                                                         <i class="fa fa-dollar-sign"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-secondary mr-2" data-toggle='modal' data-target="#indexDonation{{$shelterMember->id}}">
+                                                    <button type="button" class="btn btn-secondary mr-2" data-toggle='modal' title="Ver Donaciones" data-target="#indexDonation{{$shelterMember->id}}">
                                                         <i class="fa fa-search-dollar"></i>
                                                     </button>
-                                                    @include('donations.indexDonation')
                                                 </div>
-                                                
                                             </td>
+                                            @include('donations.indexDonation')
                                             @include('sheltermembers.delete')
                                             @include('donations.createDonation')                                      
                                         </tr>

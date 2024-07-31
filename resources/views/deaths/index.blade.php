@@ -45,31 +45,25 @@
                                                         <td>
                                                             @if ($death->animal->getFirstMediaUrl('animalGallery'))
                                                                 <img src="{{ $death->animal->getFirstMediaUrl('animalGallery') }}"
-                                                                    alt="Foto de {{ $death->animal->animal_name }}"
+                                                                    alt="Foto de {{ $death->animal->name }}"
                                                                     style="width: 50px; height: 50px; border-radius: 50%;">
                                                             @else
                                                                 <img src="{{ asset('img/animaldefault.png') }}"
                                                                     style="width: 50px; height: 50px; border-radius: 50%;">
                                                             @endif
                                                         </td>
-                                                        <td>{{ $death->animal->animal_name }}</td>
+                                                        <td>{{ $death->animal->name }}</td>
                                                         <td>{{ $death->date }}</td>
                                                         <td>{{ $death->cause }}</td>
                                                         <td>
                                                             <div class="btn-group" role="group" aria-label="Opciones">
-                                                                <button type="button" class="btn btn-info mr-2"
-                                                                    data-toggle="modal"
-                                                                    data-target="#view{{ $death->death_id }}">
+                                                                <button type="button" class="btn btn-info mr-2" data-toggle="modal"title="Ver Detalles" data-target="#view{{ $death->death_id }}">
                                                                     <i class="fas fa-eye"></i>
                                                                 </button>
-                                                                <button type="button" class="btn btn-warning mr-2"
-                                                                    data-toggle="modal"
-                                                                    data-target="#edit{{ $death->death_id }}">
+                                                                <button type="button" class="btn btn-warning mr-2" data-toggle="modal" title="Editar Datos" data-target="#edit{{ $death->death_id }}">
                                                                     <i class="fas fa-edit"></i>
                                                                 </button>
-                                                                <button type="button" class="btn btn-danger"
-                                                                    data-toggle="modal"
-                                                                    data-target="#delete{{ $death->death_id }}">
+                                                                <button type="button" class="btn btn-danger" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{ $death->death_id }}">
                                                                     <i class="fas fa-trash-alt"></i>
                                                                 </button>
                                                                 @include('deaths.delete')

@@ -1,5 +1,5 @@
 <div class="modal fade" id="indexSponsorship{{ $shelterMember->id }}" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="card-secondary">
                 <div class="card-header">
@@ -27,13 +27,13 @@
                                 <strong>Monto:</strong> {{ $sponsorship->amount }}
                             </p>
                             <div class="btn-group" role="group" aria-label="Options">
-                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="see sponsorship" data-target="#viewSponsorship{{ $sponsorship->id }}">
+                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver Detalles" data-target="#viewSponsorship{{ $sponsorship->id }}">
                                     <i class="fas fa-eye"></i> Ver
                                 </button>
-                                <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="delete sponsorship" data-target="#deleteSponsorship{{ $sponsorship->id }}">
+                                <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#deleteSponsorship{{ $sponsorship->id }}">
                                     <i class="fas fa-trash-alt"></i> Eliminar
                                 </button>
-                                <a type="button" class="btn btn-secondary" title="Generar tiket" target="_blank" href="{{ route('sponsorship.pdfSponsorship', Crypt::encrypt($sponsorship->id)) }}">
+                                <a type="button" class="btn btn-secondary" title="Generar Recibo" target="_blank" href="{{ route('sponsorship.pdfSponsorship', Crypt::encrypt($sponsorship->id)) }}">
                                     <i class="fas fa-file-pdf"></i>
                                 </a>
                             </div>
