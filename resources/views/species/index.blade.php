@@ -44,13 +44,13 @@
                                             <td>{{$species->description}}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Opciones">
-                                                    <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#view{{$species->id}}">
+                                                    <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver Detalles" data-target="#view{{$species->id}}">
                                                         <i class="fas fa-eye"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$species->id}}">
+                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" title="Editar Datos" data-target="#edit{{$species->id}}">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$species->id}}">
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{$species->id}}">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </button>
                                                 </div>

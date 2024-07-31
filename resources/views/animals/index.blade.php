@@ -62,23 +62,16 @@
                                                         <td>{{ $animal->is_sterilized == 1 ? 'Sí' : 'No' }}</td>
                                                         <td>
                                                             <div class="btn-group" role="group" aria-label="Opciones">
-                                                                <button type="button" class="btn btn-info mr-2"
-                                                                    data-toggle="modal"
-                                                                    data-target="#view{{ $animal->id }}">
+                                                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver Detalles" data-target="#view{{ $animal->id }}">
                                                                     <i class="fas fa-eye"></i>
                                                                 </button>
-                                                                <button type="button" class="btn btn-warning mr-2"
-                                                                    data-toggle="modal"
-                                                                    data-target="#edit{{ $animal->id }}">
+                                                                <button type="button" class="btn btn-warning mr-2" data-toggle="modal" title="Editar Datos" data-target="#edit{{ $animal->id }}">
                                                                     <i class="fas fa-edit"></i>
                                                                 </button>
-                                                                <button type="button" class="btn btn-danger mr-2"
-                                                                    data-toggle="modal"
-                                                                    data-target="#delete{{ $animal->id }}">
+                                                                <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{ $animal->id }}">
                                                                     <i class="fas fa-trash-alt"></i>
                                                                 </button>
-                                                                <a type="button" class="btn btn-block bg-gradient-secondary mr-2"
-                                                                    target="_blank"
+                                                                <a type="button" class="btn btn-block bg-gradient-secondary mr-2" target="_blank" title="Generar Perfil"
                                                                     href="{{ route('animals.petProfile', Crypt::encrypt($animal->id)) }}">
                                                                     <i class="fas fa-dog"></i>
                                                                 </a>

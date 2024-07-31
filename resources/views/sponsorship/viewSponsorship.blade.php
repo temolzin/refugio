@@ -5,7 +5,7 @@
                 <div class="card-header bg-info">
                     <div class="d-sm-flex align-items-center justify-content-between">
                         <h4 class="card-title text-white">Información del apadrinamiento</h4>
-                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close text-white"  onclick="closeCurrentModal('#viewSponsorship{{$sponsorship->id}}')" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -57,9 +57,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" onclick="closeCurrentModal('#viewSponsorship{{$sponsorship->id}}')">Cerrar</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeCurrentModal('#viewSponsorship{{$sponsorship->id}}')">Cerrar</button>
+            </div>
         </div>
     </div>
 </div>

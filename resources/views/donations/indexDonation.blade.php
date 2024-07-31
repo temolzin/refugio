@@ -29,15 +29,15 @@
                                         <strong>Monto:</strong> ${{ number_format($donation->amount, 2) }}
                                     </p>
                                     <div class="btn-group" role="group" aria-label="Options">
-                                        <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver donación"
+                                        <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver detalles"
                                             data-target="#viewDonation{{ $donation->id }}">
                                             <i class="fas fa-eye"></i> Ver
                                         </button>
                                         <button type="button" class="btn btn-danger mr-2" data-toggle="modal"
-                                            title="Eliminar donación" data-target="#deleteDonation{{ $donation->id }}">
+                                            title="Eliminar Registro" data-target="#deleteDonation{{ $donation->id }}">
                                             <i class="fas fa-trash-alt"></i> Eliminar
                                         </button>
-                                        <a type="button" class="btn btn-secondary" title="Generar tiket" target="_blank" href="{{ route('donations.pdfDonation', Crypt::encrypt($donation->id)) }}">
+                                        <a type="button" class="btn btn-secondary" title="Generar Recibo" target="_blank" href="{{ route('donations.pdfDonation', Crypt::encrypt($donation->id)) }}">
                                             <i class="fas fa-file-pdf"></i>
                                         </a>
                                     </div>

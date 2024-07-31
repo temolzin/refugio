@@ -27,8 +27,6 @@
                                             <th>ANIMAL</th>
                                             <th>FECHA Y HORA DE LA CITA</th>
                                             <th>MOTIVO DE LA CITA</th>
-                                            <th>ESTADO DE LA CITA</th>
-                                            <th>OBSERVACIONES</th>
                                             <th>OPCIONES</th>
                                         </tr>
                                     </thead>
@@ -44,20 +42,15 @@
                                                     <td>{{ $vet->animal->name }}</td>
                                                     <td>{{ $vet->schedule_date }}</td>
                                                     <td>{{ $vet->reason }}</td>
-                                                    <td>{{ $vet->status }}</td>
-                                                    <td>{{ $vet->observation }}</td>
                                                     <td>
                                                         <div class="btn-group" role="group" aria-label="Opciones">
-                                                            <button type="button" class="btn btn-info mr-2" data-toggle="modal"
-                                                                data-target="#view{{$vet->id}}">
+                                                            <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver Detalles" data-target="#view{{$vet->id}}">
                                                                 <i class="fas fa-eye"></i>
                                                             </button>
-                                                            <button type="button" class="btn btn-warning mr-2"
-                                                                data-toggle="modal" data-target="#edit{{$vet->id}}">
+                                                            <button type="button" class="btn btn-warning mr-2" title="Editar Datos" data-toggle="modal" data-target="#edit{{$vet->id}}">
                                                                 <i class="fas fa-edit"></i>
                                                             </button>
-                                                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                                data-target="#delete{{$vet->id}}">
+                                                            <button type="button" class="btn btn-danger" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{$vet->id}}">
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </button>
                                                         </div>

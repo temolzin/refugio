@@ -45,13 +45,13 @@
                                             <td>{{$vaccines->description}}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Opciones">
-                                                    <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#view{{$vaccines->vaccine_id}}">
+                                                    <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver Detalles" data-target="#view{{$vaccines->vaccine_id}}">
                                                         <i class="fas fa-eye"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$vaccines->vaccine_id}}">
+                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" title="Editar Datos" data-target="#edit{{$vaccines->vaccine_id}}">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$vaccines->vaccine_id}}">
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{$vaccines->vaccine_id}}">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </button>
                                                 @include('vaccines.delete')
