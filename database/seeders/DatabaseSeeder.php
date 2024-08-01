@@ -19,5 +19,11 @@ class DatabaseSeeder extends Seeder
         $this->call(SpecieSeeder::class);
         $this->call(AnimalSeeder::class);
         $this->call(ShelterMemberSeeder::class);
+        $this->call(AdoptionSeeder::class);
+        $this->call(VaccineSeeder::class);
+        $this->call(VetAppointmentSeeder::class);
+        $this->call(DeathSeeder::class);
+        $this->call(SponsorshipSeeder::class);
+        $this->call(DonationSeeder::class);
     }
 }

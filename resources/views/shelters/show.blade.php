@@ -22,8 +22,8 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-4 offset-lg-4 d-flex flex-column align-items-center" style="margin-left: 247px;">
-                                    <div class="form-group text-center">
+                                <div class="col-lg-12">
+                                    <div class="image-preview-container" style="display: flex; justify-content: center;">
                                         @if($shelters->getMedia('logos')->isNotEmpty())
                                             <img src="{{ $shelters->getFirstMedia('logos')->getUrl() }}" alt="{{ $shelters->name }}" class="img-fluid" 
                                             style="width: 120px; height: 120px; border-radius: 60%;" />
@@ -31,9 +31,8 @@
                                             <img src="{{ asset('img/avatardefault.png') }}" style="width: 120px; height: 120px; border-radius: 50%;">
                                         @endif
                                     </div>
-                                    <label class="text-center"></label>
                                 </div>
-                                <div class="col-lg-6 offset-lg-3" style="margin-bottom: 15px;">
+                                <div class="col-lg-6">
                                     <div class="form-group text-center">
                                         <label>Nombre</label>
                                         <input type="text" disabled class="form-control" value="{{ $shelters->name }}" style="width: 100%;" />

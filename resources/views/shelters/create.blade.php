@@ -30,7 +30,7 @@
                                             <div class="image-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">
                                                 <img id="logo-preview" src="#" alt="Vista previa del logo" style="display: none; width: 120px; height: 120px; border-radius: 60%; object-fit: cover;">
                                             </div>
-                                            <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" id="logo" aria-describedby="logoHelp" style="height: 43px; width: 450px;" onchange="previewImage(event)" />
+                                            <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" id="logo" aria-describedby="logoHelp" onchange="previewImage(event)" />
                                             @error('logo')
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $message }}</strong>

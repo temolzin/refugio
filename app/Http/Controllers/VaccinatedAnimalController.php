@@ -25,10 +25,10 @@ class VaccinatedAnimalController extends Controller
         return redirect()->back()->with('success', 'Vacuna de el amimal registrado exitosamente.');
     }
 
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
         $vaccinatedAnimal = VaccinatedAnimal::find($id);
         $vaccinatedAnimal->delete();
-        return redirect()->back()->with('success', 'Vacuna de el animal eliminada exitosamente');
+        return redirect()->back()->with('modal_id', $request->input('modal_id'));
     }
 }

@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 use App\Models\ShelterMember;
 use App\Models\Animal;
+use App\Models\Donation;
 
-class AdoptionSeeder extends Seeder
+
+class DonationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -29,11 +31,15 @@ class AdoptionSeeder extends Seeder
             }
 
             for ($i = 0; $i < 3; $i++) {
-                DB::table('adoptions')->insert([
-                    'animal_id' => $faker->randomElement($animalIds),
+                DB::table('donations')->insert([
                     'shelter_member_id' => $shelterMember->id,
-                    'adoption_date' => $faker->date,
-                    'observation' => $faker->text
+                    'donation_date' => $faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s'),
+                    'type' => $faker->randomElement(Donation::DONATION),
+                    'observation' => $faker->paragraph,
+                    'amount' => $faker->randomFloat(2, 5, 500),
+                    'observation' => $faker->sentence,
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ]);
             }
         }

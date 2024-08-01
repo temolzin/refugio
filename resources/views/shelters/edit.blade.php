@@ -24,7 +24,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-8 offset-lg-2">
+                                    <div class="col-lg-8">
                                         <div class="form-group text-center">
                                             <label for="logo" class="form-label"></label>
                                             <div class="image-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">
@@ -34,7 +34,7 @@
                                                 <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ asset('img/avatardefault.png') }}" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
                                                 @endif
                                             </div>
-                                            <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" id="logo-edit-{{ $shelters->id }}" aria-describedby="helpId" placeholder="" style="height: 43px; width: 460px;" onchange="previewImageEdit(event, {{ $shelters->id }})">
+                                            <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" id="logo-edit-{{ $shelters->id }}" aria-describedby="helpId" placeholder="" onchange="previewImageEdit(event, {{ $shelters->id }})">
                                             @error('logo')
                                             <span class="invalid-feedback" style="margin-top: -5px;">
                                                 <strong>{{ $message }}</strong>

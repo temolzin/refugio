@@ -40,7 +40,6 @@
                                             <input type="file"
                                                 class="form-control @error('photo') is-invalid @enderror" name="photo"
                                                 id="photo-edit-{{ $animal->id }}" aria-describedby="helpId"
-                                                placeholder="" style="height: 43px; width: 460px;"
                                                 onchange="previewImageEdit(event, {{ $animal->id }})">
                                             @error('photo')
                                                 <span class="invalid-feedback" style="margin-top: -5px;">

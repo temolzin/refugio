@@ -75,6 +75,12 @@
                                                                     href="{{ route('animals.petProfile', Crypt::encrypt($animal->id)) }}">
                                                                     <i class="fas fa-dog"></i>
                                                                 </a>
+                                                                <button type="button" class="btn btn-success mr-2" data-toggle="modal" title="Registrar Vacuna" data-target="#createVaccinatedAnimal{{ $animal->id }}">
+                                                                    <i class="fas fa-syringe"></i>
+                                                                </button>
+                                                                <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" title="Ver Vacunas" data-target="#viewVaccinatedAnimal{{$animal->id}}">
+                                                                    <i class="fas fa-folder-open"></i>
+                                                                </button>
                                                             </div>
                                                         </td>
                                                         @include('animals.edit', [
@@ -83,6 +89,8 @@
                                                         ])
                                                         @include('animals.delete')
                                                         @include('animals.show')
+                                                        @include('vaccinatedAnimal.create')
+                                                        @include('vaccinatedAnimal.show')
                                                     </tr>
                                                 @endforeach
                                             @endif
@@ -101,6 +109,13 @@
 
 @section('js')
 <script>
+     document.addEventListener("DOMContentLoaded", function() {
+        var modalId = "{{ session('modal_id') }}";
+        if (modalId) {
+            $('#' + modalId).modal('show');
+        }
+    });
+
     $(document).ready(function() {
         $('#animals').DataTable({
             responsive: true,
@@ -117,5 +132,8 @@
             });
         }
     });
+    function closeCurrentModal(modalId) {
+        $(modalId).modal('hide');
+    }
 </script>
 @endsection

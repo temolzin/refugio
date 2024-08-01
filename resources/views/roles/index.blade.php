@@ -30,7 +30,7 @@
                                             <tr>
                                                 <th>ID</th>
                                                 <th>NOMBRE</th>
-                                                <th class="text-right">OPCIONES </th>
+                                                <th>OPCIONES </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -45,25 +45,19 @@
                                                         <td>{{ $role->name }}</td>
                                                         <td>
                                                             <div class="btn-group" role="group" aria-label="Opciones">
-                                                                <button type="button" class="btn btn-info mr-2"
-                                                                    data-toggle="modal"
-                                                                    data-target="#view{{ $role->id }}">
+                                                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver Detalles" data-target="#view{{ $role->id }}">
                                                                     <i class="fas fa-eye"></i>
                                                                 </button>
-                                                                <a type="button" class="btn btn-warning mr-2"
-                                                                    href="{{ route('roles.edit', $role) }}">
+                                                                <a type="button" class="btn btn-warning mr-2" title="Editar Datos" href="{{ route('roles.edit', $role) }}">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
-                                                                <button type="button" class="btn btn-danger mr-2"
-                                                                    data-toggle="modal"
-                                                                    data-target="#delete{{ $role->id }}">
+                                                                <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{ $role->id }}">
                                                                     <i class="fas fa-trash-alt"></i>
                                                                 </button>
                                                             </div>
-                                                            @include('roles.delete')
-                                                            @include('roles.show')
-
                                                         </td>
+                                                        @include('roles.delete')
+                                                        @include('roles.show')
                                                     </tr>
                                                 @endforeach
                                             @endif
