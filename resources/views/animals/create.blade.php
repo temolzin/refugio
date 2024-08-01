@@ -32,8 +32,7 @@
                                                      style="display: none; width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
                                             </div>
                                             <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo"
-                                                   id="photo" aria-describedby="photoHelp"
-                                                   style="height: 43px; width: 450px;" onchange="previewImage(event)" required />
+                                                   id="photo" aria-describedby="photoHelp" onchange="previewImage(event)" required />
                                             @error('photo')
                                             <span class="invalid-feedback">
                                                 <strong>{{ $message }}</strong>

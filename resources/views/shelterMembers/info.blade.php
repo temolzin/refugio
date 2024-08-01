@@ -23,7 +23,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-8 offset-lg-2">
+                                    <div class="col-lg-12">
                                         <div class="form-group text-center">
                                             <label for="photo" class="form-label"></label>
                                             <div class="photo-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">
@@ -33,7 +33,7 @@
                                                 <img id="photo-preview-edit-{{ $shelterMember->id }}" src="{{ asset('img/avatardefault.png') }}" style="display: none; width: 120px; height: 120px; border-radius: 60%; object-fit: cover;">
                                                 @endif
                                             </div>
-                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo-edit-{{ $shelterMember->id }}" aria-describedby="helpId" placeholder="" style="height: 43px; width: 460px;" onchange="previewPhotoEdit(event, '{{ $shelterMember->id }}')">
+                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo-edit-{{ $shelterMember->id }}" aria-describedby="helpId" placeholder=""  onchange="previewPhotoEdit(event, '{{ $shelterMember->id }}')">
                                             @error('photo')
                                             <span class="invalid-feedback" style="margin-top: -5px;">
                                                 <strong>{{ $message }}</strong>

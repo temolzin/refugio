@@ -24,7 +24,6 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <div class="col-lg-4 offset-lg-4 d-flex flex-column align-items-center" style="margin-left: 247px;">
                                             <div class="form-group text-center">
                                                 @if($shelterMember->getMedia('photos')->isNotEmpty())
                                                 <img src="{{ $shelterMember->getFirstMedia('photos')->getUrl() }}" alt="{{ $shelterMember->name }}" class="img-fluid" style="width: 120px; height: 120px; border-radius: 60%;" />
@@ -32,7 +31,6 @@
                                                 <img src="{{ asset('img/avatardefault.png') }}" style="width: 120px; height: 120px; border-radius: 50%;">
                                                 @endif
                                             </div>
-                                        </div>
                                         <label>ID</label>
                                         <input type="text" disabled class="form-control" value="{{ $shelterMember->id }}" />
                                     </div>

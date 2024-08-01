@@ -47,15 +47,15 @@
                                             <td>{{$users->email}}</td>
                                             <td>
                                             <div class="btn-group" role="group" aria-label="Opciones">
-                                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#view{{$users->id}}">
+                                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver Detalles" data-target="#view{{$users->id}}">
                                                     <i class="fas fa-eye"></i>
-                                                <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$users->id}}">
+                                                <button type="button" class="btn btn-warning mr-2" data-toggle="modal" title="Editar Datos" data-target="#edit{{$users->id}}">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#delete{{$users->id}}">
+                                                <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro"  data-target="#delete{{$users->id}}">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
-                                                <a type="button" class="permiso btn btn-secondary mr-2" href="{{ route('users.edit', $users->id) }}">
+                                                <a type="button" class="permiso btn btn-secondary mr-2" title="Asignar Rol" href="{{ route('users.edit', $users->id) }}">
                                                     <i class="fa fa-key"></i>
                                                 </a>
                                             </td>

@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header bg-danger">
                 <h5 class="modal-title" id="deleteModalLabel">Eliminar aplicación de vacuna</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" onclick="closeCurrentModal('#deleteVaccinatedAnimal{{ $vaccinatedAnimal->id }}')" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -11,7 +11,7 @@
                 ¿Estás seguro de que deseas eliminar esta aplicación de vacuna?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-secondary" onclick="closeCurrentModal('#deleteVaccinatedAnimal{{ $vaccinatedAnimal->id }}')">Cancelar</button>
                 <form action="{{ route('vaccinated_animals.destroy', $vaccinatedAnimal->id) }}" method="POST">
                     @csrf
                     @method('DELETE')

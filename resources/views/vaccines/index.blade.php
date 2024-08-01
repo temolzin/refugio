@@ -27,7 +27,6 @@
                                             <th>ID</th>
                                             <th>NOMBRE</th>
                                             <th>TIPO</th>
-                                            <th>DESCRIPCION</th>
                                             <th>OPCIONES</th>
                                         </tr>
                                     </thead>
@@ -42,7 +41,6 @@
                                             <td scope="row">{{$vaccines->vaccine_id}}</td>
                                             <td>{{$vaccines->name}}</td>
                                             <td>{{$vaccines->type}}</td>
-                                            <td>{{$vaccines->description}}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Opciones">
                                                     <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver Detalles" data-target="#view{{$vaccines->vaccine_id}}">

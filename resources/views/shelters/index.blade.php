@@ -26,8 +26,6 @@
                                             <th>USUARIO</th>
                                             <th>NOMBRE</th>
                                             <th>TELÉFONO</th>
-                                            <th>REDES SOCIALES</th>
-                                            <th>DIRECCIÓN</th>
                                             <th>OPCIONES</th>
                                         </tr>
                                     </thead>
@@ -54,20 +52,13 @@
                                             <td>{{ $shelters->name }}</td>
                                             <td>{{ $shelters->phone }}</td>
                                             <td>
-                                                <ul style="list-style-type: none; padding: 0; margin: 0;">                               
-                                                    <li>Facebook: {{ $shelters->facebook }}</li>
-                                                    <li>TikTok: {{ $shelters->tiktok }}</li>                                                  
-                                                </ul>
-                                            </td>
-                                            <td>{{ $shelters->address }} Col. {{ $shelters->colony }} {{ $shelters->city }} {{ $shelters->state }} C.P {{ $shelters->postal_code }}</td>
-                                            <td>
                                                 <div class="btn-group" role="group" aria-label="Opciones">
-                                                    <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#view{{$shelters->id}}">
+                                                    <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver Detalles"  data-target="#view{{$shelters->id}}">
                                                         <i class="fas fa-eye"></i>
-                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#edit{{$shelters->id}}">
+                                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" title="Editar Datos" data-target="#edit{{$shelters->id}}">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$shelters->id}}">
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" title="Eliminar Registro"  data-target="#delete{{$shelters->id}}">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </button>
                                                 </div>

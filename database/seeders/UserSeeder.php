@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
             'name' => 'Erika',
             'last_name' => 'Lopez perez',
             'phone' => '7798745677',
-            'email' => 'eli@gmail.com',
+            'email' => 'eri@gmail.com',
             'password' => Hash::make('12345'),
         ])->assignRole('shelter');
 

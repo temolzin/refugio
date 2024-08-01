@@ -57,6 +57,27 @@ class SpecieSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'Tigre',
+                'description' => ' El tigre es el felino más grande del mundo.',
+                'shelter_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Pingüino emperador',
+                'description' => 'El pingüino más grande y robusto, con una coloración distintiva en negro, blanco y amarillo.',
+                'shelter_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Peces',
+                'description' => 'Clase de animales vertebrados, generalmente alados.',
+                'shelter_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }
