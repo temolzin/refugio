@@ -73,15 +73,15 @@
                                                 </div>
                                             </td>
                                             @include('donations.indexDonation')
-                                            @include('sheltermembers.delete')
+                                            @include('shelterMembers.delete')
                                             @include('donations.createDonation')                                      
                                         </tr>
-                                            @include('sheltermembers.view')
-                                            @include('sheltermembers.info')
+                                            @include('shelterMembers.view')
+                                            @include('shelterMembers.info')
                                         @endforeach
                                         @endif
                                     </tbody>
-                                    @include('sheltermembers.create')
+                                    @include('shelterMembers.create')
                                 </table>
                             </div>
                         </div>
