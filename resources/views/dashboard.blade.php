@@ -37,7 +37,6 @@
                             @php
                                 $totalAnimals = $animals->count();
                                 $totalAppointments = $vetAppointments->count();
-                                $totalAdoptions = $adoptions->count();
                             @endphp
                             <div class="col-lg-3 col-xs-6">
                                 <div class="small-box bg-info">
@@ -54,7 +53,7 @@
                             <div class="col-lg-3 col-xs-6">
                                 <div class="small-box bg-green">
                                     <div class="inner">
-                                        <h3>53</h3>
+                                        <h3>{{ $totalSponsorship}}</h3>
                                         <p>Mascotas Apadrinadas</p>
                                     </div>
                                     <div class="icon">

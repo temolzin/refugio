@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Animal;
+use App\Models\Specie;
+use App\Models\Shelter;
 use Faker\Factory as Faker;
 
 class AnimalSeeder extends Seeder
@@ -17,29 +19,32 @@ class AnimalSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $petsByShelter = 50;
-        $data = [];
+        $shelters = Shelter::pluck('id')->toArray();
 
-        for ($shelterId = 1; $shelterId <= 2; $shelterId++) {
-            for ($i = 0; $i < $petsByShelter; $i++) {
-                $data[] = [
-                    'specie_id' => $faker->numberBetween(1, 6),
+        foreach ($shelters as $shelterId) {
+            $species = Specie::where('shelter_id', $shelterId)->pluck('id')->toArray();
+
+            if (empty($species)) {
+                continue;
+            }
+
+            for ($i = 0; $i < 50; $i++) {
+                Animal::create([
+                    'specie_id' => $species[array_rand($species)],
                     'shelter_id' => $shelterId,
-                    'name' => $faker->firstName,
+                    'name' => $faker->word,
                     'breed' => $faker->word,
-                    'birth_date' => $faker->date('Y-m-d', '2015-01-01'),
+                    'birth_date' => now()->subYears(rand(1, 10))->format('Y-m-d'),
                     'sex' => $faker->randomElement(['Macho', 'Hembra']),
-                    'color' => $faker->safeColorName,
-                    'weight' => $faker->randomFloat(1, 0.5, 20.0),
-                    'is_sterilized' => $faker->boolean,
-                    'entry_date' => $faker->date('Y-m-d', 'now'),
+                    'color' => $faker->colorName,
+                    'weight' => rand(1, 20),
+                    'is_sterilized' => rand(0, 1),
+                    'entry_date' => now()->format('Y-m-d'),
                     'origin' => $faker->randomElement(['Rescatado', 'Abandonado', 'Transferido']),
                     'behavior' => $faker->randomElement(['Amigable', 'Tímido', 'Agresivo']),
-                    'history' => $faker->sentence(6),
-                ];
+                    'history' => $faker->text,
+                ]);
             }
         }
-
-        DB::table('animals')->insert($data);
     }
 }

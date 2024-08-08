@@ -6,14 +6,15 @@ use App\Models\Adoption;
 use Illuminate\Http\Request;
 use App\Models\VetAppointment;
 use App\Models\Animal;
+use App\Models\Sponsorship;
 use App\Models\User;
 use App\Models\Shelter;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 
+
 class dashboardController extends Controller
 {
-
     public function index()
     {
         $user = Auth::user();
@@ -24,9 +25,13 @@ class dashboardController extends Controller
         $totalRoles = Role::count();
         $shelters = Shelter::all();
 
-        $adoptions = Adoption::whereHas('animal', function ($query) use ($shelterId) {
+        $totalSponsorship = Sponsorship::whereHas('animal', function ($query) use ($shelterId) {
             $query->where('shelter_id', $shelterId);
-        })->get();
+        })->count();
+
+        $totalAdoptions = Adoption::whereHas('animal', function ($query) use ($shelterId) {
+            $query->where('shelter_id', $shelterId);
+        })->count();
 
         $role = $user->roles->first();
         $status = VetAppointment::APPOINTMENT_STATUS;
@@ -46,6 +51,7 @@ class dashboardController extends Controller
                 'description' => $appointment->observation
             ];
         }
+
         return view('dashboard', compact(
             'appointments',
             'animals',
@@ -57,7 +63,8 @@ class dashboardController extends Controller
             'users',
             'totalRoles',
             'shelters',
-            'adoptions'
+            'totalSponsorship',
+            'totalAdoptions'
         ));
     }
 }
