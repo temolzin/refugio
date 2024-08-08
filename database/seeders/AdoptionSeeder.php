@@ -28,7 +28,7 @@ class AdoptionSeeder extends Seeder
                 continue;
             }
 
-            for ($i = 0; $i < 3; $i++) {
+            for ($i = 0; $i < 1; $i++) {
                 DB::table('adoptions')->insert([
                     'animal_id' => $faker->randomElement($animalIds),
                     'shelter_member_id' => $shelterMember->id,

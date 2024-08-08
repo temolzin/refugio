@@ -23,7 +23,7 @@ class Sponsorship extends Model
 
     public function shelterMember()
     {
-        return $this->belongsTo(Sheltermember::class, 'shelter_member_id');
+        return $this->belongsTo(ShelterMember::class, 'shelter_member_id');
     }
     
 }
