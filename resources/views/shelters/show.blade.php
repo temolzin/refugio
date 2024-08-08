@@ -32,19 +32,19 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group text-center">
-                                        <label>Nombre</label>
-                                        <input type="text" disabled class="form-control" value="{{ $shelters->name }}" style="width: 100%;" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-2">
                                     <div class="form-group">
                                         <label>ID</label>
                                         <input type="text" disabled class="form-control" value="{{ $shelters->id }}" />
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
+                                    <div class="form-group text-center">
+                                        <label>Nombre</label>
+                                        <input type="text" disabled class="form-control" value="{{ $shelters->name }}" style="width: 100%;" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-5">
                                     <div class="form-group">
                                         <label>Usuario</label>
                                         <input type="text" disabled class="form-control" value="{{ $shelters->users->name }} {{ $shelters->users->last_name }}" />

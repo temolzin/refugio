@@ -24,7 +24,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-8 offset-lg-2">
                                         <div class="form-group text-center">
                                             <label for="logo" class="form-label"></label>
                                             <div class="image-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">

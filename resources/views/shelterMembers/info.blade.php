@@ -85,7 +85,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="state" class="form-label">Estado o Provincia(*)</label>
                                             <input type="text" class="form-control @error('state') is-invalid @enderror" name="state" id="state" aria-describedby="helpId" placeholder="" value="{{$shelterMember->state}}" required />
@@ -96,7 +96,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="city" class="form-label">Ciudad(*)</label>
                                             <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" id="city" aria-describedby="helpId" placeholder="" value="{{$shelterMember->city}}" required />
@@ -107,7 +107,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="colony" class="form-label">Colonia(*)</label>
                                             <input type="text" class="form-control @error('colony') is-invalid @enderror" name="colony" id="colony" aria-describedby="helpId" placeholder="" value="{{$shelterMember->colony}}" required />

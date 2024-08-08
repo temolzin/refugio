@@ -4,9 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
-use App\Models\ShelterMember;
-use App\Models\Animal;
+use Illuminate\Support\Carbon;
 
 class AdoptionSeeder extends Seeder
 {
@@ -17,24 +15,22 @@ class AdoptionSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
+        $shelterMembers = DB::table('shelter_member')->where('type_member', 'Adoptante')->get();
 
-        $shelterMembers = ShelterMember::all();
+        foreach ($shelterMembers as $member) {
+            $animals = DB::table('animals')->where('shelter_id', $member->shelter_id)->get();
 
-        foreach ($shelterMembers as $shelterMember) {
-            $animalIds = Animal::where('shelter_id', $shelterMember->shelter_id)->pluck('id')->all();
+            if ($animals->count() >= 2) {
+                $selectedAnimals = $animals->random(2);
 
-            if (empty($animalIds)) {
-                continue;
-            }
-
-            for ($i = 0; $i < 1; $i++) {
-                DB::table('adoptions')->insert([
-                    'animal_id' => $faker->randomElement($animalIds),
-                    'shelter_member_id' => $shelterMember->id,
-                    'adoption_date' => $faker->date,
-                    'observation' => $faker->text
-                ]);
+                foreach ($selectedAnimals as $animal) {
+                    DB::table('adoptions')->insert([
+                        'animal_id' => $animal->id,
+                        'shelter_member_id' => $member->id,
+                        'adoption_date' => Carbon::now()->subDays(rand(0, 365)),
+                        'observation' => 'Adopción realizada por ' . $member->name,
+                    ]);
+                }
             }
         }
     }

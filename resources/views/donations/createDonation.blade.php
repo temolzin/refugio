@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="amount" class="form-label">Monto(*)</label>
+                                            <label for="amount" class="form-label">Monto o cantidad(*)</label>
                                             <input type="number"
                                                 class="form-control @error('amount') is-invalid @enderror" name="amount"
                                                 placeholder="Monto" value="{{ old('amount') }}" required />

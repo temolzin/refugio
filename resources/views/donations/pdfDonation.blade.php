@@ -170,7 +170,7 @@
                 <span>ID de la Donación:</span> {{ $donation->id }}<br>
                 <span>Fecha de la Donación:</span> {{ $donation->donation_date }}<br>
                 <span>Tipo de Donación:</span> {{ $donation->type }}<br>
-                <span>Monto del Donación:</span> {{ $donation->amount }}<br>
+                <span>Monto o Cantidad de la donación:</span> {{ $donation->amount }}<br>
                 <span>Observaciones:</span> {{ $donation->observation }}<br>
             </div>
         </div>
