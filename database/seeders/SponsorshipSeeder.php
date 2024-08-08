@@ -22,14 +22,17 @@ class SponsorshipSeeder extends Seeder
 
         foreach ($shelterIds as $shelterId) {
             $animalIds = Animal::where('shelter_id', $shelterId)->pluck('id')->all();
-            $shelterMemberIds = ShelterMember::where('shelter_id', $shelterId)->pluck('id')->all();
+            $shelterMemberIds = ShelterMember::where('shelter_id', $shelterId)
+                                             ->where('type_member', 'Padrino')
+                                             ->pluck('id')
+                                             ->all();
 
             if (empty($animalIds) || empty($shelterMemberIds)) {
                 continue;
             }
 
             foreach ($shelterMemberIds as $shelterMemberId) {
-                for ($i = 0; $i < 3; $i++) {
+                for ($i = 0; $i < 2; $i++) {
                     DB::table('sponsorship')->insert([
                         'animal_id' => $faker->randomElement($animalIds),
                         'shelter_member_id' => $shelterMemberId,

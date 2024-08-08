@@ -26,7 +26,7 @@
                                     <p class="card-text">
                                         <strong>Tipo de Donación:</strong> {{ $donation->type }}
                                         <br>
-                                        <strong>Monto:</strong> ${{ number_format($donation->amount, 2) }}
+                                        <strong>Monto o Cantidad:</strong> {{ number_format($donation->amount, 2) }}
                                     </p>
                                     <div class="btn-group" role="group" aria-label="Options">
                                         <button type="button" class="btn btn-info mr-2" data-toggle="modal" title="Ver detalles"

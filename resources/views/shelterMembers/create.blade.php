@@ -83,7 +83,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="state" class="form-label">Estado o Provincia(*)</label>
                                             <input type="text" class="form-control @error('state') is-invalid @enderror" name="state" placeholder="Ingresa el estado o provincia" value="{{ old('state') }}" required />
@@ -94,7 +94,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="city" class="form-label">Ciudad(*)</label>
                                             <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" placeholder="Ingresa la ciudad" value="{{ old('city') }}" required />
@@ -105,7 +105,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="colony" class="form-label">Colonia(*)</label>
                                             <input type="text" class="form-control @error('colony') is-invalid @enderror" name="colony" placeholder="Ingresa la colonia" value="{{ old('colony') }}" required />

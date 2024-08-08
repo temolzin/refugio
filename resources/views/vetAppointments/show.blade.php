@@ -24,21 +24,21 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-6" style="margin-bottom: 15px;">
+                                <div class="col-lg-2">
                                     <div class="form-group">
                                         <label>ID</label>
                                         <input type="text" disabled class="form-control" value="{{ $vet->id }}"
                                             style="width: 100%;" />
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="form-group">
-                                        <label>ID del Animal</label>
+                                        <label>Mascota</label>
                                         <input type="text" disabled class="form-control"
                                             value="{{ $vet->animal->name }}" />
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="form-group">
                                         <label>Fecha y Hora de la Cita</label>
                                         <input type="text" disabled class="form-control"
@@ -59,11 +59,10 @@
                                             value="{{ $vet->status }}" />
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>Observaciones</label>
-                                        <input type="text" disabled class="form-control"
-                                            value="{{ $vet->observation }}" />
+                                        <textarea class="form-control" readonly>{{ $vet->observation }}</textarea>
                                     </div>
                                 </div>
                             </div>
