@@ -67,9 +67,9 @@
                                                     <button type="button" class="btn btn-success mr-2" data-toggle='modal' title="Registrar Donación" data-target="#createDonation{{$shelterMember->id}}">
                                                         <i class="fa fa-dollar-sign"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-secondary mr-2" data-toggle='modal' title="Ver Donaciones" data-target="#indexDonation{{$shelterMember->id}}">
-                                                        <i class="fa fa-search-dollar"></i>
-                                                    </button>
+                                                    <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" title="Ver Donaciones" data-target="#indexDonation{{$shelterMember->id}}">
+                                                            <i class="fas fa-search-dollar"></i>
+                                                        </button>
                                                 </div>
                                             </td>
                                             @include('donations.indexDonation')
