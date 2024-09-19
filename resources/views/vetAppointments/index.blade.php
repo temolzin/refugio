@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Admin')
+@section('title', 'Citas Veterinarias')
 @section('content')
 <section class="content">
     <div class="right_col" role="main">
