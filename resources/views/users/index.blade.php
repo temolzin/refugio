@@ -55,9 +55,6 @@
                                                 <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro"  data-target="#delete{{$users->id}}">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
-                                                <a type="button" class="permiso btn btn-secondary mr-2" title="Asignar Rol" href="{{ route('users.edit', $users->id) }}">
-                                                    <i class="fa fa-key"></i>
-                                                </a>
                                             </td>
                                             @include('users.delete')
                                         </tr>
@@ -112,11 +109,17 @@
                     toastr.error('Por favor, completa todos los campos obligatorios.');
                 }
             }
-            $('#createModal').on('shown.bs.modal', function () {
+            $('#create').on('shown.bs.modal', function () {
                 checkForm('userForm', false);
+                $('.select2').select2({
+                    dropdownParent: $('#create')
+                });
             });
             $('#editModal').on('shown.bs.modal', function () {
                 checkForm('userForm', true);
+                $('.select2').select2({
+                    dropdownParent: $('#editModal')
+                });
             });
             $('#userForm input').on('input', function() {
                 checkForm('userForm', false); // No es edición en este caso

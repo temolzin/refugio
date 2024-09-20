@@ -52,6 +52,11 @@
                     <input type="text" disabled class="form-control" value="{{ $users->email }}" />
                   </div>
                 </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label>Rol</label>
+                    <input type="text" disabled class="form-control" value="{{ $users->roles->first()->name }}" />
+                  </div>
                 </div>
               </div>
             </div>
