@@ -69,7 +69,7 @@
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
-                        <label for="role" class="form-label">Roles(*)</label>
+                        <label for="role" class="form-label">Rol(*)</label>
                         <select id="role_id" class="form-control select2" name="role_id">
                             <option value="">Selecciona el rol</option>
                             @foreach($roles as $role)
