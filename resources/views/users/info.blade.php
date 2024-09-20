@@ -56,7 +56,7 @@
                       @enderror
                     </div>
                   </div>
-                  <div class="col-lg-12">
+                  <div class="col-lg-6">
                     <div class="form-group">
                       <label for="" class="form-label">Email (*)</label>
                       <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"  aria-describedby="helpId" placeholder="" value="{{$users->email}}"required/>
@@ -67,7 +67,18 @@
                       @enderror
                     </div>
                   </div>
-                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="role" class="form-label">Roles(*)</label>
+                        <select id="role_id" class="form-control select2" name="role_id">
+                            <option value="">Selecciona el rol</option>
+                            @foreach($roles as $role)
+                            <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>
+                                {{$role->name}}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
               </div>
             </div>

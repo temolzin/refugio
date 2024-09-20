@@ -11,16 +11,11 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $users = trim($request->get('text'));
-        $users = DB::table('users')
-            ->select('id', 'name', 'last_name', 'phone', 'email', 'password')
-            ->where('id', 'LIKE', '%' . $users . '%')
-            ->orWhere('name', 'LIKE', '%' . $users . '%')
-            ->orderBy('name', 'asc')
-            ->paginate(10);
-        $user = User::all();
 
-        return view('users.index', compact('users'));
+        $roles = Role::all();
+        $users = User::all();
+        return view('users.index', compact('users', 'roles'));
+        
     }
 
 
@@ -51,15 +46,22 @@ class UserController extends Controller
         $users->email = $request->input('email');
         $users->password = bcrypt($request->input('password'));
         $users->save();
+        $users->roles()->sync($request->roles);
 
         return redirect()->back()->with('success', 'Usuario guardado exitosamente');
     }
 
     public function destroy($id)
     {
-        $users = User::find($id);
-        $users->delete();
-        return redirect()->back()->with('success', 'Usuario eliminado exitosamente');
+        $user = User::find($id);
+
+        if (!$user) 
+        {
+            return redirect()->back()->with('error', 'Usuario no encontrado');
+        }
+    
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'Usuario eliminado exitosamente');
     }
 
     public function get(Request $request)
@@ -91,6 +93,7 @@ class UserController extends Controller
             $users->email = $request->input('email');
             $users->email_verified_at = $request->input('email_verified_at') ? $request->input('email_verified_at') : null;
             $users->save();
+            $users->roles()->sync($request->roles);
         }
         return redirect()->back()->with('success', 'Usuario actualizado correctamente');
     }
