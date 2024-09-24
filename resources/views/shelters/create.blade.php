@@ -38,8 +38,6 @@
                                             @enderror
                                         </div>
                                     </div>
-
-
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="user" class="form-label">Usuario(*)</label>
@@ -53,10 +51,6 @@
                                             </select>
                                         </div>
                                     </div>
-
-
-
-
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="" class="form-label">Nombre(*)</label>

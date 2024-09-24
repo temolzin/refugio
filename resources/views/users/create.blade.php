@@ -28,12 +28,12 @@
                     <div class="form-group text-center">
                         <label for="photo" class="form-label"></label>
                         <div class="image-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">
-                            <img id="photo-preview" src="#" alt="Vista previa del la foto" style="display: none; width: 120px; height: 120px; border-radius: 60%; object-fit: cover;">
+                          <img id="photo-preview" src="#" alt="Vista previa del la foto" style="display: none; width: 120px; height: 120px; border-radius: 60%; object-fit: cover;">
                         </div>
                         <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo" aria-describedby="logoHelp" onchange="previewImage(event)" />
                         @error('photo')
                             <span class="invalid-feedback">
-                                <strong>{{ $message }}</strong>
+                              <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>

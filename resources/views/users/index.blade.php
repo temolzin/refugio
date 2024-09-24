@@ -46,7 +46,7 @@
                                                 @php
                                                 $photo = $users->getFirstMedia('photo');
                                                 @endphp
-                                                <img src="{{ $photo->getUrl('') }}" alt="photo not found" style="width: 50px; height: 50px; border-radius: 50%;" > 
+                                                <img src="{{ $photo->getUrl() }}" alt="photo not found" style="width: 50px; height: 50px; border-radius: 50%;" > 
                                                 @else
                                                 <img src="{{ asset('img/avatardefault.png') }}" style="width: 50px; height: 50px; border-radius: 50%;">
                                                 @endif                                                                                                    

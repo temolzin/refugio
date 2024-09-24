@@ -43,7 +43,7 @@
                                                 @php
                                                 $logo = $shelters->getFirstMedia('logos');
                                                 @endphp
-                                                <img src="{{ $logo->getUrl('') }}" alt="Logo not found" style="width: 50px; height: 50px; border-radius: 50%;" > 
+                                                <img src="{{ $logo->getUrl() }}" alt="Logo not found" style="width: 50px; height: 50px; border-radius: 50%;" > 
                                                 @else
                                                 <img src="{{ asset('img/shelterdefault.png') }}" style="width: 50px; height: 50px; border-radius: 50%;">
                                                 @endif                                                                                                    

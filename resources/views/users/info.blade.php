@@ -36,7 +36,7 @@
                         <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo-edit-{{ $users->id }}" aria-describedby="helpId" placeholder="" onchange="previewImageEdit(event, {{ $users->id }})">
                         @error('photo')
                         <span class="invalid-feedback" style="margin-top: -5px;">
-                            <strong>{{ $message }}</strong>
+                          <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
