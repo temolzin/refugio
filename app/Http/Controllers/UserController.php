@@ -14,6 +14,9 @@ class UserController extends Controller
 
         $roles = Role::all();
         $users = User::all();
+
+
+        
         return view('users.index', compact('users', 'roles'));
     }
 
@@ -43,6 +46,9 @@ class UserController extends Controller
         $users->phone = $request->input('phone');
         $users->email = $request->input('email');
         $users->password = bcrypt($request->input('password'));
+        if ($request->hasFile('photo')) {
+            $users->addMediaFromRequest('photo')->toMediaCollection('photo');
+        }
         $users->save();
         $users->roles()->sync($request->roles);
 
@@ -52,10 +58,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-
-        if (!$user) 
-        {
-            return redirect()->back()->with('error', 'Usuario no encontrado');
+        if ($user) {
+            $user->clearMediaCollection('photo');
+            $user->delete();
         }
     
         $user->delete();
@@ -90,6 +95,11 @@ class UserController extends Controller
             $users->phone = $request->input('phone');
             $users->email = $request->input('email');
             $users->email_verified_at = $request->input('email_verified_at') ? $request->input('email_verified_at') : null;
+            $users->update($request->except('photo'));
+            if ($request->hasFile('photo')) {
+                $users->clearMediaCollection('photo');
+                $users->addMediaFromRequest('photo')->toMediaCollection('photo');
+            }
             $users->save();
             $users->roles()->sync($request->roles);
         }

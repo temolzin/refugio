@@ -38,24 +38,25 @@
                                             @enderror
                                         </div>
                                     </div>
+
+
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="user_id" class="form-label">Usuario(*)</label>
-                                            <select class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id" required>
+                                            <label for="user" class="form-label">Usuario(*)</label>
+                                            <select id="user_id" class="form-control select2" name="users[]">
                                                 <option value="">Seleccione un usuario</option>
-                                                @foreach(App\Models\User::all() as $users)
-                                                    <option value="{{ $users->id }}" {{ old('user_id') == $users->id ? 'selected' : '' }}>
-                                                        {{ $users->name }}
+                                                @foreach($users as $user)
+                                                    <option value="{{ $user->id}}" {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                                                        {{ $user->name}} {{ $user->last_name }}
                                                     </option>
                                                 @endforeach
                                             </select>
-                                            @error('user_id')
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
                                         </div>
                                     </div>
+
+
+
+
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="" class="form-label">Nombre(*)</label>
@@ -181,3 +182,10 @@
         reader.readAsDataURL(input.files[0]);
     }
 </script>
+<style>
+    .select2-container .select2-selection--single {
+        height: 40px;
+        display: flex;
+        align-items: center;
+    }
+  </style>

@@ -22,6 +22,16 @@
             </div>
             <div class="card-body">
               <div class="row">
+                <div class="col-lg-12">
+                  <div class="image-preview-container" style="display: flex; justify-content: center;">
+                      @if($users->getMedia('photo')->isNotEmpty())
+                          <img src="{{ $users->getFirstMedia('photo')->getUrl() }}" alt="{{ $users->name }}" class="img-fluid" 
+                          style="width: 120px; height: 120px; border-radius: 60%;" />
+                      @else
+                          <img src="{{ asset('img/avatardefault.png') }}" style="width: 120px; height: 120px; border-radius: 50%;">
+                      @endif
+                  </div>
+                </div>
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label>ID</label>
@@ -40,22 +50,22 @@
                     <input type="text" disabled class="form-control" value="{{ $users->last_name }}" />
                   </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                   <div class="form-group">
                     <label>Teléfono</label>
                     <input type="text" disabled class="form-control" value="{{ $users->phone }}" />
                   </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                   <div class="form-group">
                     <label>Email</label>
                     <input type="text" disabled class="form-control" value="{{ $users->email }}" />
                   </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-4">
                   <div class="form-group">
                     <label>Rol</label>
-                    <input type="text" disabled class="form-control" value="{{ $users->roles->first()->name }}" />
+                    <input type="text" disabled class="form-control" value="{{ $users->roles->first()->name ?? 'Sin rol asignado'}}" />
                   </div>
                 </div>
               </div>

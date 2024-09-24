@@ -5,26 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Shelter;
 use Illuminate\Http\Request;
-
+use Psy\Shell;
 
 class ShelterController extends Controller
 {
     public function index(Request $request)
     {
-        $shelters = trim($request->get('text'));
-        $shelters = Shelter::with('users')
-            ->select('id', 'user_id', 'name', 'phone', 'facebook', 'tiktok', 'state', 'city', 'colony', 'address', 'postal_code')
-            ->where('id', 'LIKE', '%' . $shelters . '%')
-            ->orWhere('name', 'LIKE', '%' . $shelters . '%')
-            ->orderBy('name', 'asc')
-            ->paginate(10);
+
+        $users = User::all();
+        $shelters = Shelter::all();
 
         $shelters->map(function ($shelter) {
             $shelter->logo_url = $shelter->getFirstMediaUrl('logos');
             return $shelter;
         });
 
-        return view('shelters.index', compact('shelters'));
+        return view('shelters.index', compact('shelters','users'));
     }
 
     public function list()
@@ -70,6 +66,7 @@ class ShelterController extends Controller
         }
 
         $shelters->save();
+        $shelters->users()->sync($request->users);
 
         return redirect()->back()->with('success', 'Albergue guardado exitosamente');
     }
@@ -136,6 +133,7 @@ class ShelterController extends Controller
             $shelters->address = $request->input('address');
             $shelters->postal_code = $request->input('postal_code');
             $shelters->save();
+            $shelters->users()->sync($request->users);
         }
         return redirect()->back()->with('success', 'Albergue actualizado correctamente');
     }
