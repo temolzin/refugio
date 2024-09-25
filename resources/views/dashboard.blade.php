@@ -15,14 +15,12 @@
                                 <div class="card-box head">
                                     <div class="row align-items-center">
                                         <div class="col-md-2 text-center">
-                                            @if ($shelter->getMedia('logos')->isNotEmpty())
-                                                @php
-                                                    $logo = $shelter->getFirstMedia('logos');
-                                                @endphp
-                                                <img src="{{ $logo->getUrl() }}" alt="Logo not found">
-                                            @else
-                                                <img src='img/shelterdefault.png'>
-                                            @endif
+                                        @if ($user->getFirstMediaUrl('userGallery'))
+                                            <img src="{{ $user->getFirstMediaUrl('userGallery') }}"
+                                                alt="Foto de {{ $user->name }}">
+                                        @else
+                                            <img src="{{ asset('img/userDefault.png') }}">
+                                        @endif
                                         </div>
                                         <div class="col-md-8">
                                             <h4 class="font-weight-bold text-capitalize welcome">Bienvenid@</h4>
@@ -104,7 +102,12 @@
                                     <div class="card-box head">
                                         <div class="row align-items-center">
                                             <div class="col-md-2 text-center">
-                                                <img src="img/avatardefault.png" alt="user-avatar">
+                                                @if ($user->getFirstMediaUrl('userGallery'))
+                                                <img src="{{ $user->getFirstMediaUrl('userGallery') }}"
+                                                    alt="Foto de {{ $user->name }}">
+                                                @else
+                                                <img src="{{ asset('img/userDefault.png') }}">
+                                                @endif
                                             </div>
                                             <div class="col-md-8">
                                                 <h4 class="font-weight-bold text-capitalize welcome">Bienvenid@</h4>

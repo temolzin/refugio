@@ -10,13 +10,18 @@ use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 
-class User extends Authenticatable implements JWTSubject
+
+
+class User extends Authenticatable implements JWTSubject, HasMedia
 {
+    use InteractsWithMedia;
     use Notifiable, HasRoles, SoftDeletes ;
 
-    // Resto del código del modelo
+    
 
     public function getJWTIdentifier()
     {
@@ -64,4 +69,41 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasOne(Shelter::class, 'user_id');
     }
+
+    public function adminlte_image()
+    {
+        if ($this->hasRole('admin')) 
+        {
+            return $this->admin_image ? url($this->admin_image) : url('img/avatardefault.png');
+        }
+
+        if ($this->hasRole('shelter'))
+        {
+            return $this->shelter_image ? url($this->shelter_image) : url('img/shelterdefault.png');
+        }
+    }
+
+    public function adminlte_desc()
+    {
+        $role = $this->getRoleNames()->first();
+        return $role ?? 'Unknown Role';
+
+    }
+
+    public function adminlte_profile_url()
+    {
+        if ($this->hasRole('Admin')) 
+        {
+            return route('user.profile');
+        }
+
+        if ($this->hasRole('AdminAlbergue')) 
+        {
+            return route('user.profile');
+        }
+        
+        return route('user.profile');
+    }
+
+    
 }
