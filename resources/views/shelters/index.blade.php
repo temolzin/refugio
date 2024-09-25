@@ -83,31 +83,35 @@
 
 @endsection
 @section('js')
-<script>
-    $(document).ready(function() {
-        $('#shelters').DataTable({
-            responsive: true,
-            buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-            dom: 'Bfrtip',
-        });
-        var successMessage = "{{ session('success') }}";
-        if (successMessage) {
-            Swal.fire({
-                icon: 'success',
-                title: 'Éxito',
-                text: successMessage,
-                confirmButtonText: 'Aceptar'
+    <script>
+        $(document).ready(function() {
+            $('#shelters').DataTable({
+                responsive: true,
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+                dom: 'Bfrtip',
             });
-        }
-        $('#createModal').on('shown.bs.modal', function () {
-            checkForm('userForm', false);
+            var successMessage = "{{ session('success') }}";
+            if (successMessage) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: successMessage,
+                    confirmButtonText: 'Aceptar'
+                });
+            }
+            $('#create').on('shown.bs.modal', function () {
+                $('.select2').select2({
+                    dropdownParent: $('#create')
+                });
+            });
+            $('#edit').on('shown.bs.modal', function () {
+                $('.select2').select2({
+                    dropdownParent: $('#edit')
+                });
+            });
+            $('#userForm input').on('input', function() {
+                checkForm('userForm', false); 
+            });
         });
-        $('#editModal').on('shown.bs.modal', function () {
-            checkForm('userForm', true);
-        });
-        $('#userForm input').on('input', function() {
-            checkForm('userForm', false); 
-        });
-    });
-</script>
+    </script>
 @endsection

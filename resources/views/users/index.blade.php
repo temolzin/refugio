@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-
 @section('title', 'Usuario')
 @section('content')
 <section class="content">
@@ -25,6 +24,7 @@
                             <thead>
                                 <tr>
                                             <th>ID</th>
+                                            <th>FOTO</th>
                                             <th>NOMBRE</th>
                                             <th>APELLIDO </th>
                                             <th>TELEFONO</th>
@@ -41,6 +41,16 @@
                                         @foreach($users as $users)
                                         <tr>
                                             <td scope="row">{{$users->id}}</td>
+                                            <td>                                          
+                                                @if($users->getMedia('photo')->isNotEmpty())
+                                                @php
+                                                $photo = $users->getFirstMedia('photo');
+                                                @endphp
+                                                <img src="{{ $photo->getUrl() }}" alt="photo not found" style="width: 50px; height: 50px; border-radius: 50%;" > 
+                                                @else
+                                                <img src="{{ asset('img/avatardefault.png') }}" style="width: 50px; height: 50px; border-radius: 50%;">
+                                                @endif                                                                                                    
+                                            </td>
                                             <td>{{$users->name}}</td>
                                             <td>{{$users->last_name}}</td>
                                             <td>{{$users->phone}}</td>
@@ -92,33 +102,16 @@
                     confirmButtonText: 'Aceptar'
                 });
             }
-            function checkForm(formId, isEdit) {
-                var formIsValid = true;
-                $('#' + formId + ' input[required]').each(function() {
-                    // Excluye la validación de la contraseña solo en el modal de edición
-                    if (isEdit && $(this).attr('name') === 'password') {
-                        return true; // Continuar con la iteración
-                    }
-                    if ($(this).val() === '') {
-                        formIsValid = false;
-                        return false;
-                    }
-                });
-                $('#save' + formId + ' #edit').prop('disabled', !formIsValid);
-                if (!formIsValid) {
-                    toastr.error('Por favor, completa todos los campos obligatorios.');
-                }
-            }
             $('#create').on('shown.bs.modal', function () {
-                checkForm('userForm', false);
+                ('userForm', false);
                 $('.select2').select2({
                     dropdownParent: $('#create')
                 });
             });
-            $('#editModal').on('shown.bs.modal', function () {
-                checkForm('userForm', true);
+            $('#edit').on('shown.bs.modal', function () {
+                ('userForm', false);
                 $('.select2').select2({
-                    dropdownParent: $('#editModal')
+                    dropdownParent: $('#edit')
                 });
             });
             $('#userForm input').on('input', function() {
