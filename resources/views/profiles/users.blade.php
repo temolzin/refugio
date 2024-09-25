@@ -83,7 +83,6 @@
                         <p>Aquí puedes incluir información relevante para el administrador.</p>
                     </div>
                     
-                
             @elseif($user->hasRole('shelter'))
                 <div class="card">
                     <div class="card-header">
@@ -132,7 +131,6 @@
         </div>
     </div>
 
-    
     <div class="modal fade" id="editLogo{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -187,7 +185,6 @@
     </div>
 </div>
 
-
     <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -221,7 +218,6 @@
         </div>
     </div>
 </div>
-
 @stop
 
 @section('css')
@@ -244,7 +240,6 @@
             document.getElementById('change-password').style.display = 'block';
         });
         
-
         function previewImageEdit(event, id)
         {
             var input = event.target;

@@ -99,6 +99,4 @@ class User extends Authenticatable implements JWTSubject, HasMedia
         
         return route('user.profile');
     }
-
-    
 }

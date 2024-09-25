@@ -70,5 +70,4 @@ class UserProfileController extends Controller
 
         return redirect()->route('user.profile')->with('success', 'Imagen de perfil actualizada con éxito.')->with('image_updated', true);
     }
-
 }
