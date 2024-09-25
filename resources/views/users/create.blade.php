@@ -57,7 +57,7 @@
                       @enderror
                     </div>
                   </div>
-                  <div class="col-lg-6">
+                  <div class="col-lg-4">
                     <div class="form-group">
                       <label for="" class="form-label">Email(*)</label>
                       <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Ingresa email" value="{{ old('email') }}" required/>
@@ -68,7 +68,7 @@
                       @enderror
                     </div>
                   </div>
-                  <div class="col-lg-6">
+                  <div class="col-lg-4">
                     <div class="form-group">
                         <label for="password" class="form-label">Contraseña(*)</label>
                         <div class="input-group">
@@ -83,6 +83,18 @@
                          @enderror
                      </div>
                   </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="role" class="form-label">Rol(*)</label>
+                        <select id="role_id" class="form-control select2" name="roles[]">
+                            <option value="">Selecciona el rol</option>
+                            @foreach($roles as $role)
+                            <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>
+                                {{$role->name}}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
               </div>
             </div>
@@ -95,4 +107,24 @@
       </div>
     </div>
   </div>
-</div
+</div>
+<script>
+  function previewImage(event) {
+      var input = event.target;
+      var reader = new FileReader();
+      reader.onload = function () {
+          var dataURL = reader.result;
+          var output = document.getElementById('photo-preview');
+          output.src = dataURL;
+          output.style.display = 'block';
+      };
+      reader.readAsDataURL(input.files[0]);
+  }
+</script>
+<style>
+  .select2-container .select2-selection--single {
+      height: 40px;
+      display: flex;
+      align-items: center;
+  }
+</style>

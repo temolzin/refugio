@@ -49,7 +49,7 @@
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
                                                             <label for="user_id" class="form-label">Usuario(*)</label>
-                                                            <select class="form-control @error('user_id') is-invalid @enderror" name="user_id" id="user_id" required style="height: 43px;">
+                                                            <select class="form-control select2 @error('user_id') is-invalid @enderror" name="user_id" id="user_id" required style="height: 43px;">
                                                                 <option value="">Seleccione un refugio</option>
                                                                 @foreach(App\Models\User::all() as $users)
                                                                 <option value="{{ $users->id }}" {{ old('user_id', $shelters->user_id ?? '') == $users->id ? 'selected' : '' }}>

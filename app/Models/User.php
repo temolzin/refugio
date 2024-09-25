@@ -9,19 +9,14 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class User extends Authenticatable implements JWTSubject, HasMedia
 {
-    use InteractsWithMedia;
-    use Notifiable, HasRoles, SoftDeletes ;
-
-    
+    use Notifiable, HasRoles, InteractsWithMedia, SoftDeletes;
 
     public function getJWTIdentifier()
     {
