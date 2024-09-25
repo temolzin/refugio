@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Shelter;
 use Illuminate\Http\Request;
-use Psy\Shell;
 
 class ShelterController extends Controller
 {
