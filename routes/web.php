@@ -99,4 +99,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('vaccinated_animals',VaccinatedAnimalController::class);
 
+    Route::get('/user/profile', [UserProfileController::class, 'show'])->name('user.profile');
+    Route::put('/user/profile', [UserProfileController::class, 'update'])->name('user.update');
+    Route::post('/user/profile/update-picture', [UserProfileController::class, 'updatePicture'])->name('user.updatePicture');
+    Route::post('user/profile/change-password', [UserProfileController::class, 'changePassword'])->name('user.changePassword');
+    
 });
