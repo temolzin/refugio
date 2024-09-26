@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Roles')
+@section('title', 'PatitasFelices | Roles')
 
 @section('content')
     <section class="content">

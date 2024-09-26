@@ -17,6 +17,7 @@ use App\Http\Controllers\AdoptionController;
 use App\Http\Controllers\RefugeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\VaccinatedAnimalController;
+use App\Http\Controllers\UserProfileController;
 
 
 /*
