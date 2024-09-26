@@ -101,6 +101,7 @@ class AnimalController extends Controller
 
     public function show($id)
     {
+        $animal = Animal::with('vaccinatedAnimals')->find($id);
     }
 
     public function edit($id)

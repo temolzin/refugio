@@ -83,6 +83,17 @@
                     <h3>Historia</h3>
                     <p>{{ $animal->history }}</p>
                 </div>
+                <div class="section">
+                    <h3>Vacunas</h3>
+                    @if ($animal->vaccinatedAnimals->isEmpty())
+                        <p>No hay vacunas registradas.</p>
+                    @else
+                        @foreach ($animal->vaccinatedAnimals as $vaccinatedAnimal)
+                            <p><strong>Fecha de aplicación: </strong> {{ $vaccinatedAnimal->application_date }}</p>
+                            <p><strong>Vacuna aplicada: </strong> {{ $vaccinatedAnimal->vaccines->name }}</p>
+                        @endforeach
+                    @endif
+                </div>
             </div>
         </div>
     </div>
