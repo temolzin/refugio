@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 
-@section('title', 'Vacunas')
+@section('title', 'PatitasFelices | Vacunas')
+
 @section('content')
 <section class="content">
     <div class="right_col" role="main">

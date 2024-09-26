@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Patitas Felices')
+@section('title', 'PatitasFelices | Dashboard')
 
 @section('plugins.Fullcalendar', true)
 
