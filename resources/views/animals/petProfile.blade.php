@@ -14,7 +14,6 @@
             padding: 8;
 
         }
-
         .header {
             background-color: #00796b;
             color: #ffffff;
@@ -24,18 +23,15 @@
             font-weight: 700;
             margin-bottom: 20px;
         }
-
         .image-container {
             text-align: center;
         }
-
         .image-container img {
             height: 140;
             width: 140;
             border-radius: 50%;
             border: 4px solid #00796b;
         }
-
         .section h3 {
             margin-bottom: 10px;
             font-size: 1.8em;
@@ -43,12 +39,37 @@
             padding-bottom: 5px;
             color: #00796b;
         }
-
         .section p {
-            margin: 8px 0;
+            margin: 9px 0;
             font-size: 1.1em;
             text-align: justify;
         }
+        .section-without-vaccines h3 {
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #00796b;
+            padding-bottom: 5px;
+            color: #00796b;
+        }
+        .section-without-vaccines p {
+            margin: 9px 0;
+            font-size: 1.1em;
+            text-align: justify;
+        }
+        .section-with-vaccines h3 {
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #00796b;
+            padding-bottom: 5px;
+            color: #00796b;
+        }
+        .section-with-vaccines p {
+            margin: 10px 0;
+            font-size: 1.1em;
+            text-align: justify;
+        }
+
+        
     </style>
 </head>
 
@@ -83,6 +104,20 @@
                     <h3>Historia</h3>
                     <p>{{ $animal->history }}</p>
                 </div>
+                @if ($animal->vaccinatedAnimals->isEmpty())
+                    <div class="section-without-vaccines">
+                        <h3>Vacunas</h3>
+                        <p>No hay vacunas registradas.</p>
+                    </div>
+                @else
+                    <div class="section-with-vaccines">
+                        <h3>Vacunas</h3>
+                            @foreach ($animal->vaccinatedAnimals as $vaccinatedAnimal)
+                                <p><strong>Fecha de aplicación: </strong> {{ $vaccinatedAnimal->application_date }}</p>
+                                <p><strong>Vacuna aplicada: </strong> {{ $vaccinatedAnimal->vaccines->name }}</p>
+                            @endforeach
+                    </div>
+                @endif
             </div>
         </div>
     </div>
