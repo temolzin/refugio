@@ -1,7 +1,7 @@
-<div class="modal fade" id="password{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="card-primary">
+<div class="modal fade" id="updatePassword{{$users->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="card-primary">
             <div class="card-header">
                 <div class="d-sm-flex align-items-center justify-content-between">
                     <h4 class="card-title">Cambiar Contraseña<small> &nbsp;(*) Campos requeridos</small></h4>
@@ -31,5 +31,6 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
   

@@ -113,7 +113,7 @@ class UserController extends Controller
     public function updatePassword(Request $request, $id)
     {
         $request->validate([
-            'password' => 'required|string|min:8|confirmed', // Asegura que las contraseñas coincidan
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user = User::find($id);
