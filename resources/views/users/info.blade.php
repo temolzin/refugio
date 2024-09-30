@@ -110,3 +110,23 @@
     </div>
   </div>
 </div>
+<script>
+  function previewImage(event) {
+      var input = event.target;
+      var reader = new FileReader();
+      reader.onload = function () {
+          var dataURL = reader.result;
+          var output = document.getElementById('photo-preview');
+          output.src = dataURL;
+          output.style.display = 'block';
+      };
+      reader.readAsDataURL(input.files[0]);
+  }
+</script>
+<style>
+  .select2-container .select2-selection--single {
+      height: 40px;
+      display: flex;
+      align-items: center;
+  }
+</style>

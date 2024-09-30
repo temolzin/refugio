@@ -65,7 +65,11 @@
                                                 <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro"  data-target="#delete{{$users->id}}">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
+                                                <button type="button" class="btn btn-primary mr-2" data-toggle="modal" title="Cambiar Contraseña"  data-target="#password{{$users->id}}">
+                                                    <i class="fas fa-lock"></i>
+                                                </button>
                                             </td>
+                                            @include('users.password')
                                             @include('users.delete')
                                         </tr>
                                         @include('users.ver')
