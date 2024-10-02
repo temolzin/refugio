@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
@@ -107,6 +108,24 @@ class UserController extends Controller
     {
         $user->roles()->sync($request->roles);
         return redirect()->route('users.index')->with('success', 'Roles asignados correctamente');
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $request->validate([
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $user = User::find($id);
+
+        if ($user) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            return redirect()->route('users.index')->with('success', 'Contraseña actualizada correctamente');
+        }
+
+        return redirect()->route('users.index')->with('error', 'Usuario no encontrado');
     }
 
     public function show(User $users)

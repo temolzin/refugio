@@ -63,9 +63,10 @@ class ShelterController extends Controller
         if ($request->hasFile('logo')) {
             $shelters->addMediaFromRequest('logo')->toMediaCollection('logos');
         }
-
-        $shelters->save();
+        
         $shelters->users()->sync($request->users);
+        $shelters->save();
+    
 
         return redirect()->back()->with('success', 'Albergue guardado exitosamente');
     }
