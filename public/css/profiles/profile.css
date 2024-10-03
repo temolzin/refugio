@@ -11,6 +11,7 @@
 
 .card-body {
     background-color: #f8f9fa;
+    padding: 2rem;
 }
 
 .card-title {
@@ -31,11 +32,6 @@ dd {
     margin-bottom: 1rem; 
     color: #6c757d;
 }
-
-.card-body {
-    padding: 2rem;
-}
-
 
 .btn-primary {
     background-color: #b5e9a8;
@@ -83,10 +79,6 @@ dd {
 #profile-form {
     transition: opacity 0.3s ease;
     position: relative;
-}
-
-#profile-data {
-    display: block;
 }
 
 #profile-form {

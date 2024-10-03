@@ -70,4 +70,20 @@ class UserProfileController extends Controller
 
         return redirect()->route('user.profile')->with('success', 'Imagen de perfil actualizada con éxito.')->with('image_updated', true);
     }
+
+    public function updatePictureShelter(Request $request)
+    {
+        $shelterId = $request->input('shelter_id'); 
+        $request->validate([
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $shelter = User::with('media')->findOrFail($shelterId); 
+        $shelter->clearMediaCollection('shelterGallery');
+        $shelter->addMedia($request->file('photo'))->toMediaCollection('shelterGallery');
+
+        session(['user' => $shelter->refresh()]); 
+
+        return redirect()->route('user.profile')->with('success', 'Imagen de perfil actualizada con éxito.')->with('image_updated', true);
+    }
 }

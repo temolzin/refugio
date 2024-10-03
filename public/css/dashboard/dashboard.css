@@ -41,6 +41,12 @@ img {
     margin-bottom: 5px;
 }
 
+.nav-item img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
 .head{
     background: #eae5e5;
      margin-top: 20px; 
@@ -51,4 +57,9 @@ img {
 .welcome{
     font-size: 30px; 
     margin-bottom: 10px;
+}
+
+.user-header {
+    margin-bottom: 0;
+    padding-bottom: 0;
 }

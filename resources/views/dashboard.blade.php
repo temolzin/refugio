@@ -171,19 +171,22 @@
                                         </div>
                                         <div class="card-body p-1">
                                             <ul id="listShelters" class="users-list clearfix">
-                                                @foreach ($shelters as $shelter)
-                                                    <li class="p-1">
-                                                        @php
-                                                            $logo = $shelter->getFirstMedia('logos');
-                                                        @endphp
-                                                        @if ($logo)
-                                                            <img src="{{ $logo->getUrl() }}" alt="Logo not found" class="rounded-circle img-fluid" style="width: 120px; height: 120px;">
-                                                        @else
-                                                            <img src="img/shelterdefault.png" class="rounded-circle img-fluid">
-                                                        @endif
-                                                        <a class="users-list-name">{{ $shelter->name }}</a>
-                                                    </li>
-                                                @endforeach
+                                            @foreach ($shelters as $shelter)
+                                            <li class="p-1">
+                                                @php
+                                                    $logo = $shelter->users->getFirstMedia('shelterGallery');
+                                                @endphp
+                                                @if ($logo)
+                                                    <img src="{{ $logo->getUrl() }}" 
+                                                    alt="Logo de {{ $shelter->users->name }}" 
+                                                    class="rounded-circle img-fluid" style="width: 120px; height: 120px;">
+                                                @else
+                                                    <img src="{{ asset('img/shelterdefault.png') }}" 
+                                                    class="rounded-circle img-fluid" style="width: 120px; height: 120px;">
+                                                @endif
+                                                <a class="users-list-name">{{ $shelter->name }}</a>
+                                            </li>
+                                            @endforeach
                                             </ul>
                                         </div>
                                         <div class="card-footer text-center">
