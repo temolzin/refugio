@@ -17,3 +17,4 @@ yarn-error.log
 /public/vendor
 composer.lock
 package-lock.json
+!/vendor/jeroennoten/laravel-adminlte/resources/views/partials/navbar/menu-item-dropdown-user-menu.blade.php

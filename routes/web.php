@@ -102,6 +102,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/user/profile', [UserProfileController::class, 'show'])->name('user.profile');
     Route::put('/user/profile', [UserProfileController::class, 'update'])->name('user.update');
     Route::post('/user/profile/update-picture', [UserProfileController::class, 'updatePicture'])->name('user.updatePicture');
+    Route::post('/user/profile/update-picture-shelter', [UserProfileController::class, 'updatePictureShelter'])->name('user.updatePictureShelter');
     Route::post('user/profile/change-password', [UserProfileController::class, 'changePassword'])->name('user.changePassword');
     
 });

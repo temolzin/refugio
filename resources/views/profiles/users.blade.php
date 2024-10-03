@@ -88,6 +88,13 @@
                     <div class="card-header">
                         <h3 class="card-title">Información del Albergue</h3>
                     </div>
+                    <div class="card-body text-center">
+                    <div class="profile-img-container">
+                    <img src="{{ $user->getFirstMediaUrl('shelterGallery') ?: asset('img/shelterDefault.png') }}" class="img-circle elevation-2" alt="Shelter Image" style="width: 150px; height: 150px;">
+                        <a href="#" class="btn btn-outline-primary btn-sm edit-profile-pic" data-toggle="modal" data-target="#editLogoShelter{{ $user->id }}">
+                            <i class="fas fa-camera"></i>
+                        </a>
+                    </div>
                     <div class="card-body">
                         <div class="row mb-2">
                             <strong class="col-sm-4">Nombre del Albergue:</strong>
@@ -185,7 +192,61 @@
     </div>
 </div>
 
-    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+<div class="modal fade" id="editLogoShelter{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeli" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="card-warning">
+                <div class="card-header">
+                    <div class="d-sm-flex align-items-center justify-content-between">
+                        <h4 class="card-title">Actualizar la imagen del albergue</h4>
+                        <button type="button" class="close d-sm-inline-block text-white" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <form action="{{ route('user.updatePictureShelter') }}" enctype="multipart/form-data" method="POST" id="edit-shelter-form">
+                    @csrf
+                    @method('POST')
+                    <div class="card-body">
+                        <div class="card">
+                            <div class="card-header py-2 bg-secondary">
+                                <h3 class="card-title">Imagen del Albergue</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-8 offset-lg-2">
+                                        <div class="form-group text-center">
+                                            <label for="photo-{{ $user->id }}" class="form-label"></label>
+                                            <div class="image-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">
+                                                <img id="photo-preview-shelter-{{ $user->id }}" 
+                                                     src="{{ $user->getFirstMediaUrl('shelterGallery') ? $user->getFirstMediaUrl('shelterGallery') : asset('img/shelterDefault.png') }}" 
+                                                     alt="Foto Actual" 
+                                                     style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
+                                            </div>
+                                            <input type="hidden" name="shelter_id" value="{{ $user->id }}">
+                                            <input type="file" class="form-control" name="photo" id="photo-{{ $user->id }}" onchange="previewImageEditShelter(event, {{ $user->id }})">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -250,8 +311,21 @@
                 output.src = dataURL;
                 output.style.display = 'block';
             };
-        reader.readAsDataURL(input.files[0]);
-    }
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function previewImageEditShelter(event, shelterId)
+        {
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var dataURL = reader.result;
+                var output = document.getElementById('photo-preview-shelter-' + shelterId);
+                output.src = dataURL;
+                output.style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
 
         @if (session('password_success'))
             Swal.fire({
