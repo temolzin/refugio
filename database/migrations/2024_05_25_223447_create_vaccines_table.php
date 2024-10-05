@@ -19,6 +19,7 @@ class CreateVaccinesTable extends Migration
             $table->string('name');
             $table->string('type');
             $table->text('description')->nullable();
+            $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('shelter_id')->references('id')->on('shelters')->onDelete('cascade');

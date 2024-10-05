@@ -79,6 +79,7 @@
         $(document).ready(function() {
             $('#roles').DataTable({
                 responsive: true,
+                order:[0, 'desc'],
                 buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
                 dom: 'Bfrtip',
             });

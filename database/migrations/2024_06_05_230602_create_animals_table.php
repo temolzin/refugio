@@ -29,6 +29,7 @@ class CreateAnimalsTable extends Migration
             $table->enum('origin', Animal::ORIGINS)->nullable();
             $table->enum('behavior', Animal::BEHAVIORS)->nullable();
             $table->text('history')->nullable();
+            $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('specie_id')->references('id')->on('species')->onDelete('cascade');

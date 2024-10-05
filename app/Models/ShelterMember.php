@@ -23,7 +23,7 @@ class ShelterMember extends Model implements HasMedia
     const TYPE_MEMBER = [self::TYPE_MEMBER_STAFF, self::TYPE_MEMBER_DONOR, self::TYPE_MEMBER_GODFATHER, self::TYPE_MEMBER_ADOPTER];
 
     protected $guarded = [];
-    public $timestamps = false;
+
 
     public function shelter()
     {

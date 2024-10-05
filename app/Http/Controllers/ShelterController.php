@@ -11,7 +11,7 @@ class ShelterController extends Controller
     public function index(Request $request)
     {
         $users = User::all();
-        $shelters = Shelter::all();
+        $shelters = Shelter::orderBy('created_at', 'desc')->get();
 
         $shelters->map(function ($shelter) {
             $shelter->logo_url = $shelter->getFirstMediaUrl('logos');

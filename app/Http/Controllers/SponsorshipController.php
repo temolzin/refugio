@@ -48,7 +48,9 @@ class SponsorshipController extends Controller
 
         $sponsorship->save();
 
-        return redirect()->back()->with('success', 'Apadrinamiento registrado exitosamente.');
+        $sponsorships = Sponsorship::store('created_at', 'desc')->get();
+
+        return view('sponsorships.index', compact('sponsorships'))->with('success', 'Apadrinamiento registrado exitosamente.');
     }
 
     public function destroy($id, Request $request)

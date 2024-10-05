@@ -21,8 +21,8 @@ class CreateVetAppointmentsTable extends Migration
             $table->string('reason');
             $table->enum('status', VetAppointment::APPOINTMENT_STATUS);
             $table->text('observation')->nullable();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index('animal_id');
 

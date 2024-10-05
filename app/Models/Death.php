@@ -14,7 +14,6 @@ class Death extends Model
     protected $primaryKey = 'death_id';
     protected $fillable = ['animal_id', 'date', 'cause'];
     protected $guarded= [];
-    public $timestamps = false;
 
     public function animal()
     {

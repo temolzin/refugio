@@ -66,10 +66,12 @@ class ShelterMemberController extends Controller
 
         $animals = Animal::where('shelter_id', $shelterId)
             ->whereDoesntHave('adoption')
+            ->orderBy('created_at', 'desc')
             ->get();
 
         $shelterMembers = ShelterMember::where('shelter_id', $shelterId)
             ->where('type_member', ShelterMember::TYPE_MEMBER_ADOPTER)
+            ->orderBy('created_at', 'desc')
             ->get();
 
         $adoptions = Adoption::all();

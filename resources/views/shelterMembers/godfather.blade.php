@@ -102,6 +102,7 @@
 
     $(document).ready(function() {
         $('#godfather').DataTable({
+            order:[0, 'desc'],
             buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
             dom: 'Bfrtip',
         });
