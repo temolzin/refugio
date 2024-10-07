@@ -12,7 +12,6 @@ class ShelterController extends Controller
     {
         $users = User::all();
         $shelters = Shelter::orderBy('created_at', 'desc')->get();
-
         $shelters->map(function ($shelter) {
             $shelter->logo_url = $shelter->getFirstMediaUrl('logos');
             return $shelter;
@@ -129,7 +128,6 @@ class ShelterController extends Controller
             $shelter->addMediaFromRequest('logo')->toMediaCollection('logos');
         }
         $shelter->save();
-
         return redirect()->back()->with('success', 'Albergue actualizado correctamente');
     }
 
