@@ -41,7 +41,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="user" class="form-label">Usuario(*)</label>
-                                            <select id="user_id" class="form-control select2" name="users[]">
+                                            <select id="user_id" class="form-control select2" name="user_id">
                                                 <option value="">Seleccione un usuario</option>
                                                 @foreach($users as $user)
                                                     <option value="{{ $user->id}}" {{ old('user_id') == $user->id ? 'selected' : '' }}>

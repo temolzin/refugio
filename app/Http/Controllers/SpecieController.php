@@ -20,14 +20,7 @@ class SpecieController extends Controller
 
         $shelterId = $user->shelter->id;
 
-        $species = Specie::where('shelter_id', $shelterId)
-            ->where(function ($query) use ($request) {
-                $text = trim($request->get('text'));
-                $query->where('name', 'LIKE', '%' . $text . '%')
-                    ->orWhere('description', 'LIKE', '%' . $text . '%');
-            })
-            ->orderBy('name', 'asc')
-            ->paginate(10);
+        $species = Specie::orderBy('created_at', 'desc')->get();
 
         return view('species.index', compact('species'));
     }

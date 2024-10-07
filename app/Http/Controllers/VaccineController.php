@@ -25,7 +25,7 @@ class VaccineController extends Controller
                 $query->where('vaccine_id', 'LIKE', '%' . $text . '%')
                     ->orWhere('name', 'LIKE', '%' . $text . '%');
             })
-            ->orderBy('name', 'asc')
+            ->orderBy('name', 'desc')
             ->paginate(10);
 
         return view('vaccines.index', compact('vaccines'));

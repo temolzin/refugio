@@ -250,6 +250,7 @@
     <script>
         $(document).ready(function() {
             $('#users').DataTable({
+                order:[0, 'desc'],
                 responsive: true,
                 dom: 'r',
             });

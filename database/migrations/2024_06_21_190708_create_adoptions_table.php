@@ -19,6 +19,7 @@ class CreateAdoptionsTable extends Migration
             $table->unsignedBigInteger('shelter_member_id');
             $table->date('adoption_date');
             $table->text('observation');
+            $table->timestamps();
             $table->softDeletes();
         
             $table->foreign('animal_id')->references('id')->on('animals')->onDelete('cascade');

@@ -39,7 +39,6 @@ class User extends Authenticatable implements JWTSubject, HasMedia
     protected $primaryKey= 'id';
     protected $fillable=['name','last_name','phone','email','email_verified_at','password'];
     protected $guarded= [];
-    public $timestamps=false;
 
     /**
      * The attributes that should be hidden for serialization.

@@ -14,7 +14,6 @@ class Specie extends Model
     protected $primaryKey= 'id';
     protected $fillable=['name','description','shelter_id'];
     protected $guarded= [];
-    public $timestamps=false;
     
     public function shelter()
     {

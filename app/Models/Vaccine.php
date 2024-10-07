@@ -14,7 +14,6 @@ class Vaccine extends Model
     protected $primaryKey= 'vaccine_id';
     protected $fillable=['shelter_id','name','type','description'];
     protected $guarded= [];
-    public $timestamps=false;
 
     public function shelter()
     {

@@ -509,6 +509,11 @@ return [
                     'asset' => true,
                     'location' => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
                 ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'js/datatable/datatables-template.js',
+                ],
             ],
         ],
 

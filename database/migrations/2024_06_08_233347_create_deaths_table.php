@@ -23,6 +23,7 @@ class CreateDeathsTable extends Migration
             $table->foreign('animal_id')->references('id')->on('animals')->onDelete('cascade');
             $table->foreign('shelter_id')->references('id')->on('shelters')->onDelete('cascade');
 
+            $table->timestamps();
             $table->softDeletes();
         });
     }

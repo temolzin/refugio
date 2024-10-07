@@ -16,7 +16,6 @@ class Adoption extends Model
         'adoption_date',
         'observation',
     ];
-    public $timestamps = false;
 
     public function animal()
     {

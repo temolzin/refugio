@@ -14,7 +14,6 @@ class Sponsorship extends Model
     protected $primaryKey= 'id';
     protected $fillable=['animal_id', 'shelter_member_id','start_date','finish_date','payment_date','amount','observation'];
     protected $guarded= [];
-    public $timestamps=false;
     
     public function animal()
     {

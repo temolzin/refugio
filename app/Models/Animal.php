@@ -49,7 +49,6 @@ class Animal extends Model implements HasMedia
     const SEXES = [self::SEX_MALE, self::SEX_FEMALE];
 
     protected $guarded = [];
-    public $timestamps = false;
 
     public function specie()
     {
