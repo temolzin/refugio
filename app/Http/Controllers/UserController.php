@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
@@ -15,6 +16,8 @@ class UserController extends Controller
 
         $roles = Role::all();
         $users = User::orderBy('created_at', 'desc')->get();
+        $users = User::where('id', '!=', Auth::id())->get();
+
         return view('users.index', compact('users', 'roles'));
     }
 
