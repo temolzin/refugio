@@ -68,9 +68,15 @@
                                                                 <button type="button" class="btn btn-warning mr-2" data-toggle="modal" title="Editar Datos" data-target="#edit{{ $animal->id }}">
                                                                     <i class="fas fa-edit"></i>
                                                                 </button>
-                                                                <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{ $animal->id }}">
-                                                                    <i class="fas fa-trash-alt"></i>
-                                                                </button>
+                                                                @if($animal->hasDependencies())
+                                                                    <button type="button" class="btn btn-secondary mr-2" title="Eliminación no permitida: Existen datos relacionados con este registro." disabled>
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </button>
+                                                                @else
+                                                                    <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{ $animal->id }}">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </button>
+                                                                @endif
                                                                 <a type="button" class="btn btn-block bg-gradient-secondary mr-2" target="_blank" title="Generar Perfil"
                                                                     href="{{ route('animals.petProfile', Crypt::encrypt($animal->id)) }}">
                                                                     <i class="fas fa-dog"></i>

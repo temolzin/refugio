@@ -19,8 +19,11 @@ class Death extends Model
     {
         return $this->belongsTo(Animal::class, 'animal_id');
     }
-    
 
+    public function hasDependencies()
+    {
+        return $this->animal()->exists();
+    }
 }
 
 class Post extends Model{

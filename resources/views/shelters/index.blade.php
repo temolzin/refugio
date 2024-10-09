@@ -60,9 +60,15 @@
                                                     <button type="button" class="btn btn-warning mr-2" data-toggle="modal" title="Editar Datos" data-target="#edit{{$shelters->id}}">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" title="Eliminar Registro"  data-target="#delete{{$shelters->id}}">
+                                                    @if($shelters->hasDependencies())
+                                                        <button type="button" class="btn btn-secondary mr-2" title="Eliminación no permitida: Existen datos relacionados con este registro." disabled>
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{ $shelters->id }}">
+                                                    @else
                                                         <i class="fas fa-trash-alt"></i>
-                                                    </button>
+                                                        </button>
+                                                    @endif
                                                 </div>
                                             </td>
                                             @include('shelters.delete')

@@ -59,9 +59,15 @@
                                                         <button type="button" class="btn btn-warning mr-2" data-toggle="modal" title="Editar Datos"  data-target="#edit{{$shelterMember->id}}">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
-                                                        <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{$shelterMember->id}}">
-                                                            <i class="fas fa-trash-alt"></i>
-                                                        </button>
+                                                        @if($shelterMember->hasDependencies())
+                                                            <button type="button" class="btn btn-secondary mr-2" title="Eliminación no permitida: Existen datos relacionados con este registro." disabled>
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </button>
+                                                        @else
+                                                            <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{ $shelterMember->id }}">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </button>
+                                                        @endif
                                                         <button type="button" class="btn btn-success mr-2" data-toggle="modal" title="Registrar Adopcion" data-target="#createAdoption{{ $shelterMember->id }}">
                                                             <i class="fas fa-heart"></i>
                                                         </button>

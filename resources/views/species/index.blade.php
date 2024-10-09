@@ -50,9 +50,15 @@
                                                     <button type="button" class="btn btn-warning mr-2" data-toggle="modal" title="Editar Datos" data-target="#edit{{$species->id}}">
                                                         <i class="fas fa-edit"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{$species->id}}">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </button>
+                                                    @if($species->hasDependencies())
+                                                        <button type="button" class="btn btn-secondary mr-2" title="Eliminación no permitida: Existen datos relacionados con este registro." disabled>
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                    @else
+                                                        <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{ $species->id }}">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                    @endif
                                                 </div>
                                             </td>
                                             @include('species.delete')

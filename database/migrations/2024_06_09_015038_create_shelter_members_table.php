@@ -41,6 +41,6 @@ class CreateSheltermembersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sheltermembers');
+        Schema::dropIfExists('shelter_member');
     }
 }

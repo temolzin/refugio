@@ -29,4 +29,14 @@ class VetAppointment extends Model
     {
         return $this->belongsTo(Animal::class, 'animal_id');
     }
+
+    public function vetAppointments()
+    {
+        return $this->hasMany(VetAppointment::class, 'animal_id');
+    }
+
+    public function hasDependencies()
+    {
+        return $this->vetAppointments()->exists();
+    }
 }

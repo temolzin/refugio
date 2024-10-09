@@ -98,4 +98,9 @@ class User extends Authenticatable implements JWTSubject, HasMedia
         
         return route('user.profile');
     }
+
+    public function hasDependencies()
+    {
+        return $this->shelter()->exists();
+    }
 }
