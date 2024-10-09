@@ -27,4 +27,27 @@ class ShelterMember extends Model implements HasMedia
     {
         return $this->belongsTo(Shelter::class, 'shelter_id');
     }
+
+    public function sponsorships()
+    {
+        return $this->hasMany(Sponsorship::class, 'shelter_member_id');
+    }
+
+    public function adoptions()
+    {
+        return $this->hasMany(Adoption::class, 'shelter_member_id');
+    }
+
+    public function donations()
+    {
+        return $this->hasMany(Donation::class, 'shelter_member_id');
+    }
+
+    public function hasDependencies()
+    {
+        return $this->sponsorships()->exists() || 
+            $this->adoptions()->exists() || 
+            $this->donations()->exists() || 
+            $this->tasks()->exists();
+    }
 }

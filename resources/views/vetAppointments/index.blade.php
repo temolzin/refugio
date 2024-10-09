@@ -52,9 +52,15 @@
                                                             <button type="button" class="btn btn-warning mr-2" title="Editar Datos" data-toggle="modal" data-target="#edit{{$vet->id}}">
                                                                 <i class="fas fa-edit"></i>
                                                             </button>
-                                                            <button type="button" class="btn btn-danger" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{$vet->id}}">
-                                                                <i class="fas fa-trash-alt"></i>
-                                                            </button>
+                                                            @if($vet->hasDependencies())
+                                                                <button type="button" class="btn btn-secondary mr-2" title="Eliminación no permitida: Existen datos relacionados con esta cita." disabled>
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </button>
+                                                            @else
+                                                                <button type="button" class="btn btn-danger" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{$vet->id}}">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </button>
+                                                            @endif
                                                         </div>
                                                     </td>
                                                     @include('vetAppointments.delete')

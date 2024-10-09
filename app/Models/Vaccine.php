@@ -19,4 +19,14 @@ class Vaccine extends Model
     {
         return $this->belongsTo(Shelter::class, 'shelters_id');
     }
+
+    public function vaccines()
+    {
+        return $this->hasMany(Vaccine::class); 
+    }
+
+    public function hasDependencies()
+    {
+        return $this->vetAppointments()->exists();
+    }
 }

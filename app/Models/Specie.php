@@ -19,4 +19,14 @@ class Specie extends Model
     {
         return $this->belongsTo(Shelter::class, 'shelter_id');
     }
+
+    public function hasDependencies()
+    {
+        return $this->animals()->exists();
+    }
+
+    public function animals()
+    {
+        return $this->hasMany(Animal::class, 'specie_id');
+    }
 }
