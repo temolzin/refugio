@@ -29,7 +29,6 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-
         $validationMessages = [
             'name.required' => 'El nombre es obligatorio.',
             'last_name.required' => 'El apellido es obligatorio.',
