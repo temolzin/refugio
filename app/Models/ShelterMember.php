@@ -47,7 +47,6 @@ class ShelterMember extends Model implements HasMedia
     {
         return $this->sponsorships()->exists() || 
             $this->adoptions()->exists() || 
-            $this->donations()->exists() || 
-            $this->tasks()->exists();
+            $this->donations()->exists();
     }
 }

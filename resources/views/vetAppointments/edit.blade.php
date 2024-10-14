@@ -28,7 +28,7 @@
                                 <div class="row">
                                 <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="animal_id" class="form-label">ID Animal(*)</label>
+                                            <label for="animal_id" class="form-label">Animal(*)</label>
                                             <select id="animal_id_select"
                                                 class="form-control select2 @error('animal_id') is-invalid @enderror"
                                                 name="animal_id" required>

@@ -29,13 +29,24 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $validationMessages = [
+            'name.required' => 'El nombre es obligatorio.',
+            'last_name.required' => 'El apellido es obligatorio.',
+            'phone.required' => 'El teléfono es obligatorio.',
+            'phone.unique' => 'Este número de teléfono ya está en uso.',
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.unique' => 'Este correo electrónico ya está en uso.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+        ];
+
         $request->validate([
             'name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'phone' => 'required|string|max:15',
-            'email' => 'required|string|email|max:255',
+            'phone' => 'required|string|max:15|unique:users,phone',
+            'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8',
-        ]);
+       ], $validationMessages);
         if ($request->id == 0) {
             $users = new User();
         } else {
@@ -84,8 +95,8 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'phone' => 'required|string|max:15',
-            'email' => 'required|string|email|max:255',
+            'phone' => 'required|string|max:15|unique:users,phone,'.$id,
+            'email' => 'required|string|email|max:255|unique:users,email,'.$id,
             'email_verified_at' => 'nullable',
         ]);
         $users = User::find($id);

@@ -143,13 +143,13 @@
 <body>
     <div class="container">
         <div class="header">
-            @if ($shelter->getMedia('logos')->isNotEmpty())
+            @if ($shelter->getMedia('shelterGallery')->isNotEmpty())
             @php
-            $logo = $shelter->getFirstMedia('logos');
+            $logo = $shelter->getFirstMedia('shelterGallery');
             @endphp
             <img src="{{ $logo->getUrl() }}" alt="Logo not found">
             @else
-            <img src='img/avatardefault.png' alt="Logo por defecto">
+            <img src='img/shelterdefault.png' alt="Logo por defecto">
             @endif
             <div class="details">
                 <p>{{ $shelter->name }}<br>

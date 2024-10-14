@@ -11,19 +11,19 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class DonationController extends Controller
 {
     public function pdfDonation($id)
-{
-    $id = Crypt::decrypt($id);
-    $shelter = Auth::user()->shelter;
-
-    $donation = Donation::where('id', $id)
-        ->with(['shelterMember'])
-        ->firstOrFail();
-
-    $shelterMember = $donation->shelterMember;
-
-    $pdf = PDF::loadView('donations.pdfDonation', compact('donation', 'shelterMember', 'shelter'));
-    return $pdf->stream();
-}
+    {
+        $id = Crypt::decrypt($id);
+        $shelter = Auth::user()->shelter;
+        
+        $donation = Donation::where('id', $id)
+            ->with(['shelterMember'])
+            ->firstOrFail();
+        
+        $shelterMember = $donation->shelterMember;
+        
+        $pdf = PDF::loadView('donations.pdfDonation', compact('donation', 'shelterMember', 'shelter'));
+        return $pdf->stream();
+    }
    
     public function store(Request $request)
     {
