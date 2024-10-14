@@ -42,12 +42,12 @@
                                         <td scope="row">{{$shelters->id}}</td>
                                         <td>                                          
                                             @if ($shelters->users->getFirstMediaUrl('shelterGallery'))
-                                            <img src="{{ $shelters->users->getFirstMediaUrl('shelterGallery') }}" 
-                                            alt="Logo de {{ $shelters->users->name }}" 
-                                            style="width: 50px; height: 50px; border-radius: 50%;">
+                                                <img src="{{ $shelters->users->getFirstMediaUrl('shelterGallery') }}" 
+                                                alt="Logo de {{ $shelters->users->name }}" 
+                                                style="width: 50px; height: 50px; border-radius: 50%;">
                                             @else
-                                            <img src="{{ asset('img/shelterdefault.png') }}" 
-                                            style="width: 50px; height: 50px; border-radius: 50%;">
+                                                <img src="{{ asset('img/shelterdefault.png') }}" 
+                                                style="width: 50px; height: 50px; border-radius: 50%;">
                                             @endif                                                                                                    
                                         </td>
                                             <td>{{ $shelters->users->name }} {{ $shelters->users->last_name }}</td>
@@ -64,9 +64,9 @@
                                                         <button type="button" class="btn btn-secondary mr-2" title="Eliminación no permitida: Existen datos relacionados con este registro." disabled>
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
-                                                        <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{ $shelters->id }}">
                                                     @else
-                                                        <i class="fas fa-trash-alt"></i>
+                                                        <button type="button" class="btn btn-danger mr-2" data-toggle="modal" title="Eliminar Registro" data-target="#delete{{ $shelters->id }}">
+                                                            <i class="fas fa-trash-alt"></i>
                                                         </button>
                                                     @endif
                                                 </div>

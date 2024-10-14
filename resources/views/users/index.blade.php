@@ -113,6 +113,26 @@
                     confirmButtonText: 'Aceptar'
                 });
             }
+            var errorMessage = "{{ session('error') }}";
+            if (errorMessage) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: errorMessage,
+                    confirmButtonText: 'Aceptar'
+                });
+            }
+            @if ($errors->any())
+            @foreach ($errors->all() as $error)
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ $error }}',
+                confirmButtonText: 'Aceptar'
+            });
+            @endforeach
+            @endif
+            
             $('#create').on('shown.bs.modal', function () {
                 ('userForm', false);
                 $('.select2').select2({

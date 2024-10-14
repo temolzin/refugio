@@ -19,7 +19,7 @@
                                             <img src="{{ $user->getFirstMediaUrl('userGallery') }}"
                                                 alt="Foto de {{ $user->name }}">
                                         @else
-                                            <img src="{{ asset('img/userDefault.png') }}">
+                                            <img src="{{ asset('img/avatarDefault.png') }}">
                                         @endif
                                         </div>
                                         <div class="col-md-8">
@@ -106,7 +106,7 @@
                                                 <img src="{{ $user->getFirstMediaUrl('userGallery') }}"
                                                     alt="Foto de {{ $user->name }}">
                                                 @else
-                                                <img src="{{ asset('img/userDefault.png') }}">
+                                                <img src="{{ asset('img/avatarDefault.png') }}">
                                                 @endif
                                             </div>
                                             <div class="col-md-8">
