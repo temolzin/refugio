@@ -1,4 +1,9 @@
-.sidebar-light-custom {
+.sidebar-dark-primary {
     background-color: #A3D9A5 !important;
-    color: #000 !important;
+}
+.sidebar-dark-primary p {
+    color: #000 !important; /* O sin !important si es posible */
+}
+.sidebar .nav-header {
+    color: #000 !important; /* Cambia esto por el color que desees */
 }

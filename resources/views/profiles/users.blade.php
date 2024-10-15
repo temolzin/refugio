@@ -91,6 +91,7 @@
                     <div class="card-body text-center">
                     <div class="profile-img-container">
                     <img src="{{ $user->getFirstMediaUrl('shelterGallery') ?: asset('img/shelterDefault.png') }}" class="img-circle elevation-2" alt="Shelter Image" style="width: 150px; height: 150px;">
+
                         <a href="#" class="btn btn-outline-primary btn-sm edit-profile-pic" data-toggle="modal" data-target="#editLogoShelter{{ $user->id }}">
                             <i class="fas fa-camera"></i>
                         </a>

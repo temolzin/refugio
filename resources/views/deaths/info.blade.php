@@ -41,11 +41,11 @@
                                         <div class="form-group">
                                             <label for="animal_id" class="form-label">Nombre (*)</label>
                                             <select id="animal_id_select"
-                                                class="form-control select2 @error('animal_id') is-invalid @enderror"
-                                                name="animal_id" required>
+                                                    class="form-control select2 @error('animal_id') is-invalid @enderror"
+                                                    name="animal_id" required>
                                                 <option value="">Seleccione una mascota</option>
                                                 @foreach ($animals as $animal)
-                                                    <option value="{{ $animal->id }}" {{ old('animal_id') == $animal->id ? 'selected' : '' }}>
+                                                    <option value="{{ $animal->id }}" {{ old('animal_id', $death->animal_id) == $animal->id ? 'selected' : '' }}>
                                                         {{ $animal->name }}
                                                     </option>
                                                 @endforeach

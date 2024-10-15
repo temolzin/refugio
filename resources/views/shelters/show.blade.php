@@ -24,11 +24,12 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="image-preview-container" style="display: flex; justify-content: center;">
-                                        @if($shelters->getMedia('logos')->isNotEmpty())
-                                            <img src="{{ $shelters->getFirstMedia('logos')->getUrl() }}" alt="{{ $shelters->name }}" class="img-fluid" 
-                                            style="width: 120px; height: 120px; border-radius: 60%;" />
+                                        @if($shelters->getFirstMediaUrl('shelterGallery'))
+                                                <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ $shelters->getFirstMediaUrl('shelterGallery') }}" 
+                                                alt="Logo Actual" 
+                                                style="width: 120px; height: 120px; border-radius: 50%;">
                                         @else
-                                            <img src="{{ asset('img/avatardefault.png') }}" style="width: 120px; height: 120px; border-radius: 50%;">
+                                            <img src="{{ asset('img/shelterDefault.png') }}" style="width: 120px; height: 120px; border-radius: 50%;">
                                         @endif
                                     </div>
                                 </div>

@@ -87,15 +87,16 @@
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
-                        <label for="role" class="form-label">Rol(*)</label>
-                        <select id="role_id" class="form-control select2" name="roles[]">
-                            <option value="">Selecciona el rol</option>
-                            @foreach($roles as $role)
-                            <option value="{{ $role->id }}" {{ old('roles_id', $users->roles_id ?? '') == $role->id ? 'selected' :'' }}>
-                                {{$role->name}}
-                            </option>
-                            @endforeach
-                        </select>
+                      <label for="role" class="form-label">Rol(*)</label>
+                      <select id="role_id" class="form-control select2" name="roles[]">
+                          <option value="">Selecciona el rol</option>
+                          @foreach($roles as $role)
+                              <option value="{{ $role->id }}" 
+                                  {{ $users->roles->contains($role->id) ? 'selected' : '' }}>
+                                  {{ $role->name }}
+                              </option>
+                          @endforeach
+                      </select>                      
                     </div>
                 </div>
               </div>
