@@ -33,11 +33,11 @@
                                                 class="form-control select2 @error('animal_id') is-invalid @enderror"
                                                 name="animal_id" required>
                                             <option value="">Seleccione un animal</option>
-                                            @foreach ($animals as $animal)
-                                                <option value="{{ $animal->id }}" {{ old('animal_id', $vet->animal_id) == $animal->id ? 'selected' : '' }}>
-                                                    {{ $animal->name }}
-                                                </option>
-                                            @endforeach
+                                                @foreach ($animals as $animal)
+                                                    <option value="{{ $animal->id }}" {{ old('animal_id', $vet->animal_id) == $animal->id ? 'selected' : '' }}>
+                                                        {{ $animal->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             @error('animal_id')
                                                 <span class="invalid-feedback" role="alert">

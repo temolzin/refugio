@@ -38,11 +38,11 @@ class ShelterController extends Controller
             'colony' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validación de imagen
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
 
         $shelter = Shelter::updateOrCreate(
-            ['id' => $request->id], // Crea o actualiza el refugio basado en el id
+            ['id' => $request->id],
             $request->only('user_id', 'name', 'phone', 'facebook', 'tiktok', 'state', 'city', 'colony', 'address', 'postal_code')
         );
 
@@ -95,24 +95,23 @@ class ShelterController extends Controller
             'colony' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validación de imagen
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $shelter = Shelter::findOrFail($id);
         $shelter->fill($request->only('user_id', 'name', 'phone', 'facebook', 'tiktok', 'state', 'city', 'colony', 'address', 'postal_code'));
 
         if ($request->hasFile('logo')) {
-            $shelter->clearMediaCollection('shelterGallery'); // Elimina las imágenes existentes
+            $shelter->clearMediaCollection('shelterGallery');
             $shelter->addMediaFromRequest('logo')->toMediaCollection('shelterGallery');
         }
 
-        $shelter->save(); // Guarda los cambios
+        $shelter->save();
         return redirect()->route('shelters.index')->with('success', 'Albergue actualizado correctamente');
     }
 
     public function show(Shelter $shelters)
     {
-        // Aquí puedes agregar la lógica para mostrar un refugio específico, si es necesario.
     }
 
     public function sheltersView()

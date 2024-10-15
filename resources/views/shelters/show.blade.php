@@ -25,9 +25,9 @@
                                 <div class="col-lg-12">
                                     <div class="image-preview-container" style="display: flex; justify-content: center;">
                                         @if($shelters->getFirstMediaUrl('shelterGallery'))
-                                                <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ $shelters->getFirstMediaUrl('shelterGallery') }}" 
-                                                alt="Logo Actual" 
-                                                style="width: 120px; height: 120px; border-radius: 50%;">
+                                            <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ $shelters->getFirstMediaUrl('shelterGallery') }}" 
+                                            alt="Logo Actual" 
+                                            style="width: 120px; height: 120px; border-radius: 50%;">
                                         @else
                                             <img src="{{ asset('img/shelterDefault.png') }}" style="width: 120px; height: 120px; border-radius: 50%;">
                                         @endif
