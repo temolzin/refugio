@@ -60,6 +60,13 @@ class DeathController extends Controller
 
     public function edit($death_id)
     {
+        $death = Death::find($death_id);
+        
+        if (!$death) {
+            return redirect()->back()->with('error', 'Registro no encontrado.');
+        }
+        $animals = Animal::all();
+        return view('deaths.edit', compact('death', 'animals'));
     }
 
     public function update(Request $request, $death_id)

@@ -66,11 +66,11 @@
                                         <div class="form-group">
                                             <label for="" class="form-label">Teléfono(*)</label>
                                             <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Ingresa teléfono" value="{{ old('phone') }}" required />
-                                            @error('phone')
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                                @error('phone')
+                                                    <span class="invalid-feedback">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6">

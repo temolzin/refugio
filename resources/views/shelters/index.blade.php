@@ -40,15 +40,15 @@
                                         @foreach($shelters as $shelters)
                                         <tr>
                                         <td scope="row">{{$shelters->id}}</td>
-                                        <td>                                          
-                                            @if ($shelters->users->getFirstMediaUrl('shelterGallery'))
-                                                <img src="{{ $shelters->users->getFirstMediaUrl('shelterGallery') }}" 
-                                                alt="Logo de {{ $shelters->users->name }}" 
+                                        <td>
+                                            @if($shelters->getFirstMediaUrl('shelterGallery'))
+                                                <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ $shelters->getFirstMediaUrl('shelterGallery') }}" 
+                                                alt="Logo Actual" 
                                                 style="width: 50px; height: 50px; border-radius: 50%;">
                                             @else
-                                                <img src="{{ asset('img/shelterdefault.png') }}" 
+                                                <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ asset('img/shelterDefault.png') }}" 
                                                 style="width: 50px; height: 50px; border-radius: 50%;">
-                                            @endif                                                                                                    
+                                            @endif                                                                                                   
                                         </td>
                                             <td>{{ $shelters->users->name }} {{ $shelters->users->last_name }}</td>
                                             <td>{{ $shelters->name }}</td>

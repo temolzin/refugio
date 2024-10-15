@@ -11,19 +11,18 @@ class ShelterController extends Controller
     public function index(Request $request)
     {
         $users = User::all();
-        $shelters = Shelter::orderBy('created_at', 'desc')->get();
+        $shelters = Shelter::with('users')->orderBy('created_at', 'desc')->get();
         $shelters->map(function ($shelter) {
-            $shelter->logo_url = $shelter->getFirstMediaUrl('logos');
+            $shelter->logo_url = $shelter->getFirstMediaUrl('shelterGallery');
             return $shelter;
         });
 
-        return view('shelters.index', compact('shelters','users'));
+        return view('shelters.index', compact('shelters', 'users'));
     }
 
     public function list()
     {
-        $shelters = Shelter::all();
-        return $shelters;
+        return Shelter::all();
     }
 
     public function store(Request $request)
@@ -39,48 +38,35 @@ class ShelterController extends Controller
             'colony' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
 
-        if ($request->id == 0) {
-            $shelter = new Shelter();
-        } else {
-            $shelter = Shelter::findOrFail($request->id);
-        }
-
-        $shelter->user_id = $request->input('user_id');
-        $shelter->name = $request->input('name');
-        $shelter->phone = $request->input('phone');
-        $shelter->facebook = $request->input('facebook');
-        $shelter->tiktok = $request->input('tiktok');
-        $shelter->state = $request->input('state');
-        $shelter->city = $request->input('city');
-        $shelter->colony = $request->input('colony');
-        $shelter->address = $request->input('address');
-        $shelter->postal_code = $request->input('postal_code');
+        $shelter = Shelter::updateOrCreate(
+            ['id' => $request->id],
+            $request->only('user_id', 'name', 'phone', 'facebook', 'tiktok', 'state', 'city', 'colony', 'address', 'postal_code')
+        );
 
         if ($request->hasFile('logo')) {
-            $shelter->addMediaFromRequest('logo')->toMediaCollection('logos');
+            $shelter->addMediaFromRequest('logo')->toMediaCollection('shelterGallery');
         }
-        $shelter->save();
 
-        return redirect()->back()->with('success', 'Albergue guardado exitosamente');
+        return redirect()->route('shelters.index')->with('success', 'Albergue guardado exitosamente');
     }
 
     public function destroy($id)
     {
         $shelter = Shelter::findOrFail($id);
         if ($shelter) {
-            $shelter->clearMediaCollection('logos');
+            $shelter->clearMediaCollection('shelterGallery');
             $shelter->delete();
         }
 
-        return redirect()->back()->with('success', 'Albergue eliminado exitosamente');
+        return redirect()->route('shelters.index')->with('success', 'Albergue eliminado exitosamente');
     }
 
     public function get(Request $request)
     {
-        $shelter = Shelter::findOrFail($request->id);
-        return $shelter;
+        return Shelter::findOrFail($request->id);
     }
 
     public function edit($id)
@@ -109,26 +95,19 @@ class ShelterController extends Controller
             'colony' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $shelter = Shelter::findOrFail($id);
-        $shelter->user_id = $request->input('user_id');
-        $shelter->name = $request->input('name');
-        $shelter->phone = $request->input('phone');
-        $shelter->facebook = $request->input('facebook');
-        $shelter->tiktok = $request->input('tiktok');
-        $shelter->state = $request->input('state');
-        $shelter->city = $request->input('city');
-        $shelter->colony = $request->input('colony');
-        $shelter->address = $request->input('address');
-        $shelter->postal_code = $request->input('postal_code');
+        $shelter->fill($request->only('user_id', 'name', 'phone', 'facebook', 'tiktok', 'state', 'city', 'colony', 'address', 'postal_code'));
 
         if ($request->hasFile('logo')) {
-            $shelter->clearMediaCollection('logos');
-            $shelter->addMediaFromRequest('logo')->toMediaCollection('logos');
+            $shelter->clearMediaCollection('shelterGallery');
+            $shelter->addMediaFromRequest('logo')->toMediaCollection('shelterGallery');
         }
+
         $shelter->save();
-        return redirect()->back()->with('success', 'Albergue actualizado correctamente');
+        return redirect()->route('shelters.index')->with('success', 'Albergue actualizado correctamente');
     }
 
     public function show(Shelter $shelters)

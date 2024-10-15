@@ -1,5 +1,8 @@
 <?php
 
+use Dompdf\Css\Color;
+use Tymon\JWTAuth\Blacklist;
+
 return [
 
     /*
@@ -197,7 +200,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-light-primary elevation-4 sidebar-light-custom ',
+    'classes_sidebar' => 'sidebar-dark-primary elevation-4 sidebar-light-custom ',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -300,7 +303,7 @@ return [
         [
             'type' => 'navbar-search',
             'text' => 'Búsqueda',
-            'topnav_right' => false,
+            'topnav_right' => false
         ],
         [
             'type' => 'fullscreen-widget',
@@ -310,7 +313,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'Búsqueda',
+            'text' => 'Búsqueda'
         ],
         [
             'text' => 'blog',
@@ -322,80 +325,94 @@ return [
             'text' => 'Dashboard',
             'url' => '/dashboard',
             'icon' => 'fa fa-home',
+            'icon_color' => 'dark',
             'can'  =>'viewDashboard'
         ],
         [
             'text' => 'Usuarios',
             'url' => '/users',
             'icon' => 'fas fa-fw fa-user',
+            'icon_color' => 'dark',
             'can'  =>'viewUser'
         ],
         [
             'text' => 'Especies',
             'url' => '/species',
             'icon' => 'fas fa-paw',
+            'icon_color' => 'dark',
             'can'  =>'viewSpecie'
         ],
         [
             'text' => 'Vacunas',
             'icon' => 'fas fa-fw fa-syringe',
             'url' => '/vaccines',
+            'icon_color' => 'dark',
             'can' => 'viewVaccine'
         ],
         [
             'text' => 'Albergues',
             'url' => '/shelters',
             'icon' => 'fa fa-home',
+            'icon_color' => 'dark',
             'can' => 'viewShelter',
         ],
         [
             'text' => 'Citas Veterinarias',
             'url' => '/vetAppointments',
             'icon' => 'fa fa-calendar',
+            'icon_color' => 'dark',
             'can'  =>'viewVetAppointments'
         ],
         [
             'text' => 'Roles',
             'url' => '/roles',
             'icon' => 'fas fa-users-cog fa-fw',
+            'icon_color' => 'dark',
             'can'  =>'viewRol'
         ],
         [
             'text' => 'Mascotas',
             'url' => '/animals',
             'icon' => 'fas fa-dog fa-fw',
+            'icon_color' => 'dark',
             'can'  =>'viewAnimal'
         ],
         [
             'text' => 'Fallecimientos',
             'url' => '/deaths',
             'icon' => 'fas fa-fw fa-skull',
+            'icon_color' => 'dark',
             'can'  =>'viewDeaths'
         ],
         [
             'text' => 'Usuarios',
             'icon' => 'fas fa-fw fa-users',
+            'icon_color' => 'dark',
             'can' => 'viewShelterUsers',
             'submenu' => [
                 [
                     'text' => 'Padrino',
                     'url' => '/godfather',
                     'icon' => 'fas fa-user-tie fa-fw',
+                    'icon_color' => 'dark',
                 ],
                 [
                     'text' => 'Adoptante',
                     'url' => '/adopter',
                     'icon' => 'fas fa-hand-holding-heart fa-fw',
+                    'icon_color' => 'dark',
                 ],
                 [
                     'text' => 'Donante',
                     'url' => '/donor',
                     'icon' => 'fas fa-donate fa-fw',
+                    'icon_color' => 'dark',
                 ],
                 [
                     'text' => 'Personal',
                     'url' => '/staff',
                     'icon' => 'fas fa-user-md fa-fw',
+                    'icon_color' => 'dark',
                 ],
             ],
         ],

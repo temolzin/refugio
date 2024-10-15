@@ -59,8 +59,13 @@ class VetAppointmentController extends Controller
     public function edit($id)
     {
         $vet = VetAppointment::find($id);
-        if ($vet && $vet->animal->shelter_id == Auth::user()->shelter->id) 
-        return view('vetAppointments.edit', compact('vet'));
+        if ($vet && $vet->animal->shelter_id == Auth::user()->shelter->id) {
+            $user = Auth::user();
+            $shelterId = $user->shelter->id;
+            $animals = Animal::where('shelter_id', $shelterId)->get();
+    
+            return view('vetAppointments.edit', compact('vet', 'animals'));
+        }
     }
 
     public function create()
