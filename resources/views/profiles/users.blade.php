@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-body text-center">
                     <div class="profile-img-container">
-                    <img src="{{ $user->getFirstMediaUrl('userGallery') ?: asset('img/avatarDefault.png') }}" class="img-circle elevation-2" alt="User Image" style="width: 150px; height: 150px;">
+                    <img src="{{ $user->getFirstMediaUrl('userGallery') ?: asset('img/avatardefault.png') }}" class="img-circle elevation-2" alt="User Image" style="width: 150px; height: 150px;">
                         <a href="#" class="btn btn-outline-primary btn-sm edit-profile-pic" data-toggle="modal" data-target="#editLogo{{ $user->id }}">
                             <i class="fas fa-camera"></i>
                         </a>
@@ -90,7 +90,7 @@
                     </div>
                     <div class="card-body text-center">
                     <div class="profile-img-container">
-                    <img src="{{ $user->getFirstMediaUrl('shelterGallery') ?: asset('img/shelterDefault.png') }}" class="img-circle elevation-2" alt="Shelter Image" style="width: 150px; height: 150px;">
+                    <img src="{{ $user->getFirstMediaUrl('shelterGallery') ?: asset('img/shelterdefault.png') }}" class="img-circle elevation-2" alt="Shelter Image" style="width: 150px; height: 150px;">
                         <a href="#" class="btn btn-outline-primary btn-sm edit-profile-pic" data-toggle="modal" data-target="#editLogoShelter{{ $user->id }}">
                             <i class="fas fa-camera"></i>
                         </a>
@@ -170,7 +170,7 @@
                                             <label for="photo-{{ $user->id }}" class="form-label"></label>
                                             <div class="image-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">
                                                 <img id="photo-preview-edit-{{ $user->id }}" 
-                                                     src="{{ ($user->getFirstMediaUrl('userGallery')) ? $user->getFirstMediaUrl('userGallery') : asset('img/avatarDefault.png') }}" 
+                                                     src="{{ ($user->getFirstMediaUrl('userGallery')) ? $user->getFirstMediaUrl('userGallery') : asset('img/avatardefault.png') }}" 
                                                      alt="Foto Actual" 
                                                      style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
                                             </div>
@@ -224,7 +224,7 @@
                                             <label for="photo-{{ $user->id }}" class="form-label"></label>
                                             <div class="image-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">
                                                 <img id="photo-preview-shelter-{{ $user->id }}" 
-                                                     src="{{ $user->getFirstMediaUrl('shelterGallery') ? $user->getFirstMediaUrl('shelterGallery') : asset('img/shelterDefault.png') }}" 
+                                                     src="{{ $user->getFirstMediaUrl('shelterGallery') ? $user->getFirstMediaUrl('shelterGallery') : asset('img/shelterdefault.png') }}" 
                                                      alt="Foto Actual" 
                                                      style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
                                             </div>

@@ -42,9 +42,9 @@
                                         <tr>
                                             <td scope="row">{{$users->id}}</td>
                                             <td>                                          
-                                                @if($users->getMedia('photo')->isNotEmpty())
+                                                @if($users->getMedia('userGallery')->isNotEmpty())
                                                 @php
-                                                $photo = $users->getFirstMedia('photo');
+                                                $photo = $users->getFirstMedia('userGallery');
                                                 @endphp
                                                 <img src="{{ $photo->getUrl() }}" alt="photo not found" style="width: 50px; height: 50px; border-radius: 50%;" > 
                                                 @else

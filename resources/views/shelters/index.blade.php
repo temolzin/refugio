@@ -41,12 +41,12 @@
                                         <tr>
                                         <td scope="row">{{$shelters->id}}</td>
                                         <td>
-                                            @if($shelters->getFirstMediaUrl('shelterGallery'))
-                                                <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ $shelters->getFirstMediaUrl('shelterGallery') }}" 
+                                            @if($shelters->users->getFirstMediaUrl('shelterGallery'))
+                                                <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ $shelters->users->getFirstMediaUrl('shelterGallery') }}" 
                                                 alt="Logo Actual" 
                                                 style="width: 50px; height: 50px; border-radius: 50%;">
                                             @else
-                                                <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ asset('img/shelterDefault.png') }}" 
+                                                <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ asset('img/shelterdefault.png') }}" 
                                                 style="width: 50px; height: 50px; border-radius: 50%;">
                                             @endif                                                                                                   
                                         </td>
