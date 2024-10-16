@@ -27,8 +27,8 @@
                     <div class="form-group text-center">
                         <label for="photo" class="form-label"></label>
                         <div class="image-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">
-                            @if($users->getFirstMediaUrl('photo'))
-                            <img id="photo-preview-edit-{{ $users->id }}" src="{{ $users->getFirstMediaUrl('photo') }}" alt="Foto Actual" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 20px;">
+                            @if($users->getFirstMediaUrl('userGallery'))
+                            <img id="photo-preview-edit-{{ $users->id }}" src="{{ $users->getFirstMediaUrl('userGallery') }}" alt="Foto Actual" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 20px;">
                             @else
                             <img id="photo-preview-edit-{{ $users->id }}" src="{{ asset('img/avatardefault.png') }}" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
                             @endif
@@ -112,12 +112,12 @@
   </div>
 </div>
 <script>
-  function previewImage(event) {
+  function previewImageEdit(event, id) {
       var input = event.target;
       var reader = new FileReader();
       reader.onload = function () {
           var dataURL = reader.result;
-          var output = document.getElementById('photo-preview');
+          var output = document.getElementById('photo-preview-edit-' + id);
           output.src = dataURL;
           output.style.display = 'block';
       };

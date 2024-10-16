@@ -28,8 +28,8 @@
                                         <div class="form-group text-center">
                                             <label for="logo" class="form-label"></label>
                                             <div class="image-preview-container" style="display: flex; justify-content: center; margin-bottom: 10px;">
-                                                @if($shelters->getFirstMediaUrl('shelterGallery'))
-                                                    <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ $shelters->getFirstMediaUrl('shelterGallery') }}" alt="Logo Actual" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 20px;">
+                                                @if($shelters->users->getFirstMediaUrl('shelterGallery'))
+                                                    <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ $shelters->users->getFirstMediaUrl('shelterGallery') }}" alt="Logo Actual" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 20px;">
                                                 @else
                                                     <img id="logo-preview-edit-{{ $shelters->id }}" src="{{ asset('img/shelterDefault.png') }}" style="width: 120px; height: 120px; border-radius: 50%; margin-bottom: 5px;">
                                                 @endif
